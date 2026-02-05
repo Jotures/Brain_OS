@@ -1,0 +1,13 @@
+# Environment files (contain credentials!)
+.env
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# IDE
+.vscode/
+.idea/
+
+# Logs
+*.log

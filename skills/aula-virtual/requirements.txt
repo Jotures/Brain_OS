@@ -1,0 +1,14 @@
+# Aula Virtual UAndina - Dependencias
+# Universidad Andina del Cusco - Moodle Integration
+
+# HTTP requests for Moodle API
+requests>=2.31.0
+
+# Environment variable management
+python-dotenv>=1.0.0
+
+# Model Context Protocol SDK
+mcp
+
+# Date handling for due dates
+python-dateutil>=2.8.2
