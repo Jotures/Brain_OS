@@ -49,14 +49,21 @@
 
 ### 📚 NotebookLM (Conectado ✅)
 
-| Curso | Comando |
-|-------|---------|
-| 📗 Economía Ambiental | "Consulta mi libro de Economía Ambiental" |
-| 📘 Economía Internacional I | "Consulta mi libro de Economía Internacional" |
-| 📙 Economía y Gestión Pública | "Consulta mi libro de Gestión Pública" |
-| 📕 Investigación Operativa | "Consulta mi libro de Investigación Operativa" |
-| 📔 Teoría Monetaria | "Consulta mi libro de Teoría Monetaria" |
-| 📓 Investigación Económica | "Consulta mi libro de Investigación Económica" |
+| Curso | Comando | Estado |
+|-------|---------|--------|
+| 📗 Economía Ambiental | "Consulta mi libro de Economía Ambiental" | ⏳ |
+| 📘 Economía Internacional I | "Consulta mi libro de Economía Internacional" | ⏳ |
+| 📙 Economía y Gestión Pública | "Consulta mi libro de Gestión Pública" | ⏳ |
+| 📕 Investigación Operativa | "Consulta mi libro de Investigación Operativa" | ⏳ |
+| 📔 Teoría Monetaria | "Consulta mi libro de Teoría Monetaria" | ⏳ |
+| 📓 Investigación Económica | "Consulta mi libro de Investigación Económica" | ⏳ |
+| 📒 Inglés | "Consulta mi libro de Inglés" | ✅ 65 fuentes |
+
+#### 🔄 Flujo Híbrido B+C (Nuevo)
+| Di esto... | Brain OS hace... |
+|------------|------------------|
+| "Prepara contenido para NotebookLM de [curso]" | Genera documento para pegar |
+| "Consulta mi libro de [curso]: [pregunta]" | Query grounded a NotebookLM |
 
 ### 🌐 Inglés (Curso Personal)
 
@@ -110,8 +117,8 @@
 | Curso personal | 1 (Inglés) |
 | Tareas pendientes | 0 ✅ |
 | Integraciones | 4 activas |
-| Skills | 27 |
-| Última verificación | 2026-02-05 01:05 |
+| Skills | 28 |
+| Última verificación | 2026-02-05 23:10 |
 
 ---
 
@@ -120,6 +127,7 @@
 | Destino | Link |
 |---------|------|
 | 📚 Mis Cursos | [carrera/semestres/2026-1/cursos/](./carrera/semestres/2026-1/cursos/) |
+| 🇬🇧 Inglés | [07_ingles/](./carrera/semestres/2026-1/cursos/07_ingles/) |
 | 📈 Resumen Carrera | [carrera/README.md](./carrera/README.md) |
 | 📝 Templates | [templates/](./templates/) |
 | 📂 Sesiones | [sesiones/](./sesiones/) |
@@ -127,7 +135,7 @@
 
 ---
 
-## 🛠️ SKILLS DISPONIBLES (26)
+## 🛠️ SKILLS DISPONIBLES (28)
 
 | Categoria | Skills |
 |-----------|--------|
@@ -135,8 +143,8 @@
 | ✍️ Escribir | `copywriting` `copy-editing` `content-creator` |
 | 📋 Planificar | `brainstorming` `writing-plans` `concise-planning` |
 | 🔍 Investigar | `notebooklm` 🔥 `research-engineer` |
-| 🎓 Académico | `aula-virtual` 🆕 |
-| 🔄 Sistema | `dashboard-sync` |
+| 🎓 Académico | `aula-virtual` |
+| 🔄 Sistema | `dashboard-sync` `system-coordinator` 🆕 |
 
 **Uso**: `"Usa la skill [nombre] para [tarea]"`
 

@@ -241,6 +241,45 @@ Actualizar Notion con:
 
 ---
 
+## 📚 Flujo NotebookLM (Híbrido B+C)
+
+### Arquitectura
+```
+Brain OS genera contenido → Usuario pega en NotebookLM → NotebookLM investiga → Brain OS consulta
+```
+
+### Comando: "Prepara contenido para NotebookLM de [curso]"
+Brain OS:
+1. Lee índice/syllabus del curso
+2. Usa template `templates/notebooklm_content_template.md`
+3. Genera documento con temas + preguntas guía
+4. Usuario copia y pega en NotebookLM
+
+### Comando: "Consulta mi libro de [curso]: [pregunta]"
+Brain OS:
+1. Busca notebook en `config/notebooklm_registry.json`
+2. Ejecuta skill `notebooklm` con query
+3. Retorna respuesta grounded
+
+### Registro de Notebooks
+```yaml
+Archivo: config/notebooklm_registry.json
+Mapeo: curso_id → notebook_id
+```
+
+### Cursos con Notebook Activo
+| Curso | Notebook | Estado |
+|-------|----------|--------|
+| Economía Ambiental | 📗 Libro 1 | Activo |
+| Economía Internacional | 📘 Libro 2 | Activo |
+| Economía y Gestión | 📙 Libro 3 | Activo |
+| Investigación Operativa | 📕 Libro 4 | Activo |
+| Teoría Monetaria | 📔 Libro 5 | Activo |
+| Investigación Económica | 📓 Libro 6 | Activo |
+| Inglés | 📒 Libro 7 | Pendiente contenido |
+
+---
+
 ## Integración con Herramientas
 
 ### Notion (via MCP)

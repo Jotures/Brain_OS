@@ -99,6 +99,7 @@ Skills for extending AI capabilities:
 - `@skill-creator` - Create new skills or update existing ones
 - `@writing-skills` - Tools for writing and validating skill files
 - `@dispatching-parallel-agents` - Distribute tasks to multiple agents
+- `@system-coordinator` - 🆕 Correlate and sync Brain OS components (Notion, NotebookLM, workflows)
 
 ---
 

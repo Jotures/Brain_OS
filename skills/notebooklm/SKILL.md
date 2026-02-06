@@ -15,6 +15,30 @@ Trigger when user:
 - Asks to query their notebooks/documentation
 - Wants to add documentation to NotebookLM library
 - Uses phrases like "ask my NotebookLM", "check my docs", "query my notebook"
+- **NEW**: Says "Prepara contenido para NotebookLM de [curso]"
+- **NEW**: Says "Consulta mi libro de [curso]"
+
+## 📚 Flujo Híbrido B+C (Global)
+
+### Preparar Contenido (Brain OS → Usuario → NotebookLM)
+Cuando usuario dice: "Prepara contenido para NotebookLM de [curso]"
+1. Leer índice/syllabus del curso
+2. Usar template `templates/notebooklm_content_template.md`
+3. Generar documento formateado
+4. Usuario copia y pega en NotebookLM
+5. Usuario activa "Investigar"
+
+### Consultar Contenido (Brain OS ← NotebookLM)
+Cuando usuario dice: "Consulta mi libro de [curso]: [pregunta]"
+1. Buscar notebook en `config/notebooklm_registry.json`
+2. Ejecutar query con `ask_question.py`
+3. Retornar respuesta grounded
+
+### Registro de Notebooks
+```yaml
+Archivo: config/notebooklm_registry.json
+Formato: {"mapping": {"curso_id": "notebook_id"}}
+```
 
 ## ⚠️ CRITICAL: Add Command - Smart Discovery
 

@@ -239,6 +239,38 @@ NOTEBOOK_COGNITIVE_ALPHA:
 2. **Q&A**: Hacer preguntas durante Pomodoro
 3. **Info Report**: Generar síntesis post-estudio
 
+### Flujo Híbrido B+C (Nuevo)
+
+```yaml
+# Archivos del Flujo:
+template: templates/notebooklm_content_template.md
+registry: config/notebooklm_registry.json
+workflow: .agent/workflows/brain-os-study.md (sección NotebookLM)
+skill: skills/notebooklm/SKILL.md
+```
+
+#### Comando: "Prepara contenido para NotebookLM de [curso]"
+1. Brain OS lee índice/syllabus del curso
+2. Usa template universal para generar documento
+3. Usuario copia y pega en NotebookLM
+4. Usuario activa "Investigar"
+
+#### Comando: "Consulta mi libro de [curso]: [pregunta]"
+1. Brain OS busca notebook en registry
+2. Ejecuta skill notebooklm
+3. Retorna respuesta grounded
+
+#### Estado de Contenido por Curso
+| Curso | NotebookLM | Contenido Generado |
+|-------|------------|-------------------|
+| 📗 Economía Ambiental | ✅ | Pendiente |
+| 📘 Economía Internacional | ✅ | Pendiente |
+| 📙 Economía y Gestión | ✅ | Pendiente |
+| 📕 Investigación Operativa | ✅ | Pendiente |
+| 📔 Teoría Monetaria | ✅ | Pendiente |
+| 📓 Investigación Económica | ✅ | Pendiente |
+| 📒 Inglés | ✅ | ✅ Activo (65 fuentes) |
+
 ---
 
 ## Aula Virtual UAndina - Correlación de Cursos
