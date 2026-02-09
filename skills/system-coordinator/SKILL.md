@@ -1,6 +1,6 @@
 ---
 name: system-coordinator
-description: Skill maestra para correlacionar, conectar y verificar la integridad de todo el sistema Brain OS. Sincroniza IDs entre Notion, NotebookLM, Brain OS local y workflows.
+description: Skill maestra para correlacionar, conectar, coordinar y verificar la integridad de todo el sistema Brain OS. Sincroniza IDs entre Notion, NotebookLM, Brain OS local y workflows.
 ---
 
 # 🔗 System Coordinator Skill
@@ -14,7 +14,7 @@ Skill maestra que mantiene la coherencia e integridad de todo el ecosistema Brai
 Trigger cuando el usuario o el sistema necesite:
 - Verificar correlación entre componentes del sistema
 - Sincronizar IDs entre Notion, NotebookLM y Brain OS
-- Agregar un nuevo curso o área al sistema
+- Agregar un nuevo curso, herramienta o skill al sistema
 - Verificar integridad después de cambios
 - Diagnosticar problemas de conexión entre componentes
 
@@ -24,6 +24,45 @@ Trigger cuando el usuario o el sistema necesite:
 - "Agrega [curso] al sistema"
 - "¿Está todo conectado?"
 - "Diagnóstico del sistema"
+
+---
+
+## 🔄 AUTO-ACTUALIZACIÓN
+
+> **Este skill se actualiza a sí mismo** cuando detecta cambios en el sistema.
+
+### Qué se auto-actualiza:
+1. **Diagrama de arquitectura** → Refleja nuevas herramientas/conexiones
+2. **Lista de archivos obligatorios** → Incluye nuevos archivos críticos
+3. **Conteo de skills** → Actualiza el número actual
+4. **Herramientas en arquitectura** → Añade nuevas tools/
+
+### Cuándo se auto-actualiza:
+- Al ejecutar "Verifica el sistema" → Detecta componentes nuevos
+- Al ejecutar "Sincroniza todo" → Actualiza este archivo también
+- Al agregar nueva herramienta → Se incluye en arquitectura
+- Al agregar nueva skill → Se actualiza conteo
+
+### Cómo se auto-actualiza:
+```yaml
+1. Escanear tools/ → Detectar nuevas herramientas
+2. Escanear skills/ → Contar skills actuales
+3. Leer brain_config.md → Detectar nuevas integraciones
+4. Comparar con este archivo
+5. Si hay diferencias → Actualizar:
+   - Diagrama de arquitectura
+   - Lista de archivos
+   - Número de skills
+   - Herramientas mencionadas
+6. Registrar fecha de última auto-actualización
+```
+
+### Última Auto-Actualización
+- **Fecha**: 2026-02-09 00:30
+- **Skills**: 30 (documentado como 30+)
+- **Herramientas**: pomodoro/
+- **Integraciones**: Notion, NotebookLM, Aula Virtual, Pomodoro Timer
+- **Estado**: ✅ Sistema sincronizado
 
 ---
 
@@ -39,34 +78,70 @@ Trigger cuando el usuario o el sistema necesite:
 │         │                 │                 │               │
 │         └────────────┬────┴─────────────────┘               │
 │                      │                                      │
-│              ┌───────▼───────┐                              │
-│              │   REGISTRIES   │                              │
-│              │ ┌─────────────┐│                              │
-│              │ │notebooklm   ││                              │
-│              │ │_registry.json│                              │
-│              │ └─────────────┘│                              │
-│              └───────┬───────┘                              │
-└──────────────────────┼──────────────────────────────────────┘
-                       │
-       ┌───────────────┼───────────────┐
+│      ┌───────────────┼───────────────┐                      │
+│      │               │               │                      │
+│ ┌────▼────┐   ┌──────▼───────┐   ┌───▼───┐                 │
+│ │REGISTRIES│   │   TOOLS      │   │SKILLS │                 │
+│ │notebooklm│   │🍅 pomodoro/  │   │ 30+   │                 │
+│ │_registry │   │  timer.py    │   │       │                 │
+│ └────┬────┘   └──────┬───────┘   └───┬───┘                 │
+└──────┼───────────────┼───────────────┼──────────────────────┘
        │               │               │
-┌──────▼─────┐  ┌──────▼─────┐  ┌──────▼─────┐
-│   Notion   │  │ NotebookLM │  │Aula Virtual│
-│  BD_AREAS  │  │ 7 notebooks│  │  Moodle    │
-└────────────┘  └────────────┘  └────────────┘
+       ▼               ▼               ▼
+┌──────────┐  ┌──────────────┐  ┌──────────┐
+│  Notion  │  │ Pomodoro     │  │NotebookLM│
+│ BD_AREAS │  │ state/history│  │ 7 books  │
+└──────────┘  └──────────────┘  └──────────┘
 ```
 
 ---
 
-## Archivos Clave del Sistema
+## ⚠️ ARCHIVOS OBLIGATORIOS A SINCRONIZAR
 
-| Archivo | Propósito | Verificar |
-|---------|-----------|-----------|
-| `brain_config.md` | IDs de Notion, NotebookLM, Aula Virtual | IDs válidos |
-| `INICIO.md` | Dashboard, comandos, estado | Links funcionales |
-| `config/notebooklm_registry.json` | Mapeo cursos ↔ notebooks | Sincronizado con brain_config |
-| `.agent/workflows/brain-os-study.md` | Workflow principal | Comandos actualizados |
-| `skills/notebooklm/SKILL.md` | Skill NotebookLM | Flujo B+C documentado |
+> **CRÍTICO**: Cuando se hace CUALQUIER cambio al sistema, TODOS estos archivos deben verificarse y actualizarse.
+
+### Nivel 1: Siempre Actualizar
+| Archivo | Propósito | Qué sincronizar |
+|---------|-----------|-----------------|
+| `README.md` | Documentación pública | Estructura, integraciones, skills, comandos |
+| `INICIO.md` | Dashboard principal | Comandos, diagrama, integraciones, estado |
+| `brain_config.md` | Fuente de verdad | IDs, configs, herramientas |
+
+### Nivel 2: Según Cambio
+| Archivo | Propósito | Actualizar cuando... |
+|---------|-----------|----------------------|
+| `.agent/workflows/brain-os-study.md` | Workflow estudio | Nuevos comandos, modos, algoritmos |
+| `config/notebooklm_registry.json` | Mapeo NotebookLM | Nuevo curso, nuevo notebook |
+| `carrera/README.md` | Resumen carrera | Nuevo semestre, nuevo curso |
+
+### Nivel 3: Herramientas
+| Archivo | Propósito | Actualizar cuando... |
+|---------|-----------|----------------------|
+| `tools/pomodoro/config.json` | Config timer | Nuevos modos, reglas |
+| `skills/pomodoro/SKILL.md` | Skill timer | Nuevos comandos |
+| `skills/system-coordinator/SKILL.md` | Este archivo | Nueva herramienta o integración |
+
+### Checklist de Sincronización
+```yaml
+Al agregar NUEVA HERRAMIENTA:
+  - [ ] README.md → Estructura + Integraciones
+  - [ ] INICIO.md → Comandos + Diagrama + Tabla integraciones
+  - [ ] brain_config.md → Configuración
+  - [ ] brain-os-study.md → Comandos del workflow
+  - [ ] system-coordinator/SKILL.md → Arquitectura
+
+Al agregar NUEVO CURSO:
+  - [ ] brain_config.md → IDs Notion/NotebookLM
+  - [ ] notebooklm_registry.json → Entrada del notebook
+  - [ ] INICIO.md → Comando de consulta
+  - [ ] brain-os-study.md → Tabla de cursos
+  - [ ] carrera/README.md → Resumen
+  - [ ] README.md → Número de cursos
+
+Al cambiar SKILLS:
+  - [ ] README.md → Número y categorías
+  - [ ] INICIO.md → Tabla de skills
+```
 
 ---
 
@@ -77,14 +152,24 @@ Trigger cuando el usuario o el sistema necesite:
 Cuando usuario dice: **"Verifica el sistema"** o **"Diagnóstico"**
 
 Ejecutar:
-1. Leer `brain_config.md` → Extraer IDs
-2. Leer `config/notebooklm_registry.json` → Comparar notebooks
+1. Leer **TODOS** los archivos Nivel 1:
+   - `README.md` → Verificar estructura, skills, integraciones
+   - `INICIO.md` → Verificar comandos, diagrama, tabla
+   - `brain_config.md` → Extraer IDs como fuente de verdad
+2. Leer archivos Nivel 2:
+   - `config/notebooklm_registry.json` → Comparar notebooks
+   - `.agent/workflows/brain-os-study.md` → Verificar comandos
+   - `carrera/README.md` → Verificar cursos
 3. Verificar que cada curso tenga:
    - [ ] ID de Notion en brain_config.md
    - [ ] Entrada en notebooklm_registry.json
    - [ ] Comando en INICIO.md
+   - [ ] Entrada en README.md
    - [ ] Carpeta en `carrera/semestres/[SEMESTRE]/cursos/`
-4. Reportar discrepancias
+4. Verificar herramientas:
+   - [ ] Pomodoro Timer: mencionado en README, INICIO, brain_config
+   - [ ] Skills: número correcto en README e INICIO
+5. **Reportar TODAS las discrepancias y corregir inmediatamente**
 
 ### 2. Agregar Nuevo Curso al Sistema
 
@@ -96,11 +181,13 @@ Ejecutar:
    - ID de Notion (si existe)
    - URL de NotebookLM (si existe)
    - Tipo: universitario | personal
-2. Actualizar:
+2. **Actualizar TODOS estos archivos (obligatorio)**:
+   - `README.md` → Actualizar número de cursos
+   - `INICIO.md` → Agregar comando de consulta
    - `brain_config.md` → Agregar IDs
    - `config/notebooklm_registry.json` → Agregar entrada
-   - `INICIO.md` → Agregar comando
    - `.agent/workflows/brain-os-study.md` → Agregar a tabla
+   - `carrera/README.md` → Actualizar resumen
 3. Crear carpeta del curso si no existe
 
 ### 3. Sincronizar Registries
@@ -109,9 +196,39 @@ Cuando usuario dice: **"Sincroniza todo"**
 
 Ejecutar:
 1. Leer brain_config.md como fuente de verdad
-2. Actualizar notebooklm_registry.json para coincidir
-3. Verificar INICIO.md tiene todos los comandos
-4. Reportar cambios realizados
+2. **Actualizar TODOS los archivos Nivel 1**:
+   - README.md → Sincronizar estructura, skills, integraciones
+   - INICIO.md → Sincronizar comandos, diagrama
+3. Actualizar archivos Nivel 2:
+   - notebooklm_registry.json para coincidir
+   - brain-os-study.md para coincidir
+4. **Auto-actualizar este skill** (ver sección 🔄 AUTO-ACTUALIZACIÓN)
+5. Reportar cambios realizados
+
+### 4. Auto-Actualizar Este Skill
+
+Cuando usuario dice: **"Actualiza el coordinador"** o se ejecuta automáticamente
+
+Ejecutar:
+1. **Escanear sistema actual**:
+   ```powershell
+   # Contar skills
+   ls skills/ | measure
+   
+   # Listar herramientas
+   ls tools/
+   
+   # Verificar integraciones en brain_config.md
+   ```
+2. **Comparar con valores actuales en este archivo**:
+   - Número de skills (actualmente: 30+)
+   - Herramientas (actualmente: pomodoro/)
+   - Integraciones (actualmente: 4)
+3. **Si hay diferencias, actualizar**:
+   - Diagrama de arquitectura
+   - Sección "Última Auto-Actualización"
+   - Lista de archivos obligatorios
+4. **Registrar timestamp de actualización**
 
 ---
 

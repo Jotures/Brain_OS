@@ -9,8 +9,31 @@
 ```
 /brain-os-study          → Activa el sistema
 "¿Qué debo estudiar?"    → Diagnóstico del día
-"Modo Crisis [curso]"    → Estudio intensivo
+"Guarda este archivo"    → Ingesta Inteligente 🆕
 ```
+
+---
+
+## 🧘 VIDA PERSONAL & PROYECTOS
+
+| Proyecto | Estado | Próxima Acción |
+|----------|--------|----------------|
+| 🇬🇧 Inglés (Máximo) | 🟢 Activo | Repaso Anki |
+| 💪 Salud/Gym | ⚪ Pendiente | Definir rutina |
+| 🚀 Side Projects | 🟡 Plan | Brainstorming |
+
+> *Usa "Nuevo proyecto personal [nombre]" para agregar uno.*
+
+---
+
+## 📚 BIBLIOTECA & RECURSOS RECIENTES
+
+| Archivo | Curso | Tipo | Link |
+|---------|-------|------|------|
+| *Esperando sincronización...* | - | - | [Ver en Notion](https://www.notion.so) |
+| *Esperando sincronización...* | - | - | - |
+
+> *Di "Sincroniza mi biblioteca" para actualizar esta lista desde Notion.*
 
 ---
 
@@ -46,6 +69,18 @@
 | "Genera resumen de [tema]" | Crea resumen |
 | "¿Qué dudas tengo pendientes?" | Lista dudas |
 | "Actualiza el dashboard" | Sincroniza INICIO.md |
+
+### 🍅 Pomodoro Timer
+| Di esto... | Brain OS hace... |
+|------------|------------------|
+| "Inicia Pomodoro para [tema]" | Timer adaptativo (auto-modo) |
+| "¿Cuánto tiempo me queda?" | Estado del timer |
+| "Pausa/Reanuda el timer" | Control de sesión |
+| "Detén el Pomodoro" | Detiene y registra |
+| "¿Cuántos pomodoros hoy?" | Analytics del día |
+| "Mi productividad de la semana" | Analytics semanal |
+
+> **Modos**: `default` (25min) | `intensive` (50min) | `light` (15min) | `exam_prep` (45min)
 
 ### 📚 NotebookLM (Conectado ✅)
 
@@ -89,13 +124,14 @@
 ┌─────────────┐     ┌─────────────┐     ┌─────────────┐
 │ Aula Virtual│────▶│  Brain OS   │◀───▶│   Notion    │
 │   (Moodle)  │     │  (Central)  │     │ BD_TAREAS   │
-└─────────────┘     └─────────────┘     └─────────────┘
+└─────────────┘     └──────┬──────┘     └─────────────┘
                            │
-                           ▼
-                    ┌─────────────┐
-                    │ NotebookLM  │
-                    │ (8 libros)  │
-                    └─────────────┘
+              ┌────────────┼────────────┐
+              ▼            ▼            ▼
+       ┌──────────┐ ┌──────────┐ ┌──────────┐
+       │NotebookLM│ │ Pomodoro │ │ Skills   │
+       │ (7 books)│ │  Timer   │ │  (28+)   │
+       └──────────┘ └──────────┘ └──────────┘
 ```
 
 | Integración | Estado | Tipo | Flujo |
@@ -103,6 +139,7 @@
 | 📚 NotebookLM | ✅ | Lectura | Consultas → Audio → Q&A |
 | 🎓 Aula Virtual | ✅ | Lectura | Tareas → Brain OS |
 | 📋 Notion | ✅ | **Bidireccional** | 📥 Lee + 📤 Escribe |
+| 🍅 Pomodoro Timer | ✅ | Local | Timer adaptativo + history |
 | 🔄 Dashboard | ✅ | Auto-sync | INICIO.md actualizado |
 
 ---
@@ -117,8 +154,8 @@
 | Curso personal | 1 (Inglés) |
 | Tareas pendientes | 0 ✅ |
 | Integraciones | 4 activas |
-| Skills | 28 |
-| Última verificación | 2026-02-05 23:10 |
+| Skills | 30 |
+| Última verificación | 2026-02-09 00:32 |
 
 ---
 
@@ -135,7 +172,7 @@
 
 ---
 
-## 🛠️ SKILLS DISPONIBLES (28)
+## 🛠️ SKILLS DISPONIBLES (30)
 
 | Categoria | Skills |
 |-----------|--------|

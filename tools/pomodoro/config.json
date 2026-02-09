@@ -1,0 +1,51 @@
+{
+    "profiles": {
+        "default": {
+            "work_duration": 25,
+            "short_break": 5,
+            "long_break": 15,
+            "description": "Estándar Pomodoro - equilibrio entre enfoque y descanso"
+        },
+        "intensive": {
+            "work_duration": 50,
+            "short_break": 10,
+            "long_break": 20,
+            "description": "Sesiones largas para temas complejos (Cálculo, Física)"
+        },
+        "light": {
+            "work_duration": 15,
+            "short_break": 3,
+            "long_break": 10,
+            "description": "Sesiones cortas para repaso o tareas simples"
+        },
+        "exam_prep": {
+            "work_duration": 45,
+            "short_break": 8,
+            "long_break": 20,
+            "description": "Preparación de exámenes - enfoque sostenido"
+        }
+    },
+    "cycles_before_long_break": 4,
+    "sounds": {
+        "enabled": true,
+        "work_end": "work_complete.wav",
+        "break_end": "break_complete.wav"
+    },
+    "notifications": {
+        "enabled": true,
+        "show_time_remaining": true
+    },
+    "notion": {
+        "database_id": "2cbaacd6-8210-8064-bd2e-c5eccf539edc",
+        "property_name": "🍅 Pomodoros",
+        "auto_sync": true
+    },
+    "adaptive_suggestions": {
+        "enabled": true,
+        "rules": {
+            "calculo|fisica|algebra": "intensive",
+            "ingles|lectura|repaso": "light",
+            "examen|parcial|final": "exam_prep"
+        }
+    }
+}

@@ -273,6 +273,47 @@ skill: skills/notebooklm/SKILL.md
 
 ---
 
+## 🍅 Pomodoro Timer - Herramienta de Sesiones
+
+```yaml
+# Ubicación: tools/pomodoro/
+# Archivo principal: pomodoro_timer.py
+# Skill asociada: skills/pomodoro/SKILL.md
+
+POMODORO_TOOL:
+  location: "tools/pomodoro/"
+  config_file: "config.json"
+  state_file: "state.json"
+  history_file: "history.json"
+  
+  profiles:
+    default: {work: 25, break: 5}
+    intensive: {work: 50, break: 10}
+    light: {work: 15, break: 3}
+    exam_prep: {work: 45, break: 8}
+  
+  adaptive_rules:
+    calculo|fisica|algebra: "intensive"
+    ingles|lectura|repaso: "light"
+    examen|parcial|final: "exam_prep"
+  
+  notion_sync:
+    database_id: "2cbaacd6-8210-8064-bd2e-c5eccf539edc"  # BD_TRACKER_DIARIO
+    property: "🍅 Pomodoros"  # Pendiente: crear manualmente
+    auto_sync: true
+```
+
+### Comandos del Timer
+| Comando | Descripción |
+|---------|-------------|
+| `start --topic "X"` | Inicia con modo auto-detectado |
+| `status` | Estado actual (JSON) |
+| `pause / resume` | Control de sesión |
+| `stop` | Detiene y registra |
+| `history --period week` | Analytics |
+
+---
+
 ## Aula Virtual UAndina - Correlación de Cursos
 
 ```yaml

@@ -84,11 +84,31 @@ carrera/semestres/2026-1/cursos/[CURSO]/recursos/
 
 ---
 
-## Futuro: Automatización con API
+## ✅ Integración con API (IMPLEMENTADA)
 
-> *Pendiente investigar si el aula virtual tiene API*
+> **La integración con el Aula Virtual está ACTIVA y funcionando.**
 
-Si se encuentra API disponible:
-- Sincronización automática de materiales
-- Detección de nuevas tareas
-- Alertas de anuncios del profesor
+### Skill: `aula-virtual`
+Ubicación: `skills/aula-virtual/`
+
+### Comandos Disponibles
+| Comando | Acción |
+|---------|--------|
+| "¿Qué tareas tengo pendientes?" | Lista deadlines de Moodle |
+| "Tareas de [curso]" | Filtra por curso específico |
+| "Mis notas de [curso]" | Consulta calificaciones |
+| "Cursos del aula virtual" | Lista cursos matriculados |
+| "Sync aula virtual" | Sincroniza tareas a Notion |
+
+### Funcionalidades Activas
+- ✅ Conexión automática a Moodle (campus.uandina.edu.pe)
+- ✅ Detección de tareas pendientes con fechas
+- ✅ Sincronización bidireccional con BD_TAREAS_MAESTRAS en Notion
+- ✅ Mapeo automático de cursos Moodle ↔ Brain OS ↔ Notion
+
+### Scripts Principales
+| Script | Función |
+|--------|---------|
+| `get_tasks.py` | 🦅 Busca tareas pendientes en Moodle |
+| `sync_to_notion.py` | 📤 Sincroniza tareas a Notion |
+| `moodle_api.py` | API completa (cursos, tareas, notas) |

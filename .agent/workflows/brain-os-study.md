@@ -105,6 +105,26 @@ DB_RACHA: "2cbaacd6-8210-807b-8e7b-f39c0655b059"
 
 ## Algoritmo de Pomodoros Adaptativos
 
+### 🍅 Pomodoro Timer (tools/pomodoro/)
+
+El sistema cuenta con un temporizador adaptativo que ajusta automáticamente las duraciones:
+
+| Modo | Trabajo | Descanso | Detectado por |
+|------|---------|----------|---------------|
+| `default` | 25 min | 5 min | General |
+| `intensive` | 50 min | 10 min | Cálculo, Física, Álgebra |
+| `light` | 15 min | 3 min | Inglés, Lectura, Repaso |
+| `exam_prep` | 45 min | 8 min | Examen, Parcial, Final |
+
+#### Comandos del Timer
+```powershell
+# Desde Brain_OS/tools/pomodoro/
+python pomodoro_timer.py start --topic "[Tema]"     # Auto-detecta modo
+python pomodoro_timer.py status                      # Ver tiempo restante
+python pomodoro_timer.py pause | resume | stop       # Control
+python pomodoro_timer.py history --period week       # Analytics
+```
+
 ### Evaluación de Dificultad
 Antes de cada sesión de estudio, Brain OS evalúa:
 
@@ -114,11 +134,11 @@ Antes de cada sesión de estudio, Brain OS evalúa:
    - Revisión → Base
 
 2. ¿Involucra matemáticas/modelos complejos?
-   - Sí (ej: Investigación Operativa) → +1 Pomodoro
-   - No → Base
+   - Sí (ej: Investigación Operativa) → Modo intensive
+   - No → Modo default/light
 
 3. ¿Hay deadline en los próximos 3 días?
-   - Sí → Modo Crisis (+2 Pomodoros)
+   - Sí → Modo exam_prep (+2 Pomodoros)
    - No → Normal
 
 4. ¿Es para exposición o examen?
@@ -127,13 +147,13 @@ Antes de cada sesión de estudio, Brain OS evalúa:
 ```
 
 ### Tabla de Asignación
-| Situación | Pomodoros | Duración Total |
-|-----------|-----------|----------------|
-| Repaso simple | 1 | 25 min |
-| Tema nuevo fácil | 2 | 50 min |
-| Tema nuevo difícil | 3 | 75 min |
-| Pre-examen/exposición | 4 | 100 min |
-| Modo Crisis | 4+ | 100+ min |
+| Situación | Modo | Pomodoros | Duración Total |
+|-----------|------|-----------|----------------|
+| Repaso simple | `light` | 1 | 15 min |
+| Tema nuevo fácil | `default` | 2 | 50 min |
+| Tema nuevo difícil | `intensive` | 2 | 100 min |
+| Pre-examen/exposición | `exam_prep` | 3 | 135 min |
+| Modo Crisis | `intensive` | 4+ | 200+ min |
 
 ---
 
@@ -238,6 +258,16 @@ Actualizar Notion con:
 | "Consulta mi libro de [curso]" | Query a NotebookLM |
 | "Genera resumen de [tema]" | Crear resumen automático |
 | "¿Qué dudas tengo pendientes?" | Listar dudas no resueltas |
+
+### Comandos Pomodoro Timer 🍅
+| Comando | Acción |
+|---------|--------|
+| "Inicia Pomodoro para [tema]" | `python pomodoro_timer.py start --topic "[tema]"` |
+| "Pausa el timer" | `python pomodoro_timer.py pause` |
+| "¿Cuánto tiempo me queda?" | `python pomodoro_timer.py status` |
+| "Detén el Pomodoro" | `python pomodoro_timer.py stop` |
+| "¿Cuántos pomodoros llevo hoy?" | `python pomodoro_timer.py history --period today` |
+| "Mi productividad de la semana" | `python pomodoro_timer.py history --period week` |
 
 ---
 

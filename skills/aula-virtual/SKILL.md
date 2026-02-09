@@ -81,6 +81,22 @@ notas = api.get_grades(course_id=12345)
 | `sync_to_notion.py` | 📤 Sincroniza tareas a BD_TAREAS_MAESTRAS |
 | `moodle_client.py` | Cliente simple para probar conexión |
 | `moodle_api.py` | API completa (cursos, tareas, notas) |
+| `download_material.py` | 📥 **NUEVO:** Busca y descarga archivos del aula virtual |
+
+## Descargar Materiales
+
+Para buscar y descargar archivos específicos (ej. PDFs, diapositivas):
+
+```bash
+# Buscar en todos los cursos
+python scripts/download_material.py "nombre archivo"
+
+# Buscar en curso específico (filtro parcial)
+python scripts/download_material.py "nombre archivo" --course "nombre curso"
+
+# Especificar carpeta de salida
+python scripts/download_material.py "nombre" --outdir "ruta/destino"
+```
 
 ## Flujo Bidireccional
 

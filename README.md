@@ -16,20 +16,36 @@ Sistema de IA académico multi-semestre para maximizar tu rendimiento universita
 
 ---
 
-## 📂 Estructura
+## 📂 Estructura & Organización
+Este sistema usa una **Arquitectura Híbrida**: Notion es el índice ("La Biblioteca") y tu PC es el almacén físico.
+
+### Estandar de Carpetas (Uni y Personal)
+Todo curso debe seguir esta estructura simple:
+```
+[Nombre Curso]/
+├── 01_Materiales/     # 📚 PDFs, PPTs, Libros (Lectura)
+├── 02_Entregables/    # 📝 Tareas, Trabajos finales
+├── 03_Notas/          # 🧠 Apuntes en Markdown/Txt
+└── 04_Admin/          # 📄 Syllabus, Rúbricas
+```
+
+### Flujo de "Ingesta Inteligente"
+1. **En PC**: Guardas archivo -> *"Brain OS, guarda esto en [Curso]"* -> Se mueve a carpeta + Sube a Notion.
+2. **En Móvil**: Subes a Notion -> Al volver a PC: *"Sincroniza biblioteca"* -> Se descarga a tu carpeta.
+
+---
+
+## 📂 Directorios Principales (Root)
 
 ```
 Brain_OS/
-├── 📂 carrera/                    # 🆕 Historial multi-semestre
-│   ├── README.md                  # Resumen de carrera
-│   └── semestres/
-│       └── 2026-1/                # Semestre actual
-│           ├── README.md          # Info del semestre
-│           └── cursos/            # 7 cursos
-├── 📂 sesiones/                   # Logs de estudio
-├── 📂 templates/                  # Plantillas
-├── 📂 skills/                     # 24 skills académicas
-└── 📂 .agent/workflows/           # brain-os-study.md
+├── 📂 carrera/                    # 🎓 Universidad (Semestres)
+│   └── semestres/2026-1/cursos/   # Cursos activos
+├── 📂 cursos_personales/          # 🧘 Vida Personal (Inglés, Proyectos)
+├── 📂 tools/                      # 🛠️ Herramientas (Pomodoro, etc)
+├── 📂 sesiones/                   # 📝 Logs de estudio
+├── 📂 skills/                     # 🧠 Habilidades AI
+└── 📂 config/                     # ⚙️ Configuración
 ```
 
 ---
@@ -46,9 +62,10 @@ Brain_OS/
 
 ## 🔗 Integraciones
 
-- **Notion MCP**: BD_TAREAS, BD_AREAS, BD_RECURSOS, BD_CALENDARIO
+- **Notion MCP**: BD_TAREAS, BD_AREAS, BD_RECURSOS (bidireccional)
 - **NotebookLM**: 7 libros (uno por curso)
-- **Aula Virtual**: Materiales sincronizados
+- **Aula Virtual**: Materiales de Moodle
+- **🍅 Pomodoro Timer**: Sesiones adaptativas con analytics
 
 ---
 
@@ -62,12 +79,13 @@ Brain_OS/
 
 ---
 
-## 🛠️ Skills Académicas (24)
+## 🛠️ Skills Académicas (30+)
 
 **Documentos**: `docx` · `xlsx` · `pptx` · `pdf`  
 **Escritura**: `copywriting` · `copy-editing`  
 **Planificación**: `brainstorming` · `writing-plans`  
-**Investigación**: `notebooklm` 🔥 · `research-engineer`
+**Investigación**: `notebooklm` 🔥 · `research-engineer`  
+**Sistema**: `system-coordinator` · `dashboard-sync` 🆕
 
 Uso: `"Usa la skill [nombre] para [tarea]"`
 
@@ -81,3 +99,5 @@ Uso: `"Usa la skill [nombre] para [tarea]"`
 | `Registra sesión` | Guardar progreso |
 | `Resume semana` | Análisis semanal |
 | `Modo Crisis` | Estudio intensivo |
+| `Inicia Pomodoro para [tema]` | Timer adaptativo 🆕 |
+| `¿Cuántos pomodoros hoy?` | Analytics 🆕 |
