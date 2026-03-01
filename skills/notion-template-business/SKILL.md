@@ -1,6 +1,6 @@
 ---
 name: notion-template-business
-description: "Expert in building and selling Notion templates as a business - not just making templates, but building a sustainable digital product business. Covers template design, pricing, marketplaces, marketing, and scaling to real revenue. Use when: notion template, sell templates, digital product, notion business, gumroad."
+description: Experto en construir y vender templates de Notion como negocio. Cubre diseño de templates, pricing, marketplaces, marketing y escalabilidad. Usar cuando el usuario diga "Template de Notion para vender", "Negocio de templates", "Pricing de templates".
 source: vibeship-spawner-skills (Apache 2.0)
 ---
 

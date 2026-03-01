@@ -1,0 +1,71 @@
+Universidad Andina del Cusco
+Escuela: Economía
+Curso: Investigación Operativa
+Docente: Mg. Robert Paul Pilares Huallpa
+FASES DE UN ESTUDIO DE INVESTIGACIÓN DE OPERACIONES: GUÍA DETALLADA
+INTRODUCCIÓN:
+Los estudios de Investigación de Operaciones (IO) siguen un proceso sistemático dividido en fases para
+abordar problemas complejos y brindar soluciones eficientes. Cada fase juega un rol crucial para
+alcanzar el éxito del estudio.
+FASES DEL ESTUDIO:
+1. DEFINICIÓN DEL PROBLEMA:
+• Identificación del problema: Se describe la situación problemática a analizar y se establecen
+los objetivos específicos del estudio.
+• Recopilación de información: Se recopilan datos relevantes del problema, como costos,
+tiempos, recursos disponibles, etc.
+• Delimitación del problema: Se establecen los límites del estudio y se definen las variables a
+considerar.
+2. FORMULACIÓN DEL MODELO:
+• Selección del modelo: Se elige el tipo de modelo matemático adecuado para representar el
+problema (programación lineal, teoría de colas, redes, simulación, etc.).
+• Construcción del modelo: Se desarrolla el modelo matemático que representa el problema de
+forma precisa y completa.
+• Validación del modelo: Se verifica que el modelo represente correctamente el problema real
+y se realizan ajustes si es necesario.
+3. SOLUCIÓN DEL MODELO:
+• Selección del método de solución: Se elige la técnica matemática adecuada para encontrar la
+solución óptima o satisfactoria al problema.
+1
+Universidad Andina del Cusco
+Escuela: Economía
+Curso: Investigación Operativa
+Docente: Mg. Robert Paul Pilares Huallpa
+• Aplicación
+del método:
+Se utiliza el método seleccionado para resolver el modelo matemático.
+• Análisis de resultados: Se interpretan los resultados de la solución y se evalúa su viabilidad en
+el contexto del problema real.
+4. IMPLEMENTACIÓN DE LA SOLUCIÓN:
+• Planificación de la implementación: Se desarrolla un plan para poner en práctica la solución
+en el contexto real, considerando recursos, tiempos y responsabilidades.
+• Ejecución de la solución: Se implementa la solución de forma gradual y controlada,
+monitoreando su impacto y realizando ajustes si es necesario.
+• Evaluación de la implementación: Se evalúa el éxito de la implementación en términos de los
+objetivos establecidos y se realizan las modificaciones necesarias.
+5. SEGUIMIENTO Y CONTROL:
+• Monitoreo del sistema: Se monitoriza el sistema implementado para asegurar su correcto
+funcionamiento y detectar posibles problemas.
+• Realimentación y mejora: Se recolecta información sobre el desempeño del sistema y se
+realizan mejoras y ajustes para optimizar la solución.
+• Documentación del estudio: Se documenta todo el proceso del estudio, incluyendo la
+definición del problema, la formulación del modelo, la solución, la implementación y el
+seguimiento.
+FACTORES CLAVES PARA EL ÉXITO:
+• Involucramiento de las partes interesadas: Es fundamental la participación de las personas
+afectadas por el problema en todas las fases del estudio.
+• Comunicación efectiva: Se debe mantener una comunicación clara y efectiva entre los
+diferentes participantes del estudio.
+• Flexibilidad y adaptabilidad: Es importante ser flexible y adaptable a los cambios que puedan
+surgir durante el desarrollo del estudio.
+2
+Universidad Andina del Cusco
+Escuela: Economía
+Curso: Investigación Operativa
+Docente: Mg. Robert Paul Pilares Huallpa
+• Uso de herramientas y software: Se pueden utilizar herramientas y software especializados
+para facilitar el análisis y la solución del problema.
+CONCLUSIÓN:
+Los estudios de Investigación de Operaciones, al seguir un proceso sistemático y ordenado en sus
+diferentes fases, permiten abordar problemas complejos de manera eficiente y brindar soluciones
+viables que optimicen el uso de recursos y la toma de decisiones en diversos campos.
+3

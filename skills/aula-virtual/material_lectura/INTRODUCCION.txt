@@ -1,0 +1,49 @@
+Universidad Andina del Cusco
+Escuela: Economía
+Curso: Investigación Operativa
+Docente: Mg. Robert Paul Pilares Huallpa
+INTRODUCCIÓN A LA INVESTIGACIÓN DE OPERACIONES
+La Investigación de Operaciones (IO) es una disciplina que utiliza métodos científicos para analizar y
+resolver problemas complejos que surgen en diversos campos, como la industria, la logística, la salud,
+las finanzas, el transporte, la energía, la defensa, la gestión pública, entre otros.
+OBJETIVO:
+Su objetivo principal es optimizar el uso de recursos para mejorar la eficiencia y la toma de decisiones.
+La IO busca encontrar la mejor solución posible a un problema, considerando las restricciones y
+objetivos específicos del mismo.
+METODOLOGÍA:
+La IO utiliza una amplia gama de métodos matemáticos, estadísticos y computacionales para analizar
+problemas, como:
+• Programación lineal: Se utiliza para optimizar la asignación de recursos en problemas con
+restricciones lineales.
+• Teoría de colas: Se utiliza para analizar y optimizar los sistemas de espera.
+• Redes: Se utiliza para analizar y optimizar el flujo de recursos en redes.
+• Simulación: Se utiliza para modelar y analizar sistemas complejos.
+APLICACIONES:
+La IO se aplica en una amplia variedad de áreas, como:
+• Planificación de la producción: Optimizar la producción de bienes y servicios.
+• Gestión de la cadena de suministro: Optimizar el flujo de materiales e información a lo largo
+de la cadena de suministro.
+• Logística: Optimizar el transporte y la distribución de productos.
+• Gestión de proyectos: Optimizar la planificación y ejecución de proyectos.
+• Finanzas: Optimizar la gestión de inversiones y riesgos.
+• Salud: Optimizar la gestión de hospitales, clínicas y sistemas de salud.
+BENEFICIOS:
+La IO puede aportar diversos beneficios a las organizaciones, como:
+• Reducción de costos: Optimizar el uso de recursos puede generar ahorros significativos.
+• Mejora de la eficiencia: Optimizar los procesos puede aumentar la productividad y la
+eficiencia.
+1
+Universidad Andina del Cusco
+Escuela: Economía
+Curso: Investigación Operativa
+Docente: Mg. Robert Paul Pilares Huallpa
+• Mejora de la
+toma de
+decisiones: La IO proporciona información valiosa para la toma de decisiones estratégicas.
+• Mejora de la competitividad: La IO puede ayudar a las empresas a ser más competitivas en el
+mercado.
+CONCLUSIÓN:
+La Investigación de Operaciones es una herramienta poderosa para analizar y resolver problemas
+complejos en diversos campos. La IO puede ayudar a las organizaciones a mejorar la eficiencia, la toma
+de decisiones y la competitividad.
+2

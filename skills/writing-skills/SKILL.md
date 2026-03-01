@@ -1,6 +1,6 @@
 ---
 name: writing-skills
-description: Use when creating new skills, editing existing skills, or verifying skills work before deployment
+description: Guía para crear, editar y verificar skills antes de desplegar. Basado en TDD aplicado a documentación de procesos. Usar cuando el usuario diga "Crea una skill", "Edita esta skill", "Verifica la skill".
 ---
 
 # Writing Skills

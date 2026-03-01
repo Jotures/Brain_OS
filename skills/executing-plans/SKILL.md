@@ -1,6 +1,6 @@
 ---
 name: executing-plans
-description: Use when you have a written implementation plan to execute in a separate session with review checkpoints
+description: Ejecuta planes de implementación escritos en sesiones separadas con checkpoints de revisión. Usar cuando el usuario diga "Ejecuta este plan", "Implementa el plan de [X]", o cuando ya exista un plan escrito listo para ejecutar por batches.
 ---
 
 # Executing Plans

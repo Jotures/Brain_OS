@@ -1,6 +1,6 @@
 ---
 name: prompt-library
-description: "Curated collection of high-quality prompts for various use cases. Includes role-based prompts, task-specific templates, and prompt refinement techniques. Use when user needs prompt templates, role-play prompts, or ready-to-use prompt examples for coding, writing, analysis, or creative tasks."
+description: Colección curada de prompts de alta calidad para diversos casos de uso. Incluye prompts por rol, templates por tarea y técnicas de refinamiento. Usar cuando el usuario diga "Dame un prompt para [X]", "Template de prompt", "Prompt para [rol/tarea]".
 ---
 
 # 📝 Prompt Library

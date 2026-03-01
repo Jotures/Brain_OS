@@ -1,7 +1,7 @@
 ---
 name: planning-with-files
 version: "2.1.2"
-description: Implements Manus-style file-based planning for complex tasks. Creates task_plan.md, findings.md, and progress.md. Use when starting complex multi-step tasks, research projects, or any task requiring >5 tool calls.
+description: Implementa planificación basada en archivos estilo Manus para tareas complejas. Crea task_plan.md, findings.md, y progress.md como memoria de trabajo en disco. Usar cuando la tarea requiera >5 tool calls, investigación multi-paso, o proyectos complejos.
 user-invocable: true
 allowed-tools:
   - Read

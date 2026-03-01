@@ -1,10 +1,6 @@
 ---
 name: copywriting
-description: >
-  Use this skill when writing, rewriting, or improving marketing copy
-  for any page (homepage, landing page, pricing, feature, product, or about page).
-  This skill produces clear, compelling, and testable copy while enforcing
-  alignment, honesty, and conversion best practices.
+description: Redacción de copy de marketing claro, persuasivo y testeable para cualquier página web (homepage, landing, pricing, features, producto, about). Refuerza alineación, honestidad y mejores prácticas de conversión. Usar cuando el usuario diga "Escribe copy para [página]", "Landing page copy", "Copy de marketing".
 ---
 
 # Copywriting

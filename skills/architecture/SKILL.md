@@ -1,55 +1,102 @@
 ---
 name: architecture
-description: Architectural decision-making framework. Requirements analysis, trade-off evaluation, ADR documentation. Use when making architecture decisions or analyzing system design.
-allowed-tools: Read, Glob, Grep
+description: Asistente de Arquitectura Activo para Brain OS. Genera registros de decisión (ADRs), analiza estructuras de código, sugiere patrones de diseño y mantiene la integridad arquitectónica del sistema. Usar para "Tomar una decisión técnica", "Crear un ADR", "Analizar estructura", "Consultar patrones" o "Diseñar una nueva feature".
+allowed-tools: Read, Glob, Grep, RunCommand
 ---
 
-# Architecture Decision Framework
+# 🏗️ Architecture Decision Assistant (Elite Tier)
 
-> "Requirements drive architecture. Trade-offs inform decisions. ADRs capture rationale."
+> "Architecture is about the important stuff. Whatever that is." — Ralph Johnson
 
-## 🎯 Selective Reading Rule
+## 🌟 Capacidades Principales
 
-**Read ONLY files relevant to the request!** Check the content map, find what you need.
+| Modo | Trigger | Qué Hace |
+|------|---------|----------|
+| 📝 **Decidir** | "Toma una decisión sobre [tema]" | Guía el proceso de decisión y **genera un ADR** numerado. |
+| 🔍 **Analizar** | "Analiza la estructura de [path]" | Escanea código/carpetas y sugiere mejoras basadas en patrones. |
+| 🧠 **Consultar** | "¿Qué patrón uso para X?" | Busca en la base de conocimiento y recomienda soluciones. |
+| 📐 **Diseñar** | "Diseña la funcionalidad [X]" | Crea un plan técnico preliminar (diagramas + componentes). |
 
-| File | Description | When to Read |
-|------|-------------|--------------|
-| `context-discovery.md` | Questions to ask, project classification | Starting architecture design |
-| `trade-off-analysis.md` | ADR templates, trade-off framework | Documenting decisions |
-| `pattern-selection.md` | Decision trees, anti-patterns | Choosing patterns |
-| `examples.md` | MVP, SaaS, Enterprise examples | Reference implementations |
-| `patterns-reference.md` | Quick lookup for patterns | Pattern comparison |
+## 🚀 Comandos
+
+### Gestión de ADRs (Architecture Decision Records)
+
+```bash
+# Crear un nuevo ADR interactivo
+"Crea un ADR sobre el uso de Supabase"
+"Registra una decisión de arquitectura"
+
+# Listar decisiones existentes
+"Lista los ADRs"
+"¿Qué decidimos sobre la base de datos?"
+```
+
+### Análisis y Calidad
+
+```bash
+# Analizar estructura actual
+"Analiza la skill [nombre]"
+"Revisa la arquitectura de [carpeta]"
+
+# Consultar patrones
+"Patrones para manejo de errores"
+"Mejores prácticas para APIs"
+```
 
 ---
 
-## 🔗 Related Skills
+## 📝 Workflow de Decisiones (ADR)
 
-| Skill | Use For |
-|-------|---------|
-| `@[skills/database-design]` | Database schema design |
-| `@[skills/api-patterns]` | API design patterns |
-| `@[skills/deployment-procedures]` | Deployment architecture |
+El asistente sigue el estándar [MADR](https://adr.github.io/madr/) para registrar decisiones importantes.
 
----
+**Flujo:**
+1.  **Contexto**: ¿Cuál es el problema y las restricciones?
+2.  **Opciones**: ¿Qué alternativas estamos considerando?
+3.  **Drivers**: ¿Qué fuerzas influyen (performance, costo, tiempo)?
+4.  **Decisión**: ¿Qué elegimos y por qué?
+5.  **Generación**: Se crea el archivo `docs/adrs/NNN-titulo-kebab-case.md`.
 
-## Core Principle
-
-**"Simplicity is the ultimate sophistication."**
-
-- Start simple
-- Add complexity ONLY when proven necessary
-- You can always add patterns later
-- Removing complexity is MUCH harder than adding it
+**Ubicación de ADRs:**
+Todos los registros se guardan en: `docs/adrs/`
 
 ---
 
-## Validation Checklist
+## 🛠️ Herramientas Internas
 
-Before finalizing architecture:
+La skill utiliza scripts en `skills/architecture/scripts/` para automatizar tareas:
 
-- [ ] Requirements clearly understood
-- [ ] Constraints identified
-- [ ] Each decision has trade-off analysis
-- [ ] Simpler alternatives considered
-- [ ] ADRs written for significant decisions
-- [ ] Team expertise matches chosen patterns
+1.  **`adr_generator.py`**:
+    *   Genera el archivo Markdown con el siguiente número disponible.
+    *   Usa el template en `skills/architecture/templates/adr-template.md`.
+
+2.  **`file_analyzer.py`**:
+    *   Recorre un directorio y genera un árbol visual.
+    *   Puede contar líneas, detectar tipos de archivos y sugerir refactorizaciones simples.
+
+---
+
+## 🔗 Integración con Brain OS
+
+Esta skill es parte del **Núcleo Técnico** y colabora con:
+*   `system-coordinator`: Para validar que las decisiones no rompan la integridad del sistema.
+*   `elite-skill-architect`: Para asegurar que las nuevas skills sigan los patrones definidos.
+
+### Reglas de Oro
+1.  **Simplicidad Primero**: No sobre-diseñar. Elegir la solución más simple que funcione.
+2.  **Documentar Siempre**: Si se discute > 5 min, merece un ADR.
+3.  **Consistencia**: Seguir las convenciones de nombres y estructuras existentes.
+
+---
+
+## 📂 Estructura de la Skill
+
+```
+skills/architecture/
+├── SKILL.md                 ← Este archivo
+├── scripts/
+│   ├── adr_generator.py     ← Generador de ADRs
+│   └── file_analyzer.py     ← Analizador de estructura
+├── templates/
+│   └── adr-template.md      ← Plantilla MADR
+└── backup_v1/               ← Versión anterior (solo lectura)
+```

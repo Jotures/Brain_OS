@@ -23,6 +23,12 @@
             "short_break": 8,
             "long_break": 20,
             "description": "Preparación de exámenes - enfoque sostenido"
+        },
+        "ultradian": {
+            "work_duration": 90,
+            "short_break": 20,
+            "long_break": 30,
+            "description": "Ciclo BRAC fisiológico - inmersión profunda alineada con ritmos ultradianos (90/20)"
         }
     },
     "cycles_before_long_break": 4,
@@ -45,7 +51,20 @@
         "rules": {
             "calculo|fisica|algebra": "intensive",
             "ingles|lectura|repaso": "light",
-            "examen|parcial|final": "exam_prep"
+            "examen|parcial|final": "exam_prep",
+            "investigacion operativa|inv operativa|simplex|programacion lineal": "ultradian",
+            "economia internacional|comercio|aranceles|krugman": "ultradian",
+            "tesis|paper|ensayo largo|monografia": "ultradian"
         }
+    },
+    "active_recall": {
+        "enabled": true,
+        "questions_per_session": 3,
+        "bloom_levels": [
+            "apply",
+            "analyze",
+            "evaluate"
+        ],
+        "prompt_template": "Genera {n} preguntas sobre {topic} que requieran {level}, no solo recordar datos."
     }
 }

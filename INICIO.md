@@ -1,15 +1,16 @@
 # 🧠 BRAIN OS 2.0 - Panel de Control
 
-> **Semestre**: 2026-1 (Primera semana) | **Meta**: Nota 20 en todos los cursos
+> **Semestre**: 2026-1 (Segunda semana) | **Meta**: Nota 20 en todos los cursos | **Cronotipo**: Bear 🐻
 
 ---
 
 ## 🚀 INICIO RÁPIDO
 
 ```
-/brain-os-study          → Activa el sistema
-"¿Qué debo estudiar?"    → Diagnóstico del día
-"Guarda este archivo"    → Ingesta Inteligente 🆕
+"Buenos días"            → ☀️ Boot diario completo (5 pasos automáticos)
+/brain-os-study          → Activa el sistema de estudio
+"¿Qué debo estudiar?"    → Diagnóstico con prioridades + Pomodoros
+"Guarda este archivo"    → Ingesta Inteligente
 ```
 
 ---
@@ -30,19 +31,72 @@
 
 | Archivo | Curso | Tipo | Link |
 |---------|-------|------|------|
-| *Esperando sincronización...* | - | - | [Ver en Notion](https://www.notion.so) |
-| *Esperando sincronización...* | - | - | - |
+| SESION 1.pptx | Teoría Monetaria | 📊Ppt | [Ver en Notion](https://www.notion.so/SESION-1-pptx-303aacd6821081098db8c0db19dc3ad4) |
+| SILABO TEORIA MONETARIA Y BANCARIA.docx | Teoría Monetaria | �Silabo | [Ver en Notion](https://www.notion.so/SILABO-TEORIA-MONETARIA-Y-BANCARIA-docx-303aacd6821081c8bbdcc108a00d1d49) |
+| SILABUS - ECONOMIA Y GESTION PUBLICA - 2026 I.docx | Economía y Gestión Pública | �Silabo | [Ver en Notion](https://www.notion.so/SILABUS-ECONOMIA-Y-GESTION-PUBLICA-2026-I-docx-303aacd6821081f5b9f7d17b6a1e6a30) |
+| Estado y Economia en la Constitucion 1993.pdf | Economía y Gestión Pública | � Libro | [Ver en Notion](https://www.notion.so/Estado-y-Economia-en-la-Constitucion-1993-pdf-303aacd6821081fb9ceade5cae5a297e) |
+| Silabo Economía Internacional I (2026-I).pdf | Economía Internacional I | �Silabo | [Ver en Notion](https://www.notion.so/Silabo-Econom-a-Internacional-I-2026-I-pdf-303aacd6821081d88d49f382975503a3) |
 
 > *Di "Sincroniza mi biblioteca" para actualizar esta lista desde Notion.*
 
 ---
 
+## 🧠 FLUJO MAESTRO v2.0 — Ciclo Diario
+
+> **Filosofía**: Sesiones largas y pocas > Sprints cortos | **Motor**: BRAC 90/20 + Pomodoro adaptativo
+
+### ⚡ Las 3 Fases
+
+```
+☀️ BOOT (5-8 min)          →  "Buenos días" ejecuta todo automático
+   VER → SYNC → DASH → PLAN → HILO
+
+📚 EJECUCIÓN (2-4 horas)   →  Selector de modo al finalizar boot
+   Warm-up → Sesión BRAC/Pomodoro → Active Recall → Consulta
+
+🌙 CIERRE (5 min)          →  Registro + Hemingway Bridge
+   REGISTRO → DUDAS → DASH → HILO
+```
+
+### 🗂️ Selector de Modo
+
+| # | Modo | Cuándo | Motor |
+|---|------|--------|-------|
+| 1 | 📖 **Estudiar** | Día normal, sin deadlines urgentes | BRAC 90/20 o Pomodoro |
+| 2 | ✍️ **Escribir ensayo** | Ensayo, informe, paper | BRAC 90/20 + Toulmin |
+| 3 | 🎤 **Preparar expo** | Presentación oral calificada | Pomodoro 50/10 + ABT |
+| 4 | 👥 **Proyecto grupal** | Trabajo en equipo | RACI + Sprints |
+| 5 | 🔥 **Modo Crisis** | Examen en ≤3 días | BRAC ×3-4 intensivo |
+| 6 | 🧘 **Baja energía** | Cansancio, mínimo viable | 1 Pomodoro light |
+
+### 🐻 Ventanas Bear de Hoy
+
+| Día | Ventana Óptima | Calidad | Recomendación |
+|-----|---------------|---------|---------------|
+| **L/MI** | 08:30–11:00 | 🟢 Pre-peak | BRAC 90/20 materia difícil |
+| **MA/JU** | 14:30–20:00 | 🟡→🟢 | NSDR 15min → BRAC ×2 |
+| **VI** | 17:00–20:00 | 🟢 Recovery | Pomodoro 50/10 |
+| **S/D** | 10:00–14:00 | 🟢🟢 **Peak** | BRAC ×2 (mejor momento) |
+
+> 📋 *Documento completo*: [Flujo_Maestro_BrainOS_v2.md](./Flujo_Maestro_BrainOS_v2.md)
+
+---
+
 ## 🎮 COMANDOS POR CATEGORÍA
+
+> 📋 *Documentación completa del sistema*: [Brain_OS_Master_Doc.md](./Brain_OS_Master_Doc.md)
+
+### ☀️ Ciclo Diario (Flujo Maestro v2)
+| Di esto... | Brain OS hace... |
+|------------|------------------|
+| "Buenos días" | Boot completo: verifica + sync + dash + plan + hilo |
+| "Mañana sigo por [X]" | Registra Hemingway Bridge para continuidad |
+| "Registra mi sesión" | Cierre: guarda progreso + actualiza dashboard |
 
 ### 🔍 Diagnóstico
 | Di esto... | Brain OS hace... |
 |------------|------------------|
-| "¿Qué debo estudiar hoy?" | Lista prioridades + Pomodoros |
+| "¿Qué debo estudiar hoy?" | Lista prioridades + Pomodoros (según Bear) |
 | "Resume mi semana" | Análisis de productividad |
 | "¿Cómo voy en [curso]?" | Estado por aporte |
 | "Dashboard de aporte [1/2/3]" | Vista del aporte |
@@ -80,7 +134,7 @@
 | "¿Cuántos pomodoros hoy?" | Analytics del día |
 | "Mi productividad de la semana" | Analytics semanal |
 
-> **Modos**: `default` (25min) | `intensive` (50min) | `light` (15min) | `exam_prep` (45min)
+> **Modos**: `default` (25min) | `intensive` (50min) | `light` (15min) | `exam_prep` (45min) | `ultradian` (90min — BRAC)
 
 ### 📚 NotebookLM (Conectado ✅)
 
@@ -114,11 +168,14 @@
 | "Tareas de [curso]" | Filtra por curso |
 | "Mis notas de [curso]" | Consulta calificaciones |
 | "Cursos del aula virtual" | Lista cursos matriculados |
-| "Sync tareas a Notion" | Sincroniza con BD_TAREAS |
+| "Sync tareas a Notion" | Sincroniza SOLO tareas |
+| "Sincronizar Aula Virtual Completo" | 🚀 Descarga archivos + URLs + Tareas |
 
 > 🔴 Urgente (≤2d) | 🟡 Pronto (≤7d) | 🟢 Normal
 
 ### 🔗 Ecosistema Integrado (Bidireccional)
+
+> 📋 *Arquitectura detallada*: [Brain_OS_Master_Doc.md §2](./Brain_OS_Master_Doc.md)
 
 ```
 ┌─────────────┐     ┌─────────────┐     ┌─────────────┐
@@ -130,7 +187,7 @@
               ▼            ▼            ▼
        ┌──────────┐ ┌──────────┐ ┌──────────┐
        │NotebookLM│ │ Pomodoro │ │ Skills   │
-       │ (7 books)│ │  Timer   │ │  (28+)   │
+       │ (7 books)│ │  Timer   │ │  (29)    │
        └──────────┘ └──────────┘ └──────────┘
 ```
 
@@ -152,10 +209,13 @@
 | Aporte | 1 (en curso) |
 | Cursos universidad | 6 |
 | Curso personal | 1 (Inglés) |
-| Tareas pendientes | 0 ✅ |
-| Integraciones | 4 activas |
-| Skills | 30 |
-| Última verificación | 2026-02-09 00:32 |
+| Tareas pendientes | — (consultar Notion) |
+| Integraciones | 5 activas |
+| Skills | 29 activas (4 archivadas) |
+| Flujo Maestro | **v2.0** — Boot → Ejecución → Cierre ([ver completo](./Flujo_Maestro_BrainOS_v2.md)) |
+| Cronotipo | Bear 🐻 — Peak 10:00-14:00, Dip 14:00-16:00 |
+| Motor de sesiones | BRAC 90/20 (profundo) + Pomodoro adaptativo |
+| Última sync | 2026-02-28 19:22 |
 
 ---
 
@@ -172,16 +232,16 @@
 
 ---
 
-## 🛠️ SKILLS DISPONIBLES (30)
+## 🛠️ SKILLS DISPONIBLES (27)
 
-| Categoria | Skills |
+| Categoría | Skills |
 |-----------|--------|
-| 📄 Docs | `docx` `xlsx` `pptx` `pdf` |
-| ✍️ Escribir | `copywriting` `copy-editing` `content-creator` |
-| 📋 Planificar | `brainstorming` `writing-plans` `concise-planning` |
-| 🔍 Investigar | `notebooklm` 🔥 `research-engineer` |
-| 🎓 Académico | `aula-virtual` |
-| 🔄 Sistema | `dashboard-sync` `system-coordinator` 🆕 |
+| 📄 Docs | `documentation-templates` `docx` `docx-official` `pdf` `pptx` `pptx-official` `xlsx` `xlsx-official` |
+| ✍️ Escribir | `content-creator` `copy-editing` `copywriting` `doc-coauthoring` `writing-skills` |
+| 📋 Planificar | `brainstorming` `executing-plans` `kaizen` |
+| 🔍 Investigar | `notebooklm` `prompt-engineer` `prompt-engineering` `prompt-library` `research-engineer` |
+| 🎓 Académico | `aula-virtual` `library-manager` `pomodoro` |
+| 🔄 Sistema | `dashboard-sync` `notion-template-business` `system-coordinator` |
 
 **Uso**: `"Usa la skill [nombre] para [tarea]"`
 
@@ -197,9 +257,23 @@
 
 ---
 
+## 🌉 HEMINGWAY BRIDGE
+
+> *"Siempre para en un punto donde sabes qué va a pasar después."* — Hemingway
+
+| Campo | Contenido |
+|-------|-----------|
+| 📅 Última sesión | — |
+| 📖 Tema | — |
+| 🧵 Hilo | *Aún no hay bridge. Se registra al usar "Buenos días" + Cierre diario.* |
+
+**Para registrar**: Al final del día, di *"Mañana sigo por [X]"*
+
+---
+
 ## 📅 PRÓXIMAS TAREAS
 
-> *Sin tareas registradas - Primera semana del semestre*
+> ✅ **¡Todo al día!** No tienes tareas pendientes para el primer aporte.
 
 ---
 

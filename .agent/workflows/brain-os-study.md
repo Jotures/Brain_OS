@@ -115,6 +115,7 @@ El sistema cuenta con un temporizador adaptativo que ajusta automáticamente las
 | `intensive` | 50 min | 10 min | Cálculo, Física, Álgebra |
 | `light` | 15 min | 3 min | Inglés, Lectura, Repaso |
 | `exam_prep` | 45 min | 8 min | Examen, Parcial, Final |
+| `ultradian` | 90 min | 20 min | Inv. Operativa, Econ. Internacional, Tesis, Papers |
 
 #### Comandos del Timer
 ```powershell
@@ -134,7 +135,7 @@ Antes de cada sesión de estudio, Brain OS evalúa:
    - Revisión → Base
 
 2. ¿Involucra matemáticas/modelos complejos?
-   - Sí (ej: Investigación Operativa) → Modo intensive
+   - Sí (ej: Investigación Operativa) → Modo ultradian o intensive
    - No → Modo default/light
 
 3. ¿Hay deadline en los próximos 3 días?
@@ -152,8 +153,9 @@ Antes de cada sesión de estudio, Brain OS evalúa:
 | Repaso simple | `light` | 1 | 15 min |
 | Tema nuevo fácil | `default` | 2 | 50 min |
 | Tema nuevo difícil | `intensive` | 2 | 100 min |
+| Inmersión profunda (Inv. Op, Econ. Inter) | `ultradian` | 1-2 | 90-180 min |
 | Pre-examen/exposición | `exam_prep` | 3 | 135 min |
-| Modo Crisis | `intensive` | 4+ | 200+ min |
+| Modo Crisis | `ultradian` | 3+ | 270+ min |
 
 ---
 

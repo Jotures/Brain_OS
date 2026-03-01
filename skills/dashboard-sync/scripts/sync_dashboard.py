@@ -48,31 +48,34 @@ class DashboardSync:
             "✍️ Escribir": [],
             "📋 Planificar": [],
             "🔍 Investigar": [],
+            "🎓 Académico": [],
             "🔄 Sistema": []
         }
         
-        doc_skills = ['docx', 'xlsx', 'pptx', 'pdf']
-        writing_skills = ['copywriting', 'copy-editing', 'content-creator']
-        planning_skills = ['brainstorming', 'writing-plans', 'concise-planning']
-        research_skills = ['notebooklm', 'research-engineer', 'deep-research']
-        system_skills = ['dashboard-sync', 'skill-creator', 'skill-orchestrator']
+        doc_skills = ['docx', 'xlsx', 'pptx', 'pdf', 'docx-official', 'pptx-official', 'xlsx-official', 'pdf-official', 'documentation-templates']
+        writing_skills = ['copywriting', 'copy-editing', 'content-creator', 'writing-skills', 'doc-coauthoring']
+        planning_skills = ['brainstorming', 'writing-plans', 'concise-planning', 'plan-writing', 'executing-plans', 'kaizen']
+        research_skills = ['notebooklm', 'research-engineer', 'prompt-engineer', 'prompt-engineering', 'prompt-library', 'deep-research']
+        academic_skills = ['aula-virtual', 'library-manager', 'pomodoro']
+        system_skills = ['dashboard-sync', 'skill-creator', 'skill-orchestrator', 'system-coordinator', 'notion-template-business']
         
         if not self.skills_path.exists():
             return categories
             
         for skill_dir in self.skills_path.iterdir():
-            if skill_dir.is_dir() and (skill_dir / "SKILL.md").exists():
-                name = skill_dir.name
-                if name in doc_skills:
-                    categories["📄 Docs"].append(name)
-                elif name in writing_skills:
-                    categories["✍️ Escribir"].append(name)
-                elif name in planning_skills:
-                    categories["📋 Planificar"].append(name)
-                elif name in research_skills:
-                    categories["🔍 Investigar"].append(name)
-                elif name in system_skills:
-                    categories["🔄 Sistema"].append(name)
+            name = skill_dir.name
+            if name in doc_skills:
+                categories["📄 Docs"].append(name)
+            elif name in writing_skills:
+                categories["✍️ Escribir"].append(name)
+            elif name in planning_skills:
+                categories["📋 Planificar"].append(name)
+            elif name in research_skills:
+                categories["🔍 Investigar"].append(name)
+            elif name in academic_skills:
+                categories["🎓 Académico"].append(name)
+            elif name in system_skills:
+                categories["🔄 Sistema"].append(name)
         
         return categories
 
@@ -165,12 +168,62 @@ class DashboardSync:
             return result
         
         content = self.inicio_path.read_text(encoding='utf-8')
+        original_content = content
         
-        # Update sections (simplified - agent should do manual updates for precision)
-        print("✅ Dashboard sync completed")
-        print(f"   Notebooks: {result['notebooks_found']}")
-        print(f"   Skills: {result['skills_found']}")
+        # Update Skills Section
+        # Regex to find: ## 🛠️ SKILLS DISPONIBLES.*\n(table...)
+        # We look for the header and consume until the next H2 (##) or end of string
+        skills_pattern = re.compile(r"(## 🛠️ SKILLS DISPONIBLES.*?\n)((\|.*\|\n)+)(\n.*)?", re.MULTILINE)
         
+        # Construct new skill section content (Header + Table + Footer)
+        # Note: generate_skills_section returns the whole block including header.
+        # We need to replace the existing block.
+        
+        # Simpler approach: Replace from Header until "---" or next section
+        section_pattern = r"(## 🛠️ SKILLS DISPONIBLES.*?)(\n---|\Z)"
+        match = re.search(section_pattern, content, re.DOTALL)
+        if match:
+             new_content = self.generate_skills_section(skills) + "\n\n" + match.group(2)
+             # Use string replace for safety if unique, or regex replace
+             content = content.replace(match.group(1), self.generate_skills_section(skills) + "\n")
+             result['sections_updated'].append('Skills')
+
+        # Update NotebookLM Section (Microscope)
+        # Header: ### 🔬 NotebookLM (Conectado ✅)
+        nb_pattern = r"(### 🔬 NotebookLM \(Conectado ✅\).*?)(\n####|\n###|\Z)"
+        match_nb = re.search(nb_pattern, content, re.DOTALL)
+        if match_nb:
+            # Reconstruct section
+            # generate_notebooklm_section returns lines starting with ### ...
+            new_nb_section = self.generate_notebooklm_section(notebooks)
+            content = content.replace(match_nb.group(1), new_nb_section + "\n")
+            result['sections_updated'].append('NotebookLM')
+
+        # Update Status Section (Metrics)
+        # ## 📊 ESTADO ACTUAL
+        status_pattern = r"(## 📊 ESTADO ACTUAL.*?)(\n---|\Z)"
+        match_status = re.search(status_pattern, content, re.DOTALL)
+        if match_status:
+            current_date = datetime.now().strftime("%Y-%m-%d %H:%M")
+            total_skills = result['skills_found']
+            
+            # Update specific lines within the block
+            status_block = match_status.group(1)
+            status_block = re.sub(r"\| Skills \| \d+ \|", f"| Skills | {total_skills} |", status_block)
+            status_block = re.sub(r"\| Última verificación \| .* \|", f"| Última verificación | {current_date} |", status_block)
+            
+            content = content.replace(match_status.group(1), status_block)
+            result['sections_updated'].append('Estado Actual')
+
+        # Write changes
+        if content != original_content:
+            self.inicio_path.write_text(content, encoding='utf-8')
+            print("✅ Dashboard updated successfully.")
+            for sec in result['sections_updated']:
+                print(f"   - Updated {sec}")
+        else:
+            print("✨ No changes needed. Dashboard is up to date.")
+            
         return result
 
 
@@ -181,7 +234,7 @@ def main():
     
     # Find Brain OS root (parent of skills directory)
     script_dir = Path(__file__).parent
-    brain_os_root = script_dir.parent.parent
+    brain_os_root = script_dir.parent.parent.parent
     
     syncer = DashboardSync(brain_os_root)
     syncer.sync(preview=args.preview)

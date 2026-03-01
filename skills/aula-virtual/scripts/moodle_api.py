@@ -52,7 +52,10 @@ class MoodleAPI:
             base_url: Moodle base URL (or from MOODLE_URL env)
         """
         self.token = token or os.getenv('MOODLE_TOKEN')
-        self.base_url = base_url or os.getenv('MOODLE_URL', 'https://campus.uandina.edu.pe')
+        self.base_url = base_url or os.getenv('MOODLE_URL')
+        if not self.base_url:
+            from course_map import MOODLE_URL
+            self.base_url = MOODLE_URL
         
         if not self.token:
             raise ValueError(
@@ -161,7 +164,8 @@ class MoodleAPI:
         """
         params = {}
         if course_ids:
-            params['courseids'] = course_ids
+            for i, cid in enumerate(course_ids):
+                params[f'courseids[{i}]'] = cid
         
         return self._call('mod_assign_get_assignments', **params)
     

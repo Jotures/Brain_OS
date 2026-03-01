@@ -1,6 +1,6 @@
 ---
 name: content-creator
-description: Create SEO-optimized marketing content with consistent brand voice. Includes brand voice analyzer, SEO optimizer, content frameworks, and social media templates. Use when writing blog posts, creating social media content, analyzing brand voice, optimizing SEO, planning content calendars, or when user mentions content creation, brand voice, SEO optimization, social media marketing, or content strategy.
+description: Crea contenido de marketing optimizado para SEO con voz de marca consistente. Incluye analizador de brand voice, optimizador SEO, frameworks de contenido, y templates para redes sociales. Usar cuando el usuario diga "Crea contenido para [X]", "Post para redes", "Artículo de blog", "Optimiza SEO", "Contenido para [plataforma]".
 license: MIT
 metadata:
   version: 1.0.0

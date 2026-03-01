@@ -33,44 +33,54 @@ def upload_file(notebook_url, file_path):
             
             print("⏳ Waiting for page load...")
             page.wait_for_selector("body", state="visible")
-            time.sleep(5) # Wait for app hydration
+            time.sleep(6) # Wait for app hydration
             
-            # Find the file input
-            # NotebookLM typically has a hidden file input for uploads
-            print("🔍 Looking for file input...")
+            print("🔍 Opening 'Add Sources' modal...")
+            import re
             
-            # Strategy: Simply set input files on the first file input found
-            # This often works even if the input is hidden
+            clicked = False
             try:
-                # First try to click the "Add Source" button to ensure the input is active/present in DOM
-                # Usually a button with specific aria-label or class in the sidebar
+                # Find all elements with matching text
+                elements = page.get_by_text(re.compile(r"agregar fuentes?|add sources?", re.I)).all()
+                for el in elements:
+                    if el.is_visible():
+                        el.click()
+                        clicked = True
+                        print("🖱️ Clicked add sources button!")
+                        break
+            except Exception as e:
+                print(f"⚠️ Error iterating elements: {e}")
                 
-                # Check for common "Add" buttons
-                add_buttons = page.locator("button[aria-label*='Add'], button[aria-label*='Upload'], button[aria-label*='Source']").all()
-                clicked = False
-                for btn in add_buttons:
-                    if btn.is_visible():
-                        # Heuristic: verify it's in the sidebar
-                        # For now, just try to find the input directly first as it's safer
-                        pass
+            if not clicked:
+                print("⚠️ Fallback: Trying to force click...")
+                try:
+                    page.get_by_text(re.compile(r"agregar fuentes?|add sources?", re.I)).first.click(force=True)
+                except Exception as e:
+                    print(f"⚠️ Force click failed: {e}")
 
-                # Try to interact with the sidebar header to trigger any lazy loading
-                page.mouse.move(100, 300) 
-            except:
-                pass
-
-            # Direct file upload approach
-            file_input = page.locator("input[type='file']").first
+            time.sleep(4) # wait for modal animation
             
-            if not file_input:
-               print("⚠️ No file input found immediately. Trying to open 'Add Source' menu...")
-               # Try to find the Plus button in the sidebar (Sources)
-               # Usually :text("Sources") then sibling button
-               page.get_by_text("Sources", exact=False).first.click() 
-               time.sleep(1)
-
-            file_input.set_input_files(file_path)
-            print("✅ File injected into input field")
+            print("📥 Looking for 'Subir archivos' button...")
+            upload_clicked = False
+            try:
+                # 2. Click 'Subir archivos' and intercept the file chooser
+                elements = page.get_by_text(re.compile(r"subir archivos?|upload files?", re.I)).all()
+                for el in elements:
+                    if el.is_visible():
+                        with page.expect_file_chooser(timeout=15000) as fc_info:
+                            el.click()
+                        file_chooser = fc_info.value
+                        file_chooser.set_files(file_path)
+                        print("✅ File uploaded via UI standard file chooser.")
+                        upload_clicked = True
+                        break
+            except Exception as e:
+                print(f"⚠️ Error in upload UI interaction: {e}")
+                
+            if not upload_clicked:
+                print("⚠️ UI upload button not visible, falling back to hidden input...")
+                page.locator("input[type='file']").first.set_input_files(file_path)
+                print("✅ File injected via fallback locator")
             
             # Wait for upload to complete
             # We look for a progress indicator or the file name appearing in the list

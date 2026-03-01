@@ -20,74 +20,39 @@ from datetime import datetime
 # CONFIGUTATION & CONSTANTS
 # =============================================================================
 
-NOTION_DB_RECURSOS = "2cbaacd6-8210-80ea-9bff-d7aa9ffe3c41"
+# Importar IDs centralizados desde course_map.py
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "..", "aula-virtual", "scripts"))
+from course_map import NOTION_DB_RECURSOS, COURSE_MAP as _COURSE_MAP, find_brain_os_course
 
 # Base Paths (Adjust as needed)
 BASE_DIR = r"C:\Users\Ruben J\Documents\Antigravito Proyects\Brain_OS"
 UNI_DIR = os.path.join(BASE_DIR, "carrera", "semestres", "2026-1", "cursos")
 PERSONAL_DIR = os.path.join(BASE_DIR, "cursos_personales")
 
-# Course Map (Embedded for standalone reliability)
-# Maps partial names to Folder Name and Notion ID
-COURSE_MAP = {
-    'economia_ambiental': {
-        'folder': '01_economia_ambiental',
-        'notion_id': '2fdaacd6-8210-81ae-bffe-f00d7ebaf358',
-        'patterns': ['AMBIENTAL', 'ECON AMBIENT'],
-        'type': 'uni'
-    },
-    'economia_internacional': {
-        'folder': '02_economia_internacional',
-        'notion_id': '2fdaacd6-8210-8176-95da-f8f559269cc1',
-        'patterns': ['INTERNACIONAL', 'ECON INTER'],
-        'type': 'uni'
-    },
-    'economia_gestion_publica': {
-        'folder': '03_economia_gestion_publica',
-        'notion_id': '2fdaacd6-8210-81a1-91d1-ce49066ad036',
-        'patterns': ['GESTION', 'PUBLICA'],
-        'type': 'uni'
-    },
-    'investigacion_operativa': {
-        'folder': '04_investigacion_operativa',
-        'notion_id': '2fdaacd6-8210-8133-9234-c6de69555825',
-        'patterns': ['OPERATIVA', 'INV OPER'],
-        'type': 'uni'
-    },
-    'teoria_monetaria': {
-        'folder': '05_teoria_monetaria',
-        'notion_id': '2fdaacd6-8210-8108-bb2a-ef7bba8a5825',
-        'patterns': ['MONETARIA', 'BANCARIA'],
-        'type': 'uni'
-    },
-    'investigacion_economica': {
-        'folder': '06_investigacion_economica',
-        'notion_id': '2fdaacd6-8210-8143-8a86-f17fd377fe70',
-        'patterns': ['INV ECON', 'INVESTIGACION EC'],
-        'type': 'uni'
-    },
-    'ingles': {
-        'folder': 'ingles',
-        'notion_id': '2fdaacd6-8210-8134-aa64-df39374251ed',
-        'patterns': ['INGLES', 'ENGLISH'],
-        'type': 'personal'
-    }
-}
-
 # =============================================================================
 # HELPERS
 # =============================================================================
 
-def find_course(query):
-    query = query.upper()
-    for key, info in COURSE_MAP.items():
-        # Check explicit key match
-        if key.upper() == query:
-            return info
-        # Check patterns
-        for pattern in info['patterns']:
-            if pattern in query:
-                return info
+def find_course(query: str) -> dict | None:
+    """Busca un curso usando course_map.py centralizado. Retorna dict compatible."""
+    # Intentar match directo por key
+    query_upper = query.upper()
+    for key, info in _COURSE_MAP.items():
+        if key.upper() == query_upper:
+            return {
+                'folder': info['local_folder'].split('/')[0],
+                'notion_id': info['notion_id'],
+                'type': 'personal' if info.get('is_personal') else 'uni',
+            }
+
+    # Intentar match por patrones de Moodle
+    result = find_brain_os_course(query)
+    if result:
+        return {
+            'folder': result['local_folder'].split('/')[0],
+            'notion_id': result['notion_id'],
+            'type': 'personal' if result.get('is_personal') else 'uni',
+        }
     return None
 
 def call_mcp_tool(tool_name, arguments):
@@ -125,7 +90,9 @@ def call_mcp_tool(tool_name, arguments):
 def main():
     parser = argparse.ArgumentParser(description="Ingest a file into Brain OS")
     parser.add_argument("--file", required=True, help="Path to the file")
-    parser.add_argument("--course", required=True, help="Course name or pattern")
+    parser.add_argument("--course", required=True, help="Course key or partial name")
+    parser.add_argument("--url", help="URL of the resource", default="")
+    parser.add_argument("--title", help="Custom title for the resource (Notion Name)", default=None)
     
     args = parser.parse_args()
     
@@ -160,6 +127,23 @@ def main():
         print(json.dumps({"error": f"Failed to move file: {str(e)}"}))
         sys.exit(1)
         
+    # Infer Type
+    fname_upper = filename.upper()
+    if "SILABO" in fname_upper or "SILABUS" in fname_upper:
+        resource_type = "📄Silabo"
+    elif filename.lower().endswith(('.ppt', '.pptx')):
+        resource_type = "📊Ppt"
+    else:
+        resource_type = "📖 Libro" # Default for readings/others
+
+    # Prepare URL/File Property
+    url_property = []
+    if args.url:
+        url_property = [{
+            "name": filename,
+            "external": {"url": args.url}
+        }]
+
     # Prepare Notion Data
     response = {
         "status": "success",
@@ -168,16 +152,22 @@ def main():
             "parent": {"database_id": NOTION_DB_RECURSOS},
             "properties": {
                 "Nombre del recurso": {
-                    "title": [{"text": {"content": filename}}]
+                    "title": [{"text": {"content": args.title if args.title else filename}}]
                 },
                 "Tipo": {
-                    "select": {"name": "📖 Lectura"}
+                    "select": {"name": resource_type}
                 },
-                "BD_ÁREAS": {
+                "Área Relacionada": {
                     "relation": [{"id": course_info['notion_id']}]
                 },
                 "Revisado": {
                     "checkbox": False
+                },
+                "Aporte": {
+                    "select": {"name": "Aporte 1"}
+                },
+                "URL / Archivo": {
+                    "files": url_property
                 }
             },
             "children": [

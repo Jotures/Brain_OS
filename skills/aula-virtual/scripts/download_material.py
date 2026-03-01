@@ -20,11 +20,36 @@ def sanitize_filename(filename):
 def main():
     sys.stdout.reconfigure(encoding='utf-8')
     parser = argparse.ArgumentParser(description='Download materials from Moodle.')
-    parser.add_argument('query', help='Name of the file/resource to find')
+    parser.add_argument('query', nargs='?', help='Name of the file/resource to find')
+    parser.add_argument('--url', help='Descargar directamente de una URL de Moodle')
     parser.add_argument('--course', help='Filter by course name (partial match)', default=None)
     parser.add_argument('--outdir', help='Output directory', default='.')
+    parser.add_argument('--filename', help='Output filename (para modo --url)', default=None)
     
     args = parser.parse_args()
+    
+    # Modo descarga directa por URL
+    if args.url:
+        api = MoodleAPI()
+        download_url = args.url
+        if "token=" not in download_url:
+            download_url = f"{download_url}&token={api.token}"
+        
+        out_name = args.filename or "downloaded_resource.pdf"
+        out_path = Path(args.outdir) / sanitize_filename(out_name)
+        out_path.parent.mkdir(parents=True, exist_ok=True)
+        
+        print(f"⬇️ Descargando desde URL directa...")
+        response = requests.get(download_url, stream=True)
+        response.raise_for_status()
+        with open(out_path, 'wb') as f:
+            for chunk in response.iter_content(chunk_size=8192):
+                f.write(chunk)
+        print(f"💾 Guardado en: {out_path.absolute()}")
+        return
+    
+    if not args.query:
+        parser.error('Se requiere query o --url')
     
     print(f"🦅 Buscando recurso: '{args.query}'...")
     if args.course:

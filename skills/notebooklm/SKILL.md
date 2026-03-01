@@ -1,6 +1,6 @@
 ---
 name: notebooklm
-description: Use this skill to query your Google NotebookLM notebooks directly from Claude Code for source-grounded, citation-backed answers from Gemini. Browser automation, library management, persistent auth. Drastically reduced hallucinations through document-only responses.
+description: Consulta tus notebooks de Google NotebookLM directamente desde el agente para respuestas grounded con citaciones desde Gemini. Automatización del navegador, gestión de biblioteca y auth persistente. Usar cuando el usuario mencione NotebookLM o quiera consultar sus documentos.
 ---
 
 # NotebookLM Research Assistant Skill
@@ -196,6 +196,17 @@ python scripts/run.py cleanup_manager.py --confirm          # Execute cleanup
 python scripts/run.py cleanup_manager.py --preserve-library # Keep notebooks
 ```
 
+### Book Analysis (`analyze_book.py`)
+```bash
+python scripts/run.py analyze_book.py --notebook-id ID --chapters "1, 8"
+```
+
+### Save Output to File (`query_to_file.py`)
+```bash
+# Safely save query output to file (avoids encoding issues)
+python scripts/run.py query_to_file.py --notebook-id ID --question "..." --output filename.txt
+```
+
 ## Environment Management
 
 The virtual environment is automatically managed:
@@ -278,6 +289,53 @@ Synthesize and respond to user
 - Rate limits on free Google accounts (50 queries/day)
 - Manual upload required (user must add docs to NotebookLM)
 - Browser overhead (few seconds per question)
+
+## 🛡️ Fallback: Degradación Graceful
+
+Cuando el MCP de NotebookLM falle (Patchright roto, UI de Google cambió, rate limit, etc.):
+
+### Protocolo de Degradación
+
+```
+Nivel 1 — Reintento
+  → Ejecutar: python scripts/run.py ask_question.py --show-browser --question "test"
+  → Si falla con error de browser: ir a Nivel 2
+
+Nivel 2 — Reauth
+  → Ejecutar: python scripts/run.py auth_manager.py reauth
+  → Si falla: ir a Nivel 3
+
+Nivel 3 — Fallback Local (sin dependencia externa)
+  → Abrir PDF/libro desde carrera/semestres/2026-1/cursos/[curso]/01_Materiales/
+  → Usar Ctrl+F para buscar el tema
+  → Buscar en archivos locales con grep/ripgrep
+  → Informar al usuario: "⚠️ NotebookLM no disponible. Consultando material local."
+
+Nivel 4 — Reinstalar
+  → python scripts/run.py cleanup_manager.py --confirm
+  → python -m patchright install chromium
+  → python scripts/run.py auth_manager.py setup
+```
+
+### Health Check Rápido
+
+```bash
+# Verificar que el MCP responde (ejecutar durante boot "Buenos días")
+python scripts/run.py auth_manager.py status
+```
+
+| Estado | Significado | Acción |
+|:------:|-------------|--------|
+| ✅ Authenticated | Todo OK | Ninguna |
+| ⚠️ Expired | Sesión expiró | `reauth` automático |
+| ❌ Not authenticated | Sin auth | Setup manual (browser visible) |
+| 💥 Script error | Patchright/Chromium roto | Nivel 4 (reinstalar) |
+
+### Sobre la API Oficial de Google
+
+> **Estado (Feb 2026)**: Google no ha publicado API oficial para NotebookLM.
+> Si se publica, migrar de browser automation a API directa eliminaría la fragilidad.
+> Monitorear: https://ai.google.dev/ y el changelog de NotebookLM.
 
 ## Resources (Skill Structure)
 

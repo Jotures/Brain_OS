@@ -28,7 +28,8 @@ except ImportError:
     pass
 
 TOKEN = os.getenv('MOODLE_TOKEN')
-URL = os.getenv('MOODLE_URL', 'https://campus.uandina.edu.pe')
+from course_map import MOODLE_URL
+URL = os.getenv('MOODLE_URL', MOODLE_URL)
 ENDPOINT = f"{URL}/webservice/rest/server.php"
 
 

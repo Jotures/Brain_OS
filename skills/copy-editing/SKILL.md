@@ -1,6 +1,6 @@
 ---
 name: copy-editing
-description: "When the user wants to edit, review, or improve existing marketing copy. Also use when the user mentions 'edit this copy,' 'review my copy,' 'copy feedback,' 'proofread,' 'polish this,' 'make this better,' or 'copy sweep.' This skill provides a systematic approach to editing marketing copy through multiple focused passes."
+description: Edita, revisa y mejora copy de marketing existente usando el framework de 7 sweeps. Usar cuando el usuario diga "Edita este copy", "Revisa mi texto", "Feedback de copy", "Proofread", "Mejora esto", "Copy sweep", o cuando necesite pulir contenido de marketing con un enfoque sistemático por pasadas.
 ---
 
 # Copy Editing

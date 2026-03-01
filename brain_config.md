@@ -291,16 +291,62 @@ POMODORO_TOOL:
     intensive: {work: 50, break: 10}
     light: {work: 15, break: 3}
     exam_prep: {work: 45, break: 8}
+    ultradian: {work: 90, break: 20}  # BRAC fisiológico — Deep Research
   
   adaptive_rules:
     calculo|fisica|algebra: "intensive"
     ingles|lectura|repaso: "light"
     examen|parcial|final: "exam_prep"
+    investigacion operativa|simplex|programacion lineal: "ultradian"
+    economia internacional|comercio|aranceles: "ultradian"
+    tesis|paper|ensayo largo|monografia: "ultradian"
   
+  active_recall:
+    enabled: true
+    questions_per_session: 3
+    bloom_levels: ["apply", "analyze", "evaluate"]
+
   notion_sync:
     database_id: "2cbaacd6-8210-8064-bd2e-c5eccf539edc"  # BD_TRACKER_DIARIO
-    property: "🍅 Pomodoros"  # Pendiente: crear manualmente
+    property: "🍅 Pomodoros"
     auto_sync: true
+```
+
+---
+
+## 🧬 Cronobiología — Perfil del Usuario
+
+```yaml
+# Basado en Deep Research: Gestión de Energía vs Tiempo
+# Fecha de configuración: 2026-02-12
+
+CRONOTIPO: "Bear"  # Lion|Bear|Wolf|Dolphin
+
+HORARIOS:
+  despertar_clases_7am: "06:00"   # MA/JU
+  despertar_clases_9_11am: "08:30" # L/MI/VI
+  despertar_sin_clases: "09:00"   # S/D
+  almuerzo: "~14:30"
+  dormir: "23:30–00:00"
+  dip_energetico: "~16:00"
+
+PEAK_COGNITIVO_BEAR:
+  peak: "10:00–14:00"      # Estudio profundo, BRAC 90/20
+  dip: "14:00–16:00"       # Siesta NSDR 15min o tarea mecánica
+  recovery: "16:00–18:00"  # Segunda ventana, menor intensidad
+  wind_down: "18:00–23:00" # Revisión ligera
+
+PROTOCOLOS_ENERGIA:
+  luz_natural: "10 min post-despertar"
+  cafe_retrasado: "90 min post-despertar (ideal)"
+  siesta_nsdr: "10-20 min en dip (14:00-15:00)"
+  pre_sueno: "Sin pantallas brillantes 22:00+"
+
+ESTUDIO:
+  preferencia: "sesiones largas y pocas"  # Alinea con ultradian
+  meta_diaria: 1  # Mínimo 1 sesión/día, incluso S/D
+  materias_dificiles: ["Economía Internacional", "Investigación Operativa"]
+  materias_faciles: ["Teoría Monetaria y Bancaria", "Investigación Económica"]
 ```
 
 ### Comandos del Timer
@@ -367,5 +413,7 @@ AULA_VIRTUAL_INGLES:
 
 ### Flujo de Sincronización
 ```
-Moodle → get_tasks.py → course_map.py → sync_to_notion.py → BD_TAREAS_MAESTRAS
+1. Moodle → download_files.py → Archivos Locales + .url
+2. Archivos Locales → sync_full_local.py → Notion BD_RECURSOS (Links + Archivos)
+3. Moodle → sync_assignments.py → Notion BD_TAREAS_MAESTRAS
 ```

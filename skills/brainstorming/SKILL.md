@@ -1,6 +1,6 @@
 ---
 name: brainstorming
-description: >
+description: Facilita sesiones de diseño y brainstorming estructurado antes de implementar código. Usa esta skill cuando el usuario diga "Diseñemos [X]", "Brainstorming para [X]", "Pensemos antes de codear", o antes de cualquier feature compleja que necesite diseño previo.
   Use this skill before any creative or constructive work
   (features, components, architecture, behavior changes, or functionality).
   This skill transforms vague ideas into validated designs through

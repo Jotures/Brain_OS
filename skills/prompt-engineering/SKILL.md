@@ -1,6 +1,6 @@
 ---
 name: prompt-engineering
-description: Expert guide on prompt engineering patterns, best practices, and optimization techniques. Use when user wants to improve prompts, learn prompting strategies, or debug agent behavior.
+description: Guía experta en patrones de prompt engineering, mejores prácticas y técnicas de optimización. Usar cuando el usuario quiera mejorar prompts, aprender estrategias de prompting, o debuggear comportamiento de agentes.
 ---
 
 # Prompt Engineering Patterns

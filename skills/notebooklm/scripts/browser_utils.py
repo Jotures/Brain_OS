@@ -30,7 +30,7 @@ class BrowserFactory:
             user_data_dir=user_data_dir,
             channel="chrome",  # Use real Chrome
             headless=headless,
-            no_viewport=True,
+            viewport={'width': 1920, 'height': 1080},
             ignore_default_args=["--enable-automation"],
             user_agent=USER_AGENT,
             args=BROWSER_ARGS

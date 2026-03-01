@@ -1,0 +1,43 @@
+📚 Loaded library with 8 notebooks
+⚠️ Browser state is 24.1 days old, may need re-authentication
+💬 Asking: Dime qué temas, evaluaciones o tareas importantes están programados en el cronograma. Sé conciso y estructural.
+📚 Notebook: https://notebooklm.google.com/notebook/2efe8c43-6888-446f-803d-5f57a9485ecb
+  🌐 Opening notebook...
+  ⏳ Waiting for query input...
+  ✓ Found input: textarea.query-box-input
+  ⏳ Typing question...
+  📤 Submitting...
+  ⏳ Waiting for answer...
+  ✅ Got answer!
+
+============================================================
+Question: Dime qué temas, evaluaciones o tareas importantes están programados en el cronograma. Sé conciso y estructural.
+============================================================
+
+Aquí tienes la estructura concisa de los temas, tareas y evaluaciones más importantes programados en el curso:
+1. Cronograma Específico de la 1ra Unidad
+13 de febrero de 2026: Tarea individual sobre ventaja comparativa1.
+20 de febrero de 2026: Análisis de lectura evaluado mediante un cuestionario1.
+3 de marzo de 2026: Entrega del Trabajo de Investigación formativa y Trabajo de Responsabilidad social1.
+3, 5 y 6 de marzo de 2026: Exposiciones de los trabajos1.
+10 de marzo de 2026: Cuestionario final de la unidad1.
+12 de marzo de 2026: Recuperación1.
+2. Temas y Fechas de Evaluaciones Institucionales (Aportes)
+Unidad I: Teorías del Comercio Internacional (Semanas 1 a 7)
+Temas: Nociones básicas, Modelo Clásico (Ventajas absolutas y comparativas, Modelo Hecksher-Ohlin) y economías externas de escala2....
+1er Aporte: 18 al 19 de marzo de 20265.
+Unidad II: Política Comercial Internacional (Semanas 8 a 14)
+Temas: Instrumentos de política comercial (aranceles, cuotas, dumping), distribución de la renta y políticas en países en desarrollo (caso Perú)5....
+2do Aporte: 4 al 5 de mayo de 20268.
+Unidad III: La Balanza de Pagos y las Finanzas Internacionales (Semanas 15 a 20)
+Temas: Conceptos generales, contabilidad nacional, mercados internacionales de dinero y capitales, y crisis financieras8....
+3er Aporte: 22 al 23 de junio de 202611.
+3. Tareas y Actividades Recurrentes (Todo el semestre)
+Participación activa en clases (preguntas y debates)2....
+Entregables periódicos como mapas conceptuales y controles de lectura3....
+Trabajos en equipo, redacción de monografías e informes (Investigación Formativa) con exposiciones obligatorias4....
+Participación en el proyecto integral de Responsabilidad Social Universitaria (Aprendizaje - servicio)4....
+
+EXTREMELY IMPORTANT: Is that ALL you need to know? You can always ask another question! Think about it carefully: before you reply to the user, review their original request and this answer. If anything is still unclear or missing, ask me another comprehensive question that includes all necessary context (since each question opens a new browser session).
+
+============================================================

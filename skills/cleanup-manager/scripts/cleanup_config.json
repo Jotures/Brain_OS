@@ -1,0 +1,85 @@
+{
+    "protected_zones": [
+        "carrera/semestres",
+        "config",
+        "skills/*/SKILL.md",
+        ".agent/workflows",
+        "tools/pomodoro/config.json",
+        "tools/pomodoro/history.json",
+        "brain_config.md",
+        "INICIO.md",
+        "README.md",
+        "Flujo_Maestro_BrainOS_v2.md"
+    ],
+    "categories": {
+        "pycache": {
+            "pattern": "__pycache__",
+            "type": "directory",
+            "min_level": 1,
+            "risk": "none",
+            "description": "Compilados Python — se regeneran automáticamente"
+        },
+        "old_browser": {
+            "pattern": "*.old",
+            "scope": "skills/notebooklm/data/browser_state",
+            "min_level": 1,
+            "risk": "none",
+            "description": "Logs antiguos de Chromium"
+        },
+        "debug_files": {
+            "pattern": "debug_*",
+            "min_level": 2,
+            "risk": "low",
+            "description": "Archivos de depuración temporal"
+        },
+        "temp_files": {
+            "pattern": "temp_*",
+            "min_level": 2,
+            "risk": "low",
+            "description": "Archivos temporales"
+        },
+        "browser_cache": {
+            "scope": "skills/notebooklm/data/browser_state/browser_profile",
+            "subdirs": [
+                "Cache",
+                "Code Cache",
+                "GrShaderCache"
+            ],
+            "min_level": 2,
+            "risk": "low",
+            "description": "Cache de navegador — se regenera al abrir"
+        },
+        "empty_dirs_browser": {
+            "scope": "skills/notebooklm/data/browser_state",
+            "type": "empty_directory",
+            "min_level": 1,
+            "risk": "none",
+            "description": "Carpetas vacías del perfil de navegador"
+        },
+        "log_files": {
+            "pattern": "*.log",
+            "scope": "skills/notebooklm/data/browser_state",
+            "min_level": 2,
+            "risk": "low",
+            "description": "Logs de LevelDB del navegador"
+        },
+        "scan_temp": {
+            "pattern": [
+                "_scan_system.py",
+                "_scan_results.txt"
+            ],
+            "scope": ".",
+            "min_level": 1,
+            "risk": "none",
+            "description": "Scripts temporales de escaneo del cleanup-manager"
+        }
+    },
+    "archive_dir": "cleanup_archive",
+    "history_file": "cleanup_history.json",
+    "retention_days": 7,
+    "thresholds": {
+        "healthy_mb": 10,
+        "warning_mb": 50,
+        "critical_mb": 100
+    }
+}

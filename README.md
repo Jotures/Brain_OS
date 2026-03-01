@@ -1,14 +1,17 @@
-# 🧠 Brain OS 2.0
+# 🧠 Brain OS 2.1
 
 Sistema de IA académico multi-semestre para maximizar tu rendimiento universitario.
 
-**Meta**: Nota 20 en cada curso | **Versión**: 2.0
+**Meta**: Nota 20 en cada curso | **Versión**: 2.1
+
+> 📋 *Documentación técnica completa*: [Brain_OS_Master_Doc.md](./Brain_OS_Master_Doc.md)
 
 ---
 
 ## 🚀 Inicio Rápido
 
 ```
+"Buenos días"          → ☀️ Boot diario completo (5 pasos automáticos)
 /brain-os-study        → Planifica tu día de estudio
 "¿Qué debo estudiar?"  → Diagnóstico con prioridades
 "Modo Crisis [curso]"  → Estudio intensivo pre-examen
@@ -19,7 +22,7 @@ Sistema de IA académico multi-semestre para maximizar tu rendimiento universita
 ## 📂 Estructura & Organización
 Este sistema usa una **Arquitectura Híbrida**: Notion es el índice ("La Biblioteca") y tu PC es el almacén físico.
 
-### Estandar de Carpetas (Uni y Personal)
+### Estándar de Carpetas (Uni y Personal)
 Todo curso debe seguir esta estructura simple:
 ```
 [Nombre Curso]/
@@ -63,8 +66,8 @@ Brain_OS/
 ## 🔗 Integraciones
 
 - **Notion MCP**: BD_TAREAS, BD_AREAS, BD_RECURSOS (bidireccional)
-- **NotebookLM**: 7 libros (uno por curso)
-- **Aula Virtual**: Materiales de Moodle
+- **NotebookLM**: 7 libros (uno por curso) + Cognitive Alpha
+- **Aula Virtual**: Materiales de Moodle (descarga + sync)
 - **🍅 Pomodoro Timer**: Sesiones adaptativas con analytics
 
 ---
@@ -79,13 +82,17 @@ Brain_OS/
 
 ---
 
-## 🛠️ Skills Académicas (30+)
+## 🛠️ Skills Disponibles (29)
 
-**Documentos**: `docx` · `xlsx` · `pptx` · `pdf`  
-**Escritura**: `copywriting` · `copy-editing`  
-**Planificación**: `brainstorming` · `writing-plans`  
-**Investigación**: `notebooklm` 🔥 · `research-engineer`  
-**Sistema**: `system-coordinator` · `dashboard-sync` 🆕
+| Categoría | Skills |
+|-----------|--------|
+| 📄 Documentos | `docx-official` `pptx-official` `xlsx-official` `pdf` `documentation-templates` |
+| ✍️ Escritura | `content-creator` `copy-editing` `copywriting` `doc-coauthoring` `writing-skills` |
+| 📋 Planificación | `brainstorming` `planning` `planning-with-files` `executing-plans` `kaizen` |
+| 🔍 Investigación | `research-engineer` `notebooklm` `prompt-engineer` `prompt-engineering` `prompt-library` |
+| 🎓 Académico | `aula-virtual` `library-manager` `pomodoro` |
+| 🔄 Sistema | `system-coordinator` `dashboard-sync` `cleanup-manager` `elite-skill-architect` |
+| 💼 Negocio | `notion-template-business` `architecture` |
 
 Uso: `"Usa la skill [nombre] para [tarea]"`
 
@@ -95,9 +102,15 @@ Uso: `"Usa la skill [nombre] para [tarea]"`
 
 | Comando | Función |
 |---------|---------|
+| `"Buenos días"` | Boot diario completo (5 pasos) |
 | `¿Qué debo estudiar?` | Diagnóstico diario |
 | `Registra sesión` | Guardar progreso |
 | `Resume semana` | Análisis semanal |
 | `Modo Crisis` | Estudio intensivo |
-| `Inicia Pomodoro para [tema]` | Timer adaptativo 🆕 |
-| `¿Cuántos pomodoros hoy?` | Analytics 🆕 |
+| `Inicia Pomodoro para [tema]` | Timer adaptativo |
+| `¿Cuántos pomodoros hoy?` | Analytics |
+| `Escanear basura` | Detecta archivos obsoletos |
+| `Limpieza rápida` | Limpieza automática segura |
+| `Audita la skill [nombre]` | Evalúa skill con checklist 100 pts |
+| `Rehace la skill [nombre]` | Mejora skill preservando lo bueno |
+| `Toma una decisión` | Crea un ADR de arquitectura |

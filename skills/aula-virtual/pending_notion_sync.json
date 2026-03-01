@@ -1,0 +1,366 @@
+[
+  {
+    "parent": {
+      "database_id": "2cbaacd6-8210-80ea-9bff-d7aa9ffe3c41"
+    },
+    "properties": {
+      "Nombre del recurso": {
+        "title": [
+          {
+            "text": {
+              "content": "Presentación Docente.pdf"
+            }
+          }
+        ]
+      },
+      "Tipo": {
+        "select": {
+          "name": "📖 Lectura"
+        }
+      },
+      "BD_ÁREAS": {
+        "relation": [
+          {
+            "id": "2fdaacd6-8210-8176-95da-f8f559269cc1"
+          }
+        ]
+      },
+      "Revisado": {
+        "checkbox": false
+      }
+    },
+    "children": [
+      {
+        "object": "block",
+        "type": "paragraph",
+        "paragraph": {
+          "rich_text": [
+            {
+              "text": {
+                "content": "Archivo local: "
+              }
+            },
+            {
+              "text": {
+                "content": "C:\\Users\\Ruben J\\Documents\\Antigravito Proyects\\Brain_OS\\carrera\\semestres\\2026-1\\cursos\\02_economia_internacional\\01_Materiales\\Presentación Docente.pdf",
+                "code": true
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "parent": {
+      "database_id": "2cbaacd6-8210-80ea-9bff-d7aa9ffe3c41"
+    },
+    "properties": {
+      "Nombre del recurso": {
+        "title": [
+          {
+            "text": {
+              "content": "Presentación de la asignatura - ECONOMIA INTERNACIONAL I.pdf"
+            }
+          }
+        ]
+      },
+      "Tipo": {
+        "select": {
+          "name": "📖 Lectura"
+        }
+      },
+      "BD_ÁREAS": {
+        "relation": [
+          {
+            "id": "2fdaacd6-8210-8176-95da-f8f559269cc1"
+          }
+        ]
+      },
+      "Revisado": {
+        "checkbox": false
+      }
+    },
+    "children": [
+      {
+        "object": "block",
+        "type": "paragraph",
+        "paragraph": {
+          "rich_text": [
+            {
+              "text": {
+                "content": "Archivo local: "
+              }
+            },
+            {
+              "text": {
+                "content": "C:\\Users\\Ruben J\\Documents\\Antigravito Proyects\\Brain_OS\\carrera\\semestres\\2026-1\\cursos\\02_economia_internacional\\01_Materiales\\Presentación de la asignatura - ECONOMIA INTERNACIONAL I.pdf",
+                "code": true
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "parent": {
+      "database_id": "2cbaacd6-8210-80ea-9bff-d7aa9ffe3c41"
+    },
+    "properties": {
+      "Nombre del recurso": {
+        "title": [
+          {
+            "text": {
+              "content": "Silabo Economía Internacional I (2026-I).pdf"
+            }
+          }
+        ]
+      },
+      "Tipo": {
+        "select": {
+          "name": "📖 Lectura"
+        }
+      },
+      "BD_ÁREAS": {
+        "relation": [
+          {
+            "id": "2fdaacd6-8210-8176-95da-f8f559269cc1"
+          }
+        ]
+      },
+      "Revisado": {
+        "checkbox": false
+      }
+    },
+    "children": [
+      {
+        "object": "block",
+        "type": "paragraph",
+        "paragraph": {
+          "rich_text": [
+            {
+              "text": {
+                "content": "Archivo local: "
+              }
+            },
+            {
+              "text": {
+                "content": "C:\\Users\\Ruben J\\Documents\\Antigravito Proyects\\Brain_OS\\carrera\\semestres\\2026-1\\cursos\\02_economia_internacional\\01_Materiales\\Silabo Economía Internacional I (2026-I).pdf",
+                "code": true
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "parent": {
+      "database_id": "2cbaacd6-8210-80ea-9bff-d7aa9ffe3c41"
+    },
+    "properties": {
+      "Nombre del recurso": {
+        "title": [
+          {
+            "text": {
+              "content": "Estado y Economia en la Constitucion 1993.pdf"
+            }
+          }
+        ]
+      },
+      "Tipo": {
+        "select": {
+          "name": "📖 Lectura"
+        }
+      },
+      "BD_ÁREAS": {
+        "relation": [
+          {
+            "id": "2fdaacd6-8210-81a1-91d1-ce49066ad036"
+          }
+        ]
+      },
+      "Revisado": {
+        "checkbox": false
+      }
+    },
+    "children": [
+      {
+        "object": "block",
+        "type": "paragraph",
+        "paragraph": {
+          "rich_text": [
+            {
+              "text": {
+                "content": "Archivo local: "
+              }
+            },
+            {
+              "text": {
+                "content": "C:\\Users\\Ruben J\\Documents\\Antigravito Proyects\\Brain_OS\\carrera\\semestres\\2026-1\\cursos\\03_economia_gestion_publica\\01_Materiales\\Estado y Economia en la Constitucion 1993.pdf",
+                "code": true
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "parent": {
+      "database_id": "2cbaacd6-8210-80ea-9bff-d7aa9ffe3c41"
+    },
+    "properties": {
+      "Nombre del recurso": {
+        "title": [
+          {
+            "text": {
+              "content": "SILABUS - ECONOMIA Y GESTION PUBLICA - 2026 I.docx"
+            }
+          }
+        ]
+      },
+      "Tipo": {
+        "select": {
+          "name": "📖 Lectura"
+        }
+      },
+      "BD_ÁREAS": {
+        "relation": [
+          {
+            "id": "2fdaacd6-8210-81a1-91d1-ce49066ad036"
+          }
+        ]
+      },
+      "Revisado": {
+        "checkbox": false
+      }
+    },
+    "children": [
+      {
+        "object": "block",
+        "type": "paragraph",
+        "paragraph": {
+          "rich_text": [
+            {
+              "text": {
+                "content": "Archivo local: "
+              }
+            },
+            {
+              "text": {
+                "content": "C:\\Users\\Ruben J\\Documents\\Antigravito Proyects\\Brain_OS\\carrera\\semestres\\2026-1\\cursos\\03_economia_gestion_publica\\01_Materiales\\SILABUS - ECONOMIA Y GESTION PUBLICA - 2026 I.docx",
+                "code": true
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "parent": {
+      "database_id": "2cbaacd6-8210-80ea-9bff-d7aa9ffe3c41"
+    },
+    "properties": {
+      "Nombre del recurso": {
+        "title": [
+          {
+            "text": {
+              "content": "SILABO TEORIA MONETARIA Y BANCARIA.docx"
+            }
+          }
+        ]
+      },
+      "Tipo": {
+        "select": {
+          "name": "📖 Lectura"
+        }
+      },
+      "BD_ÁREAS": {
+        "relation": [
+          {
+            "id": "2fdaacd6-8210-8108-bb2a-ef7bba8a5825"
+          }
+        ]
+      },
+      "Revisado": {
+        "checkbox": false
+      }
+    },
+    "children": [
+      {
+        "object": "block",
+        "type": "paragraph",
+        "paragraph": {
+          "rich_text": [
+            {
+              "text": {
+                "content": "Archivo local: "
+              }
+            },
+            {
+              "text": {
+                "content": "C:\\Users\\Ruben J\\Documents\\Antigravito Proyects\\Brain_OS\\carrera\\semestres\\2026-1\\cursos\\05_teoria_monetaria\\01_Materiales\\SILABO TEORIA MONETARIA Y BANCARIA.docx",
+                "code": true
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "parent": {
+      "database_id": "2cbaacd6-8210-80ea-9bff-d7aa9ffe3c41"
+    },
+    "properties": {
+      "Nombre del recurso": {
+        "title": [
+          {
+            "text": {
+              "content": "SESION 1.pptx"
+            }
+          }
+        ]
+      },
+      "Tipo": {
+        "select": {
+          "name": "📖 Lectura"
+        }
+      },
+      "BD_ÁREAS": {
+        "relation": [
+          {
+            "id": "2fdaacd6-8210-8108-bb2a-ef7bba8a5825"
+          }
+        ]
+      },
+      "Revisado": {
+        "checkbox": false
+      }
+    },
+    "children": [
+      {
+        "object": "block",
+        "type": "paragraph",
+        "paragraph": {
+          "rich_text": [
+            {
+              "text": {
+                "content": "Archivo local: "
+              }
+            },
+            {
+              "text": {
+                "content": "C:\\Users\\Ruben J\\Documents\\Antigravito Proyects\\Brain_OS\\carrera\\semestres\\2026-1\\cursos\\05_teoria_monetaria\\01_Materiales\\SESION 1.pptx",
+                "code": true
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+]

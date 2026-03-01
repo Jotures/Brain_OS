@@ -67,6 +67,15 @@
             "status": "active",
             "sources_count": 65,
             "content_file": "materiales/notebooklm_content.md"
+        },
+        {
+            "id": "cognitive-alpha",
+            "name": "Cognitive Alpha",
+            "curso_path": null,
+            "notion_id": null,
+            "url": "https://notebooklm.google.com/notebook/a5c34c09-5b05-4ff0-9f7d-bff04972c546",
+            "description": "Proyecto Active Recall - Optimización de aprendizaje",
+            "status": "active"
         }
     ],
     "mapping": {
