@@ -3,29 +3,91 @@
 Sync Assignments Moodle -> Notion (BD_TAREAS_MAESTRAS)
 ======================================================
 Fetches assignments from Moodle and creates/updates them in Notion.
+
+Fixes aplicados:
+  - FIX #1: duedate == 0 ya no genera fecha 1/1/1970 en Notion
+  - FIX #2: HEADERS se construye en tiempo de ejecución (no en importación),
+            evitando "Bearer None" cuando .env carga después del import
+  - FIX #3: Prioridad calculada automáticamente según días restantes
 """
 
 import os
-import json
-import argparse
 import requests
-from datetime import datetime
+import argparse
+from datetime import datetime, timezone
+from pathlib import Path
+
+# Cargar .env ANTES de cualquier otra cosa
+try:
+    from dotenv import load_dotenv
+    env_path = Path(__file__).parent.parent / ".env"
+    if env_path.exists():
+        load_dotenv(env_path)
+except ImportError:
+    pass
+
 from moodle_api import MoodleAPI
 from course_map import COURSE_MAP, find_brain_os_course, NOTION_DB_TAREAS, NOTION_DB_AREAS, MOODLE_URL
 
-# Setup
-NOTION_TOKEN = os.getenv('NOTION_TOKEN')
-DATABASE_ID = NOTION_DB_TAREAS
-HEADERS = {
-    "Authorization": f"Bearer {NOTION_TOKEN}",
-    "Notion-Version": "2022-06-28",
-    "Content-Type": "application/json"
-}
 
-def get_course_mapping():
+# =============================================================================
+# FIX #2: Headers construidos en función, no en tiempo de importación
+# =============================================================================
+
+def get_notion_headers() -> dict:
     """
-    Retorna un diccionario {course_id: course_name} de la base de datos de Cursos.
+    Construye los headers de Notion en tiempo de ejecución.
+    Garantiza que NOTION_TOKEN ya esté cargado desde .env.
     """
+    token = os.getenv('NOTION_TOKEN')
+    if not token:
+        raise ValueError(
+            "NOTION_TOKEN no encontrado. "
+            "Agrega NOTION_TOKEN=... a skills/aula-virtual/.env"
+        )
+    return {
+        "Authorization": f"Bearer {token}",
+        "Notion-Version": "2022-06-28",
+        "Content-Type": "application/json",
+    }
+
+
+DATABASE_ID = NOTION_DB_TAREAS
+
+
+# =============================================================================
+# FIX #3: Cálculo de Prioridad
+# =============================================================================
+def calculate_priority(duedate_ts: int) -> str:
+    """
+    Calcula la prioridad según días restantes hasta el deadline.
+      <= 3 días  → 🔥 Alta
+      <= 7 días  → ⚡ Media
+      >  7 días  → ☁️ Baja
+      sin fecha  → ⚡ Media (valor por defecto)
+    """
+    if not duedate_ts or duedate_ts == 0:
+        return "⚡ Media"
+
+    now = datetime.now(timezone.utc).timestamp()
+    days_remaining = (duedate_ts - now) / 86400
+
+    if days_remaining <= 3:
+        return "🔥 Alta"
+    elif days_remaining <= 7:
+        return "⚡ Media"
+    else:
+        return "☁️ Baja"
+
+
+# =============================================================================
+# Mapeo de Cursos desde Notion (BD_AREAS)
+# =============================================================================
+def get_course_mapping() -> dict:
+    """
+    Retorna un diccionario {notion_page_id: nombre_curso} de BD_AREAS.
+    """
+    headers = get_notion_headers()
     url = f"https://api.notion.com/v1/databases/{NOTION_DB_AREAS}/query"
     has_more = True
     next_cursor = None
@@ -36,9 +98,10 @@ def get_course_mapping():
         if next_cursor:
             payload["start_cursor"] = next_cursor
 
-        resp = requests.post(url, headers=HEADERS, json=payload)
+        resp = requests.post(url, headers=headers, json=payload, timeout=30)
+        resp.raise_for_status()
         data = resp.json()
-        
+
         for page in data.get("results", []):
             page_id = page["id"]
             props = page.get("properties", {})
@@ -46,166 +109,180 @@ def get_course_mapping():
             if title_prop:
                 name = title_prop[0]["plain_text"]
                 mapping[page_id] = name
-        
+
         has_more = data.get("has_more", False)
         next_cursor = data.get("next_cursor")
-    
+
     return mapping
 
-def find_course_id_by_name(moodle_name, mapping):
-    # Mapping is {notion_id: notion_name}
-    # We need to find the notion_id where notion_name matches moodle_name loosely
-    
-    # Normalization helper
-    def normalize(s):
-        return s.lower().replace('á','a').replace('é','e').replace('í','i').replace('ó','o').replace('ú','u').replace('ñ','n')
+def find_course_notion_id(moodle_name: str, mapping: dict) -> str | None:
+    """
+    Busca el notion_id del curso usando course_map.py como fuente de verdad.
+    Primero intenta match por patrones de course_map, luego fallback a fuzzy.
+    """
+    # Método 1: usar find_brain_os_course (fuente de verdad del ecosistema)
+    course_info = find_brain_os_course(moodle_name)
+    if course_info:
+        notion_id = course_info.get("notion_id")
+        if notion_id:
+            return notion_id
+
+    # Método 2: fuzzy match contra nombres en Notion (fallback)
+    def normalize(s: str) -> str:
+        return (s.lower()
+                .replace('á','a').replace('é','e').replace('í','i')
+                .replace('ó','o').replace('ú','u').replace('ñ','n'))
 
     m_norm = normalize(moodle_name)
-    
-    # Specific overrides if normalization isn't enough
-    if "investigacion operativa" in m_norm: return next((k for k,v in mapping.items() if "investigacion operativa" in normalize(v)), None)
-    if "investigacion economica" in m_norm: return next((k for k,v in mapping.items() if "investigacion economica" in normalize(v)), None)
-    if "teoria monetaria" in m_norm: return next((k for k,v in mapping.items() if "teoria monetaria" in normalize(v)), None)
-    if "economia y gestion publica" in m_norm: return next((k for k,v in mapping.items() if "gestion publica" in normalize(v)), None)
-    if "economia internacional" in m_norm: return next((k for k,v in mapping.items() if "economia internacional" in normalize(v)), None)
-
-    # General search
     for nid, nname in mapping.items():
         if normalize(nname) in m_norm or m_norm in normalize(nname):
             return nid
-            
+
     return None
 
 
+# =============================================================================
+# Verificación de duplicados en Notion
+# =============================================================================
+def task_exists_in_notion(name: str) -> tuple[bool, str | None, dict | None]:
+    """
+    Verifica si una tarea ya existe en BD_TAREAS_MAESTRAS por título exacto.
+    Retorna (existe, page_id, properties).
+    """
+    headers = get_notion_headers()
+    query_url = f"https://api.notion.com/v1/databases/{DATABASE_ID}/query"
+    payload = {
+        "filter": {
+            "property": "Tarea",
+            "title": {"equals": name}
+        }
+    }
+    resp = requests.post(query_url, headers=headers, json=payload, timeout=30)
+    results = resp.json().get('results', [])
 
+    if results:
+        return True, results[0]['id'], results[0]['properties']
+    return False, None, None
+
+
+# =============================================================================
+# Sincronización principal
+# =============================================================================
 def sync_assignments(preview: bool = False):
     mode_label = "[PREVIEW] " if preview else ""
     print(f"🚀 {mode_label}Starting Assignment Sync...")
+
     api = MoodleAPI()
-    
-    # 0. Get Course Mapping
-    print("   🗺️ Loading Notion Course Mapping...")
+
+    # 0. Cargar mapeo de cursos desde Notion
+    print("   🗺️  Loading Notion Course Mapping...")
     course_map = get_course_mapping()
     print(f"      Mapped {len(course_map)} courses from Notion.")
 
-    # 1. Get Assignments
+    # 1. Obtener tareas desde Moodle
     print("   📥 Fetching assignments from Moodle...")
     data = api.get_assignments()
-    
-    # 2. Iterate
-    msg_count = 0
-    
+
+    created_count = 0
+    skipped_count = 0
+    repaired_count = 0
+
     for course in data.get('courses', []):
-        course_name = course.get('fullname')
-        course_id = course.get('id')
+        course_name = course.get('fullname', '')
         assignments = course.get('assignments', [])
-        
+
         if not assignments:
             continue
-            
-        print(f"\n📚 Course: {course_name}")
-        
-        # Find Notion Course ID using robust mapping
-        notion_course_id = find_course_id_by_name(course_name, course_map)
-        
-        if not notion_course_id:
-            print(f"   ⚠️ Could not link to Notion Course. Skipping relation.")
-        else:
-            print(f"      ✅ Linked to: {course_map[notion_course_id]}")
-        
-        for assign in assignments:
-            name = assign.get('name')
 
-            due_date = assign.get('duedate')
-            intro = assign.get('intro', '') # Warning: HTML
+        print(f"\n📚 Course: {course_name}")
+
+        # Buscar notion_id del curso
+        notion_course_id = find_course_notion_id(course_name, course_map)
+
+        if not notion_course_id:
+            print(f"   ⚠️  No se encontró curso en Notion. Se creará sin relación.")
+        else:
+            linked_name = course_map.get(notion_course_id, notion_course_id)
+            print(f"      ✅ Linked to: {linked_name}")
+
+        for assign in assignments:
+            name = assign.get('name', 'Sin nombre')
+            duedate = assign.get('duedate', 0)  # 0 = sin fecha límite en Moodle
             assign_id = assign.get('id')
-            
-            # Skip if due date is passed long ago? (Optional)
-            # For now, sync all.
-            
-            # Check if exists in Notion
-            # Criteria: Title = Name AND Course = Relation? Or just Title?
-            # Let's search by Title first.
-            query_url = f"https://api.notion.com/v1/databases/{DATABASE_ID}/query"
-            payload = {
-                "filter": {
-                    "property": "Tarea",
-                    "title": {
-                        "equals": name
-                    }
-                }
-            }
-            resp = requests.post(query_url, headers=HEADERS, json=payload)
-            existing = resp.json().get('results', [])
-            
-            if existing:
-                page_id = existing[0]['id']
-                existing_props = existing[0]['properties']
-                
-                # Check if relation is missing
-                # "Área/Curso": { "relation": [...] }
+            cmid = assign.get('cmid')
+
+            # ── FIX #3: Calcular prioridad ──────────────────────────────────
+            priority = calculate_priority(duedate)
+
+            # ── FIX #1: Fecha — nunca mandar duedate == 0 a Notion ──────────
+            due_date_iso = None
+            due_date_display = "Sin fecha"
+            if duedate and duedate > 0:
+                dt = datetime.fromtimestamp(duedate, tz=timezone.utc)
+                due_date_iso = dt.strftime("%Y-%m-%d")
+                due_date_display = dt.strftime("%d/%m/%Y")
+
+            # ── Verificar duplicado ─────────────────────────────────────────
+            exists, page_id, existing_props = task_exists_in_notion(name)
+
+            if exists:
+                # Reparar relación faltante si corresponde
                 current_relation = existing_props.get("Área/Curso", {}).get("relation", [])
-                
                 if not current_relation and notion_course_id:
                     print(f"   🔧 Repairing missing relation for: {name}")
-                    update_url = f"https://api.notion.com/v1/pages/{page_id}"
-                    update_payload = {
-                        "properties": {
-                            "Área/Curso": {
-                                "relation": [{"id": notion_course_id}]
-                            }
-                        }
-                    }
-                    requests.patch(update_url, headers=HEADERS, json=update_payload)
+                    if not preview:
+                        headers = get_notion_headers()
+                        requests.patch(
+                            f"https://api.notion.com/v1/pages/{page_id}",
+                            headers=headers,
+                            json={"properties": {"Área/Curso": {"relation": [{"id": notion_course_id}]}}},
+                            timeout=30
+                        )
+                    repaired_count += 1
                 else:
-                    print(f"   ⏭️ Exists (skip): {name}")
-                
-                continue
-            
-            # Preview mode: solo mostrar, no crear
-            if preview:
-                due_str = datetime.fromtimestamp(due_date).strftime('%d/%m/%Y') if due_date else 'Sin fecha'
-                print(f"   📝 [PREVIEW] Se crearía: {name} (vence: {due_str})")
-                msg_count += 1
+                    print(f"   ⏭️  Exists (skip): {name}")
+                    skipped_count += 1
                 continue
 
-            # Create
-            print(f"   ✨ Creating: {name}")
-            new_page = {
-                "parent": {"database_id": DATABASE_ID},
-                "properties": {
-                    "Tarea": {
-                        "title": [{"text": {"content": name}}]
-                    },
-                    "Fecha Entrega": {
-                        "date": {"start": datetime.fromtimestamp(due_date).isoformat()}
-                    },
-                    "Tipo": {
-                        "select": {"name": "📝 Tarea"}
-                    },
-                    "Estado": {
-                        "status": {"name": "Por hacer"} # Default
-                    },
-                    "Aporte": {
-                        "select": {"name": "Aporte 1"} # Force Aporte 1
-                    }
-                }
+            # ── Preview mode ────────────────────────────────────────────────
+            if preview:
+                print(f"   📝 [PREVIEW] Se crearía: '{name}' | {due_date_display} | {priority}")
+                created_count += 1
+                continue
+
+            # ── Construir página Notion ─────────────────────────────────────
+            print(f"   ✨ Creating: '{name}' | {due_date_display} | {priority}")
+
+            properties = {
+                "Tarea": {
+                    "title": [{"text": {"content": name}}]
+                },
+                "Tipo": {
+                    "select": {"name": "📝 Tarea"}
+                },
+                "Estado": {
+                    "status": {"name": "Por hacer"}
+                },
+                # FIX #3: Prioridad calculada
+                "Prioridad": {
+                    "select": {"name": priority}
+                },
             }
-            
+
+            # FIX #1: Solo añadir Fecha Entrega si hay fecha válida
+            if due_date_iso:
+                properties["Fecha Entrega"] = {
+                    "date": {"start": due_date_iso}
+                }
+
+            # Relación con curso
             if notion_course_id:
-                new_page["properties"]["Área/Curso"] = {
+                properties["Área/Curso"] = {
                     "relation": [{"id": notion_course_id}]
                 }
-            
-            # Add Link to Moodle
-            # Construction: .../mod/assign/view.php?id={cmid} -> wait, assign['cmid'] ? or is it id?
-            # API returns 'cmid' usually or we can construct from 'id' ?
-            # 'id' in response is assignment instance id. 'cmid' is course module id.
-            # get_assignments returns 'cmid' usually.
-            cmid = assign.get('cmid')
-            moodle_link = f"{MOODLE_URL}/mod/assign/view.php?id={cmid}"
-            
-            # Add to content
+
+            # Blocks de contenido: link a Moodle
+            moodle_link = f"{MOODLE_URL}/mod/assign/view.php?id={cmid}" if cmid else MOODLE_URL
             children_blocks = [
                 {
                     "object": "block",
@@ -213,32 +290,54 @@ def sync_assignments(preview: bool = False):
                     "callout": {
                         "rich_text": [
                             {"type": "text", "text": {"content": "Ir a Moodle: "}},
-                            {"type": "text", "text": {"content": "Abrir Tarea", "link": {"url": moodle_link}}}
+                            {"type": "text", "text": {
+                                "content": "Abrir Tarea",
+                                "link": {"url": moodle_link}
+                            }}
                         ],
                         "icon": {"emoji": "🎓"},
                         "color": "gray_background"
                     }
                 },
                 {
-                     "object": "block",
-                     "type": "paragraph",
-                     "paragraph": {
-                         "rich_text": [{"type": "text", "text": {"content": "Sincronizado automáticamente desde Moodle."}}]
-                     }
+                    "object": "block",
+                    "type": "paragraph",
+                    "paragraph": {
+                        "rich_text": [{"type": "text", "text": {
+                            "content": "Sincronizado automáticamente desde Moodle."
+                        }}]
+                    }
                 }
             ]
-            
-            new_page["children"] = children_blocks
 
-            
-            create_resp = requests.post("https://api.notion.com/v1/pages", headers=HEADERS, json=new_page)
+            new_page = {
+                "parent": {"database_id": DATABASE_ID},
+                "properties": properties,
+                "children": children_blocks,
+            }
+
+            headers = get_notion_headers()
+            create_resp = requests.post(
+                "https://api.notion.com/v1/pages",
+                headers=headers,
+                json=new_page,
+                timeout=30
+            )
+
             if create_resp.status_code == 200:
                 print("      ✅ Created.")
-                msg_count += 1
+                created_count += 1
             else:
-                print(f"      ❌ Error: {create_resp.text}")
+                print(f"      ❌ Error: {create_resp.text[:200]}")
 
-    print(f"\n🏁 Sync Complete. Created {msg_count} tasks.")
+    # Resumen
+    print(f"\n{'='*55}")
+    print(f"🏁 Sync Complete.")
+    print(f"   ✅ {created_count} tasks {'would be ' if preview else ''}created")
+    print(f"   ⏭️  {skipped_count} tasks skipped (already exist)")
+    print(f"   🔧 {repaired_count} relations repaired")
+    print(f"{'='*55}")
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Sync Moodle assignments to Notion')
