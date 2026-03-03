@@ -1,18 +1,21 @@
 #!/usr/bin/env python3
 """
-Create a new NotebookLM notebook via browser automation.
+Create a new NotebookLM notebook.
 
-Two modes:
-  - Automatic: Navigates to NotebookLM, clicks "New Notebook", 
-               renames it, and returns the URL.
-  - Fallback:  Opens NotebookLM visible, user creates the notebook 
-               manually, script detects the new URL automatically.
+Three modes:
+  1. Automatic (default): Headless browser automation — clicks "New Notebook",
+     renames it, captures URL. No user interaction needed.
+  2. Manual (--manual): Opens NotebookLM in the USER'S default browser,
+     then asks for the URL via stdin. Simple and reliable.
+  3. Show-browser (--show-browser): Same as automatic but with the browser
+     visible for debugging purposes.
 """
 
 import argparse
 import sys
 import time
 import re
+import webbrowser
 from pathlib import Path
 
 from patchright.sync_api import sync_playwright
@@ -25,19 +28,60 @@ from config import PAGE_LOAD_TIMEOUT
 
 
 NOTEBOOKLM_HOME = "https://notebooklm.google.com/"
-# Regex to capture a notebook URL once it loads
 NOTEBOOK_URL_PATTERN = re.compile(
     r"^https://notebooklm\.google\.com/notebook/([a-f0-9\-]+)"
 )
 
 
-def create_notebook(name: str, headless: bool = True) -> str | None:
+def create_notebook_manual(name: str) -> str | None:
     """
-    Create a new NotebookLM notebook.
+    Manual mode: opens NotebookLM in the user's default browser
+    and asks for the URL via stdin.
+
+    Args:
+        name: Suggested name for the notebook.
+
+    Returns:
+        The URL provided by the user, or None if cancelled.
+    """
+    print(f"📓 Creating notebook: {name}")
+    print(f"   Modo: manual (tu navegador)\n")
+
+    # Open NotebookLM in the user's real browser
+    webbrowser.open(NOTEBOOKLM_HOME)
+
+    print("=" * 55)
+    print(f"  � Se abrió NotebookLM en tu navegador.")
+    print(f"  📌 Crea un nuevo notebook y nómbralo: \"{name}\"")
+    print(f"  📌 Luego copia la URL del notebook y pégala abajo.")
+    print("=" * 55)
+
+    while True:
+        print()
+        url_input = input("  🔗 Pega la URL del notebook (o 'cancelar'): ").strip()
+
+        if url_input.lower() in ("cancelar", "cancel", "q", "exit"):
+            print("  ❌ Cancelado por el usuario.")
+            return None
+
+        match = NOTEBOOK_URL_PATTERN.match(url_input)
+        if match:
+            notebook_url = url_input.split("?")[0]
+            print(f"\n  ✅ Notebook registrado!")
+            print(f"  🔗 URL: {notebook_url}")
+            return notebook_url
+        else:
+            print("  ⚠️ URL no válida. Debe ser como:")
+            print("     https://notebooklm.google.com/notebook/xxxxxxxx-xxxx-xxxx-xxxx")
+
+
+def create_notebook_auto(name: str, headless: bool = True) -> str | None:
+    """
+    Automatic mode: uses Patchright to create the notebook.
 
     Args:
         name: Display name for the new notebook.
-        headless: If True, run browser in headless (automatic) mode.
+        headless: If True, run browser in headless mode.
 
     Returns:
         The URL of the newly created notebook, or None on failure.
@@ -48,7 +92,7 @@ def create_notebook(name: str, headless: bool = True) -> str | None:
         return None
 
     print(f"📓 Creating notebook: {name}")
-    mode_label = "automático" if headless else "manual (browser visible)"
+    mode_label = "automático" if headless else "automático (browser visible)"
     print(f"   Modo: {mode_label}")
 
     playwright = None
@@ -64,32 +108,70 @@ def create_notebook(name: str, headless: bool = True) -> str | None:
         print("  🌐 Opening NotebookLM home...")
         page.goto(NOTEBOOKLM_HOME, wait_until="domcontentloaded", timeout=PAGE_LOAD_TIMEOUT)
 
-        # Wait for page to fully render
         page.wait_for_url(re.compile(r"^https://notebooklm\.google\.com"), timeout=15000)
-        time.sleep(2)
+        time.sleep(3)
 
-        if headless:
-            notebook_url = _create_automatic(page, name)
-        else:
-            notebook_url = _create_with_fallback(page, name)
+        # Click "New Notebook" button
+        new_notebook_selectors = [
+            'button:has-text("New notebook")',
+            'button:has-text("Nuevo notebook")',
+            'button:has-text("Create")',
+            'button:has-text("Crear")',
+            'button[aria-label="Create new notebook"]',
+            'button[aria-label="Crear notebook nuevo"]',
+            'button.create-new-notebook-button',
+            '[data-test-id="create-notebook-button"]',
+        ]
+
+        print("  🔍 Looking for 'New notebook' button...")
+        clicked = False
+
+        for selector in new_notebook_selectors:
+            try:
+                btn = page.wait_for_selector(selector, timeout=5000, state="visible")
+                if btn:
+                    print(f"  ✓ Found: {selector}")
+                    StealthUtils.random_delay(300, 800)
+                    btn.click()
+                    clicked = True
+                    break
+            except:
+                continue
+
+        if not clicked:
+            print("  ❌ Could not find 'New notebook' button")
+            return None
+
+        # Wait for navigation to the new notebook
+        print("  ⏳ Waiting for new notebook to load...")
+        notebook_url = _wait_for_notebook_url(page, timeout_seconds=45)
+
+        if not notebook_url:
+            # Sometimes NotebookLM opens the notebook in a new tab
+            print("  🔍 Checking other tabs...")
+            for p in context.pages:
+                match = NOTEBOOK_URL_PATTERN.match(p.url)
+                if match:
+                    notebook_url = p.url.split("?")[0]
+                    page = p  # Switch to that page for renaming
+                    break
 
         if notebook_url:
+            _try_rename(page, name)
             print(f"\n  ✅ Notebook created!")
-            print(f"  🔗 URL: {notebook_url}")
+            print(f"  � URL: {notebook_url}")
             return notebook_url
         else:
             print("\n  ❌ Could not capture notebook URL")
+            print("  � Use --manual mode instead:")
+            print(f'     python scripts/run.py create_notebook.py --name "{name}" --manual')
             return None
 
     except Exception as e:
         print(f"  ❌ Error: {e}")
         import traceback
         traceback.print_exc()
-
-        # If automatic failed, suggest fallback
-        if headless:
-            print("\n  💡 Try again with --show-browser for manual fallback:")
-            print(f'     python scripts/run.py create_notebook.py --name "{name}" --show-browser')
+        print(f'\n  💡 Use --manual mode: python scripts/run.py create_notebook.py --name "{name}" --manual')
         return None
 
     finally:
@@ -105,74 +187,15 @@ def create_notebook(name: str, headless: bool = True) -> str | None:
                 pass
 
 
-def _create_automatic(page, name: str) -> str | None:
-    """Automatic mode: click 'New Notebook' and rename it."""
-
-    # Selectors for the "New notebook" / "Create" button (multiple fallbacks)
-    new_notebook_selectors = [
-        'button:has-text("New notebook")',
-        'button:has-text("Nuevo notebook")',
-        'button:has-text("Create")',
-        'button:has-text("Crear")',
-        'button[aria-label="Create new notebook"]',
-        'button[aria-label="Crear notebook nuevo"]',
-        # Material icon button fallback
-        'button.create-new-notebook-button',
-        '[data-test-id="create-notebook-button"]',
-    ]
-
-    print("  🔍 Looking for 'New notebook' button...")
-    clicked = False
-
-    for selector in new_notebook_selectors:
-        try:
-            btn = page.wait_for_selector(selector, timeout=5000, state="visible")
-            if btn:
-                print(f"  ✓ Found: {selector}")
-                StealthUtils.random_delay(300, 800)
-                btn.click()
-                clicked = True
-                break
-        except:
-            continue
-
-    if not clicked:
-        print("  ❌ Could not find 'New notebook' button")
-        return None
-
-    # Wait for navigation to the new notebook
-    print("  ⏳ Waiting for new notebook to load...")
-    return _wait_for_notebook_url(page, name)
-
-
-def _create_with_fallback(page, name: str) -> str | None:
-    """Fallback mode: browser visible, user creates manually, we capture URL."""
-
-    print("\n" + "=" * 50)
-    print("  📌 MODO MANUAL: El browser está abierto.")
-    print("  📌 Crea un nuevo notebook en NotebookLM.")
-    print(f"  📌 Nómbralo: \"{name}\"")
-    print("  📌 El script detectará la URL automáticamente.")
-    print("=" * 50 + "\n")
-
-    return _wait_for_notebook_url(page, name, timeout_seconds=120)
-
-
-def _wait_for_notebook_url(page, name: str, timeout_seconds: int = 30) -> str | None:
+def _wait_for_notebook_url(page, timeout_seconds: int = 30) -> str | None:
     """Poll the browser URL until a notebook URL pattern is detected."""
-
     deadline = time.time() + timeout_seconds
 
     while time.time() < deadline:
         current_url = page.url
         match = NOTEBOOK_URL_PATTERN.match(current_url)
         if match:
-            notebook_url = current_url.split("?")[0]  # Strip query params
-
-            # Attempt to rename the notebook
-            _try_rename(page, name)
-            return notebook_url
-
+            return current_url.split("?")[0]
         time.sleep(1)
 
     return None
@@ -180,7 +203,6 @@ def _wait_for_notebook_url(page, name: str, timeout_seconds: int = 30) -> str | 
 
 def _try_rename(page, name: str):
     """Attempt to rename the notebook to the desired name."""
-
     rename_selectors = [
         'input[aria-label="Notebook title"]',
         'input[aria-label="Título del notebook"]',
@@ -199,18 +221,19 @@ def _try_rename(page, name: str):
             if el:
                 el.click()
                 StealthUtils.random_delay(200, 500)
-                # Select all existing text and replace
                 page.keyboard.press("Control+A")
                 StealthUtils.random_delay(100, 200)
                 page.keyboard.type(name, delay=50)
                 StealthUtils.random_delay(200, 400)
                 page.keyboard.press("Enter")
                 print(f"  ✓ Renamed successfully")
+                # Wait for backend save
+                time.sleep(3)
                 return
         except:
             continue
 
-    print("  ⚠️ Could not rename — you may need to rename manually in NotebookLM")
+    print("  ⚠️ Could not rename — rename manually in NotebookLM")
 
 
 def main():
@@ -222,19 +245,25 @@ def main():
         help="Name for the new notebook (e.g., 'research-pomodoro-2026')"
     )
     parser.add_argument(
+        "--manual", action="store_true",
+        help="Manual mode: opens your browser and asks for the URL"
+    )
+    parser.add_argument(
         "--show-browser", action="store_true",
-        help="Show browser (fallback manual mode)"
+        help="Show the automated browser (for debugging)"
     )
 
     args = parser.parse_args()
 
-    url = create_notebook(
-        name=args.name,
-        headless=not args.show_browser
-    )
+    if args.manual:
+        url = create_notebook_manual(name=args.name)
+    else:
+        url = create_notebook_auto(
+            name=args.name,
+            headless=not args.show_browser
+        )
 
     if url:
-        # Print clean URL for easy parsing
         print(f"\nNOTEBOOK_URL={url}")
         return 0
     else:

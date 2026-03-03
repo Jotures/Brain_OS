@@ -105,9 +105,9 @@ Notebook propuesto: research-[tema-corto]-[año]
    python scripts/run.py create_notebook.py --name "research-[tema]-[año]"
    ```
 
-   Si falla (UI cambió), usar modo fallback con browser visible:
+   Si falla (UI cambió), usar modo manual que abre el browser del usuario:
    ```bash
-   python scripts/run.py create_notebook.py --name "research-[tema]-[año]" --show-browser
+   python scripts/run.py create_notebook.py --name "research-[tema]-[año]" --manual
    ```
 
    El script devuelve la URL del notebook. Mostrarla al usuario:
