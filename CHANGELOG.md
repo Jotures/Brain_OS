@@ -10,6 +10,7 @@ Registro de cambios significativos del sistema. Formato: [fecha] [tipo] descripc
 
 - `feat` — Workflow `/academic-research`: investigación académica profunda via NotebookLM con briefing de búsqueda y notebooks dedicados
 - `feat` — Creado `config/research_log.json` para registro de investigaciones
+- `feat` — `create_notebook.py`: automatización de creación de cuadernos en NotebookLM (auto + fallback manual)
 - `feat` — Sprint 3: Creada skill `brain-os-health` con script `health_check.py` (auditoría automática, score 0-100)
 - `docs` — `brain_config.md`: IDs de prioridad documentados como formato nativo de Notion
 - `docs` — `last30days/` confirmada como skill legítima de investigación web (no requiere limpieza)

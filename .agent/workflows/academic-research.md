@@ -97,12 +97,32 @@ Notebook propuesto: research-[tema-corto]-[año]
 
 ---
 
-### Paso 3 — Checkpoint de Fuentes
+### Paso 3 — Creación del Notebook y Checkpoint de Fuentes
 
-5. **Esperar** hasta que el usuario diga "listo" / "ya subí" / "ya están".
+5. **Crear el notebook nuevo** automáticamente:
+   ```bash
+   cd skills/notebooklm
+   python scripts/run.py create_notebook.py --name "research-[tema]-[año]"
+   ```
+
+   Si falla (UI cambió), usar modo fallback con browser visible:
+   ```bash
+   python scripts/run.py create_notebook.py --name "research-[tema]-[año]" --show-browser
+   ```
+
+   El script devuelve la URL del notebook. Mostrarla al usuario:
+   ```
+   ✅ Notebook creado: research-[tema]-[año]
+   🔗 URL: https://notebooklm.google.com/notebook/[id]
+   
+   Abre este link y sube los PDFs que encontraste con las queries del briefing.
+   Dime "listo" cuando hayas terminado de subir las fuentes.
+   ```
+
+6. **Esperar** hasta que el usuario diga "listo" / "ya subí" / "ya están".
    **No continuar hasta recibir confirmación explícita.**
 
-6. **Registrar el notebook nuevo**:
+7. **Registrar el notebook nuevo**:
    ```bash
    cd skills/notebooklm
    python scripts/run.py notebook_manager.py add \
