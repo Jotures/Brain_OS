@@ -208,12 +208,14 @@
 | `/brain-os-dev` | Agregar features, skills, scripts o integraciones nuevas |
 | `/brain-os-upgrade` | Mejorar, refactorizar o corregir componentes existentes |
 | `/brain-os-audit` | Auditoría periódica de salud del sistema (score 0-100) |
+| `/academic-research` | Investigación académica profunda via NotebookLM (auto-activado) |
 
 > 📋 *Historial de cambios*: [CHANGELOG.md](./CHANGELOG.md)
 
 ### Últimos Cambios
 | Fecha | Tipo | Descripción |
 |-------|------|-------------|
+| 2026-03-03 | ✨ `feat` | Workflow `/academic-research`: investigación académica via NotebookLM |
 | 2026-03-03 | ✨ `feat` | Sprint 3: Skill `brain-os-health` creada (auditoría automática, score 92.5/100) |
 | 2026-03-03 | ✨ `feat` | Sprint 2: Auto-documentación — dashboard-sync, dev_registry.json, brain-os-dev mejorado |
 | 2026-03-03 | ✨ `feat` | Creados 3 workflows: /brain-os-dev, /brain-os-upgrade, /brain-os-audit |

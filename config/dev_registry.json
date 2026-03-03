@@ -62,6 +62,29 @@
                 ".agent/workflows/brain-os-dev.md"
             ],
             "workflow_used": "/brain-os-dev"
+        },
+        {
+            "id": "006",
+            "date": "2026-03-03",
+            "type": "feat",
+            "description": "Sprint 3: Skill brain-os-health con health_check.py, IDs documentados, last30days confirmada",
+            "files_affected": [
+                "skills/brain-os-health/SKILL.md",
+                "skills/brain-os-health/scripts/health_check.py",
+                "brain_config.md"
+            ],
+            "workflow_used": "/brain-os-dev"
+        },
+        {
+            "id": "007",
+            "date": "2026-03-03",
+            "type": "feat",
+            "description": "Workflow /academic-research: investigación académica via NotebookLM con briefing y notebooks dedicados",
+            "files_affected": [
+                ".agent/workflows/academic-research.md",
+                "config/research_log.json"
+            ],
+            "workflow_used": "/brain-os-dev"
         }
     ],
     "schema": {

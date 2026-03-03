@@ -24,6 +24,20 @@
       "healthy_count": 5,
       "warnings_count": 0,
       "critical_count": 1
+    },
+    {
+      "date": "2026-03-03 17:43",
+      "score": 100.0,
+      "healthy_count": 6,
+      "warnings_count": 0,
+      "critical_count": 0
+    },
+    {
+      "date": "2026-03-03 18:12",
+      "score": 92.5,
+      "healthy_count": 5,
+      "warnings_count": 0,
+      "critical_count": 1
     }
   ]
 }
