@@ -58,6 +58,9 @@ listo:
 ```
 
 ### Valores de Prioridad
+
+> **Nota**: Los IDs de select options son generados por Notion en formato Base62 con caracteres especiales. Son válidos y funcionales tal cual. No editarlos manualmente.
+
 ```yaml
 alta:
   id: "xkx?"

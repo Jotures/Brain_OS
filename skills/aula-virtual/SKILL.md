@@ -1,6 +1,6 @@
 ---
 name: aula-virtual
-description: Integración con el Aula Virtual de la Universidad Andina del Cusco (Moodle). Usa esta skill para consultar cursos, tareas pendientes, notas y materiales del campus virtual. Se activa cuando el usuario menciona "aula virtual", "campus", "moodle", "tareas pendientes", "mis notas", o cualquier referencia a la plataforma académica de UAndina.
+description: Integración con el Aula Virtual de la Universidad Andina del Cusco (Moodle). Usa esta skill para consultar cursos, tareas pendientes, notas, progreso, materiales y preparación pre-examen. Se activa cuando el usuario menciona "aula virtual", "campus", "moodle", "tareas pendientes", "mis notas", "progreso", o cualquier referencia a la plataforma académica de UAndina.
 ---
 
 # Aula Virtual UAndina
@@ -29,37 +29,93 @@ El token se guardará automáticamente en `.env`.
 
 | Di esto... | Brain OS hace... |
 |------------|------------------|
-| "¿Qué tareas tengo pendientes?" | Lista deadlines de Moodle |
+| "¿Qué tareas tengo pendientes?" | Lista deadlines con prioridad inteligente |
 | "Tareas de [curso]" | Filtra por curso específico |
-| "Mis notas de [curso]" | Consulta calificaciones |
+| "Mis notas" / "¿Cómo voy?" | Dashboard de calificaciones |
+| "Mis notas --brief" | Resumen rápido de notas (boot matutino) |
+| "Progreso de actividades" | Barra de progreso por curso |
+| "Progreso de [curso]" | Progreso filtrado por curso |
+| "Reporte semanal" | Reporte de rendimiento con tendencias |
 | "Cursos del aula virtual" | Lista cursos matriculados |
-| "Sync aula virtual" | Sincroniza tareas a Notion |
+| "Sync aula virtual" | Sincroniza tareas + calendario a Notion |
+| "Hay materiales nuevos?" | Detecta archivos subidos recientemente |
+| "¿Tengo exámenes pronto?" | Detector de evaluaciones próximas |
+| "Preparar examen de [curso]" | Modo pre-examen inteligente |
+
+## Scripts Disponibles
+
+| Script | Función |
+|--------|---------|
+| `get_uandina_token.py` | Obtiene y guarda el token de autenticación |
+| `get_tasks.py` | 🦅 "Ojos de Águila" v2 — Tareas con prioridad inteligente |
+| `get_grades.py` | 📊 Dashboard de calificaciones en tiempo real |
+| `get_progress.py` | 📋 Tracker de progreso de actividades |
+| `weekly_report.py` | 📈 Reporte semanal de rendimiento con tendencias |
+| `watch_materials.py` | 👁️ Watcher de materiales nuevos |
+| `exam_detector.py` | 🔍 Detector de exámenes próximos |
+| `pre_exam_orchestrator.py` | 🎯 Orquestador de modo pre-examen |
+| `sync_assignments.py` | 📤 Sync tareas + calendario → Notion |
+| `sync_full_local.py` | 📁 Sync archivos locales → Notion |
+| `download_files.py` | 📥 Descarga archivos del aula virtual |
+| `course_map.py` | 🗺️ Registry central de cursos |
+| `moodle_api.py` | API completa (cursos, tareas, notas, progreso, calendario) |
 
 ## Uso Programático
 
 ```python
 from scripts.moodle_api import MoodleAPI
 
-# Inicializar (usa token de .env)
 api = MoodleAPI()
 
-# Obtener cursos
+# Cursos, tareas, notas
 cursos = api.get_courses()
-
-# Obtener deadlines próximos (14 días)
 deadlines = api.get_upcoming_deadlines(14)
-
-# Obtener notas de un curso
 notas = api.get_grades(course_id=12345)
+
+# Progreso y calendario
+progreso = api.get_course_progress_summary(course_id=12345)
+eventos = api.get_upcoming_events(days=30)
+actividades = api.get_activity_completion(course_id=12345)
 ```
 
 ## Flujo de Sincronización
 
 ```
-1. get_upcoming_deadlines() → Lista tareas con fechas
-2. Mapear curso Moodle → curso Brain OS
-3. Crear tareas en Notion (BD_TAREAS_MAESTRAS)
-4. Actualizar INICIO.md (via dashboard-sync)
+1. Moodle → get_tasks.py → Prioridad inteligente (peso + tiempo)
+2. Moodle → sync_assignments.py → Notion BD_TAREAS_MAESTRAS + Calendario
+3. Moodle → download_files.py → Archivos Locales + .url
+4. Archivos → sync_full_local.py → Notion BD_RECURSOS
+5. Moodle → watch_materials.py → Detecta nuevos archivos
+```
+
+## Sistema de Prioridad Inteligente
+
+Fórmula: `urgencia = (peso_en_nota × 0.4) + (factor_tiempo × 0.6)`
+
+| Urgencia | Prioridad | Notion |
+|----------|-----------|--------|
+| ≥ 0.5 o ≤ 2 días | 🔥 Alta | `🔥 Alta` |
+| ≥ 0.25 o ≤ 7 días | ⚡ Media | `⚡ Media` |
+| < 0.25 | ☁️ Baja | `☁️ Baja` |
+
+## Modo Pre-Examen 🎯
+
+Cuando se detecta un examen próximo, el orquestador genera configuración para:
+
+| Componente | Acción |
+|------------|--------|
+| **Pomodoro** | Perfil `exam_prep` (45min/8min) o `intensive` |
+| **Active Recall** | Intensidad alta, 5-7 preguntas/sesión, Bloom 4-5 |
+| **NotebookLM** | URL del notebook del curso para consulta |
+| **Estrategia** | Personalizada según días restantes |
+
+```bash
+# Detectar exámenes
+python scripts/exam_detector.py --days 14
+
+# Generar config pre-examen
+python scripts/pre_exam_orchestrator.py --course "Investigación Operativa"
+python scripts/pre_exam_orchestrator.py --all --json
 ```
 
 ## Mapeo de Cursos
@@ -70,42 +126,7 @@ notas = api.get_grades(course_id=12345)
 | ECONOMIA INTERNACIONAL I | economia_internacional | CURSO_ECONOMIA_INTERNACIONAL |
 | ... | ... | ... |
 
-## Scripts Disponibles
-
-| Script | Función |
-|--------|---------|
-| `get_uandina_token.py` | Obtiene y guarda el token de autenticación |
-| `get_tasks.py` | 🦅 "Ojos de Águila" - Busca tareas en Moodle |
-| `read_notion_tasks.py` | 📥 Lee tareas de BD_TAREAS_MAESTRAS |
-| `course_map.py` | 🗺️ Mapeo cursos Moodle ↔ Brain OS ↔ Notion |
-| `sync_to_notion.py` | 📤 Sincroniza tareas a BD_TAREAS_MAESTRAS |
-| `moodle_client.py` | Cliente simple para probar conexión |
-| `moodle_api.py` | API completa (cursos, tareas, notas) |
-| `download_material.py` | 📥 **NUEVO:** Busca y descarga archivos del aula virtual |
-
-## Descargar Materiales
-
-Para buscar y descargar archivos específicos (ej. PDFs, diapositivas):
-
-```bash
-# Buscar en todos los cursos
-python scripts/download_material.py "nombre archivo"
-
-# Buscar en curso específico (filtro parcial)
-python scripts/download_material.py "nombre archivo" --course "nombre curso"
-
-# Especificar carpeta de salida
-python scripts/download_material.py "nombre" --outdir "ruta/destino"
-```
-
-## Flujo Bidireccional
-
-```
-LECTURA:                          ESCRITURA:
-Notion → read_notion_tasks.py     get_tasks.py → sync_to_notion.py → Notion
-         ↓                                                            ↑
-    Brain OS ←────────────────────────────────────────────────────────┘
-```
+Ver `course_map.py` para el mapeo completo.
 
 ## Notas de Seguridad
 
@@ -118,5 +139,7 @@ Notion → read_notion_tasks.py     get_tasks.py → sync_to_notion.py → Notio
 | Error | Solución |
 |-------|----------|
 | "Invalid token" | Ejecutar `get_uandina_token.py` |
-| "Service unavailable" | Verificar que usas `moodle_mobile_app` como servicio |
+| "Service unavailable" | Verificar servicio `moodle_mobile_app` |
 | "Connection error" | Verificar internet/VPN |
+| "No grades found" | El profesor aún no ha publicado notas |
+| "No completion tracking" | El curso no tiene tracking habilitado en Moodle |

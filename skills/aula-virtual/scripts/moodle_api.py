@@ -213,6 +213,154 @@ class MoodleAPI:
             events={'timestart': time_start, 'timeend': time_end}
         )
     
+    def get_upcoming_events(self, days: int = 30) -> List[Dict]:
+        """
+        Get upcoming calendar events (quizzes, exams, module openings).
+        
+        Uses core_calendar_get_calendar_upcoming_view for a comprehensive
+        view of all upcoming academic events, not just assignments.
+        
+        Args:
+            days: Number of days ahead to look
+            
+        Returns:
+            List of event dicts with name, course, type, timestart, etc.
+        """
+        import time
+        
+        try:
+            result = self._call('core_calendar_get_calendar_upcoming_view')
+            
+            events = []
+            now = int(time.time())
+            future = now + (days * 24 * 60 * 60)
+            
+            for event in result.get('events', []):
+                timestart = event.get('timestart', 0)
+                
+                # Solo eventos futuros dentro del rango
+                if now < timestart <= future:
+                    event_type = event.get('eventtype', 'unknown')
+                    module_name = event.get('modulename', '')
+                    
+                    # Clasificar tipo de evento para Brain OS
+                    if module_name == 'quiz' or 'quiz' in event.get('name', '').lower():
+                        brain_os_type = '⚡ Examen'
+                    elif module_name == 'assign':
+                        brain_os_type = '📝 Tarea'
+                    elif event_type in ('course', 'group'):
+                        brain_os_type = '📅 Evento'
+                    else:
+                        brain_os_type = '📅 Evento'
+                    
+                    events.append({
+                        'id': event.get('id'),
+                        'name': event.get('name', 'Sin nombre'),
+                        'course_name': event.get('course', {}).get('fullname', ''),
+                        'course_id': event.get('courseid'),
+                        'type': brain_os_type,
+                        'event_type': event_type,
+                        'module_name': module_name,
+                        'timestart': timestart,
+                        'timestart_formatted': datetime.fromtimestamp(timestart).strftime('%Y-%m-%d %H:%M'),
+                        'days_remaining': (timestart - now) // (24 * 60 * 60),
+                        'description': event.get('description', ''),
+                        'url': event.get('url', ''),
+                    })
+            
+            # Ordenar por fecha
+            events.sort(key=lambda x: x['timestart'])
+            return events
+            
+        except MoodleAPIError as e:
+            print(f"⚠️ Error getting calendar events: {e}")
+            return []
+    
+    def get_activity_completion(self, course_id: int) -> List[Dict]:
+        """
+        Get completion status for all activities in a course.
+        
+        Args:
+            course_id: The Moodle course ID
+            
+        Returns:
+            List of activity dicts with completion status
+        """
+        user_id = self.get_user_id()
+        
+        try:
+            result = self._call(
+                'core_completion_get_activities_completion_status',
+                courseid=course_id,
+                userid=user_id
+            )
+            
+            activities = []
+            for status in result.get('statuses', []):
+                activities.append({
+                    'cmid': status.get('cmid'),
+                    'module_name': status.get('modname', ''),
+                    'state': status.get('state', 0),  # 0=incomplete, 1=complete, 2=complete_pass, 3=complete_fail
+                    'completed': status.get('state', 0) in (1, 2),
+                    'tracking': status.get('tracking', 0),  # 0=none, 1=manual, 2=automatic
+                    'has_completion': status.get('tracking', 0) > 0,
+                })
+            
+            return activities
+            
+        except MoodleAPIError:
+            return []
+    
+    def get_course_progress_summary(self, course_id: int) -> Dict:
+        """
+        Get a progress summary for a course combining completion + contents.
+        
+        Returns:
+            Dict with total_activities, completed, pending, percentage
+        """
+        activities = self.get_activity_completion(course_id)
+        
+        # Solo contar actividades con tracking habilitado
+        tracked = [a for a in activities if a['has_completion']]
+        completed = [a for a in tracked if a['completed']]
+        
+        total = len(tracked)
+        done = len(completed)
+        percentage = round((done / total) * 100, 1) if total > 0 else 0.0
+        
+        # Enriquecer con nombres usando course_contents
+        try:
+            contents = self.get_course_contents(course_id)
+            # Crear mapa cmid -> nombre
+            name_map = {}
+            for section in contents:
+                for module in section.get('modules', []):
+                    name_map[module.get('id')] = {
+                        'name': module.get('name', 'Sin nombre'),
+                        'modname': module.get('modname', ''),
+                        'section': section.get('name', ''),
+                    }
+            
+            # Enriquecer actividades
+            for act in tracked:
+                info = name_map.get(act['cmid'], {})
+                act['name'] = info.get('name', f'Activity {act["cmid"]}')
+                act['activity_type'] = info.get('modname', '')
+                act['section'] = info.get('section', '')
+        except MoodleAPIError:
+            for act in tracked:
+                act['name'] = f'Activity {act["cmid"]}'
+                act['activity_type'] = act.get('module_name', '')
+                act['section'] = ''
+        
+        return {
+            'total': total,
+            'completed': done,
+            'pending': total - done,
+            'percentage': percentage,
+            'activities': tracked,
+        }
+    
     def get_upcoming_deadlines(self, days: int = 14) -> List[Dict]:
         """
         Get upcoming assignment deadlines.

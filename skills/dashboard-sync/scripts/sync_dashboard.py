@@ -27,6 +27,8 @@ class DashboardSync:
         self.config_path = self.root / "brain_config.md"
         self.skills_path = self.root / "skills"
         self.notebooklm_library = self.skills_path / "notebooklm" / "data" / "library.json"
+        self.dev_registry_path = self.root / "config" / "dev_registry.json"
+        self.changelog_path = self.root / "CHANGELOG.md"
 
     def load_notebooks(self) -> List[Dict]:
         """Load notebooks from NotebookLM library."""
@@ -134,6 +136,46 @@ class DashboardSync:
         
         return "\n".join(lines)
 
+    def generate_dev_section(self) -> str:
+        """Generate development status section from dev_registry.json."""
+        if not self.dev_registry_path.exists():
+            return ""
+
+        try:
+            with open(self.dev_registry_path, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+        except Exception as e:
+            print(f"\u26a0\ufe0f Error loading dev_registry: {e}")
+            return ""
+
+        entries = data.get('entries', [])
+        # Últimas 5 entradas, más recientes primero
+        recent = entries[-5:][::-1]
+
+        type_emojis = {
+            'feat': '\u2728',
+            'refactor': '\ud83d\udd04',
+            'fix': '\ud83d\udc1b',
+            'docs': '\ud83d\udcdd',
+            'cleanup': '\ud83e\uddf9'
+        }
+
+        lines = [
+            "### \u00daltimos Cambios",
+            "",
+            "| Fecha | Tipo | Descripci\u00f3n |",
+            "|-------|------|-------------|"  
+        ]
+
+        for entry in recent:
+            date = entry.get('date', '')
+            change_type = entry.get('type', '')
+            desc = entry.get('description', '')
+            emoji = type_emojis.get(change_type, '')
+            lines.append(f"| {date} | {emoji} `{change_type}` | {desc} |")
+
+        return "\n".join(lines)
+
     def sync(self, preview: bool = False) -> Dict:
         """Execute dashboard synchronization."""
         result = {
@@ -153,6 +195,7 @@ class DashboardSync:
         # Generate sections
         notebooklm_section = self.generate_notebooklm_section(notebooks)
         skills_section = self.generate_skills_section(skills)
+        dev_section = self.generate_dev_section()
         
         if preview:
             print("\n📋 Preview de cambios:")
@@ -160,6 +203,8 @@ class DashboardSync:
             print(notebooklm_section)
             print("\n--- Skills Section ---")
             print(skills_section)
+            print("\n--- Dev Section ---")
+            print(dev_section)
             return result
         
         # Read current INICIO.md
@@ -214,6 +259,13 @@ class DashboardSync:
             
             content = content.replace(match_status.group(1), status_block)
             result['sections_updated'].append('Estado Actual')
+
+        # Update Dev Section (Últimos Cambios)
+        dev_pattern = r"(### \u00daltimos Cambios.*?)(\n## |\n---|\.Z)"
+        match_dev = re.search(dev_pattern, content, re.DOTALL)
+        if match_dev and dev_section:
+            content = content.replace(match_dev.group(1), dev_section + "\n")
+            result['sections_updated'].append('Desarrollo')
 
         # Write changes
         if content != original_content:

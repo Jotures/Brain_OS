@@ -4,25 +4,23 @@
 - **Qué se construye:** Un caso de estudio escrito y una presentación oral (10-20-30).
 - **Por qué existe:** Trabajo de Investigación Formativa para la Unidad 1 del curso.
 - **Para quién es:** Para ser evaluado por las docentes Mg. Mabel F. Gutiérrez Chávez o Mg. María Lourdes Del Castillo Bejar, y expuesto a los compañeros de clase.
-- **Teoría Core Seleccionada:** Teoría de la Ventaja Comparativa (David Ricardo / Heckscher-Ohlin).
+- **Teoría Core Seleccionada:** Teoría de la Ventaja Comparativa y el Modelo Heckscher-Ohlin.
 - **Restricciones Clave:** El entregable del informe es el 3 de marzo. Las exposiciones inician ese mismo día.
 
 ## 📓 Registro de Decisiones (Decision Log)
 
 | Fecha | Decisión | Alternativas | Por qué se eligió |
 |-------|----------|--------------|-------------------|
-| 28 Feb | **Caso de Estudio:** Semiconductores (EE.UU. vs Taiwán/China) | Histórico (Textil vs Vino), Perú vs EE.UU (Agro vs Tech), Propio | El usuario se decantó por la opción tecnológica global. Es muy actual y aplica perfectamente a la teoría moderna. |
-| 28 Feb | **Enfoque de Exposición:** Teórico-Académico | Analítico-Geopolítico, Negocios/Cadena de Valor | Selección del usuario. Se centrará en Fronteras de Posibilidades de Producción y modelos matemáticos de Ricardo/Heckscher-Ohlin aplicados a datos reales. |
-| 28 Feb | **Opción Estructural:** Opción B (Heckscher-Ohlin) | Opción A (Ricardo), Opción C (Storytelling) | Elegido por ser ambicioso, encajar con el enfoque teórico y basarse en intensidades de factores de producción aplicados a empresas reales. |
+| 01 Mar | **Caso de Estudio:** Vehículos Eléctricos (China [BYD] vs. Occidente [Tesla/Marcas Alemanas]) | Semiconductores (Descartado por ser muy abstracto), Histórico (Textil vs Vino) | Es moderno, altamente noticioso (guerra de aranceles actuales), y mecánicamente fácil de entender para la audiencia garantizando atención. |
+| 01 Mar | **Enfoque de Exposición:** Teórico-Académico | Analítico-Geopolítico | Foco en Fronteras de Posibilidades de Producción y modelos matemáticos de Heckscher-Ohlin aplicados a datos tangibles de ensamblaje vs. software automotriz. |
+| 01 Mar | **Opción Estructural:** Opción B (Heckscher-Ohlin) | Opción A (Ricardo), Opción C (Storytelling) | Elegido por encajar con el enfoque teórico y basarse en intensidades de factores de producción aplicados a empresas reales. |
 
 ## 🔒 Understanding Lock (Validación de Entendimiento)
 
 ### Resumen de la Solución
 - **Qué estamos diseñando:** Una presentación oral y un informe escrito sobre un caso de estudio de comercio internacional.
-- **Por qué:** Trabajo de Investigación Formativa para Economía Internacional I.
-- **Quién es la audiencia:** Docentes del curso y compañeros de clase.
-- **El Caso Central:** Aplicación de la Teoría de la Ventaja Comparativa al sector de Semiconductores (Diseño en EE.UU. vs. Manufactura en Taiwán).
-- **El Enfoque:** Estrictamente académico, demostrando el modelo mediante gráficos económicos (FPP, curvas de indiferencia, isocuantas) y fundamentos matemáticos.
+- **El Caso Central:** Aplicación del Modelo Heckscher-Ohlin a la industria de Vehículos Eléctricos (VEs).
+- **El Enfoque:** Mostrar cómo China posee ventajas en Capital Físico/Manufactura (Baterías, Ensamblaje) y EE.UU./Europa en Capital Humano (Software de conducción autónoma, Diseño de marca).
 
 ### Supuestos (Assumptions)
 Dado que el sílabo no lo especifica, estamos asumiendo lo siguiente:
@@ -30,113 +28,75 @@ Dado que el sílabo no lo especifica, estamos asumiendo lo siguiente:
 2. **Formato:** Informe en formato APA 7 y presentación en PowerPoint/Canva.
 3. **Escala (Grupo):** Trabajo en equipo de 3 a 5 personas.
 
-### Preguntas Abiertas
-- ¿Disponibilidad de datos reales de exportación/producción tecnológica para armar los gráficos matemáticos de EE.UU. y Taiwán?
-
 ---
-*Understanding Lock Validado: 28 de Febrero, 2026.*
-
-## 5️⃣ Exploración de Enfoques Estructurales
-
-Con la validación hecha, he diseñado **3 opciones de estructura** para la exposición y el informe. Revisa cuál te parece más sólida para que procedamos al diseño final hoja-por-hoja.
-
-### Opción A: "El Modelo Clásico Riguroso" (Recomendada)
-Esta estructura va directo a demostrar el dominio matemático de la teoría.
-* **1-3:** Introducción y presentación del caso (Semiconductores vs. Software).
-* **4-6:** Aplicación de la Ventaja Absoluta (EE.UU. domina en ambos) frente a la Ventaja Comparativa de Ricardo (costos de oportunidad).
-* **7-8:** Demostración gráfica: Frontera de Posibilidades de Producción bidimensional.
-* **9-10:** Conclusión y cómo la teoría se refleja en las estadísticas de mercado actuales.
-* **Por qué elegirla:** Es la más segura académicamente. A los profesores les encanta ver que sabes construir y leer los gráficos FPP.
-
-### Opción B: "El Enfoque de Dotación de Factores (Heckscher-Ohlin)"
-En vez de basarse solo en productividad laboral (Ricardo), se enfoca en por qué Taiwán tiene ventaja en manufactura (capital físico/subsidios gubernamentales) y EE.UU. en diseño (abundancia de capital humano altamente calificado).
-* **1-3:** Contexto: Intensidad de capital vs intensidad de conocimiento.
-* **4-6:** El Modelo H-O aplicado a TSMC (Taiwán) vs. NVIDIA/Intel (EE.UU).
-* **7-8:** Gráficos de Isocuantas y líneas de isocostos.
-* **9-10:** Conclusión y validación de la paradoja de Leontief.
-* Por qué elegirla: Demuestra un conocimiento más profundo del sílabo, conectando modelos más avanzados. Es ambiciosa.
-
-### Opción C: "El Caso de Estudio Secuencial (Storytelling)"
-Se enfoca menos en las matemáticas pesadas y más en explicar cómo EE.UU. perdió su ventaja comparativa manufacturera frente a Taiwán debido a los cambios en los costos de oportunidad a lo largo de los años.
-* **1-3:** Historia: ¿Por qué EE.UU. empezó a delegar la fabricación en los 90s?
-* **4-7:** Análisis de costo de oportunidad iterativo (gráficos básicos).
-* **8-10:** Implicancias actuales y conclusiones.
-* **Por qué elegirla:** Es muy entretenida para presentar ante tu clase.
-
----
+*Understanding Lock Validado: 01 de Marzo, 2026.*
 
 ## 6️⃣ Diseño Incremental de la Presentación (Opción B: Heckscher-Ohlin)
 
 ### Parte 1: Introducción y Contexto (Diapositivas 1-3)
 
 **Diapositiva 1: Título y Presentación**
-* **Contenido:** "Ventaja Comparativa en el Siglo XXI: El Modelo Heckscher-Ohlin aplicado a la Industria de Semiconductores (EE.UU. vs Taiwán)".
-* **Visual:** Un microchip dividido por la mitad: un lado brillante con diseño conceptual (EE.UU.), otro lado físico y manufacturado (Taiwán).
+* **Contenido:** "Acelerando la Ventaja Comparativa: El Modelo Heckscher-Ohlin en la Guerra de los Vehículos Eléctricos (China vs Occidente)".
+* **Visual:** Un coche eléctrico partido a la mitad: el chasis y la batería (China) ensamblándose en masa, y por el lado brillante, código y una pantalla táctil (Tesla/EE.UU.).
 
-**Diapositiva 2: El Paradigma de los Semiconductores**
-* **Objetivo:** Explicar cómo funciona la industria Fabless vs Foundry.
+**Diapositiva 2: El Paradigma del Auto Moderno (Hardware vs Software)**
+* **Objetivo:** Explicar cómo la construcción de autos cambió. Hoy es una "computadora sobre ruedas".
 * **Contenido:** 
-  * Empresas "Fabless" (NVIDIA, AMD, Apple): Diseñan chips pero NO los fabrican. Tienen intensidad altísima en **Capital Humano** (ingenieros de software, diseñadores arquitectónicos).
-  * Empresas "Foundry" (TSMC en Taiwán): Fabrican chips pero NO los diseñan. Tienen intensidad extrema en **Capital Físico** (máquinas litográficas EUV que cuestan $200M cada una).
+  * *El Vehículo:* Ya no depende del motor de combustión. Su costo se divide principalmente en Baterías/Chasis y Software de conducción.
+  * Occidente (Tesla/Marcas Alemanas): Intensidad altísima en **Capital Humano ($K_h$)** (Ingenieros de software para Autopilot, marketing, diseño de lujo).
+  * China (BYD, CATL): Intensidad extrema en **Capital Físico / Recursos ($K_f$)** (Megafábricas subsidiadas, cadenas de suministro de litio purificadas).
 
-**Diapositiva 3: La Dotación de Factores (Premisa de Heckscher-Ohlin)**
+**Diapositiva 3: La Dotación de Factores (La Premisa de H-O)**
 * **Objetivo:** Introducir la teoría formal de forma directa.
-* **Contenido:** Según H-O, un país exportará bienes que utilicen intensivamente su factor de producción más abundante. 
-  * Identificaremos a EE.UU. como un país abundante en **Conocimiento (K_h)** y a Taiwán como un país subsidiado y abundante en **Capital Físico Específico (K_f)**.
+* **Contenido:** Según Heckscher-Ohlin, un país exportará bienes que utilicen intensivamente su factor de producción más abundante y barato. 
+  * **Occidente:** Abundante en **Conocimiento ($K_h$)**.
+  * **China:** Abundante en **Capital Físico Específico ($K_f$)** e insumos (Baterías).
 
 ### Parte 2: Aplicación Matemática y Gráfica del Modelo H-O (Diapositivas 4-6)
 
-**Diapositiva 4: Intensidades Factoriales (La Ecuación)**
+**Diapositiva 4: Intensidades Factoriales (El contraste de industrias)**
 * **Objetivo:** Mostrar matemáticamente la diferencia en intensidades.
 * **Contenido:**
-  * Explicación de las ratios K/L (Capital respecto a Trabajo).
-  * *Bien 1 (Diseño de Chips - EE.UU.):* Ratio Kh/L muy alto (mucho conocimiento por desarrollador/arquitecto).
-  * *Bien 2 (Manufactura de Chips - Taiwán):* Ratio Kf/L muy alto (maquinaria física pesada por cada operario).
-* **Visual:** Una tabla simple que contraste el costo operativo por empleado de una firma Fabless (altos salarios intelectuales) vs una Foundry pura (alta depreciación de maquinaria).
+  * Explicación de las ratios K/L.
+  * *Bien 1 (Software/Diseño del Vehículo - EE.UU.):* Ratio Kh/L altísimo (muy pocos empleados, salarios astronómicos de ingenieros de IA).
+  * *Bien 2 (Baterías y Ensamblaje en masa - China):* Ratio Kf/L altísimo (maquinaria pesada y minería masiva por cada trabajador).
 
-**Diapositiva 5: El Gráfico de Isocuantas (La Elección Tecnológica)**
-* **Objetivo:** Demostrar cómo cada país elige el método productivo más barato según su dotación.
+**Diapositiva 5: El Gráfico de Isocuantas (Sustitución de Factores)**
+* **Objetivo:** Demostrar cómo las empresas eligen métodos productivos.
 * **Contenido:** 
-  * Una gráfica de **Isocuantas** clásica mostrando la sustitución entre Capital Físico y Capital Humano.
-  * *EE.UU.* produce tangencialmente muy arriba en la curva (Intensivo en Dolar/Conocimiento) porque su línea de isocoste allí tiene menor pendiente para el diseño.
-  * *Taiwán* produce en un punto inferior derecho en la curva (Intensivo en Capital Físico), impulsado por la disponibilidad de clústeres y fuertes subsidios gubernamentales (haciendo que el K_f sea "barato").
+  * Una curva de Isocuanta enfrentando $K_f$ vs $K_h$.
+  * *Occidente* produce tangencialmente muy arriba en la curva (Intensivo en $K_h$) porque su línea de isocoste allí tiene menor pendiente para el desarrollo intelectual.
+  * *China* produce en el extremo inferior derecho (Intensivo en $K_f$), impulsado por gigantescos subsidios gubernamentales e infraestructura, haciendo que la maquinaria y las baterías sean el "factor barato".
 
 **Diapositiva 6: La Frontera de Posibilidades de Producción Sesgada**
-* **Objetivo:** El clímax de la teoría: cómo los sesgos factoriales determinan el comercio.
+* **Objetivo:** La culminación del modelo: El teorema de Rybczynski gráfico y la base del comercio.
 * **Contenido:**
-  * Mostrar gráficamente dos **FPPs sesgadas** (El teorema de Rybczynski de forma gráfica):
-    * FPP de EE.UU. estirada hacia el eje Y ('Diseño').
-    * FPP de Taiwán estirada hacia el eje X ('Manufactura').
-  * Mostrar cómo, sin comercio (autarquía), los precios difieren. Con comercio, convergen al ratio de precios internacional, dictando que a Taiwán le sale más barato fabricar para EE.UU., y a EE.UU. le sale más a cuenta diseñar para Taiwán.
+  * Dos **FPPs sesgadas** gráficamente:
+    * FPP de Occidente sesgada hacia el eje Y ('Desarrollo/Software/Diseño').
+    * FPP de China sesgada hacia el eje X ('Producción Física/Ensemablaje de VEs').
+  * Explicación de los precios relativos en autarquía y cómo al abrir el comercio convergen, demostrando la eficiencia de que Occidente exporte diseño/marcas y China exporte el vehículo manufacturado.
 
-### Parte 3: Paradojas y Consecuencias en la Actualidad (Diapositivas 7-10)
+### Parte 3: Teoremas y La Realidad Geopolítica Actual (Diapositivas 7-10)
 
-**Diapositiva 7: La Paradoja de Leontief en los Semiconductores**
-* **Objetivo:** Demostrar dominio crítico del modelo económico.
+**Diapositiva 7: La Paradoja de Leontief y el Nuevo "Valor"**
+* **Objetivo:** Análisis profundo.
 * **Contenido:**
-  * Recordar la paradoja empírica de Wassily Leontief de 1953 (EE.UU., siendo intensivo en capital, exportaba bienes intensivos en trabajo manual).
-  * Explicar que la situación de los semiconductores en 2026 resuelve la paradoja: EE.UU. exporta un bien aparentemente "intangible" (diseño de software) pero que en realidad es hiper-intensivo en el tipo más caro de capital: **el Capital Humano de élite**.
+  * ¿Por qué el país "más rico" (EE.UU.) no está exportando intensivamente productos industriales pesados tangibles como autos masivos?
+  * La solución a la Paradoja: El producto occidental es un intangible disfrazado de auto. Exportan **Capital Humano** a través de patentes y código (Full Self-Driving), no ensamblaje de chapa metálica.
 
 **Diapositiva 8: Efectos sobre el Precio de los Factores (Teorema Stolper-Samuelson)**
-* **Objetivo:** Analizar quién gana y quién pierde con el libre comercio.
+* **Objetivo:** Consecuencias sociales del modelo.
 * **Contenido:**
-  * En EE.UU., el precio relativo del K_h (sueldos de ingenieros de software) ha aumentado brutalmente.
-  * En contraposición, los empleos de manufactura (L físico no especializado) en EE.UU. perdieron valor relativo frente a Asia, generando impactos sociales y políticos.
+  * En Occidente, el libre comercio de VEs aumentaría el retorno del $K_h$ (Ingenieros de Silicon Valley se hacen más ricos).
+  * Sin embargo, el Trabajo manual no calificado ($L$) asociado a la vieja manufactura automotriz pierde valor rápidamente (desempleo en Detroit o Alemania).
 
-**Diapositiva 9: Cuando la Ventaja Comparativa se vuelve Seguridad Nacional (Conclusión Práctica)**
-* **Objetivo:** Vincular la teoría con los titulares de noticias actuales.
+**Diapositiva 9: Cuando Ocurre el "Fallo": Aranceles y el Mundo Real**
+* **Objetivo:** ¿Por qué Occidente no acepta jugar bajo el modelo pacíficamente?
 * **Contenido:**
-  * El "CHIPS Act" de EE.UU. (Inversión de $52B) y la guerra arancelaria actual. EE.UU. está intentando alterar artificialmente la dotación de capital físico (K_f) mediante subsidios, ignorando a propósito la ventaja comparativa por "Seguridad Estatal".
+  * Estados Unidos y Europa acaban de implementar aranceles masivos (100% en EE.UU., hasta 38% en la UE) a los VE Chinos como BYD.
+  * Análisis: Los gobiernos occidentales intervienen porque temen el choque estructural profundo previsto por Stolper-Samuelson (destrucción del empleo manufacturero "caro" y la pérdida de la industria madre).
 
-**Diapositiva 10: Conclusión del Caso**
-* **Objetivo:** Cierre académico.
+**Diapositiva 10: Conclusión General**
+* **Objetivo:** Cierre impactante de la teoría.
 * **Contenido:**
-  * Resumen de la comprobación del modelo.
-  * *Reflexión final:* Heckscher-Ohlin predice el flujo comercial perfectamente en este siglo siempre que desdoblemos la "L" (Trabajo) tradicional entre Trabajo manual bruto y Capital Humano (K_h).
-
----
-## 🏁 Siguientes Pasos de Implementación
-
-1. **Recolección de Datos:** Extraer datos reales de subsidios y salarios promedios (NVIDIA engineers vs TSMC technicians) para dotar de números reales a las FPPs.
-2. **Creación del Informe:** Redactar un *Paper* de 5-10 páginas describiendo lo anterior en formato académico formal con fuentes.
-3. **Diseño Visual:** Trasladar la estructura de arriba a Canva o PowerPoint introduciendo los gráficos H-O y diagramas limpios.
+  * El Modelo H-O predice la especialización comercial automotriz casi a la perfección hoy en día. Sin embargo, en la práctica, los países prefieren distorsionar la ventaja comparativa (vía aranceles o nuevos subsidios en casa, ej. Inflation Reduction Act) por razones de seguridad de empleos e independencia industrial nacional estratégica.

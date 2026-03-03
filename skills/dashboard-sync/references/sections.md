@@ -52,6 +52,27 @@ Definición de las secciones del dashboard y su formato para sincronización.
 | Racha | {racha} días |
 ```
 
+## Plantilla: Estado de Desarrollo
+
+```markdown
+## 🔧 DESARROLLO DEL SISTEMA
+
+| Comando | Acción |
+|---------|--------|
+| `/brain-os-dev` | Agregar features, skills, scripts o integraciones nuevas |
+| `/brain-os-upgrade` | Mejorar, refactorizar o corregir componentes existentes |
+| `/brain-os-audit` | Auditoría periódica de salud del sistema (score 0-100) |
+
+> 📋 *Historial de cambios*: [CHANGELOG.md](./CHANGELOG.md)
+
+### Últimos Cambios
+| Fecha | Tipo | Descripción |
+|-------|------|-------------|
+| {fecha} | {emoji} `{tipo}` | {descripcion} |
+```
+
+**Fuente**: `config/dev_registry.json` → Últimas 5 entradas
+
 ## Plantilla: Próximas Tareas
 
 ```markdown

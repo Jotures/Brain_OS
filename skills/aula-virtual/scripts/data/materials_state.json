@@ -1,0 +1,401 @@
+{
+  "last_run": "2026-03-03T17:06:02.238055",
+  "known_files": {
+    "21087:DOCENTE MGT ROBERT PAUL PILARES HUALLPA.jpg:https://campus.uandina.edu.pe/webservice/pluginfile.php/1714798/mod_resource/content/4/DOCENTE%20MGT%20ROBERT%20PAUL%20PILARES%20HUALLPA.jpg?forcedownload=1": {
+      "filename": "DOCENTE MGT ROBERT PAUL PILARES HUALLPA.jpg",
+      "timemodified": 1771809628,
+      "course": "Investigación Operativa",
+      "first_seen": "2026-03-03T17:05:57.747510"
+    },
+    "21087:PRESENTACIÓN DEL CURSO DE INVESTIGACIÓN OPERATIVA.pdf:https://campus.uandina.edu.pe/webservice/pluginfile.php/1714799/mod_resource/content/1/PRESENTACI%C3%93N%20DEL%20CURSO%20DE%20INVESTIGACI%C3%93N%20OPERATIVA.pdf?forcedownload=1": {
+      "filename": "PRESENTACIÓN DEL CURSO DE INVESTIGACIÓN OPERATIVA.pdf",
+      "timemodified": 1771809628,
+      "course": "Investigación Operativa",
+      "first_seen": "2026-03-03T17:05:57.747510"
+    },
+    "21087:SILABO. INVESTIGACION DE OPERATIVA PLAN  2020- 2026-1.pdf:https://campus.uandina.edu.pe/webservice/pluginfile.php/1714800/mod_resource/content/4/SILABO.%20INVESTIGACION%20DE%20OPERATIVA%20PLAN%20%202020-%202026-1.pdf?forcedownload=1": {
+      "filename": "SILABO. INVESTIGACION DE OPERATIVA PLAN  2020- 2026-1.pdf",
+      "timemodified": 1771810619,
+      "course": "Investigación Operativa",
+      "first_seen": "2026-03-03T17:05:57.747510"
+    },
+    "21087:INTRODUCCIÓN A LA INVESTIGACIÓN OPERATIVA.pdf:https://campus.uandina.edu.pe/webservice/pluginfile.php/1714805/mod_resource/content/1/INTRODUCCI%C3%93N%20A%20LA%20INVESTIGACI%C3%93N%20OPERATIVA.pdf?forcedownload=1": {
+      "filename": "INTRODUCCIÓN A LA INVESTIGACIÓN OPERATIVA.pdf",
+      "timemodified": 1771809629,
+      "course": "Investigación Operativa",
+      "first_seen": "2026-03-03T17:05:57.747510"
+    },
+    "21087:EL MODELADO EN LA INVESTIGACIÓN DE OPERACIONES.pdf:https://campus.uandina.edu.pe/webservice/pluginfile.php/1714806/mod_resource/content/1/EL%20MODELADO%20EN%20LA%20INVESTIGACI%C3%93N%20DE%20OPERACIONES.pdf?forcedownload=1": {
+      "filename": "EL MODELADO EN LA INVESTIGACIÓN DE OPERACIONES.pdf",
+      "timemodified": 1771809629,
+      "course": "Investigación Operativa",
+      "first_seen": "2026-03-03T17:05:57.747510"
+    },
+    "21087:FASES DE UN ESTUDIO DE INVESTIGACIÓN OPERATIVA.pdf:https://campus.uandina.edu.pe/webservice/pluginfile.php/1714807/mod_resource/content/2/FASES%20DE%20UN%20ESTUDIO%20DE%20INVESTIGACI%C3%93N%20OPERATIVA.pdf?forcedownload=1": {
+      "filename": "FASES DE UN ESTUDIO DE INVESTIGACIÓN OPERATIVA.pdf",
+      "timemodified": 1771809629,
+      "course": "Investigación Operativa",
+      "first_seen": "2026-03-03T17:05:57.747510"
+    },
+    "21087:UTILIZACIÓN DE HOJAS DE CÁLCULO EN LA INVESTIGACIÓN DE OPERACIONES.pdf:https://campus.uandina.edu.pe/webservice/pluginfile.php/1714808/mod_resource/content/3/UTILIZACI%C3%93N%20DE%20HOJAS%20DE%20C%C3%81LCULO%20EN%20LA%20INVESTIGACI%C3%93N%20DE%20OPERACIONES.pdf?forcedownload=1": {
+      "filename": "UTILIZACIÓN DE HOJAS DE CÁLCULO EN LA INVESTIGACIÓN DE OPERACIONES.pdf",
+      "timemodified": 1771809629,
+      "course": "Investigación Operativa",
+      "first_seen": "2026-03-03T17:05:57.747510"
+    },
+    "21087:1.2.1. TEORIA CLÁSICA.pdf:https://campus.uandina.edu.pe/webservice/pluginfile.php/1714810/mod_resource/content/1/1.2.1.%20TEORIA%20CL%C3%81SICA.pdf?forcedownload=1": {
+      "filename": "1.2.1. TEORIA CLÁSICA.pdf",
+      "timemodified": 1771809629,
+      "course": "Investigación Operativa",
+      "first_seen": "2026-03-03T17:05:57.747510"
+    },
+    "21087:FUNDAMENTOS TEÓRICOS DE LA INVESTIGACIÓN DE OPERACIONES.pdf:https://campus.uandina.edu.pe/webservice/pluginfile.php/1714811/mod_resource/content/4/FUNDAMENTOS%20TE%C3%93RICOS%20DE%20LA%20INVESTIGACI%C3%93N%20DE%20OPERACIONES.pdf?forcedownload=1": {
+      "filename": "FUNDAMENTOS TEÓRICOS DE LA INVESTIGACIÓN DE OPERACIONES.pdf",
+      "timemodified": 1771809629,
+      "course": "Investigación Operativa",
+      "first_seen": "2026-03-03T17:05:57.747510"
+    },
+    "21087:EL MODELADO EN LA PROGRAMACIÓN LINEAL.pdf:https://campus.uandina.edu.pe/webservice/pluginfile.php/1714812/mod_resource/content/5/EL%20MODELADO%20EN%20LA%20PROGRAMACI%C3%93N%20LINEAL.pdf?forcedownload=1": {
+      "filename": "EL MODELADO EN LA PROGRAMACIÓN LINEAL.pdf",
+      "timemodified": 1771809629,
+      "course": "Investigación Operativa",
+      "first_seen": "2026-03-03T17:05:57.747510"
+    },
+    "21087:APLICACIONES DE LA PROGRAMACIÓN LINEAL.pdf:https://campus.uandina.edu.pe/webservice/pluginfile.php/1714813/mod_resource/content/5/APLICACIONES%20DE%20LA%20PROGRAMACI%C3%93N%20LINEAL.pdf?forcedownload=1": {
+      "filename": "APLICACIONES DE LA PROGRAMACIÓN LINEAL.pdf",
+      "timemodified": 1771809629,
+      "course": "Investigación Operativa",
+      "first_seen": "2026-03-03T17:05:57.747510"
+    },
+    "21087:PLANIFICACIÓN, PRODUCCIÓN Y CONTROL DE INVENTARIOS.pdf:https://campus.uandina.edu.pe/webservice/pluginfile.php/1714814/mod_resource/content/5/PLANIFICACI%C3%93N%2C%20PRODUCCI%C3%93N%20Y%20CONTROL%20DE%20INVENTARIOS.pdf?forcedownload=1": {
+      "filename": "PLANIFICACIÓN, PRODUCCIÓN Y CONTROL DE INVENTARIOS.pdf",
+      "timemodified": 1771809629,
+      "course": "Investigación Operativa",
+      "first_seen": "2026-03-03T17:05:57.747510"
+    },
+    "21087:MODELO DE PRODUCCIÓN EN INVENTARIO DURANTE PERÍODOS MÚLTIPLES.pdf:https://campus.uandina.edu.pe/webservice/pluginfile.php/1714815/mod_resource/content/5/MODELO%20DE%20PRODUCCI%C3%93N%20EN%20INVENTARIO%20DURANTE%20PER%C3%8DODOS%20M%C3%9ALTIPLES.pdf?forcedownload=1": {
+      "filename": "MODELO DE PRODUCCIÓN EN INVENTARIO DURANTE PERÍODOS MÚLTIPLES.pdf",
+      "timemodified": 1771809629,
+      "course": "Investigación Operativa",
+      "first_seen": "2026-03-03T17:05:57.747510"
+    },
+    "21087:MODELOS Y MÉTODOS.pdf:https://campus.uandina.edu.pe/webservice/pluginfile.php/1714816/mod_resource/content/5/MODELOS%20Y%20M%C3%89TODOS.pdf?forcedownload=1": {
+      "filename": "MODELOS Y MÉTODOS.pdf",
+      "timemodified": 1771809629,
+      "course": "Investigación Operativa",
+      "first_seen": "2026-03-03T17:05:57.747510"
+    },
+    "21087:EL MÉTODO SIMPLEX.pdf:https://campus.uandina.edu.pe/webservice/pluginfile.php/1714817/mod_resource/content/5/EL%20M%C3%89TODO%20SIMPLEX.pdf?forcedownload=1": {
+      "filename": "EL MÉTODO SIMPLEX.pdf",
+      "timemodified": 1771809629,
+      "course": "Investigación Operativa",
+      "first_seen": "2026-03-03T17:05:57.747510"
+    },
+    "21087:ANÁLISIS DE DUALIDAD.pdf:https://campus.uandina.edu.pe/webservice/pluginfile.php/1714819/mod_resource/content/6/AN%C3%81LISIS%20DE%20DUALIDAD.pdf?forcedownload=1": {
+      "filename": "ANÁLISIS DE DUALIDAD.pdf",
+      "timemodified": 1771809629,
+      "course": "Investigación Operativa",
+      "first_seen": "2026-03-03T17:05:57.747510"
+    },
+    "21087:INTERPRETACIÓN ECONÓMICA DE LA DUALIDAD.pdf:https://campus.uandina.edu.pe/webservice/pluginfile.php/1714820/mod_resource/content/6/INTERPRETACI%C3%93N%20ECON%C3%93MICA%20DE%20LA%20DUALIDAD.pdf?forcedownload=1": {
+      "filename": "INTERPRETACIÓN ECONÓMICA DE LA DUALIDAD.pdf",
+      "timemodified": 1771809629,
+      "course": "Investigación Operativa",
+      "first_seen": "2026-03-03T17:05:57.747510"
+    },
+    "21087:2.1.1. ANÁLISIS DE SENSIBILIDAD GRÁFICA.pdf:https://campus.uandina.edu.pe/webservice/pluginfile.php/1714837/mod_resource/content/7/2.1.1.%20AN%C3%81LISIS%20DE%20SENSIBILIDAD%20GR%C3%81FICA.pdf?forcedownload=1": {
+      "filename": "2.1.1. ANÁLISIS DE SENSIBILIDAD GRÁFICA.pdf",
+      "timemodified": 1771809630,
+      "course": "Investigación Operativa",
+      "first_seen": "2026-03-03T17:05:57.747510"
+    },
+    "21087:2.1.2. ANÁLISIS DE SENSIBILIDAD ALGEBRAICA.pdf:https://campus.uandina.edu.pe/webservice/pluginfile.php/1714838/mod_resource/content/7/2.1.2.%20AN%C3%81LISIS%20DE%20SENSIBILIDAD%20ALGEBRAICA.pdf?forcedownload=1": {
+      "filename": "2.1.2. ANÁLISIS DE SENSIBILIDAD ALGEBRAICA.pdf",
+      "timemodified": 1771809630,
+      "course": "Investigación Operativa",
+      "first_seen": "2026-03-03T17:05:57.747510"
+    },
+    "21087:2.1.3. ANÁLISIS DE SENSIBILIDAD CON SOLVER.pdf:https://campus.uandina.edu.pe/webservice/pluginfile.php/1714839/mod_resource/content/7/2.1.3.%20AN%C3%81LISIS%20DE%20SENSIBILIDAD%20CON%20SOLVER.pdf?forcedownload=1": {
+      "filename": "2.1.3. ANÁLISIS DE SENSIBILIDAD CON SOLVER.pdf",
+      "timemodified": 1771809630,
+      "course": "Investigación Operativa",
+      "first_seen": "2026-03-03T17:05:57.747510"
+    },
+    "21087:2.2.1. DEFINICIÓN DEL MODELO DE TRANSPORTE.pdf:https://campus.uandina.edu.pe/webservice/pluginfile.php/1714841/mod_resource/content/7/2.2.1.%20DEFINICI%C3%93N%20DEL%20MODELO%20DE%20TRANSPORTE.pdf?forcedownload=1": {
+      "filename": "2.2.1. DEFINICIÓN DEL MODELO DE TRANSPORTE.pdf",
+      "timemodified": 1771809630,
+      "course": "Investigación Operativa",
+      "first_seen": "2026-03-03T17:05:57.747510"
+    },
+    "21087:2.2.2. MODELOS NO TRADICIONALES DE TRANSPORTE.pdf:https://campus.uandina.edu.pe/webservice/pluginfile.php/1714842/mod_resource/content/7/2.2.2.%20MODELOS%20NO%20TRADICIONALES%20DE%20TRANSPORTE.pdf?forcedownload=1": {
+      "filename": "2.2.2. MODELOS NO TRADICIONALES DE TRANSPORTE.pdf",
+      "timemodified": 1771809630,
+      "course": "Investigación Operativa",
+      "first_seen": "2026-03-03T17:05:57.747510"
+    },
+    "21087:2.2.3. DETERMINACIÓN DE SOLUCIÓN DE INICIO.pdf:https://campus.uandina.edu.pe/webservice/pluginfile.php/1714843/mod_resource/content/7/2.2.3.%20DETERMINACI%C3%93N%20DE%20SOLUCI%C3%93N%20DE%20INICIO.pdf?forcedownload=1": {
+      "filename": "2.2.3. DETERMINACIÓN DE SOLUCIÓN DE INICIO.pdf",
+      "timemodified": 1771809630,
+      "course": "Investigación Operativa",
+      "first_seen": "2026-03-03T17:05:57.747510"
+    },
+    "21087:2.2.4. EL MODELO DE ASIGNACIÓN.pdf:https://campus.uandina.edu.pe/webservice/pluginfile.php/1714844/mod_resource/content/7/2.2.4.%20EL%20MODELO%20DE%20ASIGNACI%C3%93N.pdf?forcedownload=1": {
+      "filename": "2.2.4. EL MODELO DE ASIGNACIÓN.pdf",
+      "timemodified": 1771809630,
+      "course": "Investigación Operativa",
+      "first_seen": "2026-03-03T17:05:57.747510"
+    },
+    "21087:2.2.5. MODELO DE TRANSBORDO.pdf:https://campus.uandina.edu.pe/webservice/pluginfile.php/1714845/mod_resource/content/7/2.2.5.%20MODELO%20DE%20TRANSBORDO.pdf?forcedownload=1": {
+      "filename": "2.2.5. MODELO DE TRANSBORDO.pdf",
+      "timemodified": 1771809630,
+      "course": "Investigación Operativa",
+      "first_seen": "2026-03-03T17:05:57.747510"
+    },
+    "21062:Presentación Docente.pdf:https://campus.uandina.edu.pe/webservice/pluginfile.php/1674031/mod_resource/content/1/Presentaci%C3%B3n%20Docente.pdf?forcedownload=1": {
+      "filename": "Presentación Docente.pdf",
+      "timemodified": 1770685665,
+      "course": "Economía Internacional I",
+      "first_seen": "2026-03-03T17:05:58.889071"
+    },
+    "21062:Presentación de la asignatura - ECONOMIA INTERNACIONAL I.pdf:https://campus.uandina.edu.pe/webservice/pluginfile.php/1674079/mod_resource/content/1/Presentaci%C3%B3n%20de%20la%20asignatura%20-%20ECONOMIA%20INTERNACIONAL%20I.pdf?forcedownload=1": {
+      "filename": "Presentación de la asignatura - ECONOMIA INTERNACIONAL I.pdf",
+      "timemodified": 1770686038,
+      "course": "Economía Internacional I",
+      "first_seen": "2026-03-03T17:05:58.889071"
+    },
+    "21062:Silabo Economía Internacional I (2026-I).pdf:https://campus.uandina.edu.pe/webservice/pluginfile.php/1674054/mod_resource/content/1/Silabo%20Econom%C3%ADa%20Internacional%20I%20%282026-I%29.pdf?forcedownload=1": {
+      "filename": "Silabo Economía Internacional I (2026-I).pdf",
+      "timemodified": 1770685965,
+      "course": "Economía Internacional I",
+      "first_seen": "2026-03-03T17:05:58.889071"
+    },
+    "21062:Introducción a la unidad I.pdf:https://campus.uandina.edu.pe/webservice/pluginfile.php/1686566/mod_resource/content/1/Introducci%C3%B3n%20a%20la%20unidad%20I.pdf?forcedownload=1": {
+      "filename": "Introducción a la unidad I.pdf",
+      "timemodified": 1770856104,
+      "course": "Economía Internacional I",
+      "first_seen": "2026-03-03T17:05:58.889071"
+    },
+    "21062:CRONOGRAMA DE ACTIVIDADES 1ra unidad.pdf:https://campus.uandina.edu.pe/webservice/pluginfile.php/1686558/mod_resource/content/2/CRONOGRAMA%20DE%20ACTIVIDADES%201ra%20unidad.pdf?forcedownload=1": {
+      "filename": "CRONOGRAMA DE ACTIVIDADES 1ra unidad.pdf",
+      "timemodified": 1770917291,
+      "course": "Economía Internacional I",
+      "first_seen": "2026-03-03T17:05:58.889071"
+    },
+    "21062:1.1 INTRO y NOCIONES BASICAS-ECONOMIA INTERNACIONAL.pdf:https://campus.uandina.edu.pe/webservice/pluginfile.php/1686814/mod_resource/content/1/1.1%20INTRO%20y%20NOCIONES%20BASICAS-ECONOMIA%20INTERNACIONAL.pdf?forcedownload=1": {
+      "filename": "1.1 INTRO y NOCIONES BASICAS-ECONOMIA INTERNACIONAL.pdf",
+      "timemodified": 1770859754,
+      "course": "Economía Internacional I",
+      "first_seen": "2026-03-03T17:05:58.889071"
+    },
+    "21062:1.2 El Modelo Clásico del Comercio Internacional.pdf:https://campus.uandina.edu.pe/webservice/pluginfile.php/1709655/mod_resource/content/1/1.2%20El%20Modelo%20Cl%C3%A1sico%20del%20Comercio%20Internacional.pdf?forcedownload=1": {
+      "filename": "1.2 El Modelo Clásico del Comercio Internacional.pdf",
+      "timemodified": 1771507715,
+      "course": "Economía Internacional I",
+      "first_seen": "2026-03-03T17:05:58.889071"
+    },
+    "21062:1.3 Economías externas de escala.pdf:https://campus.uandina.edu.pe/webservice/pluginfile.php/1726107/mod_resource/content/1/1.3%20Economi%CC%81as%20externas%20de%20escala.pdf?forcedownload=1": {
+      "filename": "1.3 Economías externas de escala.pdf",
+      "timemodified": 1772394609,
+      "course": "Economía Internacional I",
+      "first_seen": "2026-03-03T17:05:58.889071"
+    },
+    "21062:LECTURA 1_ Economias de escala.PDF:https://campus.uandina.edu.pe/webservice/pluginfile.php/1709659/mod_resource/content/1/LECTURA%201_%20Economias%20de%20escala.PDF?forcedownload=1": {
+      "filename": "LECTURA 1_ Economias de escala.PDF",
+      "timemodified": 1771507920,
+      "course": "Economía Internacional I",
+      "first_seen": "2026-03-03T17:05:58.889071"
+    },
+    "21062:El modelo de gravedad.url:https://www.youtube.com/watch?v=8dE3hSo6h8g": {
+      "filename": "El modelo de gravedad.url",
+      "timemodified": 0,
+      "course": "Economía Internacional I",
+      "first_seen": "2026-03-03T17:05:58.890093"
+    },
+    "21060:Estado y Economia en la Constitucion 1993.pdf:https://campus.uandina.edu.pe/webservice/pluginfile.php/1646467/mod_resource/content/1/Estado%20y%20Economia%20en%20la%20Constitucion%201993.pdf?forcedownload=1": {
+      "filename": "Estado y Economia en la Constitucion 1993.pdf",
+      "timemodified": 1770306052,
+      "course": "Economía y Gestión Pública",
+      "first_seen": "2026-03-03T17:05:59.751134"
+    },
+    "21060:Instrumentos-de-Politica-Economica.pdf:https://campus.uandina.edu.pe/webservice/pluginfile.php/1689357/mod_resource/content/1/Instrumentos-de-Politica-Economica.pdf?forcedownload=1": {
+      "filename": "Instrumentos-de-Politica-Economica.pdf",
+      "timemodified": 1770910902,
+      "course": "Economía y Gestión Pública",
+      "first_seen": "2026-03-03T17:05:59.751134"
+    },
+    "21060:Politica-Fiscal-y-Politica-Fiscal-en-el-Peru.pdf:https://campus.uandina.edu.pe/webservice/pluginfile.php/1710078/mod_resource/content/1/Politica-Fiscal-y-Politica-Fiscal-en-el-Peru.pdf?forcedownload=1": {
+      "filename": "Politica-Fiscal-y-Politica-Fiscal-en-el-Peru.pdf",
+      "timemodified": 1771516055,
+      "course": "Economía y Gestión Pública",
+      "first_seen": "2026-03-03T17:05:59.751134"
+    },
+    "21060:Panorama-Fiscal-de-America-Latina-y-el-Caribe-2025.pdf:https://campus.uandina.edu.pe/webservice/pluginfile.php/1710080/mod_resource/content/1/Panorama-Fiscal-de-America-Latina-y-el-Caribe-2025.pdf?forcedownload=1": {
+      "filename": "Panorama-Fiscal-de-America-Latina-y-el-Caribe-2025.pdf",
+      "timemodified": 1771516118,
+      "course": "Economía y Gestión Pública",
+      "first_seen": "2026-03-03T17:05:59.751134"
+    },
+    "21060:Ley-de-Bases-de-Descentralizacion-en-Peru.pdf:https://campus.uandina.edu.pe/webservice/pluginfile.php/1764994/mod_resource/content/1/Ley-de-Bases-de-Descentralizacion-en-Peru.pdf?forcedownload=1": {
+      "filename": "Ley-de-Bases-de-Descentralizacion-en-Peru.pdf",
+      "timemodified": 1772552928,
+      "course": "Economía y Gestión Pública",
+      "first_seen": "2026-03-03T17:05:59.751134"
+    },
+    "21060:SILABUS - ECONOMIA Y GESTION PUBLICA - 2026 I.docx:https://campus.uandina.edu.pe/webservice/pluginfile.php/1674641/mod_resource/content/1/SILABUS%20-%20ECONOMIA%20Y%20GESTION%20PUBLICA%20-%202026%20I.docx?forcedownload=1": {
+      "filename": "SILABUS - ECONOMIA Y GESTION PUBLICA - 2026 I.docx",
+      "timemodified": 1770693174,
+      "course": "Economía y Gestión Pública",
+      "first_seen": "2026-03-03T17:05:59.751134"
+    },
+    "21049:sesion 1.pptx:https://campus.uandina.edu.pe/webservice/pluginfile.php/1677018/mod_resource/content/1/sesion%201.pptx?forcedownload=1": {
+      "filename": "sesion 1.pptx",
+      "timemodified": 1770736060,
+      "course": "Investigación Económica",
+      "first_seen": "2026-03-03T17:06:01.382630"
+    },
+    "21049:sesion 2.pptx:https://campus.uandina.edu.pe/webservice/pluginfile.php/1688738/mod_resource/content/1/sesion%202.pptx?forcedownload=1": {
+      "filename": "sesion 2.pptx",
+      "timemodified": 1770905405,
+      "course": "Investigación Económica",
+      "first_seen": "2026-03-03T17:06:01.382630"
+    },
+    "21049:sesion 3.pptx:https://campus.uandina.edu.pe/webservice/pluginfile.php/1704254/mod_resource/content/1/sesion%203.pptx?forcedownload=1": {
+      "filename": "sesion 3.pptx",
+      "timemodified": 1771340075,
+      "course": "Investigación Económica",
+      "first_seen": "2026-03-03T17:06:01.382630"
+    },
+    "21049:sesion 4.pptx:https://campus.uandina.edu.pe/webservice/pluginfile.php/1755638/mod_resource/content/1/sesion%204.pptx?forcedownload=1": {
+      "filename": "sesion 4.pptx",
+      "timemodified": 1772512521,
+      "course": "Investigación Económica",
+      "first_seen": "2026-03-03T17:06:01.382630"
+    },
+    "21049:R_CU-084-2024-UAC-reglamento-marco-grados-titulos.pdf:https://campus.uandina.edu.pe/webservice/pluginfile.php/1677033/mod_resource/content/1/R_CU-084-2024-UAC-reglamento-marco-grados-titulos.pdf?forcedownload=1": {
+      "filename": "R_CU-084-2024-UAC-reglamento-marco-grados-titulos.pdf",
+      "timemodified": 1770736137,
+      "course": "Investigación Económica",
+      "first_seen": "2026-03-03T17:06:01.382630"
+    },
+    "21049:R_CU-414-2022-UAC-grados-titulos-fceac.pdf:https://campus.uandina.edu.pe/webservice/pluginfile.php/1677036/mod_resource/content/1/R_CU-414-2022-UAC-grados-titulos-fceac.pdf?forcedownload=1": {
+      "filename": "R_CU-414-2022-UAC-grados-titulos-fceac.pdf",
+      "timemodified": 1770736175,
+      "course": "Investigación Económica",
+      "first_seen": "2026-03-03T17:06:01.382630"
+    },
+    "21049:Guia-Normas-APA-7ma-edicion.pdf:https://campus.uandina.edu.pe/webservice/pluginfile.php/1677040/mod_resource/content/1/Guia-Normas-APA-7ma-edicion.pdf?forcedownload=1": {
+      "filename": "Guia-Normas-APA-7ma-edicion.pdf",
+      "timemodified": 1770736222,
+      "course": "Investigación Económica",
+      "first_seen": "2026-03-03T17:06:01.382630"
+    },
+    "21049:escalas de medicion.pdf:https://campus.uandina.edu.pe/webservice/pluginfile.php/1677043/mod_resource/content/1/escalas%20de%20medicion.pdf?forcedownload=1": {
+      "filename": "escalas de medicion.pdf",
+      "timemodified": 1770736256,
+      "course": "Investigación Económica",
+      "first_seen": "2026-03-03T17:06:01.382630"
+    },
+    "21049:problemas economicos y su clasificacion por tipo de investigacion.xlsx:https://campus.uandina.edu.pe/webservice/pluginfile.php/1704255/mod_resource/content/1/problemas%20economicos%20y%20su%20clasificacion%20por%20tipo%20de%20investigacion.xlsx?forcedownload=1": {
+      "filename": "problemas economicos y su clasificacion por tipo de investigacion.xlsx",
+      "timemodified": 1771340207,
+      "course": "Investigación Económica",
+      "first_seen": "2026-03-03T17:06:01.382630"
+    },
+    "21049:determinacion de variables.pdf:https://campus.uandina.edu.pe/webservice/pluginfile.php/1709921/mod_resource/content/1/determinacion%20de%20variables.pdf?forcedownload=1": {
+      "filename": "determinacion de variables.pdf",
+      "timemodified": 1771513314,
+      "course": "Investigación Económica",
+      "first_seen": "2026-03-03T17:06:01.382630"
+    },
+    "21049:determinacion de variables.pdf:https://campus.uandina.edu.pe/webservice/pluginfile.php/1718367/mod_resource/content/2/determinacion%20de%20variables.pdf?forcedownload=1": {
+      "filename": "determinacion de variables.pdf",
+      "timemodified": 1771947983,
+      "course": "Investigación Económica",
+      "first_seen": "2026-03-03T17:06:01.382630"
+    },
+    "21049:pautas para encontrar el problema de investigacion.url:https://www.youtube.com/watch?v=NPQFwNFWNcg": {
+      "filename": "pautas para encontrar el problema de investigacion.url",
+      "timemodified": 0,
+      "course": "Investigación Económica",
+      "first_seen": "2026-03-03T17:06:01.382630"
+    },
+    "21049:AVANCES DEL DESARROLLO DE INVESTIGACION.url:https://docs.google.com/spreadsheets/d/1rnkqGEUwfjphMjV91YkgcSj_eFrMPpLMDkKs49cmBmo/edit?usp=sharing": {
+      "filename": "AVANCES DEL DESARROLLO DE INVESTIGACION.url",
+      "timemodified": 0,
+      "course": "Investigación Económica",
+      "first_seen": "2026-03-03T17:06:01.382630"
+    },
+    "21049:PAUTAS PARA ENCONTRAR LAS VARIABLES DE INVESTIGACION.url:https://www.youtube.com/watch?v=_Xk0Ug8Vnw8": {
+      "filename": "PAUTAS PARA ENCONTRAR LAS VARIABLES DE INVESTIGACION.url",
+      "timemodified": 0,
+      "course": "Investigación Económica",
+      "first_seen": "2026-03-03T17:06:01.382630"
+    },
+    "21049:PAUTAS PARA ENCONTRAR LOS NIVELES DE INVESTIGACION.url:https://www.youtube.com/watch?v=3R-7vB-JK80": {
+      "filename": "PAUTAS PARA ENCONTRAR LOS NIVELES DE INVESTIGACION.url",
+      "timemodified": 0,
+      "course": "Investigación Económica",
+      "first_seen": "2026-03-03T17:06:01.382630"
+    },
+    "21049:PAUTAS PARA ENCONTRAR EL DISEÑO DE LA TESIS.url:https://www.youtube.com/watch?v=vqfLtkCrabk&t=342s": {
+      "filename": "PAUTAS PARA ENCONTRAR EL DISEÑO DE LA TESIS.url",
+      "timemodified": 0,
+      "course": "Investigación Económica",
+      "first_seen": "2026-03-03T17:06:01.382630"
+    },
+    "21049:PAUTAS PARA ENCONTRAR EL ENFOQUE DE INVESTIGACION.url:https://www.youtube.com/watch?v=lk3uJLdZ7F4": {
+      "filename": "PAUTAS PARA ENCONTRAR EL ENFOQUE DE INVESTIGACION.url",
+      "timemodified": 0,
+      "course": "Investigación Económica",
+      "first_seen": "2026-03-03T17:06:01.382630"
+    },
+    "21049:AVANCES 1ER APORTE.url:https://docs.google.com/spreadsheets/d/1_ldB1o-5mK_gNwxx72l91KMWJ8lzLrQpxmkLke0IsDM/edit?usp=sharing": {
+      "filename": "AVANCES 1ER APORTE.url",
+      "timemodified": 0,
+      "course": "Investigación Económica",
+      "first_seen": "2026-03-03T17:06:01.382630"
+    },
+    "21049:CONTENIDOS PARA EL DESARROLLO DEL PRIMER INFORME.docx:https://campus.uandina.edu.pe/webservice/pluginfile.php/1755778/mod_resource/content/1/CONTENIDOS%20PARA%20EL%20DESARROLLO%20DEL%20PRIMER%20INFORME.docx?forcedownload=1": {
+      "filename": "CONTENIDOS PARA EL DESARROLLO DEL PRIMER INFORME.docx",
+      "timemodified": 1772513171,
+      "course": "Investigación Económica",
+      "first_seen": "2026-03-03T17:06:01.382630"
+    },
+    "21021:SILABO TEORIA MONETARIA Y BANCARIA.docx:https://campus.uandina.edu.pe/webservice/pluginfile.php/1673143/mod_resource/content/1/SILABO%20TEORIA%20MONETARIA%20Y%20BANCARIA.docx?forcedownload=1": {
+      "filename": "SILABO TEORIA MONETARIA Y BANCARIA.docx",
+      "timemodified": 1770678159,
+      "course": "Teoría Monetaria y Bancaria",
+      "first_seen": "2026-03-03T17:06:02.237053"
+    },
+    "21021:SESION 1.pptx:https://campus.uandina.edu.pe/webservice/pluginfile.php/1673099/mod_resource/content/1/SESION%201.pptx?forcedownload=1": {
+      "filename": "SESION 1.pptx",
+      "timemodified": 1770677794,
+      "course": "Teoría Monetaria y Bancaria",
+      "first_seen": "2026-03-03T17:06:02.237053"
+    },
+    "21021:SESION 2.pptx:https://campus.uandina.edu.pe/webservice/pluginfile.php/1685867/mod_resource/content/1/SESION%202.pptx?forcedownload=1": {
+      "filename": "SESION 2.pptx",
+      "timemodified": 1770842685,
+      "course": "Teoría Monetaria y Bancaria",
+      "first_seen": "2026-03-03T17:06:02.237053"
+    },
+    "21021:SESION 3.pptx:https://campus.uandina.edu.pe/webservice/pluginfile.php/1701673/mod_resource/content/1/SESION%203.pptx?forcedownload=1": {
+      "filename": "SESION 3.pptx",
+      "timemodified": 1771280123,
+      "course": "Teoría Monetaria y Bancaria",
+      "first_seen": "2026-03-03T17:06:02.237053"
+    },
+    "21021:SESION 4.pptx:https://campus.uandina.edu.pe/webservice/pluginfile.php/1717301/mod_resource/content/1/SESION%204.pptx?forcedownload=1": {
+      "filename": "SESION 4.pptx",
+      "timemodified": 1771887153,
+      "course": "Teoría Monetaria y Bancaria",
+      "first_seen": "2026-03-03T17:06:02.237053"
+    },
+    "21021:SESION 5.pptx:https://campus.uandina.edu.pe/webservice/pluginfile.php/1721153/mod_resource/content/1/SESION%205.pptx?forcedownload=1": {
+      "filename": "SESION 5.pptx",
+      "timemodified": 1772058673,
+      "course": "Teoría Monetaria y Bancaria",
+      "first_seen": "2026-03-03T17:06:02.237053"
+    }
+  }
+}

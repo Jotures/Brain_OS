@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """
-Sync Assignments Moodle -> Notion (BD_TAREAS_MAESTRAS)
-======================================================
-Fetches assignments from Moodle and creates/updates them in Notion.
+Sync Assignments + Calendar Events: Moodle -> Notion (BD_TAREAS_MAESTRAS)
+=========================================================================
+Fetches assignments and calendar events from Moodle and creates/updates them in Notion.
+Now with intelligent auto-priority based on gradebook weight + deadline proximity.
 """
 
 import os
@@ -12,6 +13,7 @@ import requests
 from datetime import datetime
 from moodle_api import MoodleAPI
 from course_map import COURSE_MAP, find_brain_os_course, NOTION_DB_TAREAS, NOTION_DB_AREAS, MOODLE_URL
+from get_tasks import calculate_urgency, get_assignment_weight
 
 # Setup
 NOTION_TOKEN = os.getenv('NOTION_TOKEN')
@@ -170,7 +172,14 @@ def sync_assignments(preview: bool = False):
                 continue
 
             # Create
-            print(f"   ✨ Creating: {name}")
+            # Calcular prioridad inteligente
+            import time as _time
+            current_ts = _time.time()
+            days_remaining = int((due_date - current_ts) / (24 * 60 * 60)) if due_date else 30
+            weight_info = get_assignment_weight(api, course_id, name)
+            _, auto_priority = calculate_urgency(days_remaining, weight_info['weight'])
+            
+            print(f"   ✨ Creating: {name} (Priority: {auto_priority})")
             new_page = {
                 "parent": {"database_id": DATABASE_ID},
                 "properties": {
@@ -184,10 +193,13 @@ def sync_assignments(preview: bool = False):
                         "select": {"name": "📝 Tarea"}
                     },
                     "Estado": {
-                        "status": {"name": "Por hacer"} # Default
+                        "status": {"name": "Por hacer"}
+                    },
+                    "Prioridad": {
+                        "select": {"name": auto_priority}
                     },
                     "Aporte": {
-                        "select": {"name": "Aporte 1"} # Force Aporte 1
+                        "select": {"name": "Aporte 1"}
                     }
                 }
             }
@@ -240,8 +252,127 @@ def sync_assignments(preview: bool = False):
 
     print(f"\n🏁 Sync Complete. Created {msg_count} tasks.")
 
+
+def sync_calendar_events(preview: bool = False):
+    """Sincroniza eventos del calendario de Moodle (quizzes, exámenes) a Notion."""
+    mode_label = "[PREVIEW] " if preview else ""
+    print(f"\n📅 {mode_label}Syncing Calendar Events...")
+    
+    api = MoodleAPI()
+    events = api.get_upcoming_events(days=30)
+    
+    # Filtrar solo eventos que NO son assignments (ya los cubre sync_assignments)
+    non_assign_events = [e for e in events if e['module_name'] != 'assign']
+    
+    if not non_assign_events:
+        print("   ℹ️ No calendar events found beyond assignments.")
+        return
+    
+    print(f"   Found {len(non_assign_events)} calendar events.")
+    
+    # Cargar course mapping de Notion
+    course_map_notion = get_course_mapping()
+    created = 0
+    
+    for event in non_assign_events:
+        name = event['name']
+        event_type = event['type']  # '⚡ Examen' o '📅 Evento'
+        
+        # Verificar si ya existe en Notion
+        query_url = f"https://api.notion.com/v1/databases/{DATABASE_ID}/query"
+        payload = {
+            "filter": {
+                "property": "Tarea",
+                "title": {"equals": name}
+            }
+        }
+        resp = requests.post(query_url, headers=HEADERS, json=payload)
+        existing = resp.json().get('results', [])
+        
+        if existing:
+            print(f"   ⏭️ Exists (skip): {name}")
+            continue
+        
+        if preview:
+            print(f"   📅 [PREVIEW] Se crearía: {event_type} — {name} ({event['timestart_formatted']})")
+            created += 1
+            continue
+        
+        # Buscar relación con curso en Notion
+        notion_course_id = None
+        if event.get('course_name'):
+            notion_course_id = find_course_id_by_name(event['course_name'], course_map_notion)
+        
+        # Calcular prioridad
+        days_rem = event.get('days_remaining', 30)
+        _, auto_priority = calculate_urgency(days_rem, weight=None)
+        
+        # Crear en Notion
+        print(f"   ✨ Creating: {event_type} — {name}")
+        new_page = {
+            "parent": {"database_id": DATABASE_ID},
+            "properties": {
+                "Tarea": {
+                    "title": [{"text": {"content": name}}]
+                },
+                "Fecha Entrega": {
+                    "date": {"start": datetime.fromtimestamp(event['timestart']).isoformat()}
+                },
+                "Tipo": {
+                    "select": {"name": event_type}
+                },
+                "Estado": {
+                    "status": {"name": "Por hacer"}
+                },
+                "Prioridad": {
+                    "select": {"name": auto_priority}
+                },
+                "Aporte": {
+                    "select": {"name": "Aporte 1"}
+                }
+            }
+        }
+        
+        if notion_course_id:
+            new_page["properties"]["Área/Curso"] = {
+                "relation": [{"id": notion_course_id}]
+            }
+        
+        # Añadir link al evento si disponible
+        event_url = event.get('url', '')
+        if event_url:
+            new_page["children"] = [
+                {
+                    "object": "block",
+                    "type": "callout",
+                    "callout": {
+                        "rich_text": [
+                            {"type": "text", "text": {"content": "Ir a Moodle: "}},
+                            {"type": "text", "text": {"content": "Abrir Evento", "link": {"url": event_url}}}
+                        ],
+                        "icon": {"emoji": "📅"},
+                        "color": "gray_background"
+                    }
+                }
+            ]
+        
+        create_resp = requests.post("https://api.notion.com/v1/pages", headers=HEADERS, json=new_page)
+        if create_resp.status_code == 200:
+            print("      ✅ Created.")
+            created += 1
+        else:
+            print(f"      ❌ Error: {create_resp.text}")
+    
+    print(f"\n📅 Calendar Sync Complete. Created {created} events.")
+
+
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description='Sync Moodle assignments to Notion')
+    parser = argparse.ArgumentParser(description='Sync Moodle assignments + calendar to Notion')
     parser.add_argument('--preview', action='store_true', help='Preview sin crear en Notion')
+    parser.add_argument('--no-calendar', action='store_true', help='Skip calendar sync')
     args = parser.parse_args()
+    
     sync_assignments(preview=args.preview)
+    
+    if not args.no_calendar:
+        sync_calendar_events(preview=args.preview)

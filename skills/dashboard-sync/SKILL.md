@@ -38,6 +38,7 @@ description: Sincroniza automáticamente el archivo INICIO.md (panel de control 
 | 4 | 📅 Próximas Tareas | Notion `BD_TAREAS_MAESTRAS` | Diario (Buenos Días) |
 | 5 | 🌉 Hemingway Bridge | `config/hemingway_bridge.json` | Cierre diario |
 | 6 | 🐻 Cronobiología | `brain_config.md` | Rara vez (cambio de hábitos) |
+| 7 | 🔧 Estado de Desarrollo | `CHANGELOG.md` + `config/dev_registry.json` | Al usar `/brain-os-dev` o `/brain-os-upgrade` |
 
 ---
 
@@ -70,6 +71,31 @@ PASO 4 → Confirmar
 ---
 
 ## Formato de Cada Sección
+
+### 🔧 Estado de Desarrollo (NUEVO)
+
+```markdown
+## 🔧 DESARROLLO DEL SISTEMA
+
+| Comando | Acción |
+|---------|--------|
+| `/brain-os-dev` | Agregar features, skills, scripts o integraciones nuevas |
+| `/brain-os-upgrade` | Mejorar, refactorizar o corregir componentes existentes |
+| `/brain-os-audit` | Auditoría periódica de salud del sistema (score 0-100) |
+
+> 📋 *Historial de cambios*: [CHANGELOG.md](./CHANGELOG.md)
+
+### Últimos Cambios
+| Fecha | Tipo | Descripción |
+|-------|------|-------------|
+| {fecha} | {tipo} | {descripcion} |
+```
+
+**Fuentes**:
+- `CHANGELOG.md` → Últimas 5 entradas
+- `config/dev_registry.json` → Registro estructurado con tipo, fecha, archivos afectados
+
+---
 
 ### 📊 Estado Actual
 

@@ -17,6 +17,9 @@ Todos los scripts del ecosistema deben importar IDs desde aquí.
 
 MOODLE_URL = "https://campus.uandina.edu.pe"
 
+# Nota mínima aprobatoria en escala vigesimal (sistema peruano)
+NOTA_MINIMA_APROBATORIA = 13
+
 # =============================================================================
 # NOTION — Bases de Datos
 # =============================================================================

@@ -1,22 +1,29 @@
 {
-    "audits": [
-        {
-            "date": "2026-02-28T19:12:28",
-            "type": "full",
-            "score": "25/30",
-            "components": {
-                "skills": "🟢 29 activas",
-                "notion": "🟢 Conectado (Prueba_Integracion)",
-                "dashboard": "🔴 Desactualizado (>24h)",
-                "pomodoro": "🟢 Operativo",
-                "cleanup": "⚪ No evaluado en prof.",
-                "hemingway": "🔴 Inexistente",
-                "backups": "🔴 Inexistente"
-            },
-            "actions_taken": [
-                "Auditoría inicial registrada"
-            ],
-            "next_audit": "2026-03-07"
-        }
-    ]
+  "audits": [
+    {
+      "date": "2026-02-28T19:12:28",
+      "type": "full",
+      "score": "25/30",
+      "components": {
+        "skills": "🟢 29 activas",
+        "notion": "🟢 Conectado (Prueba_Integracion)",
+        "dashboard": "🔴 Desactualizado (>24h)",
+        "pomodoro": "🟢 Operativo",
+        "cleanup": "⚪ No evaluado en prof.",
+        "hemingway": "🔴 Inexistente",
+        "backups": "🔴 Inexistente"
+      },
+      "actions_taken": [
+        "Auditoría inicial registrada"
+      ],
+      "next_audit": "2026-03-07"
+    },
+    {
+      "date": "2026-03-03 17:41",
+      "score": 92.5,
+      "healthy_count": 5,
+      "warnings_count": 0,
+      "critical_count": 1
+    }
+  ]
 }

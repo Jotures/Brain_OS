@@ -115,6 +115,32 @@ El sistema se divide en "Skills" especializadas. Aquí las más críticas:
 *   **Qué hace**: Mueve archivos a `carrera/` y los registra en Notion. Soporta **4 capas de Progressive Summarization**: Captura → Negrita → Resaltado → Resumen ejecutivo.
 *   **Comando clave**: `"Guarda este archivo"`, `"Resume progresivamente [material]"`.
 
+### ⚙️ Sistema Avanzado (Skills Nuevas v2.1)
+
+| Skill | Función | Complementa |
+|-------|---------|-------------|
+| `agent-memory-systems` | Arquitectura de memoria del agente: episódica, semántica, procedimental | `system-coordinator` |
+| `context-window-management` | Optimización de tokens en sesiones largas (boot, modo crisis) | Todos los flujos |
+| `autonomous-agent-patterns` | Patrón del agent loop (Think → Decide → Act → Observe) | `system-coordinator` |
+| `skill-orchestrator` | Índice maestro de 240+ skills — descubrimiento y combos | Todos los skills |
+
+### 🛠️ Dev Tools (Skills Nuevas v2.1)
+
+| Skill | Función | Complementa |
+|-------|---------|-------------|
+| `mcp-builder` | Guía para construir servidores MCP personalizados | `aula-virtual` |
+| `personal-tool-builder` | Patrón para crear herramientas CLI | `pomodoro`, `cleanup-manager` |
+| `workflow-automation` | Diseño de flujos durables: secuencial, paralelo, orchestrator | Boot diario |
+
+### 🧪 Calidad (Skills Nuevas v2.1)
+
+| Skill | Función | Complementa |
+|-------|---------|-------------|
+| `systematic-debugging` | Debugging metódico de 5 pasos para scripts del sistema | `system-coordinator` |
+| `playwright-skill` | Automatización robusta de browser (Moodle, NotebookLM) | `aula-virtual`, `notebooklm` |
+
+> **Nota**: Cada skill nueva incluye un archivo `BRAIN_OS_CONTEXT.md` que conecta los conceptos genéricos con los módulos reales de Brain OS.
+
 ---
 
 ## 4. Flujos de Trabajo (Workflows)

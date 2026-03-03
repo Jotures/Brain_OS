@@ -1,6 +1,6 @@
-# Skills Directory — Brain OS v2.0
+# Skills Directory — Brain OS v2.1
 
-> **29 skills especializadas** para potenciar el sistema Brain OS.
+> **42 skills especializadas** para potenciar el sistema Brain OS.
 
 ---
 
@@ -68,6 +68,7 @@ skills/
 | `prompt-engineer` | Diseño y optimización de prompts para LLMs |
 | `prompt-engineering` | Técnicas avanzadas de prompt engineering |
 | `prompt-library` | Biblioteca de prompts reutilizables |
+| `last30days` | Investigación de actualidad en Reddit + X + Web (30 días) |
 
 ### 📄 Documentos y Formatos
 
@@ -86,13 +87,49 @@ skills/
 | `notion-template-business` | Templates de Notion para negocios |
 | `kaizen` | Mejora continua |
 
-### � Archivadas (`_archive/`)
+### ⚙️ Sistema Avanzado (Nuevo)
+
+| Skill | Función |
+|-------|---------|
+| `agent-memory-systems` | Arquitectura de memoria del agente — episódica, semántica, procedimental |
+| `context-window-management` | Estrategias de gestión de ventana de contexto y tokens |
+| `autonomous-agent-patterns` | Patrones del agent loop (Think → Decide → Act → Observe) |
+| `skill-orchestrator` | Índice maestro de 240+ skills — descubrimiento y combos |
+| `conversation-memory` | Memoria persistente entre sesiones — Hemingway Bridge estructurado |
+
+### 🛠️ Dev Tools (Nuevo)
+
+| Skill | Función |
+|-------|---------|
+| `mcp-builder` | Guía para construir servidores MCP personalizados |
+| `personal-tool-builder` | Patrón para crear herramientas CLI personales |
+| `workflow-automation` | Diseño de flujos durables — secuencial, paralelo, orchestrator |
+
+### 🧪 Calidad (Nuevo)
+
+| Skill | Función |
+|-------|---------|
+| `systematic-debugging` | Debugging metódico — 5 pasos reproducibles |
+| `playwright-skill` | Automatización de browser con Playwright |
+
+### 🧠 Comportamiento (Nuevo)
+
+| Skill | Función |
+|-------|---------|
+| `behavioral-modes` | Modos operativos adaptativos: TEACH, BRAINSTORM, DEBUG, REVIEW, IMPLEMENT |
+
+### 🧹 Organización (Nuevo)
+
+| Skill | Función |
+|-------|---------|
+| `file-organizer` | Audita y reorganiza `carrera/` — detecta duplicados y clasifica archivos |
+
+### 📦 Archivadas (`_archive/`)
 
 Skills reemplazadas por versiones fusionadas:
 - `concise-planning` → fusionada en `planning`
 - `plan-writing` → fusionada en `planning`
 - `writing-plans` → fusionada en `planning`
-- `skill-creator` → fusionada en `elite-skill-architect`
 
 ---
 

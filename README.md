@@ -82,16 +82,21 @@ Brain_OS/
 
 ---
 
-## 🛠️ Skills Disponibles (29)
+## 🛠️ Skills Disponibles (42)
 
 | Categoría | Skills |
 |-----------|--------|
 | 📄 Documentos | `docx-official` `pptx-official` `xlsx-official` `pdf` `documentation-templates` |
 | ✍️ Escritura | `content-creator` `copy-editing` `copywriting` `doc-coauthoring` `writing-skills` |
 | 📋 Planificación | `brainstorming` `planning` `planning-with-files` `executing-plans` `kaizen` |
-| 🔍 Investigación | `research-engineer` `notebooklm` `prompt-engineer` `prompt-engineering` `prompt-library` |
+| 🔍 Investigación | `research-engineer` `notebooklm` `prompt-engineer` `prompt-engineering` `prompt-library` `last30days` |
 | 🎓 Académico | `aula-virtual` `library-manager` `pomodoro` |
 | 🔄 Sistema | `system-coordinator` `dashboard-sync` `cleanup-manager` `elite-skill-architect` |
+| ⚙️ Sistema Avanzado | `agent-memory-systems` `context-window-management` `autonomous-agent-patterns` `skill-orchestrator` `conversation-memory` |
+| 🛠️ Dev Tools | `mcp-builder` `personal-tool-builder` `workflow-automation` |
+| 🧪 Calidad | `systematic-debugging` `playwright-skill` |
+| 🧠 Comportamiento | `behavioral-modes` |
+| 🧹 Organización | `file-organizer` |
 | 💼 Negocio | `notion-template-business` `architecture` |
 
 Uso: `"Usa la skill [nombre] para [tarea]"`
