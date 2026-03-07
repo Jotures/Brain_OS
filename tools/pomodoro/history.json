@@ -7,6 +7,14 @@
       "phase": "work",
       "duration_minutes": 25,
       "synced_to_notion": false
+    },
+    {
+      "date": "2026-03-06T00:05:31.988557",
+      "topic": "Investigación Operativa: Tarea 04",
+      "mode": "default",
+      "phase": "work",
+      "duration_minutes": 25,
+      "synced_to_notion": false
     }
   ]
 }

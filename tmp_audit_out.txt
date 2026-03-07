@@ -1,0 +1,71 @@
+﻿--- STEP 1: Core Files ---
+OK: brain_config.md
+OK: INICIO.md
+OK: Flujo_Maestro_BrainOS_v2.md
+OK: CHANGELOG.md
+OK: config/audit_log.json
+OK: config/hemingway_bridge.json
+OK: config/notebooklm_registry.json
+
+--- STEP 2: Skills ---
+Active skills: 42
+Archived: 4
+GHOST FILE (<100b): docx (13 bytes)
+GHOST FILE (<100b): pptx (13 bytes)
+GHOST FILE (<100b): xlsx (13 bytes)
+
+--- STEP 3: Config ---
+WARNING: Suspicious chars found
+
+--- STEP 4: Workflows ---
+Workflows checked: 7
+
+--- STEP 5: Dashboard ---
+INICIO Sync: | Última sync | 2026-02-28 19:22 |
+
+--- STEP 6: Git & Hygiene ---
+Git status:
+ M .agent/workflows/academic-research.md
+ D cleanup_archive/2026-02-13_0040/debug_course_dump.json
+ D cleanup_archive/2026-02-13_0040/debug_course_dump.py
+ D cleanup_archive/2026-02-13_0040/debug_page.py
+ D cleanup_archive/2026-02-13_0040/debug_upload_error.png
+ D cleanup_archive/2026-02-13_0040/temp_library_sync.txt
+ M cleanup_history.json
+ M pending_tasks.txt
+ M skills/dashboard-sync/scripts/sync_dashboard.py
+ D skills/notebooklm/debug_upload_error.png
+ M tools/pomodoro/history.json
+ M tools/pomodoro/state.json
+?? .agent/workflows/academic-research-queries.md
+?? .venv/
+?? carrera/semestres/2026-1/PLAN_EXAMENES_PARCIAL1.md
+?? carrera/semestres/2026-1/cursos/01_economia_ambiental/01_Materiales/
+?? carrera/semestres/2026-1/cursos/01_economia_ambiental/examenes/
+?? "carrera/semestres/2026-1/cursos/02_economia_internacional/01_Materiales/1.3 Economi\314\201as externas de escala.pdf"
+?? carrera/semestres/2026-1/cursos/02_economia_internacional/examenes/
+?? "carrera/semestres/2026-1/cursos/03_economia_gestion_publica/01_Materiales/Empoderando-Regiones-para-el-Desarrollo (1).pdf"
+?? carrera/semestres/2026-1/cursos/03_economia_gestion_publica/01_Materiales/Ley-de-Bases-de-Descentralizacion-en-Peru.pdf
+?? carrera/semestres/2026-1/cursos/03_economia_gestion_publica/02_Examenes/
+?? carrera/semestres/2026-1/cursos/03_economia_gestion_publica/examenes/
+?? carrera/semestres/2026-1/cursos/04_investigacion_operativa/examenes/
+?? carrera/semestres/2026-1/cursos/04_investigacion_operativa/tareas/
+?? "carrera/semestres/2026-1/cursos/05_teoria_monetaria/01_Materiales/SESION 6.pptx"
+?? carrera/semestres/2026-1/cursos/05_teoria_monetaria/examenes/
+?? "carrera/semestres/2026-1/cursos/06_investigacion_economica/01_Materiales/AVANCES 1ER APORTE.url"
+?? "carrera/semestres/2026-1/cursos/06_investigacion_economica/01_Materiales/CONTENIDOS PARA EL DESARROLLO DEL PRIMER INFORME.docx"
+?? "carrera/semestres/2026-1/cursos/06_investigacion_economica/01_Materiales/PAUTAS PARA ENCONTRAR EL DISE\303\221O DE LA TESIS.url"
+?? "carrera/semestres/2026-1/cursos/06_investigacion_economica/01_Materiales/PAUTAS PARA ENCONTRAR EL ENFOQUE DE INVESTIGACION.url"
+?? "carrera/semestres/2026-1/cursos/06_investigacion_economica/01_Materiales/PAUTAS PARA ENCONTRAR LOS NIVELES DE INVESTIGACION.url"
+?? "carrera/semestres/2026-1/cursos/06_investigacion_economica/01_Materiales/sesion 4.pptx"
+?? carrera/semestres/2026-1/cursos/06_investigacion_economica/examenes/
+?? carrera/semestres/2026-1/plan_estudio_parcial_1/
+?? cleanup_archive/2026-03-04_1406/
+?? skills/aula-virtual/resources.md
+?? skills/notebooklm/autotest_gestion.txt
+?? skills/notebooklm/sintesis_gestion.txt
+?? tmp_audit_out.txt
+?? tmp_result.txt
+
+Loose files in root: 0
+last30days files: 5

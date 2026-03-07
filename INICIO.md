@@ -238,7 +238,7 @@
 | Flujo Maestro | **v2.0** — Boot → Ejecución → Cierre ([ver completo](./Flujo_Maestro_BrainOS_v2.md)) |
 | Cronotipo | Bear 🐻 — Peak 10:00-14:00, Dip 14:00-16:00 |
 | Motor de sesiones | BRAC 90/20 (profundo) + Pomodoro adaptativo |
-| Última sync | 2026-02-28 19:22 |
+| Última sync | 2026-03-07 00:20 |
 
 ---
 

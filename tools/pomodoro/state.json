@@ -1,12 +1,12 @@
 {
-  "status": "running",
-  "phase": "work",
+  "status": "break_pending",
+  "phase": "short_break",
   "cycle": 1,
-  "topic": "Exposición Eco Internacional",
+  "topic": "Investigación Operativa: Tarea 04",
   "mode": "default",
-  "started_at": "2026-02-28T22:54:57.173761",
-  "ends_at": "2026-02-28T23:19:57.173761",
+  "started_at": "2026-03-05T20:38:51.474066",
+  "ends_at": "2026-03-05T21:03:51.474066",
   "paused_at": null,
-  "remaining_seconds": 1450,
-  "session_start": "2026-02-28T22:54:57.163378"
+  "remaining_seconds": 0,
+  "session_start": "2026-03-05T20:38:51.464905"
 }

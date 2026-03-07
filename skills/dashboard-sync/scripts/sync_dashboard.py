@@ -145,7 +145,7 @@ class DashboardSync:
             with open(self.dev_registry_path, 'r', encoding='utf-8') as f:
                 data = json.load(f)
         except Exception as e:
-            print(f"\u26a0\ufe0f Error loading dev_registry: {e}")
+            print(f"⚠️ Error loading dev_registry: {e}")
             return ""
 
         entries = data.get('entries', [])
@@ -153,11 +153,11 @@ class DashboardSync:
         recent = entries[-5:][::-1]
 
         type_emojis = {
-            'feat': '\u2728',
-            'refactor': '\ud83d\udd04',
-            'fix': '\ud83d\udc1b',
-            'docs': '\ud83d\udcdd',
-            'cleanup': '\ud83e\uddf9'
+            'feat': '✨',
+            'refactor': '🔄',
+            'fix': '🐛',
+            'docs': '📝',
+            'cleanup': '🧹'
         }
 
         lines = [

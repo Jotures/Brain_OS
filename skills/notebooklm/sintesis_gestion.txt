@@ -1,0 +1,111 @@
+📚 Loaded library with 9 notebooks
+⚠️ Browser state is 30.1 days old, may need re-authentication
+💬 Asking: Resume los temas principales del curso de Economia y Gestion Publica que entran en el primer parcial. Los temas clave son: Estado y Economia en la Constitucion de 1993, Instrumentos de Politica Economica (fiscal/monetaria/cambiaria), Politica Fiscal en el Peru, Descentralizacion, y el Panorama Fiscal de America Latina 2025. Haz un resumen ejecutivo estructurado de una pagina con los puntos mas importantes de cada tema.
+📚 Notebook: https://notebooklm.google.com/notebook/b62f9068-a5a0-4647-a9bb-2e7a15001d9d
+  🌐 Opening notebook...
+  ⏳ Waiting for query input...
+  ✓ Found input: textarea.query-box-input
+  ⏳ Typing question...
+  📤 Submitting...
+  ⏳ Waiting for answer...
+  ✅ Got answer!
+
+============================================================
+Question: Resume los temas principales del curso de Economia y Gestion Publica que entran en el primer parcial. Los temas clave son: Estado y Economia en la Constitucion de 1993, Instrumentos de Politica Economica (fiscal/monetaria/cambiaria), Politica Fiscal en el Peru, Descentralizacion, y el Panorama Fiscal de America Latina 2025. Haz un resumen ejecutivo estructurado de una pagina con los puntos mas importantes de cada tema.
+============================================================
+
+Aquí tienes un resumen ejecutivo estructurado con los puntos más importantes de cada tema para tu primer parcial del curso de Economía y Gestión Pública:
+RESUMEN EJECUTIVO: PRIMER PARCIAL DE ECONOMÍA Y GESTIÓN PÚBLICA
+1. Estado y Economía en la Constitución de 1993 El Título III de la Constitución establece las reglas de juego para la intervención estatal bajo el modelo de Economía Social de Mercado
+1
+2
+.
+Rol Promotor y Subsidiario: El mercado es el principal asignador de recursos. El Estado solo interviene en la actividad empresarial por alto interés público o conveniencia nacional (Principio de Subsidiariedad, Art. 60)
+2
+3
+.
+Libertades Económicas: Se garantiza la libertad de empresa, comercio e industria (Art. 59), promoviendo especialmente a las MYPEs
+2
+.
+Rol Regulador: El Estado facilita y vigila la libre competencia, combatiendo monopolios y el abuso de posición dominante (Art. 61)
+4
+. Asimismo, defiende los derechos de los consumidores (Art. 65)
+4
+5
+.
+Recursos Naturales: Son patrimonio de la Nación, y el Estado regula su aprovechamiento sostenible (ej. concesiones)
+6
+.
+2. Instrumentos de Política Económica Son herramientas para corregir fallas de mercado, redistribuir ingresos y estabilizar la economía (funciones de Musgrave)
+7
+8
+. Se dividen en:
+Fiscales: Impuestos, subsidios, transferencias y gasto público directo
+9
+.
+Monetarios: Tasa de interés (costo del crédito), encaje bancario (liquidez) y operaciones de mercado abierto
+10
+.
+Regulatorios: Normas de calidad, licencias, controles de precios y regulación de la competencia
+9
+10
+.
+3. Política Fiscal en el Perú El sistema, gestionado principalmente por el MEF y la SUNAT, está orientado a la estabilidad macroeconómica, pero enfrenta retos estructurales
+11
+12
+.
+Estructura Tributaria: La presión tributaria es baja (16-17% del PBI frente al 23% promedio en LATAM)
+13
+. Existe una alta dependencia del IGV (impuesto regresivo) y problemas graves de evasión (35-40%) vinculados a la alta informalidad laboral (>70%)
+13
+14
+.
+Estructura del Gasto: Aproximadamente el 75% es gasto corriente (remuneraciones, pensiones), lo que genera rigidez
+15
+. La inversión pública fluctúa entre el 4% y 5% del PBI, y sufre de baja ejecución
+15
+.
+Regla Fiscal: Orientada a mantener un déficit fiscal bajo (límite histórico de 1% del PBI) y deuda sostenible (por debajo del 35% del PBI)
+15
+16
+.
+4. Descentralización Iniciada con la Ley de Bases N° 27783 (2002), busca transferir competencias políticas, administrativas y fiscales a 3 niveles de gobierno (nacional, regional y local)
+17
+.
+Financiamiento (Descentralización Fiscal): Depende fuertemente de transferencias del gobierno central (FONCOMUN, transferencias sectoriales) y del Canon y Regalías
+18
+...
+. Esto ha creado un país de "dos velocidades": regiones ricas en recursos vs. regiones dependientes de transferencias
+20
+.
+Participación Ciudadana: Mecanismos como el Presupuesto Participativo sufren de "fatiga participativa" (Isabel Remy), con incidencia real en menos del 5% del presupuesto, volviéndose un trámite ritual
+21
+22
+.
+Cuellos de botella: Baja capacidad institucional para ejecutar proyectos (falta de capital humano técnico), "centralismo económico" persistente (Lima concentra los mercados, según Efraín Gonzales de Olarte) y alta incidencia de corrupción subnacional
+23
+...
+.
+5. Panorama Fiscal de América Latina 2025 (CEPAL) La región enfrenta un espacio fiscal muy limitado en un contexto de bajo crecimiento económico
+27
+28
+.
+Déficit y Deuda: El déficit global promedia el -3,1% del PBI en 2024. La deuda pública se ubica en 51,2% del PBI; el alto pago de intereses está desplazando a la inversión
+28
+...
+.
+Inversión Pública: Es la más baja del mundo (2,1% del PBI) y se usa frecuentemente como variable de ajuste fiscal
+31
+32
+. Sin embargo, tiene un efecto multiplicador alto (hasta 0,9 en el mediano plazo) si se gestiona con alta eficiencia institucional
+33
+34
+.
+Incentivos Ambientales: Hay un uso incipiente de beneficios tributarios (0,02% - 0,19% del PBI) enfocados en transición energética y electromovilidad, pero se requiere mejorar su gobernanza y eliminar subsidios a combustibles fósiles
+35
+...
+.
+
+EXTREMELY IMPORTANT: Is that ALL you need to know? You can always ask another question! Think about it carefully: before you reply to the user, review their original request and this answer. If anything is still unclear or missing, ask me another comprehensive question that includes all necessary context (since each question opens a new browser session).
+
+============================================================
