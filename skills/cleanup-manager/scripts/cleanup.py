@@ -73,11 +73,20 @@ def scan_system() -> dict:
         "empty_dirs_course": [],
         "log_files": [],
         "scan_temp": [],
+        # Cat 8: archivos sueltos en raíz que no deberían estar ahí
+        "root_orphans": [],
         "totals": {
             "files": 0,
             "size_kb": 0,
             "categories": {},
         },
+    }
+
+    # Archivos permitidos en la raíz del repositorio
+    ALLOWED_ROOT_FILES = {
+        "brain_config.md", "INICIO.md", "CHANGELOG.md", "README.md",
+        "Flujo_Maestro_BrainOS_v2.md", "Brain_OS_Master_Doc.md",
+        "cleanup_history.json", ".gitignore", ".gitattributes",
     }
 
     for dirpath, dirnames, filenames in os.walk(BRAIN_OS_ROOT):
@@ -145,6 +154,10 @@ def scan_system() -> dict:
             if f in ("_scan_system.py", "_scan_results.txt"):
                 results["scan_temp"].append({"path": frel, "size_kb": size_kb})
 
+            # Cat 8: archivos sueltos en la raíz
+            if rel == "." and f not in ALLOWED_ROOT_FILES:
+                results["root_orphans"].append({"path": frel, "size_kb": size_kb})
+
     # Calcular totales
     for cat_name, items in results.items():
         if cat_name in ("totals", "empty_dirs_course"):
@@ -181,6 +194,7 @@ def print_scan_report(results: dict) -> None:
         "temp_files": ("temp_*", "2 (confirmar)"),
         "browser_cache": ("Browser cache", "2 (confirmar)"),
         "log_files": (".log browser", "2 (confirmar)"),
+        "root_orphans": ("Sueltos en raíz 🆕", "2 (confirmar)"),
     }
 
     print(f"\n{'Categoría':<25} {'Archivos':>8} {'Tamaño':>10} {'Nivel':>16}")
@@ -364,6 +378,26 @@ def execute_cleanup(results: dict, level: int) -> dict:
         if results["browser_cache"]:
             cache_mb = sum(i["size_kb"] for i in results["browser_cache"]) / 1024
             print(f"  🗑️  Browser cache eliminado ({cache_mb:.1f} MB)")
+
+        # Archivar archivos sueltos en raíz (Categoría 8)
+        if results["root_orphans"]:
+            print(f"\n  📁 Archivos sueltos en raíz detectados:")
+            for item in results["root_orphans"]:
+                full_path = BRAIN_OS_ROOT / item["path"]
+                print(f"     {item['path']} ({item['size_kb']} KB) — ¿archivar?")
+
+            confirm = input("  ¿Archivar todos los archivos sueltos? [s/N]: ").strip().lower()
+            if confirm in ("s", "si", "sí", "y", "yes"):
+                for item in results["root_orphans"]:
+                    full_path = BRAIN_OS_ROOT / item["path"]
+                    if full_path.exists():
+                        archived = archive_file(full_path, session_dir)
+                        session["archived_files"].append(archived)
+                        session["files_removed"] += 1
+                        session["space_recovered_kb"] += item["size_kb"]
+                        print(f"  📦 Archivado: {item['path']}")
+            else:
+                print("  ⏭️  Archivos sueltos en raíz conservados.")
 
     # ── Nivel 3: Limpieza profunda (reporta, no ejecuta automáticamente) ──
     if level >= 3:

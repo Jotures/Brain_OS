@@ -91,6 +91,26 @@ tools/pomodoro/history.json        ← Historial (datos del usuario)
 - **Nivel mínimo**: 2 (con confirmación)
 - **Cantidad**: ~13 archivos
 
+### Categoría 8: 🆕 Archivos Sueltos en Raíz
+- **Riesgo**: 🟡 Bajo — depende del archivo
+- **Nivel mínimo**: 2 (con confirmación interactiva)
+- **Descripción**: Archivos `.py`, `.md`, `.txt`, `.json` en la raíz del repo que NO están en la lista blanca de `cleanup_config.json`.
+- **Lista blanca** (archivos legítimos en raíz):
+  ```
+  brain_config.md, INICIO.md, CHANGELOG.md, README.md,
+  Flujo_Maestro_BrainOS_v2.md, Brain_OS_Master_Doc.md,
+  cleanup_history.json, .gitignore, .gitattributes
+  ```
+- **Para añadir un archivo legítimo**: agrégalo a `allowed_root_files` en `cleanup_config.json`.
+- **Causa común**: scripts de prueba, outputs de sesión (e.g. `resources.md`, `extract_pdf.py`, `task_plan.md`) creados durante la sesión y olvidados.
+
+### 🛡️ Prevención de Archivos Sueltos Futuros
+
+1. **Regla de cada sesión**: si creas un archivo temporal, añade `_` o `tmp_` al nombre comenzando — el cleanup lo detectará automáticamente.
+2. **Regla de fin de sesión**: antes de cerrar, ejecuta `"Escanear basura"` — la Categoría 8 mostrará los huérfanos.
+3. **Regla del workflow**: el audit `/brain-os-audit` ahora sugiere ejecutar cleanup como Paso 6.
+4. **Regla de la lista blanca**: si un archivo SÍ debe vivir en la raíz, añádelo a `cleanup_config.json → root_orphans → allowed_root_files`.
+
 ---
 
 ## Niveles de Limpieza

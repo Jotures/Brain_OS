@@ -72,6 +72,25 @@
             "min_level": 1,
             "risk": "none",
             "description": "Scripts temporales de escaneo del cleanup-manager"
+        },
+        "root_orphans": {
+            "scope": ".",
+            "type": "root_only",
+            "min_level": 2,
+            "risk": "low",
+            "description": "Archivos sueltos en la raíz del repositorio que no están en la lista blanca",
+            "allowed_root_files": [
+                "brain_config.md",
+                "INICIO.md",
+                "CHANGELOG.md",
+                "README.md",
+                "Flujo_Maestro_BrainOS_v2.md",
+                "Brain_OS_Master_Doc.md",
+                "cleanup_history.json",
+                ".gitignore",
+                ".gitattributes"
+            ],
+            "note": "Añade a allowed_root_files si un archivo debe vivir en la raíz permanentemente"
         }
     },
     "archive_dir": "cleanup_archive",
