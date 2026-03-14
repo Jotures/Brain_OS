@@ -46,6 +46,9 @@ HISTORY_FILE = Path(__file__).parent / "data" / "weekly_history.json"
 # Ruta al historial de Pomodoro
 POMODORO_HISTORY = Path(__file__).parent.parent.parent / "tools" / "pomodoro" / "history.json"
 
+# Ruta al script de Risk Score (v2.2)
+RISK_SCORE_DIR = Path(__file__).parent.parent.parent / "skills" / "pomodoro" / "scripts"
+
 
 def load_history() -> Dict:
     """Carga el histórico de snapshots semanales."""
@@ -92,6 +95,47 @@ def get_pomodoro_count_this_week() -> int:
         return count
     except (json.JSONDecodeError, IOError):
         return 0
+
+
+def get_risk_score_block() -> Optional[str]:
+    """
+    Genera el bloque de Risk Score (v2.2) importando el módulo risk_score.
+    Retorna el texto formateado o None si no está disponible.
+    """
+    try:
+        import importlib.util
+        risk_script = RISK_SCORE_DIR / "risk_score.py"
+        if not risk_script.exists():
+            return None
+
+        spec = importlib.util.spec_from_file_location("risk_score", risk_script)
+        if spec is None or spec.loader is None:
+            return None
+        mod = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(mod)
+
+        history = mod.load_pomodoro_history()
+        memory = mod.load_semantic_memory()
+        sessions = mod.filter_by_period(history.get("sessions", []), "week")
+
+        ind1_val, ind1_sev, ind1_det = mod.calc_abandonment_rate(sessions)
+        ind2_val, ind2_sev, ind2_det = mod.calc_consolidation_velocity(sessions, memory, "week")
+        ind3_val, ind3_sev, ind3_det = mod.calc_crisis_ratio(sessions)
+        ind4_val, ind4_sev, ind4_det = mod.calc_execution_gap(sessions)
+        ind5_val, ind5_sev, ind5_det = mod.calc_recovery_decay(sessions)
+
+        indicators = [
+            {"key": "abandonment_rate",       "name": "Tasa de abandono",   "value": ind1_val, "severity": ind1_sev, "detail": ind1_det},
+            {"key": "consolidation_velocity", "name": "Vel. consolidación", "value": ind2_val, "severity": ind2_sev, "detail": ind2_det},
+            {"key": "crisis_ratio",           "name": "Ratio Modo Crisis",  "value": ind3_val, "severity": ind3_sev, "detail": ind3_det},
+            {"key": "execution_gap",          "name": "Execution Gap",      "value": ind4_val, "severity": ind4_sev, "detail": ind4_det},
+            {"key": "recovery_decay",         "name": "Recovery Decay",     "value": ind5_val, "severity": ind5_sev, "detail": ind5_det},
+        ]
+
+        composite, label = mod.compute_composite_score(indicators)
+        return mod.format_risk_report(indicators, composite, label, "week")
+    except Exception:
+        return None
 
 
 def generate_snapshot(api: MoodleAPI) -> Dict:
@@ -249,6 +293,12 @@ def format_report(snapshot: Dict, trends: Dict, history: Dict) -> str:
     if total_all > 0:
         global_pct = round((done_all / total_all) * 100, 1)
         lines.append(f"  Progreso global: {global_pct}% ({done_all}/{total_all} actividades)")
+    
+    # Sección 4: Risk Score (v2.2)
+    risk_block = get_risk_score_block()
+    if risk_block:
+        lines.append("")
+        lines.append(risk_block)
     
     # Alertas
     if alerts:

@@ -1,6 +1,17 @@
 ---
 name: cleanup-manager
 description: Detecta y limpia archivos obsoletos, duplicados y temporales del sistema Brain OS. Usa esta skill cuando el sistema acumule basura, antes de auditorías de system-coordinator, o con los comandos "Escanear basura", "Limpieza rápida", "Limpieza conservadora", "Limpieza profunda".
+trigger_conditions:
+  - "Escanear basura"
+  - "Limpieza rápida"
+  - "Limpieza conservadora"
+  - "Limpieza profunda"
+  - "Restaurar desde archivo"
+  - "Reporte de limpieza semanal"
+usage_constraints: "No usar para organizar archivos del usuario (usar file-organizer). Solo para eliminar basura del sistema (cache, temporales, logs obsoletos, sesiones FER procesadas)."
+category: "Sistema"
+parameters:
+  level: "Nivel de limpieza: 0 (scan) | 1 (rápida) | 2 (conservadora) | 3 (profunda)"
 ---
 
 # 🧹 Cleanup Manager
@@ -111,6 +122,18 @@ tools/pomodoro/history.json        ← Historial (datos del usuario)
 3. **Regla del workflow**: el audit `/brain-os-audit` ahora sugiere ejecutar cleanup como Paso 6.
 4. **Regla de la lista blanca**: si un archivo SÍ debe vivir en la raíz, añádelo a `cleanup_config.json → root_orphans → allowed_root_files`.
 
+### Categoría 9: 🆕 Logs de Sesión Procesados por FER (TTL)
+- **Riesgo**: 🟢 Bajo — el gist ya fue consolidado en `semantic_memory.json`
+- **Nivel mínimo**: 2 (con confirmación)
+- **Descripción**: Logs en `sesiones/` que tienen el campo `"fer_processed": true` Y tienen **más de 7 días** de antigüedad.
+- **Regla de TTL (Time-to-Live)**:
+  - `fer_processed == true` → el ciclo FER ya extrajo el gist semántico de este log.
+  - Antigüedad > 7 días → período de gracia cumplido (permite revisión humana post-consolidación).
+  - Ambas condiciones deben cumplirse simultáneamente para ser candidato.
+- **Acción**: Candidato a `Limpieza conservadora` (Nivel 2) — se archiva en `cleanup_archive/`, no se elimina permanentemente.
+- **Validación semántica**: Antes de archivar, verificar que el gist derivado existe en `semantic_memory.json` (campo `source_session` coincide). Si no existe → **NO archivar**, reportar inconsistencia.
+- **Causa común**: Logs de sesiones de estudio, investigación o planificación que ya fueron procesados por el ciclo FER al cierre de sesión.
+
 ---
 
 ## Niveles de Limpieza
@@ -140,6 +163,7 @@ confirm_actions = [
     "Limpiar browser cache (Cache_Data, Code Cache, GrShaderCache)",
     "Archivar .log de browser_state",
     "Archivar tasks.log si tiene más de 30 días",
+    "Archivar logs de sesiones/ con fer_processed=true y antigüedad > 7 días (Categoría 9 — TTL)",
 ]
 ```
 
@@ -186,6 +210,7 @@ PASO 4 → NO modificar nada
 | Browser cache | XX | XX MB | 2 (confirmar) |
 | Dirs vacíos (no-curso) | XX | 0 | 1 (auto) |
 | .log | XX | XX KB | 2 (confirmar) |
+| Sesiones FER procesadas (>7d) | XX | XX KB | 2 (confirmar) |
 | **TOTAL recuperable** | **XX** | **XX MB** | — |
 
 💡 Ejecuta "Limpieza rápida" para limpiar Nivel 1 automáticamente.

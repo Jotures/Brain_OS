@@ -1,6 +1,17 @@
 ---
 name: autonomous-agent-patterns
 description: "Patrones de diseño para construir agentes de código autónomos. Cubre arquitectura de loop, integración de herramientas, sistemas de permisos y workflows human-in-the-loop. Usar cuando el usuario quiera construir un agente de IA, diseñar una API de herramientas, implementar un sistema de permisos, crear un asistente autónomo de código, o automatizar tareas complejas multi-paso."
+trigger_conditions:
+  - "Quiero construir un agente de IA autónomo"
+  - "Diseña una API de herramientas para agente"
+  - "Implementa un sistema de permisos para agente"
+  - "Patrón human-in-the-loop para [X]"
+  - "Automatizar tarea compleja multi-paso con agente"
+usage_constraints: "Solo para diseño de agentes de código autónomos. No usar para automatización simple de workflows (usar workflow-automation) ni para scripting básico."
+category: "Sistema"
+parameters:
+  pattern: "Patrón a implementar: loop | tool-integration | permissions | human-in-the-loop"
+  complexity: "Nivel de autonomía deseada: supervised | semi-autonomous | fully-autonomous"
 ---
 
 # 🕹️ Autonomous Agent Patterns

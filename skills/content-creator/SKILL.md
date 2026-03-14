@@ -8,8 +8,18 @@ metadata:
   category: marketing
   domain: content-marketing
   updated: 2025-10-20
-  python-tools: brand_voice_analyzer.py, seo_optimizer.py
-  tech-stack: SEO, social-media-platforms
+trigger_conditions:
+  - "Crea contenido para [plataforma]"
+  - "Post para redes sociales"
+  - "Artículo de blog sobre [tema]"
+  - "Optimiza SEO de [contenido]"
+  - "Contenido para Instagram/LinkedIn/Twitter"
+  - "Analiza mi brand voice"
+usage_constraints: "Para contenido de marketing y redes sociales. No usar para copy de landing pages (usar copywriting), documentación técnica (usar documentation-templates), ni contenido académico."
+category: "Escritura"
+parameters:
+  platform: "Plataforma objetivo: blog | instagram | linkedin | twitter | youtube | general"
+  topic: "Tema del contenido (string)"
 ---
 
 # Content Creator

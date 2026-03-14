@@ -2,6 +2,17 @@
 name: architecture
 description: Asistente de Arquitectura Activo para Brain OS. Genera registros de decisión (ADRs), analiza estructuras de código, sugiere patrones de diseño y mantiene la integridad arquitectónica del sistema. Usar para "Tomar una decisión técnica", "Crear un ADR", "Analizar estructura", "Consultar patrones" o "Diseñar una nueva feature".
 allowed-tools: Read, Glob, Grep, RunCommand
+trigger_conditions:
+  - "Tomar una decisión técnica"
+  - "Crear un ADR para [decisión]"
+  - "Analizar estructura del código"
+  - "Consultar patrones de diseño para [X]"
+  - "Diseñar arquitectura de [feature]"
+usage_constraints: "Solo para decisiones arquitectónicas y análisis estructural. No usar para implementación de código (usar executing-plans) ni para planificación de tareas (usar planning)."
+category: "Planificación"
+parameters:
+  action: "Operación: adr | analyze | patterns | design"
+  subject: "Tema o componente a analizar (string)"
 ---
 
 # 🏗️ Architecture Decision Assistant (Elite Tier)

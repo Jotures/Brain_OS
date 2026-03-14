@@ -2,6 +2,17 @@
 name: personal-tool-builder
 description: "Expert in building custom tools that solve your own problems first. The best products often start as personal tools - scratch your own itch, build for yourself, then discover others have the same itch. Covers rapid prototyping, local-first apps, CLI tools, scripts that grow into products, and the art of dogfooding. Use when: build a tool, personal tool, scratch my itch, solve my problem, CLI tool."
 source: vibeship-spawner-skills (Apache 2.0)
+trigger_conditions:
+  - "Quiero construir una herramienta personal"
+  - "CLI tool para [mi problema]"
+  - "Script que resuelva [X]"
+  - "Prototipo rápido de [idea]"
+  - "Herramienta local-first para [X]"
+usage_constraints: "Para construcción de herramientas personales y prototipos. No usar para desarrollo de productos completos ni para automatización de workflows (usar workflow-automation)."
+category: "Sistema"
+parameters:
+  tool_type: "Tipo: cli | script | local-app | prototype"
+  problem: "Problema a resolver (string)"
 ---
 
 # Personal Tool Builder

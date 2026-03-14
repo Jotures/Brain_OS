@@ -2,6 +2,17 @@
 name: xlsx
 description: Creación, edición y análisis completo de hojas de cálculo (.xlsx, .xlsm, .csv) con soporte para fórmulas, formateo, análisis de datos y visualización. Usar cuando el usuario necesite crear, leer, modificar o analizar archivos Excel.
 license: Proprietary. LICENSE.txt has complete terms
+trigger_conditions:
+  - "Crea una hoja de cálculo para [X]"
+  - "Analiza este archivo Excel"
+  - "Agrega fórmulas a [archivo]"
+  - "Genera gráficos desde estos datos"
+  - "Convierte CSV a Excel"
+usage_constraints: "Solo para archivos Excel (.xlsx, .xlsm, .csv). No usar para documentos Word (usar docx), PDFs (usar pdf) ni presentaciones (usar pptx)."
+category: "Documentos"
+parameters:
+  action: "Operación: create | read | edit | analyze | visualize"
+  file_path: "Ruta al archivo Excel (string)"
 ---
 
 # Requirements for Outputs

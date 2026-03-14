@@ -1,6 +1,17 @@
 ---
 name: systematic-debugging
 description: Use when encountering any bug, test failure, or unexpected behavior, before proposing fixes
+trigger_conditions:
+  - "Tengo un bug en [X]"
+  - "Test fallando en [componente]"
+  - "Comportamiento inesperado en [X]"
+  - "Debug sistemático de [problema]"
+  - "Antes de proponer un fix, analiza el problema"
+usage_constraints: "Solo para debugging sistemático de problemas existentes. No usar para mejora de código sin bugs (usar kaizen) ni para refactorización (usar planning)."
+category: "Sistema"
+parameters:
+  symptom: "Descripción del síntoma o error (string)"
+  scope: "Alcance: unit | integration | system | unknown (default: unknown)"
 ---
 
 # Systematic Debugging

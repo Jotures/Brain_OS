@@ -1,10 +1,24 @@
 ---
 name: brainstorming
-description: Facilita sesiones de diseño y brainstorming estructurado antes de implementar código. Usa esta skill cuando el usuario diga "Diseñemos [X]", "Brainstorming para [X]", "Pensemos antes de codear", o antes de cualquier feature compleja que necesite diseño previo.
+description: >-
+  Facilita sesiones de diseño y brainstorming estructurado antes de implementar código.
+  Usa esta skill cuando el usuario diga "Diseñemos [X]", "Brainstorming para [X]",
+  "Pensemos antes de codear", o antes de cualquier feature compleja que necesite diseño previo.
   Use this skill before any creative or constructive work
   (features, components, architecture, behavior changes, or functionality).
   This skill transforms vague ideas into validated designs through
   disciplined, incremental reasoning and collaboration.
+trigger_conditions:
+  - "Diseñemos [X]"
+  - "Brainstorming para [X]"
+  - "Pensemos antes de codear"
+  - "Necesito ideas para [feature/proyecto]"
+  - "Sesión de diseño para [X]"
+usage_constraints: "Solo para la fase de ideación y diseño previo a implementación. No genera código (usar planning + executing-plans después). No es para investigación formal (usar research-engineer)."
+category: "Planificación"
+parameters:
+  topic: "Tema o feature a diseñar (string)"
+  format: "Formato de sesión: freeform | structured | diverge-converge (default: structured)"
 ---
 
 # Brainstorming Ideas Into Designs

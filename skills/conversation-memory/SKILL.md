@@ -2,6 +2,15 @@
 name: conversation-memory
 description: "Persistent memory systems for LLM conversations including short-term, long-term, and entity-based memory Use when: conversation memory, remember, memory persistence, long-term memory, chat history."
 source: vibeship-spawner-skills (Apache 2.0)
+trigger_conditions:
+  - "Implementar memoria persistente para conversaciones"
+  - "Sistema de memoria a largo plazo para LLM"
+  - "Memory persistence para chatbot"
+  - "Entity-based memory para [aplicación]"
+usage_constraints: "Para diseño e implementación de sistemas de memoria conversacional en aplicaciones LLM. No confundir con agent-memory-systems (que es operativo para Brain OS) ni con context-window-management (que gestiona tokens)."
+category: "Sistema"
+parameters:
+  memory_type: "Tipo: short-term | long-term | entity-based | hybrid"
 ---
 
 # Conversation Memory

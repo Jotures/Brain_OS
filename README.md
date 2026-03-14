@@ -1,8 +1,8 @@
-# 🧠 Brain OS 2.1
+# 🧠 Brain OS 2.2
 
 Sistema de IA académico multi-semestre para maximizar tu rendimiento universitario.
 
-**Meta**: Nota 20 en cada curso | **Versión**: 2.1
+**Meta**: Nota 20 en cada curso | **Versión**: 2.2
 
 > 📋 *Documentación técnica completa*: [Brain_OS_Master_Doc.md](./Brain_OS_Master_Doc.md)
 
@@ -82,7 +82,7 @@ Brain_OS/
 
 ---
 
-## 🛠️ Skills Disponibles (42)
+## 🛠️ Skills Disponibles (43)
 
 | Categoría | Skills |
 |-----------|--------|
@@ -90,7 +90,7 @@ Brain_OS/
 | ✍️ Escritura | `content-creator` `copy-editing` `copywriting` `doc-coauthoring` `writing-skills` |
 | 📋 Planificación | `brainstorming` `planning` `planning-with-files` `executing-plans` `kaizen` |
 | 🔍 Investigación | `research-engineer` `notebooklm` `prompt-engineer` `prompt-engineering` `prompt-library` `last30days` |
-| 🎓 Académico | `aula-virtual` `library-manager` `pomodoro` |
+| 🎓 Académico | `aula-virtual` `library-manager` `pomodoro` `study-router` |
 | 🔄 Sistema | `system-coordinator` `dashboard-sync` `cleanup-manager` `elite-skill-architect` |
 | ⚙️ Sistema Avanzado | `agent-memory-systems` `context-window-management` `autonomous-agent-patterns` `skill-orchestrator` `conversation-memory` |
 | 🛠️ Dev Tools | `mcp-builder` `personal-tool-builder` `workflow-automation` |

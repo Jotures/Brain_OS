@@ -1,6 +1,18 @@
 ---
 name: notebooklm
 description: Consulta tus notebooks de Google NotebookLM directamente desde el agente para respuestas grounded con citaciones desde Gemini. Motor v2 HTTP directo (notebooklm-py) + fallback browser. Gestión de biblioteca, audio overviews, quizzes y auth persistente. Usar cuando el usuario mencione NotebookLM o quiera consultar sus documentos.
+trigger_conditions:
+  - "Consulta en NotebookLM [pregunta]"
+  - "Busca en mis documentos [tema]"
+  - "Genera un quiz sobre [notebook]"
+  - "Audio overview de [notebook]"
+  - "Gestiona mi biblioteca de notebooks"
+  - "Pregunta a Gemini sobre mis fuentes"
+usage_constraints: "Solo para consultas a Google NotebookLM. No usar para investigación web general (usar research-engineer). Requiere auth configurada previamente."
+category: "Investigación"
+parameters:
+  query: "Pregunta o consulta para el notebook (string)"
+  notebook: "Nombre del notebook objetivo (string, opcional)"
 ---
 
 # NotebookLM Research Assistant Skill

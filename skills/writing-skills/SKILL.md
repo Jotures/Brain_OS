@@ -1,6 +1,16 @@
 ---
 name: writing-skills
 description: Guía para crear, editar y verificar skills antes de desplegar. Basado en TDD aplicado a documentación de procesos. Usar cuando el usuario diga "Crea una skill", "Edita esta skill", "Verifica la skill".
+trigger_conditions:
+  - "Crea una skill con enfoque TDD"
+  - "Edita esta skill siguiendo buenas prácticas"
+  - "Verifica la skill antes de desplegar"
+  - "Aplica TDD a la documentación de [skill]"
+usage_constraints: "Complementa a elite-skill-architect. Usar para el enfoque TDD de escritura de skills. Para auditorías completas y creación guiada, preferir elite-skill-architect."
+category: "Sistema"
+parameters:
+  skill_name: "Nombre de la skill a escribir/editar (string)"
+  action: "Operación: create | edit | verify"
 ---
 
 # Writing Skills

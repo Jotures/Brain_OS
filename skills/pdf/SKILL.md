@@ -2,6 +2,18 @@
 name: pdf
 description: Toolkit completo de manipulación de PDF para extraer texto y tablas, crear nuevos PDFs, fusionar/dividir documentos y manejar formularios. Usar cuando el usuario necesite procesar, generar o analizar documentos PDF.
 license: Proprietary. LICENSE.txt has complete terms
+trigger_conditions:
+  - "Extrae texto de este PDF"
+  - "Crea un PDF con [contenido]"
+  - "Fusiona estos PDFs"
+  - "Divide este PDF"
+  - "Analiza las tablas de este PDF"
+  - "Llena este formulario PDF"
+usage_constraints: "Solo para operaciones con archivos PDF. No usar para documentos Word (usar docx), Excel (usar xlsx) ni presentaciones (usar pptx)."
+category: "Documentos"
+parameters:
+  action: "Operación: extract | create | merge | split | forms | analyze"
+  file_path: "Ruta al archivo PDF (string)"
 ---
 
 # PDF Processing Guide

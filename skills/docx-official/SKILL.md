@@ -2,6 +2,17 @@
 name: docx
 description: Creación, edición y análisis completo de documentos Word (.docx) con soporte para cambios rastreados, comentarios, formateo y extracción de texto. Usar cuando el usuario necesite crear, modificar o analizar documentos profesionales .docx.
 license: Proprietary. LICENSE.txt has complete terms
+trigger_conditions:
+  - "Crea un documento Word para [X]"
+  - "Edita este archivo .docx"
+  - "Extrae texto de este Word"
+  - "Agrega comentarios a [documento]"
+  - "Formato profesional para [documento]"
+usage_constraints: "Solo para archivos Word (.docx). No usar para Excel (usar xlsx), PDFs (usar pdf) ni presentaciones (usar pptx)."
+category: "Documentos"
+parameters:
+  action: "Operación: create | edit | extract | track-changes | format"
+  file_path: "Ruta al archivo Word (string, opcional para crear)"
 ---
 
 # DOCX creation, editing, and analysis

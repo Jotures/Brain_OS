@@ -161,6 +161,8 @@ Antes de cada sesión de estudio, Brain OS evalúa:
 
 ## Flujo de Trabajo Diario
 
+> **v2.2**: Las decisiones de enrutamiento de estudio ("¿Qué debo estudiar?", "¿Cómo estudio [X]?", "Modo Crisis") ahora se gestionan a través de la skill `study-router`. El workflow sigue definiendo la estructura general, pero el router toma las decisiones de QUE/CUANDO/COMO.
+
 ### Paso 1: Diagnóstico Matutino
 // turbo
 ```
@@ -199,6 +201,40 @@ Actualizar Notion con:
 
 ---
 
+## Modo Crisis — Patrón Secuencial v2.2
+
+> **Skill principal:** `study-router` (Modo Crisis)
+> **Documentación completa:** `skills/study-router/SKILL.md` → sección "Modo Crisis"
+
+El Modo Crisis es un flujo de emergencia para exámenes inminentes (< 24h). Usa un **patrón secuencial de 2 agentes** para maximizar retención bajo presión de tiempo.
+
+### Activación
+- Comando explícito: `"Modo Crisis [materia]"`
+- Detección automática: `study-router` detecta examen en < 24h vía Rama Notion
+
+### Flujo Secuencial
+
+```
+AGENTE 1: SÍNTESIS (research-engineer)
+  Input:  Notas de 03_Notas/ + PDFs de la materia
+  Output: Resumen estructurado (1-2 páginas)
+          → Conceptos clave, definiciones, fórmulas, relaciones
+
+         ↓ (solo el resumen pasa al siguiente agente)
+
+AGENTE 2: EVALUADOR (notebooklm o agente directo)
+  Input:  SOLO el resumen del Agente 1 (contexto aislado)
+  Output: 10 preguntas tipo examen + respuestas + justificaciones
+```
+
+### Reglas
+1. **Contexto aislado**: Agente 2 recibe SOLO el resumen, nunca las fuentes originales (previene context rot)
+2. **Tiempo limitado**: Flujo completo ≤ 1 Pomodoro (25 min)
+3. **Output actionable**: El resultado son preguntas de práctica, no más resúmenes
+4. **Escalamiento**: Si el usuario falla >50% → sesión de repaso con NotebookLM modo Explicador
+
+---
+
 ## Técnicas por Tipo de Evaluación
 
 ### Para Exámenes
@@ -229,7 +265,7 @@ Actualizar Notion con:
 | Comando | Acción |
 |---------|--------|
 | "¿Qué debo estudiar hoy?" | Consultar Notion → Prioridades con Pomodoros |
-| "Resume mi semana" | Análisis de productividad semanal |
+| "Resume mi semana" | Análisis de productividad semanal + Score de Riesgo (v2.2) |
 | "¿Cómo voy en [curso]?" | Estado del curso por aporte |
 | "Dashboard de aporte [1/2/3]" | Vista general del aporte actual |
 
@@ -275,6 +311,8 @@ Actualizar Notion con:
 | "Detén el Pomodoro" | `python pomodoro_timer.py stop` |
 | "¿Cuántos pomodoros llevo hoy?" | `python pomodoro_timer.py history --period today` |
 | "Mi productividad de la semana" | `python pomodoro_timer.py history --period week` |
+| "Score de riesgo" | `python skills/pomodoro/scripts/risk_score.py` (v2.2) |
+| "Score de riesgo este mes" | `python skills/pomodoro/scripts/risk_score.py --period month` |
 
 ---
 

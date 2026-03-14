@@ -1,9 +1,9 @@
-# 🧠 Brain OS 2.1: Documentación Maestra
+# 🧠 Brain OS 2.2: Documentación Maestra
 
-> **Versión del Sistema**: 2.1 — Integración Deep Research (Semestre 2026-1)
+> **Versión del Sistema**: 2.2 — Arquitectura Cognitiva de Élite (Semestre 2026-1)
 > **Objetivo**: Maximizar rendimiento académico (Nota 20) con mínima fricción operativa.
 > **Cronotipo**: Bear 🐻 — Peak 10:00-14:00 | Dip 14:00-16:00 | Recovery 16:00-18:00
-> **Flujo Maestro**: [v2.0](./Flujo_Maestro_BrainOS_v2.md)
+> **Flujo Maestro**: [v2.2](./Flujo_Maestro_BrainOS_v2.md)
 
 ---
 
@@ -115,7 +115,14 @@ El sistema se divide en "Skills" especializadas. Aquí las más críticas:
 *   **Qué hace**: Mueve archivos a `carrera/` y los registra en Notion. Soporta **4 capas de Progressive Summarization**: Captura → Negrita → Resaltado → Resumen ejecutivo.
 *   **Comando clave**: `"Guarda este archivo"`, `"Resume progresivamente [material]"`.
 
-### ⚙️ Sistema Avanzado (Skills Nuevas v2.1)
+### 🧭 Enrutamiento y Analítica (Novedades v2.2)
+
+| Componente | Función | Complementa |
+|-------|---------|-------------|
+| `study-router` | Árbol de decisión inteligente "¿Qué debo estudiar?". Combina Notion y NotebookLM. | `system-coordinator` |
+| `risk_score` (script) | Analítica predictiva de riesgo académico basada en 5 indicadores tempranos. | `pomodoro` |
+
+### ⚙️ Sistema Avanzado (Skills de Arquitectura v2.1/v2.2)
 
 | Skill | Función | Complementa |
 |-------|---------|-------------|

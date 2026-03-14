@@ -2,6 +2,17 @@
 name: workflow-automation
 description: "Workflow automation is the infrastructure that makes AI agents reliable. Without durable execution, a network hiccup during a 10-step payment flow means lost money and angry customers. With it, workflows resume exactly where they left off.  This skill covers the platforms (n8n, Temporal, Inngest) and patterns (sequential, parallel, orchestrator-worker) that turn brittle scripts into production-grade automation.  Key insight: The platforms make different tradeoffs. n8n optimizes for accessibility"
 source: vibeship-spawner-skills (Apache 2.0)
+trigger_conditions:
+  - "Automatiza este workflow"
+  - "Diseña un flujo de automatización para [X]"
+  - "n8n vs Temporal vs Inngest"
+  - "Patrón orchestrator-worker para [X]"
+  - "Convierte este script en workflow durable"
+usage_constraints: "Para diseño de automatización de workflows de producción. No usar para automatización de tareas del sistema Brain OS (usar system-coordinator) ni para scripting simple."
+category: "Sistema"
+parameters:
+  platform: "Plataforma: n8n | temporal | inngest | general"
+  pattern: "Patrón: sequential | parallel | orchestrator-worker | event-driven"
 ---
 
 # Workflow Automation

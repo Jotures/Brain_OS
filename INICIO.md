@@ -1,4 +1,4 @@
-# 🧠 BRAIN OS 2.0 - Panel de Control
+# 🧠 BRAIN OS 2.2 - Panel de Control
 
 > **Semestre**: 2026-1 (Segunda semana) | **Meta**: Nota 20 en todos los cursos | **Cronotipo**: Bear 🐻
 
@@ -41,7 +41,7 @@
 
 ---
 
-## 🧠 FLUJO MAESTRO v2.0 — Ciclo Diario
+## 🧠 FLUJO MAESTRO v2.2 — Ciclo Diario
 
 > **Filosofía**: Sesiones largas y pocas > Sprints cortos | **Motor**: BRAC 90/20 + Pomodoro adaptativo
 
@@ -97,7 +97,7 @@
 | Di esto... | Brain OS hace... |
 |------------|------------------|
 | "¿Qué debo estudiar hoy?" | Lista prioridades + Pomodoros (según Bear) |
-| "Resume mi semana" | Análisis de productividad |
+| "Resume mi semana" | Análisis de productividad y Score de Riesgo |
 | "¿Cómo voy en [curso]?" | Estado por aporte |
 | "Dashboard de aporte [1/2/3]" | Vista del aporte |
 
@@ -232,8 +232,8 @@
 | Curso personal | 1 (Inglés) |
 | Tareas pendientes | — (consultar Notion) |
 | Integraciones | 5 activas |
-| Skills | 29 activas (4 archivadas) |
-| Flujo Maestro | **v2.0** — Boot → Ejecución → Cierre ([ver completo](./Flujo_Maestro_BrainOS_v2.md)) |
+| Skills | 43 activas (4 archivadas) |
+| Flujo Maestro | **v2.2** — Boot → Ejecución → Cierre ([ver completo](./Flujo_Maestro_BrainOS_v2.md)) |
 | Cronotipo | Bear 🐻 — Peak 10:00-14:00, Dip 14:00-16:00 |
 | Motor de sesiones | BRAC 90/20 (profundo) + Pomodoro adaptativo |
 | Última sync | 2026-03-07 00:20 |

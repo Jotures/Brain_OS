@@ -2,6 +2,16 @@
 name: documentation-templates
 description: Templates de documentación y guías de estructura. README, docs de API, comentarios de código y documentación AI-friendly. Usar cuando el usuario diga "Crea un README", "Template de documentación", "Estructura de docs".
 allowed-tools: Read, Glob, Grep
+trigger_conditions:
+  - "Crea un README para [proyecto]"
+  - "Template de documentación para [X]"
+  - "Estructura de docs para API"
+  - "Documentación AI-friendly"
+  - "Comentarios de código estandarizados"
+usage_constraints: "Solo para templates y estructura de documentación técnica. No usar para redacción de contenido de marketing (usar copywriting/content-creator) ni para documentación académica."
+category: "Documentos"
+parameters:
+  doc_type: "Tipo de documento: readme | api-docs | code-comments | ai-friendly | changelog"
 ---
 
 # Documentation Templates

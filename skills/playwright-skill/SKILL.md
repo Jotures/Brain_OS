@@ -1,6 +1,18 @@
 ---
 name: playwright-skill
 description: Complete browser automation with Playwright. Auto-detects dev servers, writes clean test scripts to /tmp. Test pages, fill forms, take screenshots, check responsive design, validate UX, test login flows, check links, automate any browser task. Use when user wants to test websites, automate browser interactions, validate web functionality, or perform any browser-based testing.
+trigger_conditions:
+  - "Automatiza el navegador para [X]"
+  - "Testea esta página web"
+  - "Screenshot de [URL]"
+  - "Llena este formulario automáticamente"
+  - "Verifica diseño responsive de [URL]"
+  - "Test de login flow"
+usage_constraints: "Solo para automatización de navegador con Playwright. No usar para scraping de datos general ni para automatización que no requiera navegador. Para browser automation de NotebookLM, usar la skill notebooklm directamente."
+category: "Sistema"
+parameters:
+  action: "Operación: test | screenshot | fill-form | check-responsive | automate"
+  url: "URL objetivo (string)"
 ---
 
 **IMPORTANT - Path Resolution:**

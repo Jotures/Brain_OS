@@ -1,6 +1,18 @@
 ---
 name: pomodoro
 description: Gestión de temporizador Pomodoro adaptativo para sesiones de estudio. Incluye modo BRAC 90/20, Active Recall post-sesión, y perfiles por materia.
+trigger_conditions:
+  - "Inicia un Pomodoro"
+  - "Sesión de estudio de [materia]"
+  - "Modo BRAC 90/20"
+  - "Active Recall post-sesión"
+  - "¿Cuántos Pomodoros llevo hoy?"
+  - "Perfil de estudio para [materia]"
+usage_constraints: "Solo para gestión de sesiones de estudio con temporizador. No usar para planificación de estudio (usar planning o study-router) ni para consultas de materiales (usar library-manager o notebooklm)."
+category: "Académico"
+parameters:
+  mode: "Modo: classic-25/5 | brac-90/20 | custom"
+  subject: "Materia de estudio (string, opcional)"
 ---
 
 # 🍅 Pomodoro Timer Skill

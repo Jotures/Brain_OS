@@ -1,6 +1,18 @@
 ---
 name: aula-virtual
 description: Integración con el Aula Virtual de la Universidad Andina del Cusco (Moodle). Usa esta skill para consultar cursos, tareas pendientes, notas, progreso, materiales y preparación pre-examen. Se activa cuando el usuario menciona "aula virtual", "campus", "moodle", "tareas pendientes", "mis notas", "progreso", o cualquier referencia a la plataforma académica de UAndina.
+trigger_conditions:
+  - "Tareas pendientes del aula virtual"
+  - "Mis notas en [curso]"
+  - "Progreso del semestre"
+  - "Materiales de [curso]"
+  - "Preparación pre-examen desde Moodle"
+  - "¿Qué tengo pendiente en el campus?"
+usage_constraints: "Solo para la plataforma Moodle de UAndina (campus.uandina.edu.pe). No usar para consultas académicas generales (usar research-engineer o notebooklm). Requiere credenciales en .env."
+category: "Académico"
+parameters:
+  course: "Nombre del curso (string, opcional)"
+  action: "Operación: tasks | grades | progress | materials | exam-prep (inferido del comando)"
 ---
 
 # Aula Virtual UAndina

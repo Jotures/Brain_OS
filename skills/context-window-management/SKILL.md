@@ -2,6 +2,16 @@
 name: context-window-management
 description: "Gestión activa del contexto del agente: presupuesto de tokens, ciclo ZBrain de Context Engineering, evicción MaRS y estrategias anti-Context-Rot. Usar cuando: context window, token limit, context management, context engineering, long context, context rot."
 source: Brain OS (basado en ZBrain, MaRS, AgeMem — research-agents-memory-2026)
+trigger_conditions:
+  - "Se está acabando el contexto"
+  - "Context rot detectado"
+  - "Optimizar uso de tokens"
+  - "Estrategia de context engineering para [X]"
+  - "El agente está olvidando instrucciones"
+usage_constraints: "Solo para gestión técnica del context window del agente. No usar para gestión de memoria persistente (usar agent-memory-systems) ni para limpieza de archivos (usar cleanup-manager)."
+category: "Sistema"
+parameters:
+  strategy: "Estrategia: budget | eviction | clearing | compression"
 ---
 
 # Context Window Management

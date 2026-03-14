@@ -1,6 +1,18 @@
 ---
 name: agent-memory-systems
 description: "Patrones y flujos operativos para gestionar eficientemente la memoria a corto y largo plazo del agente. Usar cuando necesites recordar contexto pasado, manejar los límites del Context Window, investigar el historial de conversaciones previas, o almacenar conocimiento persistente para el futuro en Notion o archivos locales."
+trigger_conditions:
+  - "Recuerda lo que hicimos en la sesión anterior"
+  - "Guarda esto en tu memoria a largo plazo"
+  - "Busca en tus notas sobre [tema]"
+  - "Se te olvidaron las instrucciones iniciales"
+  - "Contexto de sesiones pasadas"
+  - "Hemingway bridge al cierre de sesión"
+usage_constraints: "No usar para almacenamiento de archivos del usuario (usar file-organizer). No confundir con semantic_memory.json que se actualiza automáticamente por el ciclo FER."
+category: "Sistema"
+parameters:
+  action: "Operación: store | recall | search | bridge (inferido del contexto)"
+  context: "Descripción del contexto o tema a recordar/buscar (string)"
 ---
 
 # 🧠 Agent Memory Systems

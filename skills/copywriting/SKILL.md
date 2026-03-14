@@ -1,6 +1,17 @@
 ---
 name: copywriting
 description: Redacción de copy de marketing claro, persuasivo y testeable para cualquier página web (homepage, landing, pricing, features, producto, about). Refuerza alineación, honestidad y mejores prácticas de conversión. Usar cuando el usuario diga "Escribe copy para [página]", "Landing page copy", "Copy de marketing".
+trigger_conditions:
+  - "Escribe copy para [página web]"
+  - "Landing page copy"
+  - "Copy de marketing para [producto/servicio]"
+  - "Homepage copy"
+  - "Texto persuasivo para [X]"
+usage_constraints: "Solo para copy de marketing web. No usar para contenido editorial largo (usar content-creator), edición de copy existente (usar copy-editing), ni documentación técnica (usar documentation-templates)."
+category: "Escritura"
+parameters:
+  page_type: "Tipo de página: homepage | landing | pricing | features | product | about"
+  brand_voice: "Tono de marca: professional | casual | bold | minimal (string, opcional)"
 ---
 
 # Copywriting

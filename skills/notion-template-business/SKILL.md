@@ -2,6 +2,16 @@
 name: notion-template-business
 description: Experto en construir y vender templates de Notion como negocio. Cubre diseño de templates, pricing, marketplaces, marketing y escalabilidad. Usar cuando el usuario diga "Template de Notion para vender", "Negocio de templates", "Pricing de templates".
 source: vibeship-spawner-skills (Apache 2.0)
+trigger_conditions:
+  - "Template de Notion para vender"
+  - "Negocio de templates de Notion"
+  - "Pricing de templates"
+  - "¿Cómo diseño un template para marketplace?"
+  - "Marketing para templates de Notion"
+usage_constraints: "Solo para el negocio de templates de Notion. No usar para crear templates de uso personal ni para documentación técnica."
+category: "Planificación"
+parameters:
+  phase: "Fase del negocio: design | pricing | marketing | marketplace-listing | scaling"
 ---
 
 # Notion Template Business

@@ -1,6 +1,19 @@
 ---
 name: elite-skill-architect
 description: Meta-skill unificada para crear, auditar, mejorar e implementar skills de Brain OS con estándares de calidad profesional. Combina diseño estratégico (auditoría, entrevistas, prompts maestros) con implementación técnica (estructura SKILL.md, scripts, references, assets, Progressive Disclosure). Usar cuando el usuario diga "Quiero crear una skill", "Audita la skill [nombre]", "Evalúa [nombre]", "Score de [nombre]", "Rehace la skill [nombre]", "Mejora [nombre]", "Actualiza [nombre]", "Lista todas las skills", "Compara [skill1] vs [skill2]", "¿Qué skill debería crear?", "Implementa la skill [nombre]".
+trigger_conditions:
+  - "Quiero crear una skill"
+  - "Audita la skill [nombre]"
+  - "Rehace la skill [nombre]"
+  - "Implementa la skill [nombre]"
+  - "Lista todas las skills"
+  - "Compara [skill1] vs [skill2]"
+  - "¿Qué skill debería crear?"
+usage_constraints: "Solo para operaciones sobre skills de Brain OS (crear, auditar, mejorar, implementar). No usar para crear código general o documentación fuera del sistema de skills."
+category: "Sistema"
+parameters:
+  skill_name: "Nombre de la skill objetivo (string, opcional para modo Crear)"
+  mode: "Modo de operación: crear | auditar | rehacer | implementar (inferido del comando)"
 ---
 
 # 🏗️ Elite Skill Architect
@@ -183,6 +196,11 @@ PASO 4 → Priorizar: ¿cuáles rehacer primero? (menor score + mayor uso)
 
 ## 🔄 MODO 3: Rehacer/Actualizar Skill
 
+### Límite de Iteraciones
+
+> **Regla v2.2**: El bucle Crítica → Refinamiento tiene un **máximo de 5 iteraciones**.
+> En la iteración 5, el agente **detiene el bucle**, presenta la mejor versión alcanzada junto con el feedback no resuelto, y solicita aprobación humana antes de continuar.
+
 ### Flujo de Re-implementación
 
 ```
@@ -205,7 +223,22 @@ PASO 3 → Generación del Prompt de Re-implementación
   Seguir template en references/prompt-templates.md (Template de Rehecho)
   Incluir: backup obligatorio + preservar lo bueno + mejorar brechas
 
-PASO 4 → Comparación Antes/Después
+PASO 4 → Bucle Crítica → Refinamiento (máx. 5 iteraciones)
+  Por cada iteración:
+    4a. Generar versión mejorada
+    4b. Auto-crítica: ¿se resolvieron las brechas priorizadas?
+    4c. Si quedan brechas Y iteración < 5 → refinar y volver a 4a
+    4d. Si iteración == 5 → DETENER. Ir a Paso 5.
+
+PASO 5 → Entrega Final
+  Si se completó antes de iteración 5:
+    Entregar versión final + reporte de mejoras.
+  Si se alcanzó iteración 5 (escalamiento):
+    Presentar la MEJOR versión alcanzada.
+    Listar feedback NO resuelto.
+    Solicitar aprobación humana: "¿Apruebas esta versión o quieres guiar el refinamiento?"
+
+PASO 6 → Comparación Antes/Después
   Si se re-audita después de implementar las mejoras:
   Generar delta: score_antes → score_después (+N pts)
 ```
@@ -219,6 +252,27 @@ ANTES de cualquier modificación:
 3. Confirmar que el backup existe
 4. SOLO ENTONCES proceder con cambios
 ```
+
+---
+
+## Política de Escalamiento
+
+> **Añadido en Brain OS 2.2** — Mecanismo para evitar bucles infinitos de refinamiento.
+
+| Situación | Acción |
+|-----------|--------|
+| Iteración < 5, brechas resueltas | Entregar versión final normalmente |
+| Iteración < 5, brechas pendientes | Continuar refinamiento automático |
+| Iteración == 5, brechas pendientes | **DETENER** bucle. Presentar mejor versión + feedback no resuelto. Solicitar decisión humana. |
+| Usuario aprueba en iteración 5 | Cerrar con versión actual. Registrar brechas como "aceptadas". |
+| Usuario rechaza en iteración 5 | El usuario guía manualmente el siguiente refinamiento (el agente no itera solo). |
+
+### Justificación
+
+El límite de 5 iteraciones previene:
+- **Context Rot**: degradación de calidad por acumulación de contexto en el bucle.
+- **Diminishing Returns**: después de 5 ciclos, las mejoras marginales rara vez justifican el costo computacional.
+- **Loop sin convergencia**: algunos problemas de diseño requieren input humano, no más iteraciones automáticas.
 
 ---
 

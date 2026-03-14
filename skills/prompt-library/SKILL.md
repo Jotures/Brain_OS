@@ -1,6 +1,15 @@
 ---
 name: prompt-library
 description: Colección curada de prompts de alta calidad para diversos casos de uso. Incluye prompts por rol, templates por tarea y técnicas de refinamiento. Usar cuando el usuario diga "Dame un prompt para [X]", "Template de prompt", "Prompt para [rol/tarea]".
+trigger_conditions:
+  - "Dame un prompt para [X]"
+  - "Template de prompt para [tarea]"
+  - "Prompt para [rol]"
+  - "Busca un prompt que haga [X]"
+usage_constraints: "Solo para consultar prompts existentes de la biblioteca. Para diseñar prompts nuevos desde cero, usar prompt-engineer. Para técnicas avanzadas de prompting, usar prompt-engineering."
+category: "Escritura"
+parameters:
+  use_case: "Caso de uso o rol para buscar el prompt (string)"
 ---
 
 # 📝 Prompt Library

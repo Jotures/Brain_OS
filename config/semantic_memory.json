@@ -1,9 +1,15 @@
 {
-    "version": "1.0",
+    "version": "2.2",
     "description": "Conocimiento semántico (gists) derivado de episodios de sesión. Actualizado por el agente al cierre (ciclo REM/FER). DIFERENTE a hemingway_bridge.json (próximo paso) y research_log.json (investigación formal).",
     "sources": {
         "framework": "CMA/FER Cycle (Formación, Evolución, Recuperación)",
         "research": "research-agents-memory-2026"
+    },
+    "ingestion_policy": {
+        "score_range": "1-10",
+        "persistence_threshold": 4,
+        "rule": "score < 4 → no se persiste al semantic_memory; queda solo en el log de sesión.",
+        "eviction_logic": "eviction_candidate = true cuando score < 5 Y la entrada tiene más de 14 días de antigüedad."
     },
     "entries": [
         {
@@ -11,6 +17,8 @@
             "source_session": "Investigación e implementación de Arquitecturas de Memoria en Brain OS",
             "gist": "Motor v2 de NotebookLM (HTTP directo) tiene problemas de expiración de sesión silenciosa y devuelve errores 401 persistentes tras ~7 días. El Motor v1 (Browser Automotion con Patchright) es mucho más tolerante a fallos y funciona como fallback robusto.",
             "confidence": "high",
+            "score": 9,
+            "eviction_candidate": false,
             "domain": "notebooklm"
         },
         {
@@ -18,7 +26,45 @@
             "source_session": "Investigación e implementación de Arquitecturas de Memoria en Brain OS",
             "gist": "Si el contexto supera los 6,000 tokens (Context Rot), truncar ingenuamente el inicio destruye el performance (síndrome lost-in-the-middle). Es preferible hacer un 'Context Clearing' asíncrono explícito (Patrón AgeMem) reiniciando el contexto que intentar recuperar partes.",
             "confidence": "high",
+            "score": 8,
+            "eviction_candidate": false,
             "domain": "memoria"
+        },
+        {
+            "date": "2026-03-14",
+            "source_session": "Planificación de Exámenes Parciales 2026-1",
+            "gist": "Para semanas de exámenes de alta densidad, la priorización debe ser binaria: 'Confirmados' vs 'Pendientes'. El uso de NotebookLM como 'interrogador' (generación de 10 preguntas tipo examen) es el método más efectivo para validar la retención de materiales del profesor antes del examen real.",
+            "confidence": "high",
+            "score": 8,
+            "eviction_candidate": false,
+            "domain": "estudio"
+        },
+        {
+            "date": "2026-03-14",
+            "source_session": "Brain OS 2.2 - Arquitectura Cognitiva de Élite",
+            "gist": "La orquestación de agentes externos (OpenCode) mediante planes maestros estructurados permite realizar refactorizaciones masivas (40+ archivos) de forma segura y consistente.",
+            "confidence": "high",
+            "score": 10,
+            "eviction_candidate": false,
+            "domain": "sistema"
+        },
+        {
+            "date": "2026-03-14",
+            "source_session": "Brain OS 2.2 - Arquitectura Cognitiva de Élite",
+            "gist": "El riesgo académico es predecible mediante analíticas de sesión (risk_score.py). Indicadores como la velocidad de consolidación y el ratio de crisis son críticos para prevenir fallos antes de los exámenes.",
+            "confidence": "high",
+            "score": 9,
+            "eviction_candidate": false,
+            "domain": "analitica"
+        },
+        {
+            "date": "2026-03-14",
+            "source_session": "Brain OS 2.2 - Arquitectura Cognitiva de Élite",
+            "gist": "El enrutamiento inteligente (study-router) elimina la fricción cognitiva al decidir qué y cómo estudiar, integrando datos estructurados de Notion con contenido semántico de NotebookLM.",
+            "confidence": "high",
+            "score": 9,
+            "eviction_candidate": false,
+            "domain": "estudio"
         }
     ]
 }

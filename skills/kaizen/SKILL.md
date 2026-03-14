@@ -1,6 +1,17 @@
 ---
 name: kaizen
 description: Guía de mejora continua, prevención de errores y estandarización. Usar cuando el usuario quiera mejorar calidad de código, refactorizar, o discutir mejoras de proceso. Trigger con "Aplica Kaizen", "Mejora continua", "Error-proofing".
+trigger_conditions:
+  - "Aplica Kaizen a [X]"
+  - "Mejora continua de [proceso/código]"
+  - "Error-proofing para [X]"
+  - "Estandarizar [proceso]"
+  - "Refactorizar con enfoque de mejora continua"
+usage_constraints: "Para mejora incremental de procesos y código. No usar para refactorizaciones masivas (usar planning + architecture). No es para debugging (usar systematic-debugging)."
+category: "Sistema"
+parameters:
+  target: "Proceso o código objetivo de mejora (string)"
+  focus: "Enfoque: quality | error-proofing | standardization | waste-reduction"
 ---
 
 # Kaizen: Continuous Improvement

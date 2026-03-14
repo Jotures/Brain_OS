@@ -1,6 +1,17 @@
 ---
 name: doc-coauthoring
 description: Guía al usuario a través de un workflow estructurado para co-autoría de documentación. Usar cuando el usuario quiera escribir documentación, propuestas, specs técnicos, o contenido estructurado largo. Ayuda a transferir contexto, refinar contenido por iteración, y verificar que el documento funciona. Usar cuando el usuario diga "Escribamos un documento", "Ayúdame a redactar [X]", "Co-autoría de [documento]".
+trigger_conditions:
+  - "Escribamos un documento juntos"
+  - "Ayúdame a redactar [X]"
+  - "Co-autoría de [documento]"
+  - "Necesito escribir una propuesta/spec técnico"
+  - "Documento largo estructurado sobre [tema]"
+usage_constraints: "Para documentos largos que requieren colaboración iterativa. No usar para copy corto de marketing (usar copywriting) ni para templates de documentación (usar documentation-templates)."
+category: "Escritura"
+parameters:
+  doc_type: "Tipo de documento: proposal | spec | report | guide | essay"
+  topic: "Tema o título del documento (string)"
 ---
 
 # Doc Co-Authoring Workflow

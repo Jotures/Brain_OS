@@ -1,6 +1,16 @@
 ---
 name: executing-plans
 description: Ejecuta planes de implementación escritos en sesiones separadas con checkpoints de revisión. Usar cuando el usuario diga "Ejecuta este plan", "Implementa el plan de [X]", o cuando ya exista un plan escrito listo para ejecutar por batches.
+trigger_conditions:
+  - "Ejecuta este plan"
+  - "Implementa el plan de [X]"
+  - "Continúa ejecutando el plan"
+  - "Plan escrito listo para ejecutar por batches"
+usage_constraints: "Solo para ejecutar planes ya escritos. No usar para crear planes (usar planning o planning-with-files). Requiere un plan previo documentado."
+category: "Planificación"
+parameters:
+  plan_path: "Ruta al archivo del plan (string)"
+  batch_size: "Número de tareas por batch antes de checkpoint (number, default: 3)"
 ---
 
 # Executing Plans

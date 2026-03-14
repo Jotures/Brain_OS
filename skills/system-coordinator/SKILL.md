@@ -1,6 +1,17 @@
 ---
 name: system-coordinator
 description: Mantiene la integridad y coherencia del sistema Brain OS v2.0. Ejecuta auditorías técnicas, valida alineación con Flujo Maestro v2, gestiona riesgos, genera reportes con puntuación, y sincroniza componentes. Usar cuando se diga "Verifica el sistema", "Auditoría completa", "Reconciliar diferencias", o después de cambios significativos.
+trigger_conditions:
+  - "Verifica el sistema"
+  - "Auditoría completa"
+  - "Reconciliar diferencias"
+  - "Buenos días (activación matutina)"
+  - "Estado del sistema Brain OS"
+  - "Después de cambios significativos en la arquitectura"
+usage_constraints: "No usar para tareas de usuario (estudio, escritura, investigación). Solo para operaciones de mantenimiento, auditoría y coordinación interna del sistema Brain OS."
+category: "Sistema"
+parameters:
+  mode: "Tipo de verificación: quick | full | reconcile (default: quick)"
 ---
 
 # 🔗 System Coordinator v2.0

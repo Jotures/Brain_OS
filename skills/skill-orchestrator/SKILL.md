@@ -1,6 +1,16 @@
 ---
 name: skill-orchestrator
 description: "Orquestador central y buscador de habilidades (skills) de Brain OS. Usa esta skill cuando no estés seguro de qué otra skill utilizar para una tarea, o cuando necesites combinar varias skills, y te enseñará a descubrir dinámicamente el catálogo real instalado en el sistema local."
+trigger_conditions:
+  - "No sé qué skill usar para [X]"
+  - "Combina varias skills para [tarea]"
+  - "¿Qué skills tengo disponibles?"
+  - "Descubre qué skills pueden hacer [X]"
+  - "Orquesta un flujo multi-skill"
+usage_constraints: "Solo para descubrimiento y enrutamiento de skills. No ejecuta las skills directamente, solo las identifica y sugiere combinaciones."
+category: "Sistema"
+parameters:
+  task: "Descripción de la tarea para la cual buscar skills (string)"
 ---
 
 # 🎼 Skill Orchestrator v2.0

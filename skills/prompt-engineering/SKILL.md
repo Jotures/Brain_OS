@@ -1,6 +1,16 @@
 ---
 name: prompt-engineering
 description: Guía experta en patrones de prompt engineering, mejores prácticas y técnicas de optimización. Usar cuando el usuario quiera mejorar prompts, aprender estrategias de prompting, o debuggear comportamiento de agentes.
+trigger_conditions:
+  - "Enséñame técnicas de prompt engineering"
+  - "¿Cómo optimizo este prompt?"
+  - "Patrones de prompting avanzado"
+  - "Debuggear comportamiento del agente con prompts"
+  - "Chain of thought, few-shot, o técnica avanzada"
+usage_constraints: "Para aprendizaje y referencia de patrones de prompting. Para diseñar un prompt específico, usar prompt-engineer. Para consultar prompts existentes, usar prompt-library."
+category: "Escritura"
+parameters:
+  technique: "Técnica a explorar: chain-of-thought | few-shot | self-consistency | tree-of-thought | meta-prompting"
 ---
 
 # Prompt Engineering Patterns

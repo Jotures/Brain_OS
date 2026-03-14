@@ -6,6 +6,16 @@ context: fork
 agent: Explore
 disable-model-invocation: true
 allowed-tools: Bash, Read, Write, AskUserQuestion, WebSearch
+trigger_conditions:
+  - "Investiga [tema] de los últimos 30 días"
+  - "¿Qué se dice en Reddit/X sobre [tema]?"
+  - "Tendencias recientes de [tema]"
+  - "Genera prompts basados en tendencias de [tema]"
+usage_constraints: "Solo para investigación de tendencias recientes (últimos 30 días) en Reddit, X y web. No usar para investigación académica profunda (usar research-engineer) ni para consultas de documentos propios (usar notebooklm)."
+category: "Investigación"
+parameters:
+  topic: "Tema a investigar (string)"
+  target_tool: "Herramienta para la cual generar prompts (string, opcional)"
 ---
 
 # last30days: Research Any Topic from the Last 30 Days

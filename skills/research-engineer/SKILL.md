@@ -1,6 +1,18 @@
 ---
 name: research-engineer
 description: Ingeniero de investigación académica con rigor científico absoluto. Especializado en crítica objetiva, corrección teórica, verificación formal e implementación óptima. Usar cuando el usuario diga "Investiga [tema]", "Deep research sobre [X]", "Análisis académico", "Necesito fuentes sobre [tema]".
+trigger_conditions:
+  - "Investiga [tema] con rigor académico"
+  - "Deep research sobre [X]"
+  - "Necesito un análisis académico de [tema]"
+  - "Necesito fuentes verificadas sobre [tema]"
+  - "Verificación formal de [concepto o teoría]"
+  - "Crítica objetiva de [paper, artículo, documento]"
+usage_constraints: "No usar para escritura creativa, planificación de proyectos, ni implementación de código. Solo para investigación con rigor académico y verificación de fuentes."
+category: "Investigación"
+parameters:
+  topic: "Tema a investigar (string)"
+  depth: "Nivel de profundidad: surface | standard | deep (default: standard)"
 ---
 
 # Academic Research Engineer

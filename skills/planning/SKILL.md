@@ -1,6 +1,18 @@
 ---
 name: planning
 description: Planificación estructurada de tareas con desglose atómico, criterios de verificación, y compatibilidad con Brain OS. Usar cuando el usuario pida un plan, quiera implementar una feature, refactorizar código, o iniciar un trabajo multi-paso. Se activa con "Planifica [X]", "Haz un plan para [X]", "Necesito un plan", o antes de cualquier tarea compleja.
+trigger_conditions:
+  - "Planifica [X]"
+  - "Haz un plan para [X]"
+  - "Necesito un plan"
+  - "Tarea multi-paso compleja (>3 pasos)"
+  - "Implementar feature nueva"
+  - "Refactorizar código o estructura"
+usage_constraints: "No usar para tareas simples de un solo paso. No usar para investigación pura (usar research-engineer). No genera código directamente, solo el plan estructurado."
+category: "Planificación"
+parameters:
+  task: "Descripción de la tarea a planificar (string)"
+  granularity: "Nivel de detalle: high-level | detailed | atomic (default: detailed)"
 ---
 
 # 📋 Planning

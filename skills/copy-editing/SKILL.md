@@ -1,6 +1,17 @@
 ---
 name: copy-editing
 description: Edita, revisa y mejora copy de marketing existente usando el framework de 7 sweeps. Usar cuando el usuario diga "Edita este copy", "Revisa mi texto", "Feedback de copy", "Proofread", "Mejora esto", "Copy sweep", o cuando necesite pulir contenido de marketing con un enfoque sistemático por pasadas.
+trigger_conditions:
+  - "Edita este copy"
+  - "Revisa mi texto de marketing"
+  - "Feedback de copy"
+  - "Proofread de [texto]"
+  - "Copy sweep de [contenido]"
+  - "Mejora este texto de marketing"
+usage_constraints: "Solo para edición de copy de marketing existente. No usar para crear copy nuevo desde cero (usar copywriting) ni para edición de documentos académicos o técnicos."
+category: "Escritura"
+parameters:
+  sweep_type: "Tipo de pasada: clarity | flow | voice | cta | proof | all-7 (default: all-7)"
 ---
 
 # Copy Editing

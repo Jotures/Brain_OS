@@ -2,6 +2,17 @@
 name: prompt-engineer
 description: Experto en diseño y optimización de prompts para LLMs. Domina estructura de prompts, gestión de contexto, formato de outputs, few-shot, chain-of-thought y evaluación sistemática. Usar cuando el usuario diga "Diseña un prompt para [X]", "Mejora este prompt", "Prompt engineering", "System prompt", "Few-shot", "Chain of thought", o cuando necesite crear/mejorar prompts para skills o aplicaciones LLM.
 source: vibeship-spawner-skills (Apache 2.0) — adaptado para Brain OS
+trigger_conditions:
+  - "Diseña un prompt para [X]"
+  - "Mejora este prompt"
+  - "Crea un system prompt para [agente]"
+  - "Optimiza el prompt de [skill]"
+  - "Evalúa este prompt sistemáticamente"
+usage_constraints: "Para diseñar y optimizar prompts específicos. Para aprender patrones teóricos, usar prompt-engineering. Para buscar prompts existentes, usar prompt-library."
+category: "Escritura"
+parameters:
+  task: "Tarea para la cual diseñar el prompt (string)"
+  model: "Modelo objetivo: gpt-4 | claude | gemini | general (default: general)"
 ---
 
 # 🧠 Prompt Engineer

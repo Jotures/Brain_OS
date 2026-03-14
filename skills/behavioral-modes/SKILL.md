@@ -2,6 +2,16 @@
 name: behavioral-modes
 description: AI operational modes (brainstorm, implement, debug, review, teach, ship, orchestrate). Use to adapt behavior based on task type.
 allowed-tools: Read, Glob, Grep
+trigger_conditions:
+  - "Cambia a modo [brainstorm/implement/debug/review/teach/ship]"
+  - "Modo de implementación para [X]"
+  - "Modo de revisión de código"
+  - "Modo de enseñanza para [tema]"
+  - "Adapta tu comportamiento para [tipo de tarea]"
+usage_constraints: "Para cambiar el modo operativo del agente según el tipo de tarea. No es una skill de ejecución directa, sino un modificador de comportamiento."
+category: "Sistema"
+parameters:
+  mode: "Modo: brainstorm | implement | debug | review | teach | ship | orchestrate"
 ---
 
 # Behavioral Modes - Adaptive AI Operating Modes

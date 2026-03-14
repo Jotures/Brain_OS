@@ -1,6 +1,17 @@
 ---
 name: file-organizer
 description: Intelligently organizes files and folders by understanding context, finding duplicates, and suggesting better organizational structures. Use when user wants to clean up directories, organize downloads, remove duplicates, or restructure projects.
+trigger_conditions:
+  - "Organiza esta carpeta"
+  - "Limpia mi carpeta de descargas"
+  - "Encuentra duplicados en [directorio]"
+  - "Reestructura este proyecto"
+  - "Sugiere mejor organización para [carpeta]"
+usage_constraints: "Para organización de archivos del usuario. No usar para limpieza del sistema Brain OS (usar cleanup-manager) ni para gestión de materiales académicos (usar library-manager)."
+category: "Sistema"
+parameters:
+  target_dir: "Directorio a organizar (string)"
+  action: "Operación: organize | deduplicate | restructure | suggest"
 ---
 
 # File Organizer

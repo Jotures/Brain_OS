@@ -1,6 +1,16 @@
 ---
 name: brain-os-health
 description: Ejecuta una auditoría automática de salud de Brain OS. Verifica integridad de archivos core, skills, configuración, workflows y dashboard. Genera un reporte con score 0-100 y acciones recomendadas. Complementa el workflow /brain-os-audit.
+trigger_conditions:
+  - "Auditoría de salud del sistema"
+  - "¿Está sano Brain OS?"
+  - "Health check"
+  - "Diagnóstico completo del sistema"
+  - "Score de salud de Brain OS"
+usage_constraints: "Solo para diagnóstico de integridad de archivos y estructura de Brain OS. No confundir con system-coordinator (que coordina y sincroniza) ni con cleanup-manager (que limpia basura)."
+category: "Sistema"
+parameters:
+  scope: "Alcance: full | core-only | skills-only | config-only (default: full)"
 ---
 
 # 🔍 Brain OS Health — Auditoría Automática

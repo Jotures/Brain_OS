@@ -1,6 +1,18 @@
 ---
 name: library-manager
 description: Gestiona la sincronización bidireccional entre archivos locales y la base de datos Notion 'BD_RECURSOS'. Maneja el ingreso inteligente de archivos (Smart Ingest) y aplica Progressive Summarization a materiales de estudio. Usar cuando el usuario diga "Guarda este archivo en [curso]", "Registra [X]", "Resume progresivamente [material]", "¿Qué materiales tengo de [curso]?", "Busca en mis recursos [tema]".
+trigger_conditions:
+  - "Guarda este archivo en [curso]"
+  - "Registra [material] en BD_RECURSOS"
+  - "Resume progresivamente [material]"
+  - "¿Qué materiales tengo de [curso]?"
+  - "Busca en mis recursos [tema]"
+  - "Sincroniza archivos locales con Notion"
+usage_constraints: "Solo para gestión de materiales académicos y BD_RECURSOS en Notion. No usar para organización general de archivos (usar file-organizer) ni para consultas de aula virtual (usar aula-virtual)."
+category: "Académico"
+parameters:
+  action: "Operación: ingest | search | summarize | sync | list"
+  course: "Nombre del curso (string, opcional)"
 ---
 
 # 📚 Library Manager

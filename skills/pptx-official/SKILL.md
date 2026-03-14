@@ -2,6 +2,17 @@
 name: pptx
 description: Creación, edición y análisis de presentaciones PowerPoint (.pptx). Usar cuando el usuario necesite crear presentaciones nuevas, modificar contenido existente, trabajar con layouts, o agregar notas y comentarios a diapositivas.
 license: Proprietary. LICENSE.txt has complete terms
+trigger_conditions:
+  - "Crea una presentación sobre [tema]"
+  - "Edita esta presentación PowerPoint"
+  - "Agrega diapositivas a [archivo]"
+  - "Notas del presentador para [presentación]"
+  - "Diseña un layout para [tipo de presentación]"
+usage_constraints: "Solo para archivos PowerPoint (.pptx). No usar para documentos Word (usar docx), Excel (usar xlsx) ni PDFs (usar pdf)."
+category: "Documentos"
+parameters:
+  action: "Operación: create | edit | analyze | add-notes | layout"
+  file_path: "Ruta al archivo PowerPoint (string, opcional para crear)"
 ---
 
 # PPTX creation, editing, and analysis

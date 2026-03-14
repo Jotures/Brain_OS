@@ -1,6 +1,16 @@
 ---
 name: dashboard-sync
 description: Sincroniza automáticamente el archivo INICIO.md (panel de control de Brain OS) con la información actual del sistema. Usar cuando el usuario diga "Actualiza el dashboard", "Sincroniza INICIO.md", "Actualiza el panel de control", después de agregar notebooks a NotebookLM, o después de implementar nuevas funcionalidades.
+trigger_conditions:
+  - "Actualiza el dashboard"
+  - "Sincroniza INICIO.md"
+  - "Actualiza el panel de control"
+  - "Después de agregar notebooks a NotebookLM"
+  - "Después de implementar nuevas funcionalidades"
+usage_constraints: "Solo para actualizar INICIO.md. No usar para crear dashboards nuevos ni para modificar otros archivos de configuración."
+category: "Sistema"
+parameters:
+  section: "Sección a sincronizar: all | notebooks | skills | stats (default: all)"
 ---
 
 # 📊 Dashboard Sync

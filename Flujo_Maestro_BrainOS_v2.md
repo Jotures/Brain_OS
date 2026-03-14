@@ -1,6 +1,6 @@
-# 🧠 Flujo Maestro Brain OS v2.0
+# 🧠 Flujo Maestro Brain OS v2.2
 
-> **Versión**: 2.0 — Integración Deep Research
+> **Versión**: 2.2 — Arquitectura Cognitiva Proactiva
 > **Cronotipo**: Bear (peak 10:00–14:00, dip 14:00–16:00)
 > **Meta diaria**: ≥1 sesión de estudio (incluso S/D)
 > **Filosofía**: Sesiones largas y pocas > Sprint cortos
@@ -9,9 +9,12 @@
 
 ## 📊 TL;DR
 
-Brain OS v2 unifica estudio, proyectos, ensayos y exposiciones en un ciclo diario de 3 fases: **Boot → Ejecución → Cierre**. Esta versión integra cronobiología Bear (BRAC 90/20), Active Recall post-sesión, Hemingway Bridge para continuidad, y protocolos de energía basados en investigación. El motor principal cambia de Pomodoro 25/5 genérico a **ciclos ultradianos BRAC 90/20** cuando aplica — alineados con tu preferencia de "sesiones largas y pocas".
+Brain OS v2.2 unifica estudio, proyectos, ensayos y exposiciones en un ciclo diario de 3 fases: **Boot → Ejecución → Cierre**. Esta versión integra cronobiología Bear (BRAC 90/20), enrutamiento inteligente de estudio (Study Router), predicción de riesgo académico (Risk Score) y protocolos de energía basados en investigación.
 
-**Cambios clave vs v1:**
+**Cambios clave vs v2.0/v2.1:**
+- ✅ **Study Router**: Enrutamiento automático entre Notion (QUÉ estudiar) y NotebookLM (CÓMO estudiar).
+- ✅ **Risk Score**: Predicción de riesgo académico basado en 5 indicadores clave del Pomodoro.
+- ✅ Autoselección de skills (YAML metadata) para una mayor autonomía del agente.
 - ✅ Horario semanal corregido y preciso
 - ✅ Modo BRAC 90/20 (ultradiano) como opción para inmersión profunda
 - ✅ Active Recall automático post-sesión (2-3 preguntas)
@@ -468,6 +471,7 @@ Si después de 1 semana los resultados no mejoran:
 | `research-engineer` | Flujo de Escritura (prewriting) | Investigación profunda |
 | `doc-coauthoring` | Flujo de Escritura (drafting) | Co-redacción |
 | `copy-editing` | Flujo de Escritura (revision) | Edición y mejora de estilo |
+| `study-router` | Flujo de Estudio | Enruta "¿Qué debo estudiar?" (Notion) y "¿Cómo hacerlo?" (NotebookLM) |
 | `brainstorming` | Flujo de Proyecto (inicio) | Ideación grupal |
 | `plan-writing` | Flujo de Proyecto (planning) | Estructurar plan de trabajo |
 
@@ -487,5 +491,5 @@ Si después de 1 semana los resultados no mejoran:
 
 ---
 
-> **Última actualización**: 2026-02-12
-> **Versión anterior**: [Flujo_Maestro_BrainOS_v1.md](../Skils_Agent_I/Flujo_Maestro_BrainOS_v1.md) (archivo de referencia)
+> **Última actualización**: 2026-03-14 (v2.2)
+> **Versión anterior**: [Flujo_Maestro_BrainOS_v2.0.md](../Skils_Agent_I/Flujo_Maestro_BrainOS_v2.md) (archivo de referencia)
