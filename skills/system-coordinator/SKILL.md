@@ -50,6 +50,8 @@ description: Mantiene la integridad y coherencia del sistema Brain OS v2.0. Ejec
 | Hemingway Bridge | `config/hemingway_bridge.json` | Último hilo, fecha |
 | Backups | `backups/` | JSONs de BD_TAREAS, frescura |
 | Sync Status | `config/sync_status.json` | Timestamps de último sync |
+| **Semantic Memory** | `config/semantic_memory.json` | Gists presentes, último entry < 7 días 🆕 |
+| **Memory Governance** | `brain_config.md → MEMORY_GOVERNANCE` | Parámetros activos y valores válidos 🆕 |
 
 ---
 
@@ -106,11 +108,12 @@ PASO 10 → Auditar Gestión de Riesgos
           - ¿Config/sync_status.json presente? → indicador de frescura
           - ¿Scripts de sync tienen manejo de errores offline?
 
-PASO 11 → Verificar Skills Extendidas (13 core)
+PASO 11 → Verificar Skills Extendidas (16 core)
           system-coordinator, dashboard-sync, aula-virtual, notebooklm,
           pomodoro, library-manager, research-engineer, doc-coauthoring,
           copy-editing, brainstorming, plan-writing, cleanup-manager,
-          elite-skill-architect, architecture, skill-creator, pdf
+          elite-skill-architect, architecture, skill-creator, pdf,
+          autonomous-agent-patterns, agent-memory-systems, skill-orchestrator
 
 
 PASO 12 → Generar Reporte de 5 Secciones con Puntuación /30
@@ -328,8 +331,8 @@ Esta skill se auto-actualiza cuando detecta cambios:
 - Cambio en Flujo Maestro → Re-validar alineación
 
 ### Última Auto-Actualización
-- **Fecha**: 2026-02-27 05:00
-- **Skills activas**: 29 (post-consolidación: fusionadas 3 de planning + absorción de skill-creator)
+- **Fecha**: 2026-03-14
+- **Skills activas**: 32 (+ `skill-orchestrator` purgando skills falsas y añadiendo Flow Dinámico)
 - **Skills archivadas**: 4 (`concise-planning`, `plan-writing`, `writing-plans`, `skill-creator`)
 - **Descriptions**: 100% en español (19 skills traducidas)
 - **Skills Elite (≥90)**: `cleanup-manager`, `system-coordinator`, `elite-skill-architect`

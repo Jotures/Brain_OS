@@ -251,8 +251,17 @@ def create_resource_page(filename, course_id, headers, external_url=None):
     
     return resp.json()["id"]
 
+import argparse
+
 def main():
+    parser = argparse.ArgumentParser(description="Synchronize local files with Notion.")
+    parser.add_argument("--course", help="Optional internal course ID to sync only a specific course (e.g. 'economia_internacional')", default=None)
+    parser.add_argument("--check-only", action="store_true", help="Only check, do not upload (currently ignored, full sync always runs)")
+    args = parser.parse_args()
+
     print(f"📂 Scanning Local Directory: {BASE_DIR}")
+    if args.course:
+        print(f"🎯 Filter applied for course: {args.course}")
     
     headers = {
         "Authorization": f"Bearer {NOTION_TOKEN}",
@@ -265,10 +274,18 @@ def main():
     # Name -> ID (Reverse map for creation)
     course_map_name_to_id = {v: k for k, v in course_map_id_to_name.items()}
 
+    # Determine filter folder if course is provided
+    filter_folder = None
+    if args.course and args.course in COURSE_MAP:
+        filter_folder = COURSE_MAP[args.course].get('local_folder', '').split('/')[0]
 
     # Walk directory
     local_files = []
     for root, dirs, files in os.walk(BASE_DIR):
+        # Apply filter if set
+        if filter_folder and filter_folder not in str(Path(root)):
+            continue
+            
         for file in files:
             if file.lower().endswith(('.pdf', '.pptx', '.docx', '.url')):
                 full_path = Path(root) / file

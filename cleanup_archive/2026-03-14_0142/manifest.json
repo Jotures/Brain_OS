@@ -1,0 +1,56 @@
+{
+  "date": "2026-03-14T01:42:24.019335",
+  "level": 2,
+  "files": [
+    {
+      "original_path": "cleanup_archive\\2026-03-14_0141\\debug_course_dump.json",
+      "archived_as": "debug_course_dump.json",
+      "size_kb": 25
+    },
+    {
+      "original_path": "cleanup_archive\\2026-03-14_0141\\debug_course_dump.py",
+      "archived_as": "debug_course_dump.py",
+      "size_kb": 1
+    },
+    {
+      "original_path": "cleanup_archive\\2026-03-14_0141\\debug_page.py",
+      "archived_as": "debug_page.py",
+      "size_kb": 2
+    },
+    {
+      "original_path": "cleanup_archive\\2026-03-14_0141\\debug_upload_error.png",
+      "archived_as": "debug_upload_error.png",
+      "size_kb": 73
+    },
+    {
+      "original_path": "cleanup_archive\\2026-03-14_0141\\debug_upload_error_1.png",
+      "archived_as": "debug_upload_error_1.png",
+      "size_kb": 51
+    },
+    {
+      "original_path": "cleanup_archive\\2026-03-14_0141\\temp_library_sync.txt",
+      "archived_as": "temp_library_sync.txt",
+      "size_kb": 1
+    },
+    {
+      "original_path": "extract_pdf.py",
+      "archived_as": "extract_pdf.py",
+      "size_kb": 1
+    },
+    {
+      "original_path": "get_task_details.py",
+      "archived_as": "get_task_details.py",
+      "size_kb": 0
+    },
+    {
+      "original_path": "resources.md",
+      "archived_as": "resources.md",
+      "size_kb": 1
+    },
+    {
+      "original_path": "tasks.log",
+      "archived_as": "tasks.log",
+      "size_kb": 2
+    }
+  ]
+}

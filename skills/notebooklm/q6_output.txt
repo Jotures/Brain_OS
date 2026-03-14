@@ -1,0 +1,2 @@
+﻿ÔÜá´©Å Authentication expired or invalid. Redirected to: https://accounts.google.com/v3/signin/identifier?continue=https%3A%2F%2Fnotebooklm.google.com%2F&dsh=S1411529700%3A1773496015940994&followup=https%3A%2F%2Fnotebooklm.google.com%2F&ifkv=ASfE1-p3t0Y1qiLI83pVg1g4x095oJ2T-9qt3ciTYR_3eavuzMTkS78hKWf3r5OqXZVDuOZd3QmZ&osid=1&passive=1209600&flowName=WebLiteSignIn&flowEntry=ServiceLogin
+Run 'notebooklm login' to re-authenticate.

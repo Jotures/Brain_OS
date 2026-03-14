@@ -1,0 +1,227 @@
+﻿­ƒÆ¼ Asking: ┬┐Qu├® frameworks, modelos, ciclos o arquitecturas proponen los autores para organizar la memoria del agente? Describe CADA FASE con su duraci├│n y criterio de transici├│n a la siguiente.
+­ƒôÜ Notebook: https://notebooklm.google.com/notebook/46a5af7f-90d1-40b7-9883-cf6591893d17
+  ­ƒîÉ Opening notebook...
+  ÔÅ│ Waiting for query input...
+  Ô£ô Found input: textarea.query-box-input
+  ÔÅ│ Typing question...
+  ­ƒôñ Submitting...
+  ÔÅ│ Waiting for answer...
+  Ô£à Got answer!
+
+============================================================
+Question: ┬┐Qu├® frameworks, modelos, ciclos o arquitecturas proponen los autores para organizar la memoria del agente? Describe CADA FASE con su duraci├│n y criterio de transici├│n a la siguiente.
+============================================================
+
+1. AgeMem (Agentic Memory): Estrategia Progresiva de 3 Etapas AgeMem propone un framework donde el agente gestiona de forma unificada su memoria a corto plazo (STM) y largo plazo (LTM) a trav├®s del uso de herramientas (a├▒adir, actualizar, borrar, resumir, recuperar)
+1
+...
+. Su ciclo de aprendizaje y ejecuci├│n se divide en tres fases que estructuran la trayectoria del agente (T=T
+1
+	ÔÇï
+
++T
+2
+	ÔÇï
+
++T
+3
+	ÔÇï
+
+)
+4
+:
+Fase 1: Construcci├│n de LTM. El agente se expone a una conversaci├│n exploratoria para identificar informaci├│n importante y almacenarla en la memoria a largo plazo
+4
+5
+.
+Duraci├│n: T
+1
+	ÔÇï
+
+ turnos
+6
+.
+Criterio de transici├│n: Al finalizar los turnos T
+1
+	ÔÇï
+
+, el contexto a corto plazo (STM) se reinicia deliberadamente (CÔåÉÔêà) para evitar la fuga de informaci├│n y forzar al agente a usar la LTM en la siguiente etapa
+4
+6
+.
+Fase 2: Control de STM bajo distractores. Con el contexto limpio, se inyectan mensajes irrelevantes o distractores. El agente debe usar herramientas para filtrar o resumir proactivamente el contexto
+4
+...
+.
+Duraci├│n: T
+2
+	ÔÇï
+
+ turnos
+6
+.
+Criterio de transici├│n: Terminan los mensajes distractores y se presenta la consulta formal del usuario, pasando a la etapa final de resoluci├│n de la tarea
+4
+7
+.
+Fase 3: Razonamiento Integrado. El agente coordina la recuperaci├│n desde la LTM y maneja el contexto para producir una respuesta
+4
+7
+.
+Duraci├│n: T
+3
+	ÔÇï
+
+ turnos
+7
+.
+Criterio de transici├│n / Fin: El ciclo finaliza cuando el agente genera la respuesta estructurada o se alcanza el l├¡mite m├íximo de pasos (N
+max
+	ÔÇï
+
+)
+7
+8
+.
+2. MaRS (Memory-Aware Retention Schema): Controlador H├¡brido de M├║ltiples Fases MaRS estructura la memoria en grafos bajo un presupuesto estricto de tokens
+9
+10
+. La transici├│n de fases se detona cuando la suma del peso de las memorias excede el presupuesto l├¡mite (Ôêæw>B)
+10
+...
+.
+Fase 1: Higiene Temporal (Filtro FIFO/LRU). Remueve las hojas m├ís antiguas o menos usadas del historial
+12
+13
+.
+Duraci├│n: R├ípida, con un costo O(k) por gatillo (para k evicciones)
+12
+...
+.
+Criterio de transici├│n: Se verifica la condici├│n "┬┐Presupuesto OK?". Si la memoria ya est├í dentro del l├¡mite, termina; si no, avanza a la Fase 2
+11
+12
+.
+Fase 2: Consolidaci├│n por Reflexi├│n. Agrupa episodios redundantes y los comprime en un nodo de resumen sem├íntico, reemplazando el cl├║ster original
+11
+...
+.
+Duraci├│n: Intensiva, con costo de agrupamiento aproximado a O(nlogn+n╬▒(n))
+15
+.
+Criterio de transici├│n: Nuevamente se eval├║a "┬┐Presupuesto OK?". Si el espacio no es suficiente, se escala a la Fase 3
+12
+.
+Fase 3: Evicciones basadas en Prioridad. Elimina los fragmentos de menor densidad de importancia considerando su utilidad y sensibilidad de privacidad
+11
+12
+.
+Duraci├│n: Costo de O(klogn) al actualizar el mont├¡culo de prioridad
+12
+...
+.
+Criterio de transici├│n / Fin: Finaliza garantizadamente cuando se cumple el presupuesto (ÔêæwÔëñB)
+12
+17
+.
+3. MAGMA (Multi-Graph based Agentic Memory Architecture): Flujo Dual de Evoluci├│n MAGMA separa la memoria en grafos (sem├ínticos, temporales, causales y de entidades)
+18
+...
+. Su ciclo de evoluci├│n (escritura y actualizaci├│n) opera en un flujo dual
+20
+...
+:
+Fase 1: Ruta R├ípida (Ingesti├│n Sin├íptica). Ejecuta operaciones como la segmentaci├│n de eventos y la indexaci├│n vectorial para actualizar la estructura temporal
+22
+.
+Duraci├│n: Ultra-baja latencia (opera en la ruta cr├¡tica del usuario)
+22
+.
+Criterio de transici├│n: Al ser no bloqueante, no detiene el razonamiento del LLM; en su lugar, pone el identificador del evento en una cola (Queue.ENQUEUE) para detonar autom├íticamente la Ruta Lenta
+22
+.
+Fase 2: Ruta Lenta (Consolidaci├│n Estructural). Analiza la vecindad de los eventos recientes y usa el LLM para deducir conexiones latentes, densificando la red de grafos
+22
+.
+Duraci├│n: Computacionalmente intensiva / Ejecuci├│n as├¡ncrona (segundo plano)
+22
+.
+Criterio de transici├│n: Opera como un ciclo continuo impulsado por los eventos encolados en la etapa anterior
+22
+.
+4. MemGPT (Arquitectura tipo Sistema Operativo) MemGPT simula la gesti├│n de memoria de un OS (paginaci├│n de memoria virtual entre "RAM" y "disco") gestionando el contexto a trav├®s de llamadas a funci├│n
+23
+...
+.
+Fase de Ciclo de Inferencia: El agente toma el contexto principal, genera una salida, y un "ejecutor de funciones" valida los argumentos, ejecuta la acci├│n (como mover datos de la memoria de archivo al contexto) y devuelve los resultados al LLM
+27
+28
+.
+Duraci├│n: El cerebro opera en "r├ífagas cortas" (short bursts) computacionales en lugar de un pensamiento continuo
+29
+.
+Criterio de transici├│n: El agente puede encadenar llamadas a funciones inmediatamente generando la bandera request_heartbeat=true (├║til para b├║squedas multi-paso). Si no lo hace, el ciclo termina y el agente "duerme" hasta ser despertado por un nuevo evento del usuario o del sistema
+27
+...
+.
+5. CoALA (Cognitive Architectures for Language Agents) Estructura la toma de decisiones simulando funciones cognitivas biol├│gicas a trav├®s de un bucle interactivo
+33
+...
+.
+Fase 1: Planificaci├│n (Razonamiento y Recuperaci├│n). El c├│digo del programa define una secuencia donde el agente propone y eval├║a alternativas, alterando ├║nicamente su memoria de trabajo a corto plazo
+34
+36
+.
+Criterio de transici├│n: La fase concluye al seleccionarse la mejor alternativa durante la deliberaci├│n interna
+34
+.
+Fase 2: Ejecuci├│n.
+Criterio de transici├│n / Fin: El agente pasa a la siguiente iteraci├│n del ciclo s├│lo cuando decide ejecutar una acci├│n de aprendizaje (learning action) que altera la memoria a largo plazo, o una acci├│n de aterrizaje (grounding action) que interact├║a y cambia el entorno externo
+34
+...
+.
+6. CMA (Continuum Memory Architectures) y el Ciclo FER Define la memoria no como un almacenamiento est├ítico (tipo RAG), sino como un sustrato biol├│gico continuo
+39
+...
+. En la literatura relacionada se detalla mediante el bucle FER (Formaci├│n, Evoluci├│n, Recuperaci├│n)
+42
+43
+:
+Fase 1: Ingesti├│n / Formaci├│n (F). Mecanismo de atenci├│n selectiva que toma datos crudos, les adjunta metadatos (temporalidad, prominencia) y crea fragmentos de conocimiento
+42
+44
+.
+Criterio de Transici├│n: La inyecci├│n del evento detona la "propagaci├│n de la activaci├│n" hacia el resto de la red de grafos
+45
+.
+Fase 2: Recuperaci├│n / B├║squeda Asociativa (R). Accede a la memoria bas├índose en la intensidad de activaci├│n, novedad y similitud
+46
+.
+Criterio de transici├│n (Mutaci├│n por Recuperaci├│n): Cada recuperaci├│n detona inmediatamente una mutaci├│n; refuerza la accesibilidad de los fragmentos le├¡dos y debilita a los rivales, alterando el estado de cara al futuro
+46
+47
+.
+Fase 3: Consolidaci├│n y Abstracci├│n / Evoluci├│n (E). Resuelve conflictos, sintetiza temas latentes o "gists", y consolida trazas epis├│dicas en conocimiento sem├íntico
+41
+...
+.
+Duraci├│n: Opera como un proceso en segundo plano "inspirado en el sue├▒o (REM)"
+48
+.
+7. Ciclo Iterativo de "Context Engineering" (ZBrain) Para los flujos de trabajo aut├│nomos a nivel empresarial (Enterprise Agents), se propone un ciclo repetitivo de ejecuci├│n estructurada
+49
+...
+:
+Fases del bucle: Pensamiento (an├ílisis del contexto) ÔåÆ Acci├│n (invocaci├│n de herramientas) ÔåÆ Observaci├│n (evaluaci├│n del resultado) ÔåÆ Contexto actualizado (refresco de estado de memoria) ÔåÆ Siguiente pensamiento
+50
+.
+Duraci├│n / Transici├│n: Este proceso avanza a trav├®s de estas etapas y se reinicia recursivamente hasta que se satisfacen los criterios de finalizaci├│n del objetivo o cuando se requiere una escalada a supervisi├│n humana
+50
+52
+. Al finalizar un flujo, ocurre una actualizaci├│n (Memory Update) persistente en la memoria a largo plazo para prevenir el razonamiento redundante en sesiones futuras
+49
+.
+
+EXTREMELY IMPORTANT: Is that ALL you need to know? You can always ask another question! Think about it carefully: before you reply to the user, review their original request and this answer. If anything is still unclear or missing, ask me another comprehensive question that includes all necessary context (since each question opens a new browser session).
+
+============================================================

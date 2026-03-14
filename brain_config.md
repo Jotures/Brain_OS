@@ -4,6 +4,52 @@ Archivo central con IDs y esquemas para la integración Notion MCP.
 
 ---
 
+## 🧬 Gobernanza de Memoria del Agente
+
+> Parámetros derivados de investigación académica (`research-agents-memory-2026`).
+> Fuentes: AgeMem, MaRS, MemGPT, CMA/FER, ZBrain (2024-2025).
+
+```yaml
+MEMORY_GOVERNANCE:
+  # --- Presupuesto de Tokens (MaRS / AgeMem) ---
+  # Rango recomendado: 4,000-8,000 tokens para mantener coherencia atencional
+  # Ventana de trabajo máximo para chatbots: ~700 tokens (MemGPT benchmark)
+  token_budget: 6000              # Presupuesto base por sesión
+  working_memory_limit: 700      # Límite de STM activa por turno
+
+  # --- Evicción en Cascada MaRS (activar cuando token_budget se supera) ---
+  # Fase 1: Higiene FIFO/LRU      → descartar contexto de temas cerrados
+  # Fase 2: Reflexión semántica   → comprimir episodios similares en resumen
+  # Fase 3: Evicción por prioridad → descartar fragmentos de menor densidad
+  # Fallback: Random Drop         → regularizador si las 3 fases no bastan
+  eviction_strategy: "mars_hybrid"  # mars_hybrid | lru | random_drop
+
+  # --- Decaimiento Temporal (CMA / Generative Agents) ---
+  recency_factor: 0.995          # Factor por el que se multiplica el peso con el tiempo
+  decay_coefficient: 0.1         # Coeficiente de decaimiento temporal exponencial
+
+  # --- Trigger de Reflexión (Generative Agents) ---
+  # Se activa al acumular suficiente "importancia" en episodios recientes
+  # Equivalente a ~2-3 reflexiones por sesión larga de trabajo
+  reflection_threshold: 150      # Importancia acumulada para gatillar consolidación
+  reflection_output: "sesiones/{date}/reflections.md"
+
+  # --- Límites de Ejecución (prevención de loops) ---
+  max_execution_steps: 20        # Máximo de iteraciones antes de escalar al usuario
+  loop_detection_window: 5       # Ventana de N pasos para detectar bucles
+  timeout_global_min: 15         # Timeout global por tarea (minutos)
+  timeout_per_agent_min: 5       # Timeout por sub-agente en multi-agente
+
+  # --- Selección de Patrón por Complejidad ---
+  # Basado en estimación de pasos necesarios para la tarea
+  patterns:
+    sequential:  "< 5 pasos"    # Agente único, flujo lineal
+    coordinator: "5-15 pasos"   # Orchestrator + workers especializados
+    swarm:       "> 15 pasos"   # Red de agentes autónomos con estado compartido
+```
+
+---
+
 ## Bases de Datos - IDs
 
 ```yaml

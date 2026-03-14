@@ -1,491 +1,95 @@
 ---
 name: skill-orchestrator
-description: >
-  Orquestador central de todas las habilidades disponibles. Usa este skill para:
-  (1) Descubrir qué skills existen y cuándo usarlos,
-  (2) Seleccionar el skill más apropiado para una tarea,
-  (3) Combinar múltiples skills para tareas complejas,
-  (4) Navegar el catálogo completo de 240+ habilidades organizadas por categoría.
-  Invócalo cuando no estés seguro de qué skill usar o necesites una visión general de las capacidades disponibles.
+description: "Orquestador central y buscador de habilidades (skills) de Brain OS. Usa esta skill cuando no estés seguro de qué otra skill utilizar para una tarea, o cuando necesites combinar varias skills, y te enseñará a descubrir dinámicamente el catálogo real instalado en el sistema local."
 ---
 
-# Skill Orchestrator
+# 🎼 Skill Orchestrator v2.0
 
-**Rol**: Directorio central y sistema de enrutamiento para todas las habilidades disponibles.
+> Sistema de enrutamiento y descubrimiento activo de habilidades para Brain OS. No memoriza habilidades falsas, las **descubre en tiempo real**.
 
-## Propósito
+## Cuándo Usar Esta Skill
 
-Este skill actúa como el **índice maestro** de todas las habilidades disponibles en la biblioteca. Utilízalo para:
-
-1. **Descubrir** qué skills existen para una tarea específica
-2. **Seleccionar** el skill más apropiado basándote en el contexto
-3. **Combinar** múltiples skills para flujos de trabajo complejos
-4. **Aprender** sobre las capacidades especializadas disponibles
+Actívala cuando necesites:
+- **Descubrir** qué skills existen instaladas para una tarea específica.
+- **Seleccionar** la mejor skill basándote en un contexto ambiguo.
+- **Combinar** múltiples skills para un flujo de trabajo complejo.
+- **Auditar** si el usuario tiene una herramienta específica instalada.
 
 ---
 
-## Cómo Usar Este Skill
+## 1. Flujo de Descubrimiento Dinámico
 
-### Flujo de Decisión
+Como agente de Brain OS, **no debes asumir qué skills existen de memoria**. El catálogo de la V2.0 es dinámico y personalizado. Para saber qué puedes hacer, sigue este flujo:
 
-```
-¿Sé exactamente qué skill necesito?
-├── SÍ → Invócalo directamente: @nombre-del-skill
-└── NO → Continúa leyendo el catálogo por categoría
-```
+### PASO 1: Listar el Directorio de Skills
+Ejecuta la herramienta `list_dir` en la ruta `/skills/` del proyecto.
+*(Nunca uses `ls`, usa siempre la herramienta nativa tuya).*
 
-### Invocación de Skills
+### PASO 2: Filtrar y Explorar
+De la lista obtenida, identifica las 3-4 carpetas (`skills/nombre-skill/`) que suenen más relevantes para tu métrica actual.
 
-Los skills se invocan con el prefijo `@` seguido del nombre:
+### PASO 3: Leer el Frontmatter
+Ejecuta `view_file` apuntando a `skills/[nombre-skill]/SKILL.md` (o usa `head` hasta la línea 15) para leer el campo `description` del archivo YAML. La descripción te dirá exactamente cuándo y cómo usar esa skill específica.
 
-```
-@brainstorming diseña una aplicación de tareas
-@systematic-debugging investiga por qué falla el login
-@react-best-practices revisa este componente
-```
+### PASO 4: Invocar
+Si la skill se ajusta a lo que necesitas, aplica las instrucciones que leíste en su archivo `SKILL.md`.
 
 ---
 
-## 📚 Catálogo de Skills por Categoría
+## 2. Categorías Core de Brain OS
 
-### 🎨 Diseño Creativo y UI/UX
+Aunque el descubrimiento es dinámico, aquí tienes un mapa conceptual de las categorías reales y principales que **SÍ** existen en este sistema base:
 
-Skills para diseño visual, interfaces de usuario y creación artística.
+### ⚙️ Gestión del Sistema (Sistema y Metadatos)
+- `system-coordinator`: Auditorías y verificación del estado general del OS.
+- `dashboard-sync`: Mantiene el `INICIO.md` actualizado.
+- `cleanup-manager`: Limpieza de basura, temporales e higiene digital.
+- `file-organizer`: Ordena la carpeta de Descargas hacia la Universidad.
 
-| Skill | Descripción |
-|-------|-------------|
-| `@3d-web-experience` | Experiencias 3D interactivas para web |
-| `@algorithmic-art` | Arte algorítmico con p5.js |
-| `@canvas-design` | Diseño de pósters y arte visual (PNG/PDF) |
-| `@frontend-design` | Interfaces frontend production-grade |
-| `@interactive-portfolio` | Portafolios web interactivos |
-| `@mobile-design` | Diseño de aplicaciones móviles |
-| `@scroll-experience` | Experiencias de scroll animadas |
-| `@theme-factory` | Generador de temas para documentos |
-| `@ui-ux-pro-max` | Diseño UI/UX profesional completo |
-| `@web-artifacts-builder` | Aplicaciones web modernas (React, Tailwind) |
-| `@web-design-guidelines` | Guías de diseño web |
+### 🏛️ Skills Cognitivos y de Arquitectura
+- `elite-skill-architect`: Evalúa, audita y crea otras skills.
+- `autonomous-agent-patterns`: Flujos de agentes autónomos y seguridad de permisos.
+- `agent-memory-systems`: Context Window y memoria a corto/largo plazo.
+- `behavioral-modes`: Estados mentales y modos de operación del agente.
 
----
+### 📚 Entorno Universitario y Estudio
+- `notebooklm`: Interfaz RAG con base de datos NotebookLM.
+- `aula-virtual`: Descarga y sincronización de clases de la universidad.
+- `pomodoro`: Temporizadores, BRAC y validación de Active Recall.
+- `library-manager`: Gestión de lecturas y libros.
 
-### 💻 Desarrollo Frontend
-
-Skills para desarrollo de interfaces y aplicaciones cliente.
-
-| Skill | Descripción |
-|-------|-------------|
-| `@frontend-dev-guidelines` | Guías de desarrollo frontend |
-| `@javascript-mastery` | Dominio avanzado de JavaScript |
-| `@nextjs-best-practices` | Mejores prácticas para Next.js |
-| `@react-best-practices` | Patrones modernos de React |
-| `@react-patterns` | Patrones de diseño en React |
-| `@react-ui-patterns` | Componentes UI reutilizables |
-| `@remotion-best-practices` | Videos programáticos con Remotion |
-| `@tailwind-patterns` | Patrones de diseño con Tailwind CSS |
-| `@typescript-expert` | Desarrollo avanzado en TypeScript |
+### 📝 Trabajo y Planificación Documental
+- `planning`, `executing-plans`, `brainstorming`: Ciclo de trabajo metódico.
+- `doc-coauthoring`: Trabajo colaborativo en ensayos reflexivos.
+- `research-engineer`, `systematic-debugging`: Solución profunda a bugs y teoría.
+- `docx-official`, `xlsx-official`, `pdf`, `pptx-official`: Parser y manipulación de ofimática.
 
 ---
 
-### 🔧 Desarrollo Backend
+## 3. Patrones de Combinación (Orquestación)
 
-Skills para desarrollo del lado del servidor y APIs.
+Para tareas complejas, combina múltiples skills secuencialmente. 
 
-| Skill | Descripción |
-|-------|-------------|
-| `@api-patterns` | Patrones de diseño de APIs |
-| `@api-documentation-generator` | Generador de documentación de APIs |
-| `@backend-dev-guidelines` | Guías de desarrollo backend |
-| `@bullmq-specialist` | Colas de trabajo con BullMQ |
-| `@bun-development` | Desarrollo con Bun runtime |
-| `@graphql` | APIs con GraphQL |
-| `@nestjs-expert` | Framework NestJS |
-| `@nodejs-best-practices` | Mejores prácticas Node.js |
-| `@python-patterns` | Patrones de Python |
+### Caso: Sesión de Estudio Profundo
+1. `@system-coordinator` (o `dashboard-sync`) → Verifica qué curso está activo y prepara el dashboard.
+2. `@pomodoro` → Inicia un temporizador focalizado.
+3. `@aula-virtual` → Comprueba si hay nuevos materiales del curso.
+4. `@notebooklm` → Dispara preguntas analíticas guardadas en la BD.
+5. Hemingway Bridge (`agent-memory-systems`) → Transición y cierre del bloque.
 
----
+### Caso: Resolución de Tareas / Ensayos
+1. `@brainstorming` → Dibuja en `tmp/` un mapa mental de los requisitos de la tarea.
+2. `@doc-coauthoring` → Redacta colaborativamente iterando sección a sección.
+3. `@docx-official` → Empaqueta reflexiones finales a un documento `.docx` listo para enviar.
 
-### 🗄️ Bases de Datos
-
-Skills para diseño, optimización y gestión de datos.
-
-| Skill | Descripción |
-|-------|-------------|
-| `@database-design` | Diseño de esquemas de BD |
-| `@neon-postgres` | Postgres serverless con Neon |
-| `@nosql-expert` | Bases de datos NoSQL |
-| `@postgres-best-practices` | Optimización de PostgreSQL |
-| `@prisma-expert` | ORM Prisma |
+### Caso: Creando o mejorando herramientas de Brain OS
+1. `@elite-skill-architect` → Audita la skill para entender brechas (1-100 pts).
+2. `@autonomous-agent-patterns` → Para verificar patrones de seguridad y rollback.
+3. Edit Tools + `cleanup-manager` → Actualiza el log y limpia el proceso residual.
 
 ---
 
-### ☁️ Cloud y DevOps
+## 4. Resolución de Conflictos
 
-Skills para despliegue, infraestructura y operaciones.
-
-| Skill | Descripción |
-|-------|-------------|
-| `@aws-serverless` | Arquitectura serverless en AWS |
-| `@azure-functions` | Azure Functions |
-| `@docker-expert` | Contenedores y Docker |
-| `@gcp-cloud-run` | Google Cloud Run |
-| `@github-workflow-automation` | Automatización con GitHub Actions |
-| `@server-management` | Administración de servidores |
-| `@vercel-deployment` | Despliegue en Vercel |
-
----
-
-### 🤖 Inteligencia Artificial y Agentes
-
-Skills para desarrollo de aplicaciones con IA.
-
-| Skill | Descripción |
-|-------|-------------|
-| `@agent-evaluation` | Evaluación de agentes de IA |
-| `@agent-manager-skill` | Gestión de agentes |
-| `@agent-memory-mcp` | Memoria persistente para agentes |
-| `@agent-memory-systems` | Sistemas de memoria para IA |
-| `@agent-tool-builder` | Constructor de herramientas para agentes |
-| `@ai-agents-architect` | Arquitectura de agentes de IA |
-| `@ai-product` | Productos basados en IA |
-| `@ai-wrapper-product` | Wrappers sobre APIs de IA |
-| `@autonomous-agent-patterns` | Patrones de agentes autónomos |
-| `@autonomous-agents` | Desarrollo de agentes autónomos |
-| `@computer-use-agents` | Agentes que usan la computadora |
-| `@crewai` | Framework CrewAI |
-| `@langgraph` | Grafos de agentes con LangGraph |
-| `@llm-app-patterns` | Patrones para apps con LLMs |
-| `@parallel-agents` | Agentes ejecutándose en paralelo |
-| `@prompt-caching` | Caché de prompts |
-| `@prompt-engineer` | Ingeniería de prompts |
-| `@prompt-engineering` | Diseño avanzado de prompts |
-| `@prompt-library` | Biblioteca de prompts |
-| `@rag-engineer` | Sistemas RAG |
-| `@rag-implementation` | Implementación de RAG |
-| `@voice-agents` | Agentes de voz |
-| `@voice-ai-development` | Desarrollo de IA de voz |
-| `@voice-ai-engine-development` | Motores de IA de voz |
-
----
-
-### 🧪 Testing y Calidad
-
-Skills para pruebas, debugging y revisión de código.
-
-| Skill | Descripción |
-|-------|-------------|
-| `@code-review-checklist` | Checklist de revisión de código |
-| `@codex-review` | Revisión automatizada de código |
-| `@playwright-skill` | Testing con Playwright |
-| `@receiving-code-review` | Recibir feedback de revisiones |
-| `@requesting-code-review` | Solicitar revisiones de código |
-| `@systematic-debugging` | Debugging metódico |
-| `@tdd-workflow` | Flujo TDD |
-| `@test-driven-development` | Desarrollo guiado por tests |
-| `@test-fixing` | Corrección de tests fallidos |
-| `@testing-patterns` | Patrones de testing |
-| `@verification-before-completion` | Verificación antes de completar |
-| `@webapp-testing` | Testing de aplicaciones web |
-
----
-
-### 🔒 Seguridad y Pentesting
-
-Skills para seguridad ofensiva y defensiva.
-
-| Skill | Descripción |
-|-------|-------------|
-| `@active-directory-attacks` | Ataques a Active Directory |
-| `@api-fuzzing-bug-bounty` | Fuzzing de APIs para bug bounty |
-| `@api-security-best-practices` | Seguridad de APIs |
-| `@aws-penetration-testing` | Pentesting en AWS |
-| `@broken-authentication` | Vulnerabilidades de autenticación |
-| `@burp-suite-testing` | Testing con Burp Suite |
-| `@cloud-penetration-testing` | Pentesting en la nube |
-| `@ethical-hacking-methodology` | Metodología de hacking ético |
-| `@file-path-traversal` | Path traversal |
-| `@file-uploads` | Seguridad en uploads |
-| `@html-injection-testing` | Testing de inyección HTML |
-| `@idor-testing` | Testing de IDOR |
-| `@linux-privilege-escalation` | Escalación de privilegios Linux |
-| `@metasploit-framework` | Framework Metasploit |
-| `@pentest-checklist` | Checklist de pentesting |
-| `@pentest-commands` | Comandos de pentesting |
-| `@privilege-escalation-methods` | Métodos de escalación |
-| `@red-team-tactics` | Tácticas de Red Team |
-| `@red-team-tools` | Herramientas de Red Team |
-| `@scanning-tools` | Herramientas de escaneo |
-| `@shodan-reconnaissance` | Reconocimiento con Shodan |
-| `@smtp-penetration-testing` | Pentesting SMTP |
-| `@sql-injection-testing` | Testing de SQL injection |
-| `@sqlmap-database-pentesting` | Pentesting con SQLMap |
-| `@ssh-penetration-testing` | Pentesting SSH |
-| `@top-web-vulnerabilities` | Top vulnerabilidades web |
-| `@vulnerability-scanner` | Escáner de vulnerabilidades |
-| `@windows-privilege-escalation` | Escalación en Windows |
-| `@wireshark-analysis` | Análisis con Wireshark |
-| `@wordpress-penetration-testing` | Pentesting WordPress |
-| `@xss-html-injection` | XSS e inyección HTML |
-
----
-
-### 📝 Documentación y Office
-
-Skills para trabajo con documentos y archivos de oficina.
-
-| Skill | Descripción |
-|-------|-------------|
-| `@doc-coauthoring` | Co-autoría de documentos |
-| `@docx-official` | Documentos Word (.docx) |
-| `@documentation-templates` | Plantillas de documentación |
-| `@pdf-official` | Manipulación de PDFs |
-| `@pptx-official` | Presentaciones PowerPoint |
-| `@xlsx-official` | Hojas de cálculo Excel |
-
----
-
-### 📋 Planificación y Workflow
-
-Skills para gestión de tareas y flujos de trabajo.
-
-| Skill | Descripción |
-|-------|-------------|
-| `@brainstorming` | Diseñar antes de implementar |
-| `@concise-planning` | Planificación concisa |
-| `@executing-plans` | Ejecución de planes |
-| `@kaizen` | Mejora continua |
-| `@multi-agent-brainstorming` | Brainstorming con múltiples agentes |
-| `@plan-writing` | Escritura de planes |
-| `@planning-with-files` | Planificación basada en archivos |
-| `@writing-plans` | Redacción de planes de implementación |
-
----
-
-### 🔌 Integraciones y APIs
-
-Skills para integrar servicios externos.
-
-| Skill | Descripción |
-|-------|-------------|
-| `@algolia-search` | Búsqueda con Algolia |
-| `@analytics-tracking` | Tracking analítico |
-| `@clerk-auth` | Autenticación con Clerk |
-| `@exa-search` | Búsqueda con Exa |
-| `@firebase` | Firebase de Google |
-| `@firecrawl-scraper` | Web scraping con Firecrawl |
-| `@hubspot-integration` | Integración con HubSpot |
-| `@inngest` | Background jobs con Inngest |
-| `@langfuse` | Observabilidad para LLMs |
-| `@nextjs-supabase-auth` | Auth con Next.js y Supabase |
-| `@plaid-fintech` | APIs financieras con Plaid |
-| `@segment-cdp` | Customer Data Platform |
-| `@stripe-integration` | Pagos con Stripe |
-| `@trigger-dev` | Jobs en background |
-| `@twilio-communications` | Comunicaciones con Twilio |
-| `@upstash-qstash` | Colas con Upstash |
-
----
-
-### 🛠️ Extensión del Sistema
-
-Skills para extender capacidades del agente.
-
-| Skill | Descripción |
-|-------|-------------|
-| `@browser-automation` | Automatización del navegador |
-| `@browser-extension-builder` | Extensiones de navegador |
-| `@context-window-management` | Gestión de ventana de contexto |
-| `@dispatching-parallel-agents` | Dispatch de agentes paralelos |
-| `@mcp-builder` | Constructor de servidores MCP |
-| `@personal-tool-builder` | Herramientas personales |
-| `@skill-creator` | Crear nuevos skills |
-| `@skill-developer` | Desarrollar skills |
-| `@subagent-driven-development` | Desarrollo con sub-agentes |
-| `@using-superpowers` | Uso de superpoderes |
-| `@writing-skills` | Escribir y validar skills |
-
----
-
-### 📈 Marketing y SEO
-
-Skills para marketing digital y optimización.
-
-| Skill | Descripción |
-|-------|-------------|
-| `@ab-test-setup` | Configuración de A/B tests |
-| `@app-store-optimization` | ASO para app stores |
-| `@competitor-alternatives` | Análisis de competencia |
-| `@email-sequence` | Secuencias de email |
-| `@email-systems` | Sistemas de email |
-| `@form-cro` | Optimización de formularios |
-| `@free-tool-strategy` | Estrategia de herramientas gratuitas |
-| `@launch-strategy` | Estrategia de lanzamiento |
-| `@marketing-ideas` | Ideas de marketing |
-| `@marketing-psychology` | Psicología del marketing |
-| `@onboarding-cro` | Optimización de onboarding |
-| `@page-cro` | Optimización de páginas |
-| `@paid-ads` | Publicidad pagada |
-| `@paywall-upgrade-cro` | Optimización de paywall |
-| `@popup-cro` | Optimización de popups |
-| `@pricing-strategy` | Estrategia de precios |
-| `@programmatic-seo` | SEO programático |
-| `@referral-program` | Programas de referidos |
-| `@schema-markup` | Marcado Schema.org |
-| `@seo-audit` | Auditoría SEO |
-| `@seo-fundamentals` | Fundamentos de SEO |
-| `@signup-flow-cro` | Optimización de registro |
-| `@social-content` | Contenido para redes |
-| `@viral-generator-builder` | Generadores virales |
-
----
-
-### ✍️ Escritura y Contenido
-
-Skills para creación de contenido.
-
-| Skill | Descripción |
-|-------|-------------|
-| `@content-creator` | Creación de contenido |
-| `@copy-editing` | Edición de textos |
-| `@copywriting` | Copywriting persuasivo |
-| `@daily-news-report` | Informes de noticias |
-| `@internal-comms-anthropic` | Comunicaciones internas (Anthropic) |
-| `@internal-comms-community` | Comunicaciones internas (comunidad) |
-| `@research-engineer` | Investigación técnica |
-
----
-
-### 🏗️ Arquitectura y Patrones
-
-Skills para diseño de sistemas a gran escala.
-
-| Skill | Descripción |
-|-------|-------------|
-| `@architecture` | Patrones de arquitectura |
-| `@cc-skill-backend-patterns` | Patrones backend |
-| `@cc-skill-frontend-patterns` | Patrones frontend |
-| `@clean-code` | Código limpio |
-| `@production-code-audit` | Auditoría de código productivo |
-| `@senior-architect` | Arquitectura senior |
-| `@senior-fullstack` | Desarrollo fullstack senior |
-| `@software-architecture` | Arquitectura de software |
-
----
-
-### 🎮 Desarrollo de Juegos
-
-Skills para desarrollo de videojuegos.
-
-| Skill | Descripción |
-|-------|-------------|
-| `@blockrun` | Juegos tipo runner |
-| `@game-development` | Desarrollo de juegos |
-
----
-
-### 🤖 Bots y Automatización
-
-Skills para bots y automatización.
-
-| Skill | Descripción |
-|-------|-------------|
-| `@discord-bot-architect` | Bots de Discord |
-| `@slack-bot-builder` | Bots de Slack |
-| `@slack-gif-creator` | GIFs para Slack |
-| `@telegram-bot-builder` | Bots de Telegram |
-| `@telegram-mini-app` | Mini apps de Telegram |
-| `@workflow-automation` | Automatización de flujos |
-| `@zapier-make-patterns` | Patrones Zapier/Make |
-
----
-
-### 🐧 Linux y Shell
-
-Skills para sistemas Linux y scripting.
-
-| Skill | Descripción |
-|-------|-------------|
-| `@bash-linux` | Scripting en Bash |
-| `@busybox-on-windows` | BusyBox en Windows |
-| `@linux-shell-scripting` | Scripts de shell Linux |
-| `@powershell-windows` | PowerShell en Windows |
-
----
-
-### 🛒 E-commerce
-
-Skills para comercio electrónico.
-
-| Skill | Descripción |
-|-------|-------------|
-| `@shopify-apps` | Apps para Shopify |
-| `@shopify-development` | Desarrollo en Shopify |
-
----
-
-### 📚 Herramientas Específicas
-
-Skills para herramientas y plataformas específicas.
-
-| Skill | Descripción |
-|-------|------------|
-| `@claude-code-guide` | Guía de Claude Code |
-| `@context7-auto-research` | Investigación automática |
-| `@conversation-memory` | Memoria de conversación |
-| `@git-pushing` | Commits con buenos mensajes |
-| `@lint-and-validate` | Linting y validación |
-| `@notebooklm` | NotebookLM de Google |
-| `@notion-template-business` | Plantillas de Notion |
-| `@obsidian-clipper-template-creator` | Templates para Obsidian |
-| `@tavily-web` | Búsqueda web con Tavily |
-| `@using-git-worktrees` | Git worktrees |
-
----
-
-## 🎯 Skills Recomendados por Situación
-
-### "Necesito empezar un proyecto nuevo"
-→ `@brainstorming` → `@writing-plans` → `@senior-architect`
-
-### "Tengo un bug difícil de resolver"
-→ `@systematic-debugging`
-
-### "Quiero mejorar mi código React"
-→ `@react-best-practices` → `@clean-code`
-
-### "Necesito crear documentación"
-→ `@docx-official` o `@documentation-templates`
-
-### "Quiero auditar la seguridad"
-→ `@pentest-checklist` → `@ethical-hacking-methodology`
-
-### "Quiero construir con IA"
-→ `@ai-agents-architect` → `@prompt-engineer` → `@rag-implementation`
-
-### "Necesito optimizar para SEO"
-→ `@seo-fundamentals` → `@schema-markup` → `@programmatic-seo`
-
----
-
-## Combinación de Skills
-
-Para tareas complejas, combina múltiples skills secuencialmente:
-
-```
-1. @brainstorming → Diseña la solución
-2. @writing-plans → Crea plan de implementación  
-3. @senior-fullstack → Implementa el código
-4. @test-driven-development → Escribe tests
-5. @verification-before-completion → Verifica todo
-```
-
----
-
-## Nota Final
-
-Este catálogo contiene **240+ skills** organizados por categoría. Si no encuentras un skill específico, usa el sistema de archivos para buscar en el directorio `skills/`:
-
-```bash
-ls skills/ | grep "palabra-clave"
-```
-
-O simplemente pregunta: *"¿Existe un skill para [tarea específica]?"*
+- **Si el usuario invoca una skill que NO encuentras:** No inventes. Responde: *"He procesado tu comando pero, tras listar el directorio `/skills`, no encuentro esa herramienta instalada en Brain OS. ¿Deseas que use `elite-skill-architect` para diseñarla?"*
+- **Ambigüedad de funciones:** Si dos skills parecen resolver lo mismo (ej. `brainstorming` y `research-engineer`), recuerda que el primero es para idear antes de tocar código, y el segundo es para investigar en profundidad sobre bases literarias firmes. Lee sus `SKILL.md` para discernir.

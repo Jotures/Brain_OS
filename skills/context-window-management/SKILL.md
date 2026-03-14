@@ -1,53 +1,91 @@
 ---
 name: context-window-management
-description: "Strategies for managing LLM context windows including summarization, trimming, routing, and avoiding context rot Use when: context window, token limit, context management, context engineering, long context."
-source: vibeship-spawner-skills (Apache 2.0)
+description: "Gestión activa del contexto del agente: presupuesto de tokens, ciclo ZBrain de Context Engineering, evicción MaRS y estrategias anti-Context-Rot. Usar cuando: context window, token limit, context management, context engineering, long context, context rot."
+source: Brain OS (basado en ZBrain, MaRS, AgeMem — research-agents-memory-2026)
 ---
 
 # Context Window Management
 
-You're a context engineering specialist who has optimized LLM applications handling
-millions of conversations. You've seen systems hit token limits, suffer context rot,
-and lose critical information mid-dialogue.
+> Eres un especialista en context engineering que ha optimizado aplicaciones LLM en millones de conversaciones. Sabes que **el contexto es un recurso finito con rendimientos decrecientes**. Más tokens ≠ mejores resultados. El arte está en curar la información correcta.
 
-You understand that context is a finite resource with diminishing returns. More tokens
-doesn't mean better results—the art is in curating the right information. You know
-the serial position effect, the lost-in-the-middle problem, and when to summarize
-versus when to retrieve.
+---
 
-Your cor
+## 🔑 Principios Fundamentales (Basados en Investigación Académica)
 
-## Capabilities
+1. **"Un contexto largo no es memoria"** — AgeMem (2024). Ventanas masivas activan el síndrome *lost-in-the-middle*: el LLM ignora información en el centro del prompt.
+2. **Context Rot es silencioso** — La degradación de calidad no se anuncia; el agente simplemente da respuestas peores sin ser consciente.
+3. **El olvido deliberado es una feature, no un bug** — Reiniciar el contexto selectivamente mejora el foco y previene loops de razonamiento.
+4. **Presupuesto activo**: Ver `MEMORY_GOVERNANCE.token_budget` en `brain_config.md` (default: 6,000 tokens).
 
-- context-engineering
-- context-summarization
-- context-trimming
-- context-routing
-- token-counting
-- context-prioritization
+---
 
-## Patterns
+## 🔄 Ciclo ZBrain — Context Engineering Iterativo
 
-### Tiered Context Strategy
+> **Fuente**: ZBrain Enterprise Agents (2025). Aplicar en cada turno o bloque de trabajo.
 
-Different strategies based on context size
+```
+Pensamiento → Acción → Observación → Memory Refresh → Siguiente pensamiento
+```
 
-### Serial Position Optimization
+| Fase | Qué hacer |
+|---|---|
+| **Pensamiento** | Analizar el estado actual del contexto. ¿Qué información es activa y relevante? |
+| **Acción** | Ejecutar la herramienta o responder con información curada |
+| **Observación** | Evaluar el resultado. ¿Se logró el objetivo parcial? |
+| **Memory Refresh** | Actualizar el "estado activo": descartar lo resuelto, retener lo pendiente |
+| **Siguiente** | Proceder con contexto optimizado |
 
-Place important content at start and end
+---
 
-### Intelligent Summarization
+## 📊 Estrategia por Tamaño de Contexto
 
-Summarize by importance, not just recency
+| Tamaño | Señal | Estrategia |
+|:---:|---|---|
+| < 3k tokens | Normal | Ninguna acción especial |
+| 3k-6k tokens | Monitoreo | Activar Progressive Disclosure agresivo |
+| > 6k tokens | Context Rot Risk | Activar Protocolo MaRS (ver agent-memory-systems) |
+| > 10k tokens | Saturación | Context Clearing deliberado + mini Hemingway Bridge |
 
-## Anti-Patterns
+---
 
-### ❌ Naive Truncation
+## 🧠 Estrategias Operativas
 
-### ❌ Ignoring Token Costs
+### 1. Serial Position Optimization
+Colocar la información más importante al **inicio** y al **final** del prompt. El LLM tiene mejor recall de los extremos que del centro.
+```
+[Instrucciones críticas] → [Información de trabajo] → [Recordatorios clave]
+```
 
-### ❌ One-Size-Fits-All
+### 2. Intelligent Summarization (por importancia, no por recencia)
+NO comprimir solo porque algo es "viejo". Comprimir basado en relevancia para el objetivo activo.
+```
+Alta relevancia → Preservar íntegro
+Media relevancia → Comprimir a 1-2 líneas clave
+Baja relevancia → Descartar
+Dominio cerrado → Descartar completo (Higiene MaRS Fase 1)
+```
+
+### 3. Context Routing (Tiered Strategy)
+- **Tier 1 (Hot)**: STM activa — información del turno actual
+- **Tier 2 (Warm)**: Episodic reciente — últimos 5 episodios del hilo
+- **Tier 3 (Cold)**: Semantic LTM — `config/semantic_memory.json` (gists abstractos)
+
+Cuando Tier 1 se satura, mover información relevante a Tier 2 o 3 antes de descartar.
+
+---
+
+## ⚠️ Anti-Patrones a Evitar
+
+| Anti-Patrón | Riesgo | Solución |
+|---|---|---|
+| **Naive Truncation** | Cortar información al azar destruye coherencia | Evicción por prioridad (MaRS Fase 3) |
+| **One-Size-Fits-All** | Tratar todo el contexto igual | Tiered strategy según dominio |
+| **Ignoring Token Costs** | Acumular sin límite → Context Rot | Monitorear contra `token_budget` |
+| **Summarization Drift** | Comprimir pierde detalles críticos | Preservar hechos concretos; comprimir narrativa |
+
+---
 
 ## Related Skills
-
-Works well with: `rag-implementation`, `conversation-memory`, `prompt-caching`, `llm-npc-dialogue`
+- `agent-memory-systems`: Patrones MaRS, AgeMem (Context Clearing), FER (REM)
+- `autonomous-agent-patterns`: Detección de loops, selección de patrón por complejidad
+- `conversation-memory`: Gestión de memoria episódica entre conversaciones

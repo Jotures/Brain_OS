@@ -1,0 +1,24 @@
+{
+    "version": "1.0",
+    "description": "Conocimiento semántico (gists) derivado de episodios de sesión. Actualizado por el agente al cierre (ciclo REM/FER). DIFERENTE a hemingway_bridge.json (próximo paso) y research_log.json (investigación formal).",
+    "sources": {
+        "framework": "CMA/FER Cycle (Formación, Evolución, Recuperación)",
+        "research": "research-agents-memory-2026"
+    },
+    "entries": [
+        {
+            "date": "2026-03-14",
+            "source_session": "Investigación e implementación de Arquitecturas de Memoria en Brain OS",
+            "gist": "Motor v2 de NotebookLM (HTTP directo) tiene problemas de expiración de sesión silenciosa y devuelve errores 401 persistentes tras ~7 días. El Motor v1 (Browser Automotion con Patchright) es mucho más tolerante a fallos y funciona como fallback robusto.",
+            "confidence": "high",
+            "domain": "notebooklm"
+        },
+        {
+            "date": "2026-03-14",
+            "source_session": "Investigación e implementación de Arquitecturas de Memoria en Brain OS",
+            "gist": "Si el contexto supera los 6,000 tokens (Context Rot), truncar ingenuamente el inicio destruye el performance (síndrome lost-in-the-middle). Es preferible hacer un 'Context Clearing' asíncrono explícito (Patrón AgeMem) reiniciando el contexto que intentar recuperar partes.",
+            "confidence": "high",
+            "domain": "memoria"
+        }
+    ]
+}

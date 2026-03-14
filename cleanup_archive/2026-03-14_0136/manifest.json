@@ -1,0 +1,36 @@
+{
+  "date": "2026-03-14T01:36:54.232300",
+  "level": 2,
+  "files": [
+    {
+      "original_path": "cleanup_archive\\2026-03-04_1406\\debug_course_dump.json",
+      "archived_as": "debug_course_dump.json",
+      "size_kb": 25
+    },
+    {
+      "original_path": "cleanup_archive\\2026-03-04_1406\\debug_course_dump.py",
+      "archived_as": "debug_course_dump.py",
+      "size_kb": 1
+    },
+    {
+      "original_path": "cleanup_archive\\2026-03-04_1406\\debug_page.py",
+      "archived_as": "debug_page.py",
+      "size_kb": 2
+    },
+    {
+      "original_path": "cleanup_archive\\2026-03-04_1406\\debug_upload_error.png",
+      "archived_as": "debug_upload_error.png",
+      "size_kb": 73
+    },
+    {
+      "original_path": "cleanup_archive\\2026-03-04_1406\\debug_upload_error_1.png",
+      "archived_as": "debug_upload_error_1.png",
+      "size_kb": 51
+    },
+    {
+      "original_path": "cleanup_archive\\2026-03-04_1406\\temp_library_sync.txt",
+      "archived_as": "temp_library_sync.txt",
+      "size_kb": 1
+    }
+  ]
+}

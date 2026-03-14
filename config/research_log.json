@@ -1,5 +1,23 @@
 {
     "version": "1.0",
     "description": "Registro de investigaciones académicas realizadas via /academic-research. Consultar antes de iniciar nueva investigación para evitar duplicados.",
-    "entries": []
+    "entries": [
+        {
+            "id": "research-agents-memory-2026",
+            "date": "2026-03-14",
+            "topic": "Arquitecturas de Agentes Autónomos y Sistemas de Memoria",
+            "purpose": "brain-os",
+            "notebook_url": "https://notebooklm.google.com/notebook/46a5af7f-90d1-40b7-9883-cf6591893d17",
+            "queries_used": [
+                "Resume hallazgos principales y autores.",
+                "Hallazgos sorprendentes o contraintuitivos.",
+                "Valores numéricos, límites y presupuestos.",
+                "Frameworks, modelos y ciclos de memoria.",
+                "Cuellos de botella y problemas abiertos.",
+                "Contradicciones entre autores."
+            ],
+            "sources_count": 18,
+            "findings_summary": "Identificación de 7 frameworks clave (AgeMem, MaRS, MemGPT, etc.) y parámetros críticos de gobernanza de memoria. Se detectó una tensión entre contexto masivo vs memoria externa."
+        }
+    ]
 }
