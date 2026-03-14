@@ -6,6 +6,13 @@ Registro de cambios significativos del sistema. Formato: [fecha] [tipo] descripc
 
 ---
 
+## 2026-03-14
+
+- `feat` — Integración `notebooklm-py`: motor v2 HTTP directo para NotebookLM (reemplaza browser automation como primario)
+- `feat` — Nuevos scripts: `ask_question_v2.py`, `download_audio.py`, `generate_quiz.py`
+- `feat` — Nuevo adaptador central: `notebooklm_client.py` (async→sync wrapper)
+- `refactor` — `SKILL.md` de notebooklm actualizado: motor v2 como primario, v1 (Patchright) como fallback
+
 ## 2026-03-03
 
 - `feat` — Workflow `/academic-research`: investigación académica profunda via NotebookLM con briefing de búsqueda y notebooks dedicados

@@ -1,11 +1,161 @@
 ---
 name: notebooklm
-description: Consulta tus notebooks de Google NotebookLM directamente desde el agente para respuestas grounded con citaciones desde Gemini. Automatización del navegador, gestión de biblioteca y auth persistente. Usar cuando el usuario mencione NotebookLM o quiera consultar sus documentos.
+description: Consulta tus notebooks de Google NotebookLM directamente desde el agente para respuestas grounded con citaciones desde Gemini. Motor v2 HTTP directo (notebooklm-py) + fallback browser. Gestión de biblioteca, audio overviews, quizzes y auth persistente. Usar cuando el usuario mencione NotebookLM o quiera consultar sus documentos.
 ---
 
 # NotebookLM Research Assistant Skill
 
-Interact with Google NotebookLM to query documentation with Gemini's source-grounded answers. Each question opens a fresh browser session, retrieves the answer exclusively from your uploaded documents, and closes.
+Interact with Google NotebookLM to query documentation with Gemini's source-grounded answers.
+
+## ⚡ Motor v2 (PRIMARIO — notebooklm-py)
+
+> **El motor v2 usa HTTP directo en lugar de browser automation. Es ~10× más rápido y más estable.**
+> Si v2 falla (sesión expirada, API rota), escalar al motor v1 (Patchright) como fallback.
+
+### Auth v2 (solo primera vez)
+
+```bash
+# Login con Google (una vez, abre browser visible)
+.venv\Scripts\notebooklm login
+
+# Verificar estado
+python scripts/run.py notebooklm_client.py
+```
+
+---
+
+### 💬 Query (Chat grounded)
+
+```bash
+python scripts/run.py ask_question_v2.py --question "¿Qué es la ventaja comparativa?" --notebook-id economia-internacional-i
+python scripts/run.py ask_question_v2.py --question "..." --notebook-url "https://notebooklm.google.com/notebook/..."
+python scripts/run.py ask_question_v2.py --question "..." --notebook-id economia-ambiental --json-output
+```
+
+---
+
+### 🎙️ Resumen en Audio
+
+```bash
+python scripts/run.py download_audio.py --notebook-id economia-internacional-i --output audio.mp3
+python scripts/run.py download_audio.py --notebook-id operativa --output audio.mp3 --instructions "Hazlo conciso y en español"
+```
+
+---
+
+### 🎬 Resumen en Video
+
+```bash
+python scripts/run.py generate_video.py --notebook-id economia-ambiental --output video.mp4
+python scripts/run.py generate_video.py --notebook-id investigacion-operativa --output io_video.mp4 --instructions "Enfócate en algoritmos"
+```
+
+---
+
+### 📊 Presentación (Slide Deck)
+
+```bash
+python scripts/run.py generate_slide_deck.py --notebook-id economia-internacional-i --output presentacion.pptx
+python scripts/run.py generate_slide_deck.py --notebook-id operativa --output io_slides.pptx --instructions "Incluye diagrams de flujo"
+```
+
+---
+
+### 🗺️ Mapa Mental
+
+```bash
+python scripts/run.py generate_mind_map.py --notebook-id economia-ambiental --output mapa.json
+python scripts/run.py generate_mind_map.py --notebook-id economia-ambiental --instructions "Foco en instrumentos económicos" --output mapa.json
+```
+
+---
+
+### 📄 Informes (Reports)
+
+```bash
+# Tipos disponibles: briefing_doc | study_guide | blog_post | custom
+python scripts/run.py generate_report.py --notebook-id economia-ambiental --type briefing_doc --output briefing.md
+python scripts/run.py generate_report.py --notebook-id operativa --type study_guide --output guia.md
+python scripts/run.py generate_report.py --notebook-id economia-ambiental --type blog_post --output blog.md
+python scripts/run.py generate_report.py --notebook-id economia-ambiental --type custom --prompt "Haz un análisis de política pública" --output custom.md
+```
+
+---
+
+### 📝 Cuestionario (Quiz)
+
+```bash
+# difficulty: easy|medium|hard | quantity: fewer|standard|more
+python scripts/run.py generate_quiz.py --notebook-id economia-ambiental --format markdown
+python scripts/run.py generate_quiz.py --notebook-id operativa --difficulty hard --quantity more --format json --output quiz.json
+```
+
+---
+
+### 🗂️ Tarjetas Didácticas (Flashcards)
+
+```bash
+python scripts/run.py generate_flashcards.py --notebook-id economia-internacional-i --output flashcards.md
+python scripts/run.py generate_flashcards.py --notebook-id operativa --difficulty hard --quantity more --output flashcards_io.md
+```
+
+---
+
+### 🖼️ Infografía
+
+```bash
+# orientation: portrait|landscape|square
+python scripts/run.py generate_infographic.py --notebook-id economia-ambiental --output infografia.png
+python scripts/run.py generate_infographic.py --notebook-id operativa --orientation landscape --output io_infografia.png
+```
+
+---
+
+### 📋 Tabla de Datos
+
+```bash
+python scripts/run.py generate_data_table.py --notebook-id economia-ambiental --output tabla.csv
+python scripts/run.py generate_data_table.py --notebook-id operativa --instructions "Extrae complejidades de los algoritmos" --output tabla.json
+```
+
+---
+
+### Resumen Rápido de Comandos v2
+
+| Capacidad | Script | Salida |
+|-----------|--------|--------|
+| Query/Chat | `ask_question_v2.py` | texto |
+| Audio Overview | `download_audio.py` | `.mp3` |
+| Video Overview | `generate_video.py` | `.mp4` |
+| Presentación | `generate_slide_deck.py` | `.pptx` |
+| Mapa Mental | `generate_mind_map.py` | `.json` |
+| Informe | `generate_report.py` | `.md/.html` |
+| Quiz | `generate_quiz.py` | `.md/.json` |
+| Flashcards | `generate_flashcards.py` | `.md/.json` |
+| Infografía | `generate_infographic.py` | `.png` |
+| Tabla de Datos | `generate_data_table.py` | `.csv/.json` |
+
+---
+
+### Flujo de Degradación v2 → v1
+
+```
+Nivel 0 — Motor v2 (HTTP directo)
+  → python scripts/run.py ask_question_v2.py --question "..." --notebook-id ID
+  → Si falla con "Sesión expirada": .venv\Scripts\notebooklm login → Reintentar
+  → Si falla con otro error: ir a Nivel 1
+
+Nivel 1 — Motor v1 (Patchright browser — fallback)
+  → python scripts/run.py ask_question.py --question "..." --notebook-id ID
+  → Si falla: seguir protocolo original de degradación (Nivel 2-4 abajo)
+```
+
+---
+
+## 🔧 Motor v1 (FALLBACK — Patchright Browser)
+
+> Motor original de browser automation. Mantenido como fallback.
+> Solo usar si el motor v2 falla.
 
 ## When to Use This Skill
 

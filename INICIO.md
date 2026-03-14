@@ -215,12 +215,10 @@
 ### Últimos Cambios
 | Fecha | Tipo | Descripción |
 |-------|------|-------------|
+| 2026-03-14 | ✨ `feat` | Integración `notebooklm-py`: motor v2 HTTP directo, Audio Overview descargable, Quiz Generator |
 | 2026-03-03 | ✨ `feat` | Workflow `/academic-research`: investigación académica via NotebookLM |
 | 2026-03-03 | ✨ `feat` | Sprint 3: Skill `brain-os-health` creada (auditoría automática, score 92.5/100) |
 | 2026-03-03 | ✨ `feat` | Sprint 2: Auto-documentación — dashboard-sync, dev_registry.json, brain-os-dev mejorado |
-| 2026-03-03 | ✨ `feat` | Creados 3 workflows: /brain-os-dev, /brain-os-upgrade, /brain-os-audit |
-| 2026-03-03 | ✨ `feat` | Creado CHANGELOG.md para tracking de evolución del sistema |
-| 2026-03-03 | 🧹 `cleanup` | Movidos 6 scripts sueltos (_*.py) de la raíz a tools/scripts/ |
 
 ---
 

@@ -85,6 +85,23 @@
                 "config/research_log.json"
             ],
             "workflow_used": "/brain-os-dev"
+        },
+        {
+            "id": "008",
+            "date": "2026-03-14",
+            "type": "feat",
+            "description": "Integración notebooklm-py: motor v2 HTTP directo, adaptador central, download_audio.py, generate_quiz.py, ask_question_v2.py",
+            "files_affected": [
+                "skills/notebooklm/scripts/notebooklm_client.py",
+                "skills/notebooklm/scripts/ask_question_v2.py",
+                "skills/notebooklm/scripts/download_audio.py",
+                "skills/notebooklm/scripts/generate_quiz.py",
+                "skills/notebooklm/SKILL.md",
+                "brain_config.md",
+                "INICIO.md",
+                "CHANGELOG.md"
+            ],
+            "workflow_used": "/brain-os-dev"
         }
     ],
     "schema": {

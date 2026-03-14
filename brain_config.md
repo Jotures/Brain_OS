@@ -252,6 +252,29 @@ workflow: .agent/workflows/brain-os-study.md (sección NotebookLM)
 skill: skills/notebooklm/SKILL.md
 ```
 
+### Motor v2 — notebooklm-py (HTTP directo)
+
+```yaml
+# Fecha integración: 2026-03-14
+# Motor primario desde v2 — fallback a Patchright (v1)
+
+NOTEBOOKLM_V2:
+  package: "notebooklm-py==0.3.4"
+  venv: "skills/notebooklm/.venv"
+  auth_storage: "~/.notebooklm/storage_state.json"
+
+  scripts:
+    adapter: "skills/notebooklm/scripts/notebooklm_client.py"
+    ask_v2: "skills/notebooklm/scripts/ask_question_v2.py"
+    download_audio: "skills/notebooklm/scripts/download_audio.py"
+    generate_quiz: "skills/notebooklm/scripts/generate_quiz.py"
+
+  cli:
+    login: ".venv/Scripts/notebooklm login"
+    check: ".venv/Scripts/notebooklm auth check --test"
+    list: ".venv/Scripts/notebooklm list --json"
+```
+
 #### Comando: "Prepara contenido para NotebookLM de [curso]"
 1. Brain OS lee índice/syllabus del curso
 2. Usa template universal para generar documento
