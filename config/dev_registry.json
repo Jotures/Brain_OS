@@ -1,122 +1,137 @@
 {
-    "version": "1.0",
-    "description": "Registro estructurado de cambios en Brain OS. Cada entrada tiene tipo, fecha, descripción y archivos afectados.",
-    "entries": [
-        {
-            "id": "001",
-            "date": "2026-03-03",
-            "type": "cleanup",
-            "description": "Movidos 6 scripts sueltos (_*.py) de la raíz a tools/scripts/",
-            "files_affected": [
-                "tools/scripts/_find_notion_task.py",
-                "tools/scripts/_find_notion_task2.py",
-                "tools/scripts/_parse_search.py",
-                "tools/scripts/_parse_search2.py",
-                "tools/scripts/_parse_tasks.py",
-                "tools/scripts/_upload_brainstorm_quick.py"
-            ],
-            "workflow_used": null
-        },
-        {
-            "id": "002",
-            "date": "2026-03-03",
-            "type": "feat",
-            "description": "Creado CHANGELOG.md para tracking de evolución del sistema",
-            "files_affected": [
-                "CHANGELOG.md"
-            ],
-            "workflow_used": null
-        },
-        {
-            "id": "003",
-            "date": "2026-03-03",
-            "type": "feat",
-            "description": "Creados 3 workflows de desarrollo: /brain-os-dev, /brain-os-upgrade, /brain-os-audit",
-            "files_affected": [
-                ".agent/workflows/brain-os-dev.md",
-                ".agent/workflows/brain-os-upgrade.md",
-                ".agent/workflows/brain-os-audit.md"
-            ],
-            "workflow_used": null
-        },
-        {
-            "id": "004",
-            "date": "2026-03-03",
-            "type": "docs",
-            "description": "Actualizado INICIO.md con sección de desarrollo del sistema",
-            "files_affected": [
-                "INICIO.md"
-            ],
-            "workflow_used": null
-        },
-        {
-            "id": "005",
-            "date": "2026-03-03",
-            "type": "feat",
-            "description": "Sprint 2: Auto-documentación — dashboard-sync actualizado, dev_registry.json creado, brain-os-dev mejorado",
-            "files_affected": [
-                "config/dev_registry.json",
-                "skills/dashboard-sync/SKILL.md",
-                "skills/dashboard-sync/scripts/sync_dashboard.py",
-                "skills/dashboard-sync/references/sections.md",
-                ".agent/workflows/brain-os-dev.md"
-            ],
-            "workflow_used": "/brain-os-dev"
-        },
-        {
-            "id": "006",
-            "date": "2026-03-03",
-            "type": "feat",
-            "description": "Sprint 3: Skill brain-os-health con health_check.py, IDs documentados, last30days confirmada",
-            "files_affected": [
-                "skills/brain-os-health/SKILL.md",
-                "skills/brain-os-health/scripts/health_check.py",
-                "brain_config.md"
-            ],
-            "workflow_used": "/brain-os-dev"
-        },
-        {
-            "id": "007",
-            "date": "2026-03-03",
-            "type": "feat",
-            "description": "Workflow /academic-research: investigación académica via NotebookLM con briefing y notebooks dedicados",
-            "files_affected": [
-                ".agent/workflows/academic-research.md",
-                "config/research_log.json"
-            ],
-            "workflow_used": "/brain-os-dev"
-        },
-        {
-            "id": "008",
-            "date": "2026-03-14",
-            "type": "feat",
-            "description": "Integración notebooklm-py: motor v2 HTTP directo, adaptador central, download_audio.py, generate_quiz.py, ask_question_v2.py",
-            "files_affected": [
-                "skills/notebooklm/scripts/notebooklm_client.py",
-                "skills/notebooklm/scripts/ask_question_v2.py",
-                "skills/notebooklm/scripts/download_audio.py",
-                "skills/notebooklm/scripts/generate_quiz.py",
-                "skills/notebooklm/SKILL.md",
-                "brain_config.md",
-                "INICIO.md",
-                "CHANGELOG.md"
-            ],
-            "workflow_used": "/brain-os-dev"
-        }
-    ],
-    "schema": {
-        "types": [
-            "feat",
-            "refactor",
-            "fix",
-            "docs",
-            "cleanup"
-        ],
-        "workflow_values": [
-            "/brain-os-dev",
-            "/brain-os-upgrade",
-            "/brain-os-audit",
-            null
-        ]
+  "version": "1.0",
+  "description": "Registro estructurado de cambios en Brain OS. Cada entrada tiene tipo, fecha, descripción y archivos afectados.",
+  "entries": [
+    {
+      "id": "001",
+      "date": "2026-03-03",
+      "type": "cleanup",
+      "description": "Movidos 6 scripts sueltos (_*.py) de la raíz a tools/scripts/",
+      "files_affected": [
+        "tools/scripts/_find_notion_task.py",
+        "tools/scripts/_find_notion_task2.py",
+        "tools/scripts/_parse_search.py",
+        "tools/scripts/_parse_search2.py",
+        "tools/scripts/_parse_tasks.py",
+        "tools/scripts/_upload_brainstorm_quick.py"
+      ],
+      "workflow_used": null
+    },
+    {
+      "id": "002",
+      "date": "2026-03-03",
+      "type": "feat",
+      "description": "Creado CHANGELOG.md para tracking de evolución del sistema",
+      "files_affected": [
+        "CHANGELOG.md"
+      ],
+      "workflow_used": null
+    },
+    {
+      "id": "003",
+      "date": "2026-03-03",
+      "type": "feat",
+      "description": "Creados 3 workflows de desarrollo: /brain-os-dev, /brain-os-upgrade, /brain-os-audit",
+      "files_affected": [
+        ".agent/workflows/brain-os-dev.md",
+        ".agent/workflows/brain-os-upgrade.md",
+        ".agent/workflows/brain-os-audit.md"
+      ],
+      "workflow_used": null
+    },
+    {
+      "id": "004",
+      "date": "2026-03-03",
+      "type": "docs",
+      "description": "Actualizado INICIO.md con sección de desarrollo del sistema",
+      "files_affected": [
+        "INICIO.md"
+      ],
+      "workflow_used": null
+    },
+    {
+      "id": "005",
+      "date": "2026-03-03",
+      "type": "feat",
+      "description": "Sprint 2: Auto-documentación — dashboard-sync actualizado, dev_registry.json creado, brain-os-dev mejorado",
+      "files_affected": [
+        "config/dev_registry.json",
+        "skills/dashboard-sync/SKILL.md",
+        "skills/dashboard-sync/scripts/sync_dashboard.py",
+        "skills/dashboard-sync/references/sections.md",
+        ".agent/workflows/brain-os-dev.md"
+      ],
+      "workflow_used": "/brain-os-dev"
+    },
+    {
+      "id": "006",
+      "date": "2026-03-03",
+      "type": "feat",
+      "description": "Sprint 3: Skill brain-os-health con health_check.py, IDs documentados, last30days confirmada",
+      "files_affected": [
+        "skills/brain-os-health/SKILL.md",
+        "skills/brain-os-health/scripts/health_check.py",
+        "brain_config.md"
+      ],
+      "workflow_used": "/brain-os-dev"
+    },
+    {
+      "id": "007",
+      "date": "2026-03-03",
+      "type": "feat",
+      "description": "Workflow /academic-research: investigación académica via NotebookLM con briefing y notebooks dedicados",
+      "files_affected": [
+        ".agent/workflows/academic-research.md",
+        "config/research_log.json"
+      ],
+      "workflow_used": "/brain-os-dev"
+    },
+    {
+      "id": "008",
+      "date": "2026-03-14",
+      "type": "feat",
+      "description": "Integración notebooklm-py: motor v2 HTTP directo, adaptador central, download_audio.py, generate_quiz.py, ask_question_v2.py",
+      "files_affected": [
+        "skills/notebooklm/scripts/notebooklm_client.py",
+        "skills/notebooklm/scripts/ask_question_v2.py",
+        "skills/notebooklm/scripts/download_audio.py",
+        "skills/notebooklm/scripts/generate_quiz.py",
+        "skills/notebooklm/SKILL.md",
+        "brain_config.md",
+        "INICIO.md",
+        "CHANGELOG.md"
+      ],
+      "workflow_used": "/brain-os-dev"
+    },
+    {
+      "id": "009",
+      "date": "2026-03-14",
+      "type": "refactor",
+      "description": "Upgrade integral Brain OS v2.1: Motor v2 en todos los workflows, BRAIN_OS_CONTEXT v2.1",
+      "files_affected": [
+        ".agent/workflows/brain-os-study.md",
+        ".agent/workflows/brain-os-upgrade.md",
+        ".agent/workflows/brain-os-audit.md",
+        ".agent/workflows/buenos-dias.md",
+        "skills/conversation-memory/BRAIN_OS_CONTEXT.md",
+        "CHANGELOG.md"
+      ],
+      "workflow_used": "/brain-os-upgrade"
     }
+  ],
+  "schema": {
+    "types": [
+      "feat",
+      "refactor",
+      "fix",
+      "docs",
+      "cleanup"
+    ],
+    "workflow_values": [
+      "/brain-os-dev",
+      "/brain-os-upgrade",
+      "/brain-os-audit",
+      null
+    ]
+  }
 }

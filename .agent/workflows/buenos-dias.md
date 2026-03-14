@@ -49,6 +49,10 @@ SÁBADO/DOMINGO:
    ```
    Verificar que Brain OS, skills y config están operativos.
    Si hay errores, reportar al usuario antes de continuar.
+   Verificar NotebookLM v2 auth:
+     python skills/notebooklm/scripts/notebooklm_client.py
+     → Si "not_authenticated": avisar "NotebookLM v2 requiere login. Ejecuta: .venv\Scripts\notebooklm login"
+     → Si "authenticated": reportar como ✅ en el resumen de boot
    ```
 
 // turbo

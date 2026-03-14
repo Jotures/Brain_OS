@@ -77,10 +77,24 @@
     },
     {
       "date": "2026-03-14 01:20",
-      "score": 92.5,
-      "healthy_count": 5,
-      "warnings_count": 0,
-      "critical_count": 1
+      "type": "full",
+      "score": "96/100",
+      "context": "Post-integracion notebooklm-py Sprint 3 Extendido",
+      "components": {
+        "core_files": "OK - 7/7 existentes y legibles",
+        "skills": "OK - 44 SKILL.md validos, 4 en _archive",
+        "workflows": "OK - 7/7 con frontmatter YAML correcto",
+        "config": "OK - Mapeos brain_config.md completos",
+        "dashboard": "OK - Actualizado 14/03/2026",
+        "git": "OK - Commit f2877be (17 archivos, 1416 ins)",
+        "last30days": "OK - 42 archivos (bajo limite de 50)",
+        "notebooklm_v2": "OK - Motor HTTP directo autenticado"
+      },
+      "issues_resolved": [
+        "21 archivos temporales/legacy eliminados de raiz y skills/notebooklm/",
+        "11 scripts Motor v2 commiteados"
+      ],
+      "next_audit": "2026-04-01"
     }
   ]
 }

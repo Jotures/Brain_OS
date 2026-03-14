@@ -78,6 +78,9 @@ Health check del sistema Brain OS. Ejecutar cada 2-4 semanas o cuando algo "se s
    - Notion MCP: Query simple a BD_TAREAS_MAESTRAS
    - Moodle: Verificar que get_tasks.py ejecuta sin error
    - Pomodoro Timer: python pomodoro_timer.py status
+   - NotebookLM v2: python skills/notebooklm/scripts/notebooklm_client.py
+     → Esperado: {"success": true, "status": "authenticated"}
+     → Si falla: .venv\Scripts\notebooklm login
    ```
 
 ---

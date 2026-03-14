@@ -254,12 +254,17 @@ Actualizar Notion con:
 | "Material nuevo de [curso]" | Registrar descarga del aula |
 | "Subir sílabo de [curso]" | Preparar para NotebookLM |
 
-### Comandos Avanzados
+### Comandos NotebookLM Studio v2
 | Comando | Acción |
 |---------|--------|
-| "Consulta mi libro de [curso]" | Query a NotebookLM |
-| "Genera resumen de [tema]" | Crear resumen automático |
-| "¿Qué dudas tengo pendientes?" | Listar dudas no resueltas |
+| "Consulta mi libro de [curso]: [pregunta]" | Query grounded via HTTP v2 |
+| "Genera quiz de [curso]" | Active Recall post-sesión |
+| "Genera flashcards de [curso]" | Tarjetas para Spaced Repetition |
+| "Genera audio de [curso]" | Audio Overview para repaso pasivo |
+| "Genera guía de estudio de [curso]" | Study Guide completa |
+| "Genera presentación de [curso]" | Slide Deck .pptx |
+| "Genera infografía de [curso]" | Visual conceptual PNG |
+| "Genera mapa mental de [curso]" | Mind Map JSON |
 
 ### Comandos Pomodoro Timer 🍅
 | Comando | Acción |
@@ -273,42 +278,74 @@ Actualizar Notion con:
 
 ---
 
-## 📚 Flujo NotebookLM (Híbrido B+C)
+## 📚 Flujo NotebookLM v2 (Motor HTTP Directo)
 
-### Arquitectura
+> **Motor Primario:** `notebooklm-py` (HTTP directo, ~10× más rápido)
+> **Fallback:** Patchright browser automation (si v2 falla)
+
+### Arquitectura v2
 ```
-Brain OS genera contenido → Usuario pega en NotebookLM → NotebookLM investiga → Brain OS consulta
+Brain OS → notebooklm_client.py → API Google (HTTP) → Respuesta grounded
 ```
 
-### Comando: "Prepara contenido para NotebookLM de [curso]"
-Brain OS:
-1. Lee índice/syllabus del curso
-2. Usa template `templates/notebooklm_content_template.md`
-3. Genera documento con temas + preguntas guía
-4. Usuario copia y pega en NotebookLM
-
-### Comando: "Consulta mi libro de [curso]: [pregunta]"
-Brain OS:
-1. Busca notebook en `config/notebooklm_registry.json`
-2. Ejecuta skill `notebooklm` con query
-3. Retorna respuesta grounded
-
-### Registro de Notebooks
-```yaml
-Archivo: config/notebooklm_registry.json
-Mapeo: curso_id → notebook_id
+### Comandos de Consulta
+```bash
+# Query grounded (usar durante estudio para resolver dudas)
+python scripts/run.py ask_question_v2.py --notebook-id economia-ambiental --question "¿Cuál es el principio contaminador-pagador?"
 ```
+
+### Comandos de Active Recall (POST-SESIÓN)
+```bash
+# Generar quiz después de una sesión (Active Recall automático)
+python scripts/run.py generate_quiz.py --notebook-id economia-ambiental --difficulty medium --output quiz_sesion.md
+
+# Generar flashcards para repasos
+python scripts/run.py generate_flashcards.py --notebook-id economia-internacional-i --difficulty hard --output flashcards.md
+```
+
+### Comandos de Recursos de Estudio
+```bash
+# Audio Overview para repaso pasivo (mientras caminas, en clase)
+python scripts/run.py download_audio.py --notebook-id economia-ambiental --output repaso_ambiental.mp3
+
+# Study Guide completa del tema
+python scripts/run.py generate_report.py --notebook-id economia-ambiental --type study_guide --output guia_ambiental.md
+
+# Briefing Doc para exámenes rápidos
+python scripts/run.py generate_report.py --notebook-id economia-internacional-i --type briefing_doc --output briefing_econ_int.md
+
+# Infografía para visualizar conceptos
+python scripts/run.py generate_infographic.py --notebook-id investigacion-operativa --output infografia_io.png
+
+# Mapa mental de conceptos del tema
+python scripts/run.py generate_mind_map.py --notebook-id economia-ambiental --output mapa.json
+
+# Para exposiciones: Slide Deck generado por IA
+python scripts/run.py generate_slide_deck.py --notebook-id economia-gestion-publica --output slides_gestion.pptx
+```
+
+### Integración en el Flujo de Estudio
+
+| Momento | Herramienta v2 | Propósito |
+|---------|---------------|----------|
+| Pre-sesión | `generate_report.py --type briefing_doc` | Orientarse rápido |
+| Durante | `ask_question_v2.py` | Resolver dudas al instante |
+| Post-sesión | `generate_quiz.py` | Active Recall estructurado |
+| Post-sesión | `generate_flashcards.py` | Spaced repetition |
+| Repaso pasivo | `download_audio.py` | Escuchar mientras se descansa |
+| Pre-examen | `generate_report.py --type study_guide` | Guía completa |
+| Exposición | `generate_slide_deck.py` | Presentación base |
 
 ### Cursos con Notebook Activo
-| Curso | Notebook | Estado |
-|-------|----------|--------|
-| Economía Ambiental | 📗 Libro 1 | Activo |
-| Economía Internacional | 📘 Libro 2 | Activo |
-| Economía y Gestión | 📙 Libro 3 | Activo |
-| Investigación Operativa | 📕 Libro 4 | Activo |
-| Teoría Monetaria | 📔 Libro 5 | Activo |
-| Investigación Económica | 📓 Libro 6 | Activo |
-| Inglés | 📒 Libro 7 | Pendiente contenido |
+| Curso | Notebook ID | Estado | v2 |
+|-------|-------------|--------|----|
+| Economía Ambiental | `economia-ambiental` | Activo | ✅ |
+| Economía Internacional | `economia-internacional-i` | Activo | ✅ |
+| Economía y Gestión | `economia-gestion-publica` | Activo | ✅ |
+| Investigación Operativa | `investigacion-operativa` | Activo | ✅ |
+| Teoría Monetaria | `teoria-monetaria` | Activo | ✅ |
+| Investigación Económica | `investigacion-economica` | Activo | ✅ |
+| Inglés | `ingles` | Activo | ✅ |
 
 ---
 
@@ -319,10 +356,14 @@ Mapeo: curso_id → notebook_id
 - Consultar calendario de deadlines
 - Registrar progreso automático
 
-### NotebookLM
-- 1 Libro por curso con materiales del sílabo
-- Usar Audio Overview para repaso pasivo
-- Q&A para resolver dudas durante estudio
+### NotebookLM v2 (Motor HTTP directo)
+- 1 Notebook por curso con materiales del sílabo
+- **Query durante estudio:** `ask_question_v2.py` (sin browser, instantáneo)
+- **Active Recall post-sesión:** `generate_quiz.py` + `generate_flashcards.py`
+- **Repaso pasivo:** `download_audio.py` (Audio Overview como mp3)
+- **Pre-examen:** `generate_report.py --type study_guide`
+- **Exposiciones:** `generate_slide_deck.py`
+- **Visualización:** `generate_infographic.py` + `generate_mind_map.py`
 
 ### Deep Research
 - Investigar temas complejos cuando sea necesario

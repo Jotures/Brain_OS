@@ -61,6 +61,9 @@ Protocolo para modificar componentes existentes de Brain OS sin introducir regre
    Si el archivo es referenciado en INICIO.md → verificar que los comandos siguen
    Si el archivo usa IDs de brain_config.md → verificar que los IDs sean correctos
    Si es un script Python → ejecutar para verificar que no hay SyntaxError
+   Si modifica skills/notebooklm/ → verificar motor v2:
+     python skills/notebooklm/scripts/notebooklm_client.py
+     # Debe retornar: {"success": true, "status": "authenticated"}
    ```
 
 ### Fase 6: Documentación y Cierre

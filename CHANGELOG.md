@@ -9,9 +9,15 @@ Registro de cambios significativos del sistema. Formato: [fecha] [tipo] descripc
 ## 2026-03-14
 
 - `feat` — Integración `notebooklm-py`: motor v2 HTTP directo para NotebookLM (reemplaza browser automation como primario)
-- `feat` — Nuevos scripts: `ask_question_v2.py`, `download_audio.py`, `generate_quiz.py`
-- `feat` — Nuevo adaptador central: `notebooklm_client.py` (async→sync wrapper)
-- `refactor` — `SKILL.md` de notebooklm actualizado: motor v2 como primario, v1 (Patchright) como fallback
+- `feat` — Nuevos scripts Studio v2: `ask_question_v2.py`, `download_audio.py`, `generate_video.py`, `generate_report.py`, `generate_quiz.py`, `generate_flashcards.py`, `generate_infographic.py`, `generate_slide_deck.py`, `generate_data_table.py`, `generate_mind_map.py`
+- `feat` — Nuevo adaptador central: `notebooklm_client.py` (14 funciones, async→sync wrapper)
+- `refactor` — `SKILL.md` de notebooklm: motor v2 como primario, v1 (Patchright) como fallback
+- `refactor` — `/brain-os-upgrade`: Fase 5 incluye verificación de motor v2 auth
+- `refactor` — `/brain-os-audit`: Paso 7 incluye check de `notebooklm_client.py`
+- `refactor` — `/buenos-dias`: Verificación de auth v2 en Step 1 del boot
+- `refactor` — `brain-os-study.md`: Flujo NotebookLM actualizado a v2 con comandos Studio integrados en el ciclo de estudio
+- `docs` — `BRAIN_OS_CONTEXT.md`: Tabla de 10 capacidades v2, sección de Memoria Académica
+- `cleanup` — 21 archivos temporales/legacy eliminados (raíz + skills/notebooklm/)
 
 ## 2026-03-03
 
